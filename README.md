@@ -62,7 +62,25 @@ moon run cmd/nj_matrix --target js --frozen
 moon run cmd/nj_matrix --target wasm-gc --frozen
 ```
 
-`PHYLO_NJ_REFERENCE` 可省略；提供时调用已有无根 RF 比较。程序输出一个 JSON：必须先检查 `ok`，成功才有 `[&U]` Newick、现有节点记录、规范排序的 `input` / `fitted` 矩阵、`residuals`、`max_abs_residual` / `rms_residual` 及可选 `comparison`。上例 split 为 AB|CD，四条末端枝长为 1/2/3/4、内枝长 5，所有拟合距离与输入相同，RF 和残差均为零。节点 ID 仅属于本次树。宿主环境变量的长度限制仍适用；较大矩阵可直接调用类型化 API。
+`PHYLO_NJ_REFERENCE` 可省略；提供时调用已有无根 RF 比较。程序输出一个 JSON：必须先检查 `ok`，成功才有 `[&U]` Newick、现有节点记录、规范排序的 `input` / `fitted` 矩阵、`residuals`、`max_abs_residual` / `rms_residual` 及可选 `comparison`。上例 split 为 AB|CD，四条末端枝长为 1/2/3/4、内枝长 5，所有拟合距离与输入相同，RF 和残差均为零。节点 ID 仅属于本次树。宿主环境变量的长度限制仍适用；较大矩阵可用下述文件模式，或直接调用 String / 类型化 API。
+
+### Node.js 文件输入
+
+`cmd/nj_matrix` 的 **JS / Node.js 宿主**还支持 `PHYLO_NJ_MATRIX_FILE`：变量只存路径，整个 UTF-8 JSON 文件由 Node 内置文件接口读取，再交给同一个 `@nj.from_json`。JSON 内容不经过环境变量或命令行参数，没有新矩阵格式、标签截短或维数降级。保留现有环境变量双后端示例；文件模式不支持 Wasm-GC，指定文件时明确返回 `unsupported_file_host`。
+
+```powershell
+# 先保存示例矩阵；也可以指定已有的 UTF-8 JSON 文件。
+'{"taxa":["A","B","C","D"],"values":[[0,3,9,10],[3,0,10,11],[9,10,0,7],[10,11,7,0]]}' |
+  Set-Content -LiteralPath matrix.json -Encoding utf8
+Remove-Item Env:PHYLO_NJ_MATRIX -ErrorAction SilentlyContinue
+$env:PHYLO_NJ_MATRIX_FILE = (Resolve-Path -LiteralPath matrix.json).Path
+moon run cmd/nj_matrix --target js --frozen
+Remove-Item Env:PHYLO_NJ_MATRIX_FILE
+```
+
+路径按字面值读取，不去空白、不展开通配符；相对路径相对于进程工作目录。文件只读，严格拒绝非法 UTF-8 为 `invalid_utf8`，保留至多一个起始 BOM 的既有 JSON 规则。路径为空报 `empty_matrix_file`，文件不存在或无法读取报 `file_read_error` 并附 Node `code`；两种矩阵来源同时存在（即使值为空）报 `input_source_conflict`。坏 JSON、字段类型及矩阵错误仍沿用原 `NJError`。与旧入口一致，错误也是一个 `ok:false` JSON，进程正常退出，消费者必须检查 `ok`。可选 `PHYLO_NJ_REFERENCE` 的原有行为和环境大小限制继续适用。
+
+这是宿主运输能力补充：128 物种手工树的 68,194 字节 JSON 在 Windows PowerShell 5.1 设置长环境变量失败；同机 PowerShell 7.6 和 Python 直接传 Unicode 环境块成功，故不声称所有 Windows 路径均失败。文件模式通过真实 Node 新进程读取同样的完整输入，独立核对 253 条枝、125 个内 split 和 16,384 个有序路径，以及 Unicode 标签、小矩阵、非法 UTF-8、JSON 类型与文件错误；输入文件前后 SHA-256 相同。可复核运行 `python -B verification/nj_file.py --artifact-dir _build --moonrun moonrun --output file-evidence`（先构建 JS 与 Wasm-GC）。读取是同步、全文件入内存，仍受宿主内存/路径/权限和现有 2..128 / NJ 数值规则约束，不提供流式或 stdin 接口。
 
 输入 JSON 恰有 `taxa`、`values` 两个键。物种数为 2..128；名称非空且按解码后精确字符串唯一，不去空白、不做 Unicode 归一化，`Café` 与 `Café` 是不同身份。矩阵必须方形、轴长匹配、有限、非负、对角严格为零、严格对称，容差为 **0**；正负零均接受并规范为正零。错误索引指向原输入顺序。类型化输入的 NaN/Infinity 被拒绝；非法 JSON 数字报解析或有限性错误，不修补输入。不要求三角不等式或可加性。
 

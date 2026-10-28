@@ -91,6 +91,8 @@ jobs:
           moon build cmd/nj_matrix --target wasm-gc --deny-warn --frozen
           python -B verification/nj_reference.py --artifact-dir _build --moonrun moonrun --output ci-evidence/nj-consumer
           python -B verification/nj_range.py --artifact-dir _build --moonrun moonrun --output ci-evidence/nj-range-consumer
+      - name: Validate real Node file input and independent 128-tip paths and splits
+        run: python -B verification/nj_file.py --artifact-dir _build --moonrun moonrun --output ci-evidence/nj-file-consumer
       - uses: actions/upload-artifact@v4
         if: always()
         with:

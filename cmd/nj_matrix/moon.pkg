@@ -6,3 +6,7 @@ import {
 }
 
 pkgtype(kind: "executable")
+
+options(
+  targets: { "file_js.mbt": [ "js" ], "file_other.mbt": [ "not", "js" ] },
+)

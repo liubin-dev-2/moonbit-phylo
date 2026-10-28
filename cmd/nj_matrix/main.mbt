@@ -26,13 +26,30 @@ fn consume(text : String) -> Json {
 }
 
 ///|
-fn main {
-  let payload = match @env.get_env_var("PHYLO_NJ_MATRIX") {
-    Some(text) => consume(text)
-    None =>
-      Json::object(
-        Map([("ok", false.to_json()), ("error", "missing_matrix".to_json())]),
-      )
+fn input_error(code : String) -> Json {
+  Json::object(Map([("ok", false.to_json()), ("error", code.to_json())]))
+}
+
+///|
+fn input() -> Json {
+  match
+    (
+      @env.get_env_var("PHYLO_NJ_MATRIX_FILE"),
+      @env.get_env_var("PHYLO_NJ_MATRIX"),
+    ) {
+    (Some(_), Some(_)) => input_error("input_source_conflict")
+    (Some(""), None) => input_error("empty_matrix_file")
+    (Some(path), None) =>
+      match read_matrix_file(path) {
+        Ok(text) => consume(text)
+        Err(error) => error
+      }
+    (None, Some(text)) => consume(text)
+    (None, None) => input_error("missing_matrix")
   }
-  println(payload.stringify())
+}
+
+///|
+fn main {
+  println(input().stringify())
 }

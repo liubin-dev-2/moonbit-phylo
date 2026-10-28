@@ -8,6 +8,14 @@ consumers against the fixed Biopython goldens and hand-tree/Fraction range
 expectations, including tiny mixed-scale branches and genuine output overflow.
 Every case checks its declared success/error expectation.
 
+The same required NJ job runs `verification/nj_file.py` in real Node processes:
+the JS-only file selector reads a 128-taxon UTF-8 JSON file, independently checks
+253 edge lengths, 125 internal splits and all 16,384 ordered paths against a
+specified weighted tree, and checks encoding/JSON/file errors and unchanged
+input hashes. Small environment controls still run on both targets; Wasm-GC
+must explicitly reject file mode. The new suite uses Python stdlib only and
+does not regenerate the existing reference or range fixtures.
+
 CI uses the project's declared compiler `0.10.12+1634b282e`, with Node.js
 24.11.0 and Python 3.14. The installer uses the versioned URLs described by the
 [official installer](https://cli.moonbitlang.com/install/unix.sh) and checks the
