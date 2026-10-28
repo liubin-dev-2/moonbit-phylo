@@ -1,0 +1,35 @@
+///|
+// Synthetic testing community on the existing CC0 42-taxon tree.
+fn main {
+  let tree = @phylo.PhyloTree::from_newick(
+    "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+    rooted=true,
+  ).unwrap()
+  let baseline = [
+    "Austruca_annulipes", "Austruca_lactea", "Austruca_sindensis", "Gelasimus_hesperiae",
+    "Gelasimus_tetragonon", "Gelasimus_vocans",
+  ]
+  let candidates = [
+    "Gelasimus_tetragonon", "Gelasimus_vocans", "Gelasimus_vomeris", "Leptuca_beebei",
+    "Leptuca_crenulata", "Leptuca_cumulanta", "Leptuca_deichmanni", "Leptuca_latimanus",
+  ]
+  let prefix = tree.faith_pd_greedy(baseline, candidates, 1U).unwrap()
+  let restored = @phylo.PhyloTree::from_newick(tree.to_newick()).unwrap()
+  let resumed = restored
+    .faith_pd_greedy(prefix.selected_taxa, candidates, 2U)
+    .unwrap()
+  let full = restored.faith_pd_greedy(baseline, candidates, 3U).unwrap()
+  let added = prefix.added_taxa.copy()
+  added.append(resumed.added_taxa)
+  println(prefix.to_json().stringify())
+  println(resumed.to_json().stringify())
+  println(full.to_json().stringify())
+  println(
+    restored.faith_pd(resumed.selected_taxa).unwrap().to_json().stringify(),
+  )
+  println(
+    restored.faith_pd_gain(baseline, added).unwrap().to_json().stringify(),
+  )
+  println(tree.nodes().to_json().stringify())
+  println(restored.nodes().to_json().stringify())
+}

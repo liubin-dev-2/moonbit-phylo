@@ -1,0 +1,8 @@
+import {
+  "liubin-dev/phylo",
+  "liubin-dev/phylo/nj",
+  "moonbitlang/core/env",
+  "moonbitlang/core/json",
+}
+
+pkgtype(kind: "executable")

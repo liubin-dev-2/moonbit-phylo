@@ -1,0 +1,98 @@
+#NEXUS
+[R-package PHYTOOLS, Mon Apr 17 16:29:48 2023]
+
+BEGIN TAXA;
+	DIMENSIONS NTAX = 42;
+	TAXLABELS
+		Austruca_annulipes
+		Austruca_lactea
+		Austruca_sindensis
+		Gelasimus_hesperiae
+		Gelasimus_tetragonon
+		Gelasimus_vocans
+		Gelasimus_vomeris
+		Leptuca_beebei
+		Leptuca_crenulata
+		Leptuca_cumulanta
+		Leptuca_deichmanni
+		Leptuca_latimanus
+		Leptuca_leptodactyla
+		Leptuca_panacea
+		Leptuca_pugilator
+		Leptuca_saltitanta
+		Leptuca_speciosa
+		Leptuca_stenodactylus
+		Leptuca_terpsichores
+		Minuca_minax
+		Minuca_pugnax
+		Minuca_rapax
+		Minuca_vocator
+		Paraleptuca_chlorophthalmus
+		Paraleptuca_crassipes
+		Petruca_panamensis
+		Tubuca_arcuata
+		Tubuca_bellator
+		Tubuca_capricornis
+		Tubuca_coarctata
+		Tubuca_elegans
+		Tubuca_flammula
+		Tubuca_longidigitum
+		Tubuca_paradussumieri
+		Tubuca_polita
+		Tubuca_rhizophorae
+		Tubuca_rosea
+		Tubuca_signata
+		Uca_maracoani
+		Uca_ornata
+		Uca_princeps
+		Xeruca_formosensis
+	;
+END;
+BEGIN TREES;
+	TRANSLATE
+		1	Austruca_annulipes,
+		2	Austruca_lactea,
+		3	Austruca_sindensis,
+		4	Gelasimus_hesperiae,
+		5	Gelasimus_tetragonon,
+		6	Gelasimus_vocans,
+		7	Gelasimus_vomeris,
+		8	Leptuca_beebei,
+		9	Leptuca_crenulata,
+		10	Leptuca_cumulanta,
+		11	Leptuca_deichmanni,
+		12	Leptuca_latimanus,
+		13	Leptuca_leptodactyla,
+		14	Leptuca_panacea,
+		15	Leptuca_pugilator,
+		16	Leptuca_saltitanta,
+		17	Leptuca_speciosa,
+		18	Leptuca_stenodactylus,
+		19	Leptuca_terpsichores,
+		20	Minuca_minax,
+		21	Minuca_pugnax,
+		22	Minuca_rapax,
+		23	Minuca_vocator,
+		24	Paraleptuca_chlorophthalmus,
+		25	Paraleptuca_crassipes,
+		26	Petruca_panamensis,
+		27	Tubuca_arcuata,
+		28	Tubuca_bellator,
+		29	Tubuca_capricornis,
+		30	Tubuca_coarctata,
+		31	Tubuca_elegans,
+		32	Tubuca_flammula,
+		33	Tubuca_longidigitum,
+		34	Tubuca_paradussumieri,
+		35	Tubuca_polita,
+		36	Tubuca_rhizophorae,
+		37	Tubuca_rosea,
+		38	Tubuca_signata,
+		39	Uca_maracoani,
+		40	Uca_ornata,
+		41	Uca_princeps,
+		42	Xeruca_formosensis
+	;
+	TREE * UNTITLED = [&R] (((39:8.3933596,40:8.393359611):8.3933596,41:16.7867192):26.94949819,((((1:22.22790389,2:22.22790389):5.715863797,3:27.94376769):4.041041261,((((4:2.300656725,(6:0.682967609,7:0.682967609):1.617689116):11.58343073,5:13.88408745):12.66247555,(24:6.195255822,25:6.195255822):20.35130718):1.593740886,((((((27:10.82039446,(30:6.334530084,32:6.334530084):4.485864378):3.716205772,(29:4.375132878,34:4.375132878):10.16146736):0.957119316,((28:9.282763151,38:9.282763151):3.974067289,(31:12.16625316,(33:0.4244584238,35:0.4244584238):11.74179474):1.090577277):2.236889111):0.7797000051,36:16.27341956):0.8803177493,37:17.1537373):4.685694982,42:21.83943229):6.300871602):3.84450506):3.337187277,((((((((8:4.089699603,18:4.089699603):11.58615773,19:15.67585734):2.756050573,((10:11.88143831,11:11.88143831):2.48503964,(17:7.183238975,16:7.183238982):7.183238975):4.065429957):3.207289201,13:21.63919711):0.8915646455,12:22.53076176):0.8915646455,9:23.4223264):1.783129291,((14:3.833608973,15:3.833608973):16.23830754,(((20:5.399876786,21:5.399876786):0.8843703569,22:6.284247143):4.188568586,23:10.47281573):9.59910078):5.133539183):3.382562443,26:28.58801814):6.733978092):8.414221169):0;
+END;
+

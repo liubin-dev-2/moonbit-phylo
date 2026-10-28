@@ -1,0 +1,2 @@
+biopython==1.88
+dendropy==5.0.8

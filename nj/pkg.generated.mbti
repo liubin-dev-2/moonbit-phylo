@@ -1,0 +1,46 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "liubin-dev/phylo/nj"
+
+import {
+  "liubin-dev/phylo",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn from_json(String) -> Result[NJReport, NJError]
+
+pub fn neighbor_joining(@phylo.DistanceMatrix) -> Result[NJReport, NJError]
+
+// Errors
+
+// Types and methods
+pub(all) enum NJError {
+  InvalidJson
+  InvalidField(String)
+  InvalidSize(Int)
+  InvalidShape(Int, Int, Int)
+  EmptyTaxon(Int)
+  DuplicateTaxon(String)
+  NonFinite(Int, Int)
+  NegativeDistance(Int, Int)
+  NonzeroDiagonal(Int)
+  Asymmetric(Int, Int)
+  NumericOverflow(String)
+  NegativeLimb(Array[String], Double)
+  CoreError(@phylo.PhyloError)
+} derive(@debug.Debug)
+pub impl ToJson for NJError
+
+pub(all) struct NJReport {
+  tree : @phylo.PhyloTree
+  input : @phylo.DistanceMatrix
+  fitted : @phylo.DistanceMatrix
+  residuals : Array[Array[Double]]
+  max_abs_residual : Double
+  rms_residual : Double
+}
+pub impl ToJson for NJReport
+
+// Type aliases
+
+// Traits

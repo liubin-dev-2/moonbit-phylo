@@ -1,0 +1,7585 @@
+{
+  "reference": {
+    "source": "testdata/diversity-golden.json",
+    "source_sha256": "c9a1509e08c471143193d4041356faf4606e1b18d796e59b55d55320f69f9340",
+    "source_method": {
+      "biopython": "1.88",
+      "definition": "https://scikit.bio/docs/latest/generated/skbio.diversity.alpha.faith_pd.html",
+      "method": "nonroot edges whose descendant tip set intersects selected taxa; exact Fraction.from_float sum",
+      "real_input_sha256": "b145d53abef707d5f85728c44d27fa808148c9c3a37669add78943a90d6f5d33"
+    },
+    "method": "edge descendant intersection with additions and no intersection with baseline; Fraction.from_float sum"
+  },
+  "fixtures": [
+    {
+      "name": "all-pairs-0-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "additions": [],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-0-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "additions": [
+        "A"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-0-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "additions": [
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-0-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-0-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "additions": [
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "10",
+      "gain_bits": "4024000000000000"
+    },
+    {
+      "name": "all-pairs-0-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "additions": [
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "14",
+      "gain_bits": "402c000000000000"
+    },
+    {
+      "name": "all-pairs-0-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "additions": [
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "15",
+      "gain_bits": "402e000000000000"
+    },
+    {
+      "name": "all-pairs-0-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "additions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "16",
+      "gain_bits": "4030000000000000"
+    },
+    {
+      "name": "all-pairs-0-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "additions": [
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "11",
+      "gain_bits": "4026000000000000"
+    },
+    {
+      "name": "all-pairs-0-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "additions": [
+        "A",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "15",
+      "gain_bits": "402e000000000000"
+    },
+    {
+      "name": "all-pairs-0-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "16",
+      "gain_bits": "4030000000000000"
+    },
+    {
+      "name": "all-pairs-0-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "additions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "17",
+      "gain_bits": "4031000000000000"
+    },
+    {
+      "name": "all-pairs-0-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "15",
+      "gain_bits": "402e000000000000"
+    },
+    {
+      "name": "all-pairs-0-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "additions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "19",
+      "gain_bits": "4033000000000000"
+    },
+    {
+      "name": "all-pairs-0-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "additions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "20",
+      "gain_bits": "4034000000000000"
+    },
+    {
+      "name": "all-pairs-0-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "21",
+      "gain_bits": "4035000000000000"
+    },
+    {
+      "name": "all-pairs-1-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-1-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "A"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-1-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-1-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-1-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "10",
+      "gain_bits": "4024000000000000"
+    },
+    {
+      "name": "all-pairs-1-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "10",
+      "gain_bits": "4024000000000000"
+    },
+    {
+      "name": "all-pairs-1-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "12",
+      "gain_bits": "4028000000000000"
+    },
+    {
+      "name": "all-pairs-1-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "12",
+      "gain_bits": "4028000000000000"
+    },
+    {
+      "name": "all-pairs-1-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "11",
+      "gain_bits": "4026000000000000"
+    },
+    {
+      "name": "all-pairs-1-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "A",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "11",
+      "gain_bits": "4026000000000000"
+    },
+    {
+      "name": "all-pairs-1-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "13",
+      "gain_bits": "402a000000000000"
+    },
+    {
+      "name": "all-pairs-1-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "13",
+      "gain_bits": "402a000000000000"
+    },
+    {
+      "name": "all-pairs-1-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "15",
+      "gain_bits": "402e000000000000"
+    },
+    {
+      "name": "all-pairs-1-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "15",
+      "gain_bits": "402e000000000000"
+    },
+    {
+      "name": "all-pairs-1-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "17",
+      "gain_bits": "4031000000000000"
+    },
+    {
+      "name": "all-pairs-1-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "17",
+      "gain_bits": "4031000000000000"
+    },
+    {
+      "name": "all-pairs-2-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "additions": [],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-2-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "additions": [
+        "A"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-2-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "additions": [
+        "B"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-2-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-2-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "additions": [
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "10",
+      "gain_bits": "4024000000000000"
+    },
+    {
+      "name": "all-pairs-2-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "additions": [
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "11",
+      "gain_bits": "4026000000000000"
+    },
+    {
+      "name": "all-pairs-2-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "additions": [
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "10",
+      "gain_bits": "4024000000000000"
+    },
+    {
+      "name": "all-pairs-2-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "11",
+      "gain_bits": "4026000000000000"
+    },
+    {
+      "name": "all-pairs-2-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "additions": [
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "11",
+      "gain_bits": "4026000000000000"
+    },
+    {
+      "name": "all-pairs-2-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "additions": [
+        "A",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "12",
+      "gain_bits": "4028000000000000"
+    },
+    {
+      "name": "all-pairs-2-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "11",
+      "gain_bits": "4026000000000000"
+    },
+    {
+      "name": "all-pairs-2-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "12",
+      "gain_bits": "4028000000000000"
+    },
+    {
+      "name": "all-pairs-2-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "15",
+      "gain_bits": "402e000000000000"
+    },
+    {
+      "name": "all-pairs-2-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "additions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "16",
+      "gain_bits": "4030000000000000"
+    },
+    {
+      "name": "all-pairs-2-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "additions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "15",
+      "gain_bits": "402e000000000000"
+    },
+    {
+      "name": "all-pairs-2-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "16",
+      "gain_bits": "4030000000000000"
+    },
+    {
+      "name": "all-pairs-3-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-3-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "A"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-3-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "B"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-3-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-3-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "10",
+      "gain_bits": "4024000000000000"
+    },
+    {
+      "name": "all-pairs-3-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "10",
+      "gain_bits": "4024000000000000"
+    },
+    {
+      "name": "all-pairs-3-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "10",
+      "gain_bits": "4024000000000000"
+    },
+    {
+      "name": "all-pairs-3-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "10",
+      "gain_bits": "4024000000000000"
+    },
+    {
+      "name": "all-pairs-3-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "11",
+      "gain_bits": "4026000000000000"
+    },
+    {
+      "name": "all-pairs-3-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "A",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "11",
+      "gain_bits": "4026000000000000"
+    },
+    {
+      "name": "all-pairs-3-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "11",
+      "gain_bits": "4026000000000000"
+    },
+    {
+      "name": "all-pairs-3-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "11",
+      "gain_bits": "4026000000000000"
+    },
+    {
+      "name": "all-pairs-3-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "15",
+      "gain_bits": "402e000000000000"
+    },
+    {
+      "name": "all-pairs-3-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "15",
+      "gain_bits": "402e000000000000"
+    },
+    {
+      "name": "all-pairs-3-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "15",
+      "gain_bits": "402e000000000000"
+    },
+    {
+      "name": "all-pairs-3-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "15",
+      "gain_bits": "402e000000000000"
+    },
+    {
+      "name": "all-pairs-4-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "additions": [],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-4-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "additions": [
+        "A"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-4-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "additions": [
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-4-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-4-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "additions": [
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-4-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "additions": [
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-4-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "additions": [
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-4-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-4-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "additions": [
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-4-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "additions": [
+        "A",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "9",
+      "gain_bits": "4022000000000000"
+    },
+    {
+      "name": "all-pairs-4-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "10",
+      "gain_bits": "4024000000000000"
+    },
+    {
+      "name": "all-pairs-4-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "11",
+      "gain_bits": "4026000000000000"
+    },
+    {
+      "name": "all-pairs-4-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-4-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "additions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "9",
+      "gain_bits": "4022000000000000"
+    },
+    {
+      "name": "all-pairs-4-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "additions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "10",
+      "gain_bits": "4024000000000000"
+    },
+    {
+      "name": "all-pairs-4-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "11",
+      "gain_bits": "4026000000000000"
+    },
+    {
+      "name": "all-pairs-5-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-5-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "A"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-5-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-5-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-5-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-5-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-5-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-5-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-5-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-5-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-5-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "7",
+      "gain_bits": "401c000000000000"
+    },
+    {
+      "name": "all-pairs-5-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "7",
+      "gain_bits": "401c000000000000"
+    },
+    {
+      "name": "all-pairs-5-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-5-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-5-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "7",
+      "gain_bits": "401c000000000000"
+    },
+    {
+      "name": "all-pairs-5-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "7",
+      "gain_bits": "401c000000000000"
+    },
+    {
+      "name": "all-pairs-6-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "additions": [],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-6-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "additions": [
+        "A"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-6-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "additions": [
+        "B"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-6-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-6-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "additions": [
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-6-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-6-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "additions": [
+        "B",
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-6-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-6-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "additions": [
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-6-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-6-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-6-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-6-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-6-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-6-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "additions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-6-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-7-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "additions": [],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-7-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "additions": [
+        "A"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-7-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "additions": [
+        "B"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-7-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-7-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "additions": [
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-7-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-7-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "additions": [
+        "B",
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-7-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-7-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "additions": [
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-7-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-7-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-7-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-7-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-7-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-7-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "additions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-7-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-8-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "additions": [],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-8-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "additions": [
+        "A"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-8-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "additions": [
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-8-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-8-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "additions": [
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-8-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "additions": [
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "8",
+      "gain_bits": "4020000000000000"
+    },
+    {
+      "name": "all-pairs-8-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "additions": [
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "9",
+      "gain_bits": "4022000000000000"
+    },
+    {
+      "name": "all-pairs-8-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "10",
+      "gain_bits": "4024000000000000"
+    },
+    {
+      "name": "all-pairs-8-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "additions": [
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-8-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "additions": [
+        "A",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-8-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-8-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-8-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-8-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "additions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "8",
+      "gain_bits": "4020000000000000"
+    },
+    {
+      "name": "all-pairs-8-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "additions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "9",
+      "gain_bits": "4022000000000000"
+    },
+    {
+      "name": "all-pairs-8-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "10",
+      "gain_bits": "4024000000000000"
+    },
+    {
+      "name": "all-pairs-9-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "additions": [],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-9-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "additions": [
+        "A"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-9-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "additions": [
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-9-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-9-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "additions": [
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-9-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-9-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-9-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-9-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "additions": [
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-9-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-9-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-9-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-9-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-9-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-9-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-9-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-10-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "additions": [],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-10-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "additions": [
+        "A"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-10-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "additions": [
+        "B"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-10-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-10-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "additions": [
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-10-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-10-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-10-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-10-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "additions": [
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-10-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-10-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-10-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-10-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-10-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-10-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-10-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-11-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "additions": [],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-11-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "additions": [
+        "A"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-11-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "additions": [
+        "B"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-11-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-11-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "additions": [
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-11-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-11-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-11-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-11-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "additions": [
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-11-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-11-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-11-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-11-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-11-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-11-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-11-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-12-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "additions": [],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-12-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-12-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "additions": [
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-12-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-12-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "additions": [
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-12-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-12-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-12-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-12-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "additions": [
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-12-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-12-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-12-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-12-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-12-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "all-pairs-12-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "5",
+      "gain_bits": "4014000000000000"
+    },
+    {
+      "name": "all-pairs-12-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "6",
+      "gain_bits": "4018000000000000"
+    },
+    {
+      "name": "all-pairs-13-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "additions": [],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-13-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-13-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-13-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-13-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-13-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-13-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-13-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-13-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-13-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-13-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-13-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-13-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-13-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-13-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-13-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "all-pairs-14-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-14-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-14-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "B"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-14-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-14-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-14-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-14-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-14-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-14-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-14-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-14-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-14-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-14-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-14-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-14-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-14-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "1",
+      "gain_bits": "3ff0000000000000"
+    },
+    {
+      "name": "all-pairs-15-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-15-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-15-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "B"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-15-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-15-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-15-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-15-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-15-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-15-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-15-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-15-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-15-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-15-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-15-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-15-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "all-pairs-15-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "topology-1-0",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "baseline": [],
+      "additions": [
+        "A"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 0.0
+        }
+      ],
+      "exact_gain": "2",
+      "gain_bits": "4000000000000000"
+    },
+    {
+      "name": "topology-1-1",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 0.0
+        }
+      ],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "topology-1-2",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "7",
+      "gain_bits": "401c000000000000"
+    },
+    {
+      "name": "topology-1-3",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 0.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "topology-1-4",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "topology-2-0",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "baseline": [],
+      "additions": [
+        "A"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 9.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_gain": "15",
+      "gain_bits": "402e000000000000"
+    },
+    {
+      "name": "topology-2-1",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "baseline": [
+        "A"
+      ],
+      "additions": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_gain": "4",
+      "gain_bits": "4010000000000000"
+    },
+    {
+      "name": "topology-2-2",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "additions": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 7.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 5.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 6.0
+        }
+      ],
+      "exact_gain": "18",
+      "gain_bits": "4032000000000000"
+    },
+    {
+      "name": "topology-2-3",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "additions": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 6.0
+        }
+      ],
+      "exact_gain": "10",
+      "gain_bits": "4024000000000000"
+    },
+    {
+      "name": "topology-2-4",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "additions": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "real-0",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "baseline": [],
+      "additions": [
+        "Austruca_annulipes",
+        "Austruca_lactea",
+        "Austruca_sindensis",
+        "Gelasimus_hesperiae",
+        "Gelasimus_tetragonon",
+        "Gelasimus_vocans"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea",
+            "Austruca_sindensis",
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_panacea",
+            "Leptuca_pugilator",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores",
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes",
+            "Petruca_panamensis",
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 8.414221169
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea",
+            "Austruca_sindensis",
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes",
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 3.337187277
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea",
+            "Austruca_sindensis"
+          ],
+          "length": 4.041041261
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea"
+          ],
+          "length": 5.715863797
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes"
+          ],
+          "length": 22.22790389
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_lactea"
+          ],
+          "length": 22.22790389
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_sindensis"
+          ],
+          "length": 27.94376769
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes",
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 3.84450506
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes"
+          ],
+          "length": 1.593740886
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris"
+          ],
+          "length": 12.66247555
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris"
+          ],
+          "length": 11.58343073
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae"
+          ],
+          "length": 2.300656725
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris"
+          ],
+          "length": 1.617689116
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_vocans"
+          ],
+          "length": 0.682967609
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_tetragonon"
+          ],
+          "length": 13.88408745
+        }
+      ],
+      "exact_gain": "1279719830598626459/9007199254740992",
+      "gain_bits": "4061c27a67dadaad"
+    },
+    {
+      "name": "real-1",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "baseline": [
+        "Austruca_annulipes",
+        "Austruca_lactea",
+        "Austruca_sindensis",
+        "Gelasimus_hesperiae",
+        "Gelasimus_tetragonon",
+        "Gelasimus_vocans"
+      ],
+      "additions": [
+        "Gelasimus_vomeris",
+        "Leptuca_beebei",
+        "Leptuca_crenulata",
+        "Leptuca_cumulanta",
+        "Leptuca_deichmanni",
+        "Leptuca_latimanus"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "Gelasimus_vomeris"
+          ],
+          "length": 0.682967609
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_panacea",
+            "Leptuca_pugilator",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores",
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator",
+            "Petruca_panamensis"
+          ],
+          "length": 6.733978092
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_panacea",
+            "Leptuca_pugilator",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores",
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator"
+          ],
+          "length": 3.382562443
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 1.783129291
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 0.8915646455
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_leptodactyla",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 0.8915646455
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 3.207289201
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 2.756050573
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_stenodactylus"
+          ],
+          "length": 11.58615773
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei"
+          ],
+          "length": 4.089699603
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa"
+          ],
+          "length": 4.065429957
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni"
+          ],
+          "length": 2.48503964
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_cumulanta"
+          ],
+          "length": 11.88143831
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_deichmanni"
+          ],
+          "length": 11.88143831
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_latimanus"
+          ],
+          "length": 22.53076176
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_crenulata"
+          ],
+          "length": 23.4223264
+        }
+      ],
+      "exact_gain": "1011250854285841145/9007199254740992",
+      "gain_bits": "405c115e96990926"
+    },
+    {
+      "name": "real-2",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "baseline": [
+        "Austruca_annulipes",
+        "Gelasimus_tetragonon",
+        "Leptuca_crenulata",
+        "Leptuca_leptodactyla",
+        "Leptuca_speciosa",
+        "Minuca_pugnax",
+        "Paraleptuca_crassipes",
+        "Tubuca_capricornis",
+        "Tubuca_longidigitum",
+        "Tubuca_rosea",
+        "Uca_princeps"
+      ],
+      "additions": [
+        "Austruca_annulipes",
+        "Austruca_lactea",
+        "Austruca_sindensis",
+        "Gelasimus_hesperiae",
+        "Gelasimus_tetragonon",
+        "Gelasimus_vocans"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "Austruca_lactea"
+          ],
+          "length": 22.22790389
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_sindensis"
+          ],
+          "length": 27.94376769
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris"
+          ],
+          "length": 11.58343073
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae"
+          ],
+          "length": 2.300656725
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris"
+          ],
+          "length": 1.617689116
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_vocans"
+          ],
+          "length": 0.682967609
+        }
+      ],
+      "exact_gain": "597685458580755431/9007199254740992",
+      "gain_bits": "405096cf840c3ea8"
+    },
+    {
+      "name": "real-3",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "baseline": [
+        "Austruca_annulipes",
+        "Austruca_lactea",
+        "Austruca_sindensis",
+        "Gelasimus_hesperiae",
+        "Gelasimus_tetragonon",
+        "Gelasimus_vocans",
+        "Gelasimus_vomeris",
+        "Leptuca_beebei",
+        "Leptuca_crenulata",
+        "Leptuca_cumulanta",
+        "Leptuca_deichmanni",
+        "Leptuca_latimanus",
+        "Leptuca_leptodactyla",
+        "Leptuca_panacea",
+        "Leptuca_pugilator",
+        "Leptuca_saltitanta",
+        "Leptuca_speciosa",
+        "Leptuca_stenodactylus",
+        "Leptuca_terpsichores",
+        "Minuca_minax",
+        "Minuca_pugnax",
+        "Minuca_rapax",
+        "Minuca_vocator",
+        "Paraleptuca_chlorophthalmus",
+        "Paraleptuca_crassipes",
+        "Petruca_panamensis",
+        "Tubuca_arcuata",
+        "Tubuca_bellator",
+        "Tubuca_capricornis",
+        "Tubuca_coarctata",
+        "Tubuca_elegans",
+        "Tubuca_flammula",
+        "Tubuca_longidigitum",
+        "Tubuca_paradussumieri",
+        "Tubuca_polita",
+        "Tubuca_rhizophorae",
+        "Tubuca_rosea",
+        "Tubuca_signata",
+        "Uca_maracoani",
+        "Uca_ornata",
+        "Uca_princeps",
+        "Xeruca_formosensis"
+      ],
+      "additions": [
+        "Austruca_annulipes",
+        "Austruca_lactea",
+        "Austruca_sindensis",
+        "Gelasimus_hesperiae",
+        "Gelasimus_tetragonon",
+        "Gelasimus_vocans"
+      ],
+      "edges": [],
+      "exact_gain": "0",
+      "gain_bits": "0000000000000000"
+    },
+    {
+      "name": "real-4",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "baseline": [
+        "Austruca_annulipes",
+        "Austruca_lactea",
+        "Austruca_sindensis",
+        "Gelasimus_hesperiae",
+        "Gelasimus_tetragonon",
+        "Gelasimus_vocans"
+      ],
+      "additions": [
+        "Austruca_annulipes",
+        "Austruca_lactea",
+        "Austruca_sindensis",
+        "Gelasimus_hesperiae",
+        "Gelasimus_tetragonon",
+        "Gelasimus_vocans",
+        "Gelasimus_vomeris",
+        "Leptuca_beebei",
+        "Leptuca_crenulata",
+        "Leptuca_cumulanta",
+        "Leptuca_deichmanni",
+        "Leptuca_latimanus",
+        "Leptuca_leptodactyla",
+        "Leptuca_panacea",
+        "Leptuca_pugilator",
+        "Leptuca_saltitanta",
+        "Leptuca_speciosa",
+        "Leptuca_stenodactylus",
+        "Leptuca_terpsichores",
+        "Minuca_minax",
+        "Minuca_pugnax",
+        "Minuca_rapax",
+        "Minuca_vocator",
+        "Paraleptuca_chlorophthalmus",
+        "Paraleptuca_crassipes",
+        "Petruca_panamensis",
+        "Tubuca_arcuata",
+        "Tubuca_bellator",
+        "Tubuca_capricornis",
+        "Tubuca_coarctata",
+        "Tubuca_elegans",
+        "Tubuca_flammula",
+        "Tubuca_longidigitum",
+        "Tubuca_paradussumieri",
+        "Tubuca_polita",
+        "Tubuca_rhizophorae",
+        "Tubuca_rosea",
+        "Tubuca_signata",
+        "Uca_maracoani",
+        "Uca_ornata",
+        "Uca_princeps",
+        "Xeruca_formosensis"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "Uca_maracoani",
+            "Uca_ornata",
+            "Uca_princeps"
+          ],
+          "length": 26.94949819
+        },
+        {
+          "descendant_taxa": [
+            "Uca_maracoani",
+            "Uca_ornata"
+          ],
+          "length": 8.3933596
+        },
+        {
+          "descendant_taxa": [
+            "Uca_maracoani"
+          ],
+          "length": 8.3933596
+        },
+        {
+          "descendant_taxa": [
+            "Uca_ornata"
+          ],
+          "length": 8.393359611
+        },
+        {
+          "descendant_taxa": [
+            "Uca_princeps"
+          ],
+          "length": 16.7867192
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_vomeris"
+          ],
+          "length": 0.682967609
+        },
+        {
+          "descendant_taxa": [
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes"
+          ],
+          "length": 20.35130718
+        },
+        {
+          "descendant_taxa": [
+            "Paraleptuca_chlorophthalmus"
+          ],
+          "length": 6.195255822
+        },
+        {
+          "descendant_taxa": [
+            "Paraleptuca_crassipes"
+          ],
+          "length": 6.195255822
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 6.300871602
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata"
+          ],
+          "length": 4.685694982
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_signata"
+          ],
+          "length": 0.8803177493
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_signata"
+          ],
+          "length": 0.7797000051
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_flammula",
+            "Tubuca_paradussumieri"
+          ],
+          "length": 0.957119316
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_coarctata",
+            "Tubuca_flammula"
+          ],
+          "length": 3.716205772
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata"
+          ],
+          "length": 10.82039446
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_coarctata",
+            "Tubuca_flammula"
+          ],
+          "length": 4.485864378
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_coarctata"
+          ],
+          "length": 6.334530084
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_flammula"
+          ],
+          "length": 6.334530084
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_capricornis",
+            "Tubuca_paradussumieri"
+          ],
+          "length": 10.16146736
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_capricornis"
+          ],
+          "length": 4.375132878
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_paradussumieri"
+          ],
+          "length": 4.375132878
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_bellator",
+            "Tubuca_elegans",
+            "Tubuca_longidigitum",
+            "Tubuca_polita",
+            "Tubuca_signata"
+          ],
+          "length": 2.236889111
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_bellator",
+            "Tubuca_signata"
+          ],
+          "length": 3.974067289
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_bellator"
+          ],
+          "length": 9.282763151
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_signata"
+          ],
+          "length": 9.282763151
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_elegans",
+            "Tubuca_longidigitum",
+            "Tubuca_polita"
+          ],
+          "length": 1.090577277
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_elegans"
+          ],
+          "length": 12.16625316
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_longidigitum",
+            "Tubuca_polita"
+          ],
+          "length": 11.74179474
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_longidigitum"
+          ],
+          "length": 0.4244584238
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_polita"
+          ],
+          "length": 0.4244584238
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_rhizophorae"
+          ],
+          "length": 16.27341956
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_rosea"
+          ],
+          "length": 17.1537373
+        },
+        {
+          "descendant_taxa": [
+            "Xeruca_formosensis"
+          ],
+          "length": 21.83943229
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_panacea",
+            "Leptuca_pugilator",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores",
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator",
+            "Petruca_panamensis"
+          ],
+          "length": 6.733978092
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_panacea",
+            "Leptuca_pugilator",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores",
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator"
+          ],
+          "length": 3.382562443
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 1.783129291
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 0.8915646455
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_leptodactyla",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 0.8915646455
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 3.207289201
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 2.756050573
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_stenodactylus"
+          ],
+          "length": 11.58615773
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei"
+          ],
+          "length": 4.089699603
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_stenodactylus"
+          ],
+          "length": 4.089699603
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_terpsichores"
+          ],
+          "length": 15.67585734
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa"
+          ],
+          "length": 4.065429957
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni"
+          ],
+          "length": 2.48503964
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_cumulanta"
+          ],
+          "length": 11.88143831
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_deichmanni"
+          ],
+          "length": 11.88143831
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa"
+          ],
+          "length": 7.183238975
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_speciosa"
+          ],
+          "length": 7.183238975
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_saltitanta"
+          ],
+          "length": 7.183238982
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_leptodactyla"
+          ],
+          "length": 21.63919711
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_latimanus"
+          ],
+          "length": 22.53076176
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_crenulata"
+          ],
+          "length": 23.4223264
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_panacea",
+            "Leptuca_pugilator",
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator"
+          ],
+          "length": 5.133539183
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_panacea",
+            "Leptuca_pugilator"
+          ],
+          "length": 16.23830754
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_panacea"
+          ],
+          "length": 3.833608973
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_pugilator"
+          ],
+          "length": 3.833608973
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator"
+          ],
+          "length": 9.59910078
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax"
+          ],
+          "length": 4.188568586
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_minax",
+            "Minuca_pugnax"
+          ],
+          "length": 0.8843703569
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_minax"
+          ],
+          "length": 5.399876786
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_pugnax"
+          ],
+          "length": 5.399876786
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_rapax"
+          ],
+          "length": 6.284247143
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_vocator"
+          ],
+          "length": 10.47281573
+        },
+        {
+          "descendant_taxa": [
+            "Petruca_panamensis"
+          ],
+          "length": 28.58801814
+        }
+      ],
+      "exact_gain": "4925474310051605909/9007199254740992",
+      "gain_bits": "408116b3327a3c0b"
+    }
+  ]
+}

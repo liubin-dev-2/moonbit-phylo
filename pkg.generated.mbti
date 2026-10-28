@@ -1,0 +1,191 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "liubin-dev/phylo"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+
+// Errors
+
+// Types and methods
+pub(all) struct DistanceMatrix {
+  taxa : Array[String]
+  values : Array[Array[Double]]
+} derive(ToJson, @debug.Debug)
+
+pub(all) struct FaithPDGainReport {
+  baseline_taxa : Array[String]
+  added_taxa : Array[String]
+  root_id : Int
+  edge_ids : Array[Int]
+  gain : Double
+} derive(ToJson, @debug.Debug)
+
+pub(all) struct FaithPDGreedyReport {
+  baseline_taxa : Array[String]
+  candidate_taxa : Array[String]
+  limit : UInt
+  added_taxa : Array[String]
+  selected_taxa : Array[String]
+  root_id : Int
+  edge_ids : Array[Int]
+  gain : Double
+  steps : Array[FaithPDGreedyStep]
+} derive(ToJson, @debug.Debug)
+
+pub(all) struct FaithPDGreedyStep {
+  taxon : String
+  edge_ids : Array[Int]
+  gain : Double
+} derive(ToJson, @debug.Debug)
+
+pub(all) struct FaithPDPlanDocument {
+  schema : String
+  tree_newick : String
+  baseline_taxa : Array[String]
+  candidate_taxa : Array[String]
+  limit : UInt
+  expected_added_taxa : Array[String]
+  expected_gain : Double
+  expected_step_gains : Array[Double]
+} derive(@debug.Debug)
+pub fn FaithPDPlanDocument::from_json(String) -> Result[Self, PlanDocumentError]
+pub fn FaithPDPlanDocument::replay(Self) -> Result[(PhyloTree, FaithPDGreedyReport), PlanDocumentError]
+pub impl ToJson for FaithPDPlanDocument
+
+pub(all) struct FaithPDReport {
+  selected_taxa : Array[String]
+  root_id : Int
+  edge_ids : Array[Int]
+  total_length : Double
+} derive(ToJson, @debug.Debug)
+
+pub struct NewickReader {
+  arena : Array[Node]
+  stack : Array[Int]
+  comments : Array[String]
+  token : StringBuilder
+  comment : StringBuilder
+  requested : Rooting
+  mut rooting : Rooting
+  mut current : Int?
+  mut expecting : Bool
+  mut need_length : Bool
+  mut quoted : Bool
+  mut quote_pending : Bool
+  mut comment_depth : Int
+  mut done : Bool
+  mut closed : Bool
+  mut position : Int
+  mut failure : PhyloError?
+}
+pub fn NewickReader::NewickReader(rooted? : Bool) -> Self
+pub fn NewickReader::feed(Self, String) -> Result[Unit, PhyloError]
+pub fn NewickReader::finish(Self) -> Result[PhyloTree, PhyloError]
+
+type Node
+
+pub(all) struct NodeRecord {
+  id : Int
+  parent : Int?
+  children : Array[Int]
+  label : String?
+  length : Double?
+  comments : Array[String]
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct ParsimonyResult {
+  score : Int
+  candidates : Array[Array[Char]]
+  assignment : Array[Char?]
+  changed_edges : Array[(Int, Int)]
+  missing_taxa : Array[String]
+} derive(ToJson, @debug.Debug)
+
+pub(all) enum PhyloError {
+  Syntax(Int, String)
+  InvalidLength(Int, String)
+  MissingLength(Int)
+  DuplicateTaxon(String)
+  AnonymousTaxon(Int)
+  RootedTreeRequired
+  RootingConflict
+  PolytomyNotSupported(Int, Int)
+  UnaryNotSupported(Int)
+  TaxaSetMismatch(Array[String], Array[String])
+  TraitMismatch(Array[String], Array[String])
+  UnsupportedTrait(String)
+  UnknownTaxon(String)
+  EmptySelection
+  DuplicateSelection(String)
+  NumericOverflow
+} derive(Eq, @debug.Debug)
+
+pub struct PhyloTree {
+  arena : Array[Node]
+  root : Int
+  rooting : Rooting
+  comments : Array[String]
+}
+pub fn PhyloTree::faith_pd(Self, Array[String]) -> Result[FaithPDReport, PhyloError]
+pub fn PhyloTree::faith_pd_gain(Self, Array[String], Array[String]) -> Result[FaithPDGainReport, PhyloError]
+pub fn PhyloTree::faith_pd_greedy(Self, Array[String], Array[String], UInt) -> Result[FaithPDGreedyReport, PhyloError]
+pub fn PhyloTree::faith_pd_plan_document(Self, Array[String], Array[String], UInt) -> Result[FaithPDPlanDocument, PhyloError]
+pub fn PhyloTree::fitch_parsimony(Self, Map[String, Char]) -> Result[ParsimonyResult, PhyloError]
+pub fn PhyloTree::from_newick(String, rooted? : Bool) -> Result[Self, PhyloError]
+pub fn PhyloTree::midpoint_root(Self) -> Result[TransformResult, PhyloError]
+pub fn PhyloTree::nodes(Self) -> Array[NodeRecord]
+pub fn PhyloTree::patristic_distance(Self, String, String) -> Result[Double, PhyloError]
+pub fn PhyloTree::patristic_matrix(Self) -> Result[DistanceMatrix, PhyloError]
+pub fn PhyloTree::prune(Self, Array[String]) -> Result[TransformResult, PhyloError]
+pub fn PhyloTree::rf_distance_rooted(Self, Self) -> Result[RFComparisonReport, PhyloError]
+pub fn PhyloTree::rf_distance_unrooted(Self, Self) -> Result[RFComparisonReport, PhyloError]
+pub fn PhyloTree::root_id(Self) -> Int
+pub fn PhyloTree::rooting(Self) -> Rooting
+pub fn PhyloTree::taxa(Self) -> Array[String]
+pub fn PhyloTree::to_newick(Self) -> String
+pub fn PhyloTree::tree_comments(Self) -> Array[String]
+
+pub(all) enum PlanDocumentError {
+  InvalidJson
+  InvalidField(String)
+  UnsupportedSchema(String)
+  TreeError(PhyloError)
+  ClaimMismatch(String)
+} derive(Eq, @debug.Debug)
+
+pub(all) struct RFComparisonReport {
+  mode : Rooting
+  taxa : Array[String]
+  shared : Array[Array[String]]
+  only_left : Array[Array[String]]
+  only_right : Array[Array[String]]
+  distance : Int
+} derive(ToJson, @debug.Debug)
+
+pub(all) enum Rooting {
+  Rooted
+  Unrooted
+  Unknown
+} derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct TransformResult {
+  tree : PhyloTree
+  witness : TransformWitness
+}
+
+pub(all) struct TransformWitness {
+  old_to_new : Array[Int?]
+  retained_taxa : Array[String]
+  edge_paths : Array[Array[Int]]
+  diameter_endpoints : Array[String]
+  diameter : Double?
+  split_edge : Array[Int]
+  offset : Double?
+} derive(ToJson, @debug.Debug)
+
+// Type aliases
+
+// Traits

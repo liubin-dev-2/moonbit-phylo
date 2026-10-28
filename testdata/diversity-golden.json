@@ -1,0 +1,3246 @@
+{
+  "reference": {
+    "biopython": "1.88",
+    "definition": "https://scikit.bio/docs/latest/generated/skbio.diversity.alpha.faith_pd.html",
+    "method": "nonroot edges whose descendant tip set intersects selected taxa; exact Fraction.from_float sum",
+    "real_input_sha256": "b145d53abef707d5f85728c44d27fa808148c9c3a37669add78943a90d6f5d33"
+  },
+  "fixtures": [
+    {
+      "name": "small-0-subset-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "present": [],
+      "edges": [],
+      "exact_total": "0",
+      "total_bits": "0000000000000000"
+    },
+    {
+      "name": "small-0-subset-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "present": [
+        "A"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_total": "4",
+      "total_bits": "4010000000000000"
+    },
+    {
+      "name": "small-0-subset-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "present": [
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_total": "5",
+      "total_bits": "4014000000000000"
+    },
+    {
+      "name": "small-0-subset-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "present": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        }
+      ],
+      "exact_total": "6",
+      "total_bits": "4018000000000000"
+    },
+    {
+      "name": "small-0-subset-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "present": [
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_total": "10",
+      "total_bits": "4024000000000000"
+    },
+    {
+      "name": "small-0-subset-5",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "present": [
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_total": "14",
+      "total_bits": "402c000000000000"
+    },
+    {
+      "name": "small-0-subset-6",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "present": [
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_total": "15",
+      "total_bits": "402e000000000000"
+    },
+    {
+      "name": "small-0-subset-7",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "present": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_total": "16",
+      "total_bits": "4030000000000000"
+    },
+    {
+      "name": "small-0-subset-8",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "present": [
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_total": "11",
+      "total_bits": "4026000000000000"
+    },
+    {
+      "name": "small-0-subset-9",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "present": [
+        "A",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_total": "15",
+      "total_bits": "402e000000000000"
+    },
+    {
+      "name": "small-0-subset-10",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "present": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_total": "16",
+      "total_bits": "4030000000000000"
+    },
+    {
+      "name": "small-0-subset-11",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "present": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_total": "17",
+      "total_bits": "4031000000000000"
+    },
+    {
+      "name": "small-0-subset-12",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "present": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_total": "15",
+      "total_bits": "402e000000000000"
+    },
+    {
+      "name": "small-0-subset-13",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "present": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_total": "19",
+      "total_bits": "4033000000000000"
+    },
+    {
+      "name": "small-0-subset-14",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "present": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_total": "20",
+      "total_bits": "4034000000000000"
+    },
+    {
+      "name": "small-0-subset-15",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "present": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 6.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_total": "21",
+      "total_bits": "4035000000000000"
+    },
+    {
+      "name": "small-1-subset-0",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "present": [],
+      "edges": [],
+      "exact_total": "0",
+      "total_bits": "0000000000000000"
+    },
+    {
+      "name": "small-1-subset-1",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "present": [
+        "A"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 0.0
+        }
+      ],
+      "exact_total": "2",
+      "total_bits": "4000000000000000"
+    },
+    {
+      "name": "small-1-subset-2",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "present": [
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 0.0
+        }
+      ],
+      "exact_total": "2",
+      "total_bits": "4000000000000000"
+    },
+    {
+      "name": "small-1-subset-3",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "present": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 0.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 0.0
+        }
+      ],
+      "exact_total": "2",
+      "total_bits": "4000000000000000"
+    },
+    {
+      "name": "small-1-subset-4",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "present": [
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 3.0
+        }
+      ],
+      "exact_total": "3",
+      "total_bits": "4008000000000000"
+    },
+    {
+      "name": "small-1-subset-5",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "present": [
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 0.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 3.0
+        }
+      ],
+      "exact_total": "5",
+      "total_bits": "4014000000000000"
+    },
+    {
+      "name": "small-1-subset-6",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "present": [
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 0.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 3.0
+        }
+      ],
+      "exact_total": "5",
+      "total_bits": "4014000000000000"
+    },
+    {
+      "name": "small-1-subset-7",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "present": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 0.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 0.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 3.0
+        }
+      ],
+      "exact_total": "5",
+      "total_bits": "4014000000000000"
+    },
+    {
+      "name": "small-1-subset-8",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "present": [
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_total": "4",
+      "total_bits": "4010000000000000"
+    },
+    {
+      "name": "small-1-subset-9",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "present": [
+        "A",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 0.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_total": "6",
+      "total_bits": "4018000000000000"
+    },
+    {
+      "name": "small-1-subset-10",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "present": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 0.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_total": "6",
+      "total_bits": "4018000000000000"
+    },
+    {
+      "name": "small-1-subset-11",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "present": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 0.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 0.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_total": "6",
+      "total_bits": "4018000000000000"
+    },
+    {
+      "name": "small-1-subset-12",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "present": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_total": "7",
+      "total_bits": "401c000000000000"
+    },
+    {
+      "name": "small-1-subset-13",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "present": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 0.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_total": "9",
+      "total_bits": "4022000000000000"
+    },
+    {
+      "name": "small-1-subset-14",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "present": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 0.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_total": "9",
+      "total_bits": "4022000000000000"
+    },
+    {
+      "name": "small-1-subset-15",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "present": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 0.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 0.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_total": "9",
+      "total_bits": "4022000000000000"
+    },
+    {
+      "name": "small-2-subset-0",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "present": [],
+      "edges": [],
+      "exact_total": "0",
+      "total_bits": "0000000000000000"
+    },
+    {
+      "name": "small-2-subset-1",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "present": [
+        "A"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 9.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        }
+      ],
+      "exact_total": "15",
+      "total_bits": "402e000000000000"
+    },
+    {
+      "name": "small-2-subset-2",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "present": [
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 9.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_total": "13",
+      "total_bits": "402a000000000000"
+    },
+    {
+      "name": "small-2-subset-3",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "present": [
+        "A",
+        "B"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 9.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 4.0
+        }
+      ],
+      "exact_total": "19",
+      "total_bits": "4033000000000000"
+    },
+    {
+      "name": "small-2-subset-4",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "present": [
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 7.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_total": "12",
+      "total_bits": "4028000000000000"
+    },
+    {
+      "name": "small-2-subset-5",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "present": [
+        "A",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 9.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 7.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_total": "27",
+      "total_bits": "403b000000000000"
+    },
+    {
+      "name": "small-2-subset-6",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "present": [
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 9.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 7.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_total": "25",
+      "total_bits": "4039000000000000"
+    },
+    {
+      "name": "small-2-subset-7",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "present": [
+        "A",
+        "B",
+        "C"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 9.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 7.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 5.0
+        }
+      ],
+      "exact_total": "31",
+      "total_bits": "403f000000000000"
+    },
+    {
+      "name": "small-2-subset-8",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "present": [
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 7.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 6.0
+        }
+      ],
+      "exact_total": "13",
+      "total_bits": "402a000000000000"
+    },
+    {
+      "name": "small-2-subset-9",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "present": [
+        "A",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 9.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 7.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 6.0
+        }
+      ],
+      "exact_total": "28",
+      "total_bits": "403c000000000000"
+    },
+    {
+      "name": "small-2-subset-10",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "present": [
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 9.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 7.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 6.0
+        }
+      ],
+      "exact_total": "26",
+      "total_bits": "403a000000000000"
+    },
+    {
+      "name": "small-2-subset-11",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "present": [
+        "A",
+        "B",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 9.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 7.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 6.0
+        }
+      ],
+      "exact_total": "32",
+      "total_bits": "4040000000000000"
+    },
+    {
+      "name": "small-2-subset-12",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "present": [
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 7.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 5.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 6.0
+        }
+      ],
+      "exact_total": "18",
+      "total_bits": "4032000000000000"
+    },
+    {
+      "name": "small-2-subset-13",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "present": [
+        "A",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 9.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 7.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 5.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 6.0
+        }
+      ],
+      "exact_total": "33",
+      "total_bits": "4040800000000000"
+    },
+    {
+      "name": "small-2-subset-14",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "present": [
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 9.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 7.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 5.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 6.0
+        }
+      ],
+      "exact_total": "31",
+      "total_bits": "403f000000000000"
+    },
+    {
+      "name": "small-2-subset-15",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "present": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "A",
+            "B"
+          ],
+          "length": 9.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 3.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 2.0
+        },
+        {
+          "descendant_taxa": [
+            "A"
+          ],
+          "length": 1.0
+        },
+        {
+          "descendant_taxa": [
+            "B"
+          ],
+          "length": 4.0
+        },
+        {
+          "descendant_taxa": [
+            "C",
+            "D"
+          ],
+          "length": 7.0
+        },
+        {
+          "descendant_taxa": [
+            "C"
+          ],
+          "length": 5.0
+        },
+        {
+          "descendant_taxa": [
+            "D"
+          ],
+          "length": 6.0
+        }
+      ],
+      "exact_total": "37",
+      "total_bits": "4042800000000000"
+    },
+    {
+      "name": "real-empty",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "present": [],
+      "edges": [],
+      "exact_total": "0",
+      "total_bits": "0000000000000000"
+    },
+    {
+      "name": "real-singleton",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "present": [
+        "Austruca_annulipes"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea",
+            "Austruca_sindensis",
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_panacea",
+            "Leptuca_pugilator",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores",
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes",
+            "Petruca_panamensis",
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 8.414221169
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea",
+            "Austruca_sindensis",
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes",
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 3.337187277
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea",
+            "Austruca_sindensis"
+          ],
+          "length": 4.041041261
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea"
+          ],
+          "length": 5.715863797
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes"
+          ],
+          "length": 22.22790389
+        }
+      ],
+      "exact_total": "49242603089553351/1125899906842624",
+      "total_bits": "4045de3c5f1efcf9"
+    },
+    {
+      "name": "real-six",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "present": [
+        "Austruca_annulipes",
+        "Austruca_lactea",
+        "Austruca_sindensis",
+        "Gelasimus_hesperiae",
+        "Gelasimus_tetragonon",
+        "Gelasimus_vocans"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea",
+            "Austruca_sindensis",
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_panacea",
+            "Leptuca_pugilator",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores",
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes",
+            "Petruca_panamensis",
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 8.414221169
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea",
+            "Austruca_sindensis",
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes",
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 3.337187277
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea",
+            "Austruca_sindensis"
+          ],
+          "length": 4.041041261
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea"
+          ],
+          "length": 5.715863797
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes"
+          ],
+          "length": 22.22790389
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_lactea"
+          ],
+          "length": 22.22790389
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_sindensis"
+          ],
+          "length": 27.94376769
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes",
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 3.84450506
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes"
+          ],
+          "length": 1.593740886
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris"
+          ],
+          "length": 12.66247555
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris"
+          ],
+          "length": 11.58343073
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae"
+          ],
+          "length": 2.300656725
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris"
+          ],
+          "length": 1.617689116
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_vocans"
+          ],
+          "length": 0.682967609
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_tetragonon"
+          ],
+          "length": 13.88408745
+        }
+      ],
+      "exact_total": "1279719830598626459/9007199254740992",
+      "total_bits": "4061c27a67dadaad"
+    },
+    {
+      "name": "real-every-fourth",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "present": [
+        "Austruca_annulipes",
+        "Gelasimus_tetragonon",
+        "Leptuca_crenulata",
+        "Leptuca_leptodactyla",
+        "Leptuca_speciosa",
+        "Minuca_pugnax",
+        "Paraleptuca_crassipes",
+        "Tubuca_capricornis",
+        "Tubuca_longidigitum",
+        "Tubuca_rosea",
+        "Uca_princeps"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "Uca_maracoani",
+            "Uca_ornata",
+            "Uca_princeps"
+          ],
+          "length": 26.94949819
+        },
+        {
+          "descendant_taxa": [
+            "Uca_princeps"
+          ],
+          "length": 16.7867192
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea",
+            "Austruca_sindensis",
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_panacea",
+            "Leptuca_pugilator",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores",
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes",
+            "Petruca_panamensis",
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 8.414221169
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea",
+            "Austruca_sindensis",
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes",
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 3.337187277
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea",
+            "Austruca_sindensis"
+          ],
+          "length": 4.041041261
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea"
+          ],
+          "length": 5.715863797
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes"
+          ],
+          "length": 22.22790389
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes",
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 3.84450506
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes"
+          ],
+          "length": 1.593740886
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris"
+          ],
+          "length": 12.66247555
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_tetragonon"
+          ],
+          "length": 13.88408745
+        },
+        {
+          "descendant_taxa": [
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes"
+          ],
+          "length": 20.35130718
+        },
+        {
+          "descendant_taxa": [
+            "Paraleptuca_crassipes"
+          ],
+          "length": 6.195255822
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 6.300871602
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata"
+          ],
+          "length": 4.685694982
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_signata"
+          ],
+          "length": 0.8803177493
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_signata"
+          ],
+          "length": 0.7797000051
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_flammula",
+            "Tubuca_paradussumieri"
+          ],
+          "length": 0.957119316
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_capricornis",
+            "Tubuca_paradussumieri"
+          ],
+          "length": 10.16146736
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_capricornis"
+          ],
+          "length": 4.375132878
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_bellator",
+            "Tubuca_elegans",
+            "Tubuca_longidigitum",
+            "Tubuca_polita",
+            "Tubuca_signata"
+          ],
+          "length": 2.236889111
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_elegans",
+            "Tubuca_longidigitum",
+            "Tubuca_polita"
+          ],
+          "length": 1.090577277
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_longidigitum",
+            "Tubuca_polita"
+          ],
+          "length": 11.74179474
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_longidigitum"
+          ],
+          "length": 0.4244584238
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_rosea"
+          ],
+          "length": 17.1537373
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_panacea",
+            "Leptuca_pugilator",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores",
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator",
+            "Petruca_panamensis"
+          ],
+          "length": 6.733978092
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_panacea",
+            "Leptuca_pugilator",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores",
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator"
+          ],
+          "length": 3.382562443
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 1.783129291
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 0.8915646455
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_leptodactyla",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 0.8915646455
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 3.207289201
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa"
+          ],
+          "length": 4.065429957
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa"
+          ],
+          "length": 7.183238975
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_speciosa"
+          ],
+          "length": 7.183238975
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_leptodactyla"
+          ],
+          "length": 21.63919711
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_crenulata"
+          ],
+          "length": 23.4223264
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_panacea",
+            "Leptuca_pugilator",
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator"
+          ],
+          "length": 5.133539183
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator"
+          ],
+          "length": 9.59910078
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax"
+          ],
+          "length": 4.188568586
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_minax",
+            "Minuca_pugnax"
+          ],
+          "length": 0.8843703569
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_pugnax"
+          ],
+          "length": 5.399876786
+        }
+      ],
+      "exact_total": "351709224154048599/1125899906842624",
+      "total_bits": "40738616b427b8a1"
+    },
+    {
+      "name": "real-all",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "present": [
+        "Austruca_annulipes",
+        "Austruca_lactea",
+        "Austruca_sindensis",
+        "Gelasimus_hesperiae",
+        "Gelasimus_tetragonon",
+        "Gelasimus_vocans",
+        "Gelasimus_vomeris",
+        "Leptuca_beebei",
+        "Leptuca_crenulata",
+        "Leptuca_cumulanta",
+        "Leptuca_deichmanni",
+        "Leptuca_latimanus",
+        "Leptuca_leptodactyla",
+        "Leptuca_panacea",
+        "Leptuca_pugilator",
+        "Leptuca_saltitanta",
+        "Leptuca_speciosa",
+        "Leptuca_stenodactylus",
+        "Leptuca_terpsichores",
+        "Minuca_minax",
+        "Minuca_pugnax",
+        "Minuca_rapax",
+        "Minuca_vocator",
+        "Paraleptuca_chlorophthalmus",
+        "Paraleptuca_crassipes",
+        "Petruca_panamensis",
+        "Tubuca_arcuata",
+        "Tubuca_bellator",
+        "Tubuca_capricornis",
+        "Tubuca_coarctata",
+        "Tubuca_elegans",
+        "Tubuca_flammula",
+        "Tubuca_longidigitum",
+        "Tubuca_paradussumieri",
+        "Tubuca_polita",
+        "Tubuca_rhizophorae",
+        "Tubuca_rosea",
+        "Tubuca_signata",
+        "Uca_maracoani",
+        "Uca_ornata",
+        "Uca_princeps",
+        "Xeruca_formosensis"
+      ],
+      "edges": [
+        {
+          "descendant_taxa": [
+            "Uca_maracoani",
+            "Uca_ornata",
+            "Uca_princeps"
+          ],
+          "length": 26.94949819
+        },
+        {
+          "descendant_taxa": [
+            "Uca_maracoani",
+            "Uca_ornata"
+          ],
+          "length": 8.3933596
+        },
+        {
+          "descendant_taxa": [
+            "Uca_maracoani"
+          ],
+          "length": 8.3933596
+        },
+        {
+          "descendant_taxa": [
+            "Uca_ornata"
+          ],
+          "length": 8.393359611
+        },
+        {
+          "descendant_taxa": [
+            "Uca_princeps"
+          ],
+          "length": 16.7867192
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea",
+            "Austruca_sindensis",
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_panacea",
+            "Leptuca_pugilator",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores",
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes",
+            "Petruca_panamensis",
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 8.414221169
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea",
+            "Austruca_sindensis",
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes",
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 3.337187277
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea",
+            "Austruca_sindensis"
+          ],
+          "length": 4.041041261
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes",
+            "Austruca_lactea"
+          ],
+          "length": 5.715863797
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_annulipes"
+          ],
+          "length": 22.22790389
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_lactea"
+          ],
+          "length": 22.22790389
+        },
+        {
+          "descendant_taxa": [
+            "Austruca_sindensis"
+          ],
+          "length": 27.94376769
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes",
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 3.84450506
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris",
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes"
+          ],
+          "length": 1.593740886
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae",
+            "Gelasimus_tetragonon",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris"
+          ],
+          "length": 12.66247555
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae",
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris"
+          ],
+          "length": 11.58343073
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_hesperiae"
+          ],
+          "length": 2.300656725
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_vocans",
+            "Gelasimus_vomeris"
+          ],
+          "length": 1.617689116
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_vocans"
+          ],
+          "length": 0.682967609
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_vomeris"
+          ],
+          "length": 0.682967609
+        },
+        {
+          "descendant_taxa": [
+            "Gelasimus_tetragonon"
+          ],
+          "length": 13.88408745
+        },
+        {
+          "descendant_taxa": [
+            "Paraleptuca_chlorophthalmus",
+            "Paraleptuca_crassipes"
+          ],
+          "length": 20.35130718
+        },
+        {
+          "descendant_taxa": [
+            "Paraleptuca_chlorophthalmus"
+          ],
+          "length": 6.195255822
+        },
+        {
+          "descendant_taxa": [
+            "Paraleptuca_crassipes"
+          ],
+          "length": 6.195255822
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata",
+            "Xeruca_formosensis"
+          ],
+          "length": 6.300871602
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_rosea",
+            "Tubuca_signata"
+          ],
+          "length": 4.685694982
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_rhizophorae",
+            "Tubuca_signata"
+          ],
+          "length": 0.8803177493
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_bellator",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_elegans",
+            "Tubuca_flammula",
+            "Tubuca_longidigitum",
+            "Tubuca_paradussumieri",
+            "Tubuca_polita",
+            "Tubuca_signata"
+          ],
+          "length": 0.7797000051
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_capricornis",
+            "Tubuca_coarctata",
+            "Tubuca_flammula",
+            "Tubuca_paradussumieri"
+          ],
+          "length": 0.957119316
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata",
+            "Tubuca_coarctata",
+            "Tubuca_flammula"
+          ],
+          "length": 3.716205772
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_arcuata"
+          ],
+          "length": 10.82039446
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_coarctata",
+            "Tubuca_flammula"
+          ],
+          "length": 4.485864378
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_coarctata"
+          ],
+          "length": 6.334530084
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_flammula"
+          ],
+          "length": 6.334530084
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_capricornis",
+            "Tubuca_paradussumieri"
+          ],
+          "length": 10.16146736
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_capricornis"
+          ],
+          "length": 4.375132878
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_paradussumieri"
+          ],
+          "length": 4.375132878
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_bellator",
+            "Tubuca_elegans",
+            "Tubuca_longidigitum",
+            "Tubuca_polita",
+            "Tubuca_signata"
+          ],
+          "length": 2.236889111
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_bellator",
+            "Tubuca_signata"
+          ],
+          "length": 3.974067289
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_bellator"
+          ],
+          "length": 9.282763151
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_signata"
+          ],
+          "length": 9.282763151
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_elegans",
+            "Tubuca_longidigitum",
+            "Tubuca_polita"
+          ],
+          "length": 1.090577277
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_elegans"
+          ],
+          "length": 12.16625316
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_longidigitum",
+            "Tubuca_polita"
+          ],
+          "length": 11.74179474
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_longidigitum"
+          ],
+          "length": 0.4244584238
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_polita"
+          ],
+          "length": 0.4244584238
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_rhizophorae"
+          ],
+          "length": 16.27341956
+        },
+        {
+          "descendant_taxa": [
+            "Tubuca_rosea"
+          ],
+          "length": 17.1537373
+        },
+        {
+          "descendant_taxa": [
+            "Xeruca_formosensis"
+          ],
+          "length": 21.83943229
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_panacea",
+            "Leptuca_pugilator",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores",
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator",
+            "Petruca_panamensis"
+          ],
+          "length": 6.733978092
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_panacea",
+            "Leptuca_pugilator",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores",
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator"
+          ],
+          "length": 3.382562443
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_crenulata",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 1.783129291
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_latimanus",
+            "Leptuca_leptodactyla",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 0.8915646455
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_leptodactyla",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 0.8915646455
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 3.207289201
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_stenodactylus",
+            "Leptuca_terpsichores"
+          ],
+          "length": 2.756050573
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei",
+            "Leptuca_stenodactylus"
+          ],
+          "length": 11.58615773
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_beebei"
+          ],
+          "length": 4.089699603
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_stenodactylus"
+          ],
+          "length": 4.089699603
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_terpsichores"
+          ],
+          "length": 15.67585734
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni",
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa"
+          ],
+          "length": 4.065429957
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_cumulanta",
+            "Leptuca_deichmanni"
+          ],
+          "length": 2.48503964
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_cumulanta"
+          ],
+          "length": 11.88143831
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_deichmanni"
+          ],
+          "length": 11.88143831
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_saltitanta",
+            "Leptuca_speciosa"
+          ],
+          "length": 7.183238975
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_speciosa"
+          ],
+          "length": 7.183238975
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_saltitanta"
+          ],
+          "length": 7.183238982
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_leptodactyla"
+          ],
+          "length": 21.63919711
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_latimanus"
+          ],
+          "length": 22.53076176
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_crenulata"
+          ],
+          "length": 23.4223264
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_panacea",
+            "Leptuca_pugilator",
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator"
+          ],
+          "length": 5.133539183
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_panacea",
+            "Leptuca_pugilator"
+          ],
+          "length": 16.23830754
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_panacea"
+          ],
+          "length": 3.833608973
+        },
+        {
+          "descendant_taxa": [
+            "Leptuca_pugilator"
+          ],
+          "length": 3.833608973
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax",
+            "Minuca_vocator"
+          ],
+          "length": 9.59910078
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_minax",
+            "Minuca_pugnax",
+            "Minuca_rapax"
+          ],
+          "length": 4.188568586
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_minax",
+            "Minuca_pugnax"
+          ],
+          "length": 0.8843703569
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_minax"
+          ],
+          "length": 5.399876786
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_pugnax"
+          ],
+          "length": 5.399876786
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_rapax"
+          ],
+          "length": 6.284247143
+        },
+        {
+          "descendant_taxa": [
+            "Minuca_vocator"
+          ],
+          "length": 10.47281573
+        },
+        {
+          "descendant_taxa": [
+            "Petruca_panamensis"
+          ],
+          "length": 28.58801814
+        }
+      ],
+      "exact_total": "387824633790639523/562949953421312",
+      "total_bits": "40858751cc70f2b7"
+    }
+  ]
+}

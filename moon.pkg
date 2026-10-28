@@ -1,0 +1,5 @@
+import {
+  "moonbitlang/core/string" @strings,
+  "moonbitlang/core/bigint",
+  "moonbitlang/core/json",
+}

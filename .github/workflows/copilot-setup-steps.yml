@@ -1,0 +1,25 @@
+name: Copilot Setup Steps
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+      - .github/scripts/install-moonbit.sh
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+      - .github/scripts/install-moonbit.sh
+permissions:
+  contents: read
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - name: Install reviewed MoonBit artifacts
+        run: bash .github/scripts/install-moonbit.sh
+      - name: Show actual installed toolchain
+        run: moon version --all

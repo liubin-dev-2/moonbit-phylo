@@ -1,0 +1,3 @@
+# Offline validation only; not a MoonBit/runtime dependency.
+biopython==1.88
+numpy==2.5.4

@@ -1,0 +1,1119 @@
+{
+  "versions": {
+    "biopython": "1.88",
+    "dendropy": "5.0.8"
+  },
+  "cases": [
+    {
+      "kind": "rf",
+      "name": "root-matters",
+      "a": "((A,B),(C,D));",
+      "b": "(A,(B,(C,D)));",
+      "rooted": {
+        "distance": 2,
+        "shared": [
+          [
+            "C",
+            "D"
+          ]
+        ],
+        "left": [
+          [
+            "A",
+            "B"
+          ]
+        ],
+        "right": [
+          [
+            "B",
+            "C",
+            "D"
+          ]
+        ]
+      },
+      "unrooted": {
+        "distance": 0,
+        "shared": [
+          [
+            "C",
+            "D"
+          ]
+        ],
+        "left": [],
+        "right": []
+      }
+    },
+    {
+      "kind": "rf",
+      "name": "rotation",
+      "a": "((A,B),(C,D));",
+      "b": "((D,C),(B,A));",
+      "rooted": {
+        "distance": 0,
+        "shared": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "C",
+            "D"
+          ]
+        ],
+        "left": [],
+        "right": []
+      },
+      "unrooted": {
+        "distance": 0,
+        "shared": [
+          [
+            "C",
+            "D"
+          ]
+        ],
+        "left": [],
+        "right": []
+      }
+    },
+    {
+      "kind": "rf",
+      "name": "different-quartet",
+      "a": "((A,B),(C,D));",
+      "b": "((A,C),(B,D));",
+      "rooted": {
+        "distance": 4,
+        "shared": [],
+        "left": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "C",
+            "D"
+          ]
+        ],
+        "right": [
+          [
+            "A",
+            "C"
+          ],
+          [
+            "B",
+            "D"
+          ]
+        ]
+      },
+      "unrooted": {
+        "distance": 2,
+        "shared": [],
+        "left": [
+          [
+            "C",
+            "D"
+          ]
+        ],
+        "right": [
+          [
+            "B",
+            "D"
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "rf",
+      "name": "lexical-not-shortlex",
+      "a": "(('A_long',B),(C,D));",
+      "b": "(('A_long',C),(B,D));",
+      "rooted": {
+        "distance": 4,
+        "shared": [],
+        "left": [
+          [
+            "A_long",
+            "B"
+          ],
+          [
+            "C",
+            "D"
+          ]
+        ],
+        "right": [
+          [
+            "A_long",
+            "C"
+          ],
+          [
+            "B",
+            "D"
+          ]
+        ]
+      },
+      "unrooted": {
+        "distance": 2,
+        "shared": [],
+        "left": [
+          [
+            "C",
+            "D"
+          ]
+        ],
+        "right": [
+          [
+            "B",
+            "D"
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "rf",
+      "name": "unresolved",
+      "a": "(A,B,C,D);",
+      "b": "((A,B),(C,D));",
+      "rooted": {
+        "distance": 2,
+        "shared": [],
+        "left": [],
+        "right": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "C",
+            "D"
+          ]
+        ]
+      },
+      "unrooted": {
+        "distance": 1,
+        "shared": [],
+        "left": [],
+        "right": [
+          [
+            "C",
+            "D"
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "rf",
+      "name": "three-taxa",
+      "a": "((A,B),C);",
+      "b": "(A,(B,C));",
+      "rooted": {
+        "distance": 2,
+        "shared": [],
+        "left": [
+          [
+            "A",
+            "B"
+          ]
+        ],
+        "right": [
+          [
+            "B",
+            "C"
+          ]
+        ]
+      },
+      "unrooted": {
+        "distance": 0,
+        "shared": [],
+        "left": [],
+        "right": []
+      }
+    },
+    {
+      "kind": "rf",
+      "name": "single",
+      "a": "A;",
+      "b": "A;",
+      "rooted": {
+        "distance": 0,
+        "shared": [],
+        "left": [],
+        "right": []
+      },
+      "unrooted": {
+        "distance": 0,
+        "shared": [],
+        "left": [],
+        "right": []
+      }
+    },
+    {
+      "kind": "rf",
+      "name": "unary",
+      "a": "(((A,B)),(C,D));",
+      "b": "((A,B),(C,D));",
+      "rooted": {
+        "distance": 0,
+        "shared": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "C",
+            "D"
+          ]
+        ],
+        "left": [],
+        "right": []
+      },
+      "unrooted": {
+        "distance": 0,
+        "shared": [
+          [
+            "C",
+            "D"
+          ]
+        ],
+        "left": [],
+        "right": []
+      }
+    },
+    {
+      "kind": "rf",
+      "name": "delimiters",
+      "a": "(('a|b','c,d'),('e:f','g h'));",
+      "b": "(('a|b','e:f'),('c,d','g h'));",
+      "rooted": {
+        "distance": 4,
+        "shared": [],
+        "left": [
+          [
+            "a|b",
+            "c,d"
+          ],
+          [
+            "e:f",
+            "g h"
+          ]
+        ],
+        "right": [
+          [
+            "a|b",
+            "e:f"
+          ],
+          [
+            "c,d",
+            "g h"
+          ]
+        ]
+      },
+      "unrooted": {
+        "distance": 2,
+        "shared": [],
+        "left": [
+          [
+            "e:f",
+            "g h"
+          ]
+        ],
+        "right": [
+          [
+            "c,d",
+            "g h"
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "rf",
+      "name": "over64",
+      "a": "(T00,T01,T02,T03,T04,T05,T06,T07,T08,T09,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34,T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45,T46,T47,T48,T49,T50,T51,T52,T53,T54,T55,T56,T57,T58,T59,T60,T61,T62,T63,T64,T65,T66,T67,T68,T69);",
+      "b": "((T00,T01,T02,T03,T04,T05,T06,T07,T08,T09,T10,T11,T12,T13,T14,T15,T16,T17,T18,T19,T20,T21,T22,T23,T24,T25,T26,T27,T28,T29,T30,T31,T32,T33,T34),(T35,T36,T37,T38,T39,T40,T41,T42,T43,T44,T45,T46,T47,T48,T49,T50,T51,T52,T53,T54,T55,T56,T57,T58,T59,T60,T61,T62,T63,T64,T65,T66,T67,T68,T69));",
+      "rooted": {
+        "distance": 2,
+        "shared": [],
+        "left": [],
+        "right": [
+          [
+            "T00",
+            "T01",
+            "T02",
+            "T03",
+            "T04",
+            "T05",
+            "T06",
+            "T07",
+            "T08",
+            "T09",
+            "T10",
+            "T11",
+            "T12",
+            "T13",
+            "T14",
+            "T15",
+            "T16",
+            "T17",
+            "T18",
+            "T19",
+            "T20",
+            "T21",
+            "T22",
+            "T23",
+            "T24",
+            "T25",
+            "T26",
+            "T27",
+            "T28",
+            "T29",
+            "T30",
+            "T31",
+            "T32",
+            "T33",
+            "T34"
+          ],
+          [
+            "T35",
+            "T36",
+            "T37",
+            "T38",
+            "T39",
+            "T40",
+            "T41",
+            "T42",
+            "T43",
+            "T44",
+            "T45",
+            "T46",
+            "T47",
+            "T48",
+            "T49",
+            "T50",
+            "T51",
+            "T52",
+            "T53",
+            "T54",
+            "T55",
+            "T56",
+            "T57",
+            "T58",
+            "T59",
+            "T60",
+            "T61",
+            "T62",
+            "T63",
+            "T64",
+            "T65",
+            "T66",
+            "T67",
+            "T68",
+            "T69"
+          ]
+        ]
+      },
+      "unrooted": {
+        "distance": 1,
+        "shared": [],
+        "left": [],
+        "right": [
+          [
+            "T35",
+            "T36",
+            "T37",
+            "T38",
+            "T39",
+            "T40",
+            "T41",
+            "T42",
+            "T43",
+            "T44",
+            "T45",
+            "T46",
+            "T47",
+            "T48",
+            "T49",
+            "T50",
+            "T51",
+            "T52",
+            "T53",
+            "T54",
+            "T55",
+            "T56",
+            "T57",
+            "T58",
+            "T59",
+            "T60",
+            "T61",
+            "T62",
+            "T63",
+            "T64",
+            "T65",
+            "T66",
+            "T67",
+            "T68",
+            "T69"
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "fitch",
+      "newick": "A;",
+      "traits": {
+        "A": "0"
+      },
+      "dendropy": 0,
+      "brute": 0,
+      "biopython": 0
+    },
+    {
+      "kind": "fitch",
+      "newick": "A;",
+      "traits": {
+        "A": "?"
+      },
+      "dendropy": 0,
+      "brute": 0,
+      "biopython": null
+    },
+    {
+      "kind": "fitch",
+      "newick": "(A,B);",
+      "traits": {
+        "A": "0",
+        "B": "1"
+      },
+      "dendropy": 1,
+      "brute": 1,
+      "biopython": 1
+    },
+    {
+      "kind": "fitch",
+      "newick": "(A,B);",
+      "traits": {
+        "A": "?",
+        "B": "1"
+      },
+      "dendropy": 0,
+      "brute": 0,
+      "biopython": null
+    },
+    {
+      "kind": "fitch",
+      "newick": "((A,B),(C,D));",
+      "traits": {
+        "A": "0",
+        "B": "1",
+        "C": "0",
+        "D": "1"
+      },
+      "dendropy": 2,
+      "brute": 2,
+      "biopython": 2
+    },
+    {
+      "kind": "fitch",
+      "newick": "((A,B),(C,D));",
+      "traits": {
+        "A": "?",
+        "B": "1",
+        "C": "0",
+        "D": "?"
+      },
+      "dendropy": 1,
+      "brute": 1,
+      "biopython": null
+    },
+    {
+      "kind": "fitch",
+      "newick": "(A,(B,(C,D)));",
+      "traits": {
+        "A": "0",
+        "B": "1",
+        "C": "0",
+        "D": "1"
+      },
+      "dendropy": 2,
+      "brute": 2,
+      "biopython": 2
+    },
+    {
+      "kind": "fitch",
+      "newick": "(A,(B,(C,D)));",
+      "traits": {
+        "A": "?",
+        "B": "1",
+        "C": "0",
+        "D": "?"
+      },
+      "dendropy": 1,
+      "brute": 1,
+      "biopython": null
+    },
+    {
+      "kind": "fitch",
+      "newick": "((A,(B,C)),(D,(E,F)));",
+      "traits": {
+        "A": "0",
+        "B": "1",
+        "C": "0",
+        "D": "1",
+        "E": "0",
+        "F": "1"
+      },
+      "dendropy": 3,
+      "brute": 3,
+      "biopython": 3
+    },
+    {
+      "kind": "fitch",
+      "newick": "((A,(B,C)),(D,(E,F)));",
+      "traits": {
+        "A": "?",
+        "B": "1",
+        "C": "0",
+        "D": "?",
+        "E": "0",
+        "F": "1"
+      },
+      "dendropy": 2,
+      "brute": 2,
+      "biopython": null
+    },
+    {
+      "kind": "fitch",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "traits": {
+        "Austruca_annulipes": "0",
+        "Austruca_lactea": "1",
+        "Austruca_sindensis": "0",
+        "Gelasimus_hesperiae": "1",
+        "Gelasimus_tetragonon": "0",
+        "Gelasimus_vocans": "1",
+        "Gelasimus_vomeris": "0",
+        "Leptuca_beebei": "1",
+        "Leptuca_crenulata": "0",
+        "Leptuca_cumulanta": "1",
+        "Leptuca_deichmanni": "0",
+        "Leptuca_latimanus": "1",
+        "Leptuca_leptodactyla": "0",
+        "Leptuca_panacea": "1",
+        "Leptuca_pugilator": "0",
+        "Leptuca_saltitanta": "1",
+        "Leptuca_speciosa": "0",
+        "Leptuca_stenodactylus": "1",
+        "Leptuca_terpsichores": "0",
+        "Minuca_minax": "1",
+        "Minuca_pugnax": "0",
+        "Minuca_rapax": "1",
+        "Minuca_vocator": "0",
+        "Paraleptuca_chlorophthalmus": "1",
+        "Paraleptuca_crassipes": "0",
+        "Petruca_panamensis": "1",
+        "Tubuca_arcuata": "0",
+        "Tubuca_bellator": "1",
+        "Tubuca_capricornis": "0",
+        "Tubuca_coarctata": "1",
+        "Tubuca_elegans": "0",
+        "Tubuca_flammula": "1",
+        "Tubuca_longidigitum": "0",
+        "Tubuca_paradussumieri": "1",
+        "Tubuca_polita": "0",
+        "Tubuca_rhizophorae": "1",
+        "Tubuca_rosea": "0",
+        "Tubuca_signata": "1",
+        "Uca_maracoani": "0",
+        "Uca_ornata": "1",
+        "Uca_princeps": "0",
+        "Xeruca_formosensis": "1"
+      },
+      "dendropy": 18,
+      "brute": null,
+      "biopython": 18
+    },
+    {
+      "kind": "fitch",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "traits": {
+        "Austruca_annulipes": "?",
+        "Austruca_lactea": "1",
+        "Austruca_sindensis": "0",
+        "Gelasimus_hesperiae": "?",
+        "Gelasimus_tetragonon": "0",
+        "Gelasimus_vocans": "1",
+        "Gelasimus_vomeris": "?",
+        "Leptuca_beebei": "1",
+        "Leptuca_crenulata": "0",
+        "Leptuca_cumulanta": "?",
+        "Leptuca_deichmanni": "0",
+        "Leptuca_latimanus": "1",
+        "Leptuca_leptodactyla": "?",
+        "Leptuca_panacea": "1",
+        "Leptuca_pugilator": "0",
+        "Leptuca_saltitanta": "?",
+        "Leptuca_speciosa": "0",
+        "Leptuca_stenodactylus": "1",
+        "Leptuca_terpsichores": "?",
+        "Minuca_minax": "1",
+        "Minuca_pugnax": "0",
+        "Minuca_rapax": "?",
+        "Minuca_vocator": "0",
+        "Paraleptuca_chlorophthalmus": "1",
+        "Paraleptuca_crassipes": "?",
+        "Petruca_panamensis": "1",
+        "Tubuca_arcuata": "0",
+        "Tubuca_bellator": "?",
+        "Tubuca_capricornis": "0",
+        "Tubuca_coarctata": "1",
+        "Tubuca_elegans": "?",
+        "Tubuca_flammula": "1",
+        "Tubuca_longidigitum": "0",
+        "Tubuca_paradussumieri": "?",
+        "Tubuca_polita": "0",
+        "Tubuca_rhizophorae": "1",
+        "Tubuca_rosea": "?",
+        "Tubuca_signata": "1",
+        "Uca_maracoani": "0",
+        "Uca_ornata": "?",
+        "Uca_princeps": "0",
+        "Xeruca_formosensis": "1"
+      },
+      "dendropy": 11,
+      "brute": null,
+      "biopython": null
+    },
+    {
+      "kind": "distance-transform",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):99;",
+      "pairs": [
+        [
+          "A",
+          "A",
+          0
+        ],
+        [
+          "A",
+          "B",
+          3.0
+        ],
+        [
+          "A",
+          "C",
+          14.0
+        ],
+        [
+          "A",
+          "D",
+          15.0
+        ],
+        [
+          "B",
+          "A",
+          3.0
+        ],
+        [
+          "B",
+          "B",
+          0
+        ],
+        [
+          "B",
+          "C",
+          15.0
+        ],
+        [
+          "B",
+          "D",
+          16.0
+        ],
+        [
+          "C",
+          "A",
+          14.0
+        ],
+        [
+          "C",
+          "B",
+          15.0
+        ],
+        [
+          "C",
+          "C",
+          0
+        ],
+        [
+          "C",
+          "D",
+          9.0
+        ],
+        [
+          "D",
+          "A",
+          15.0
+        ],
+        [
+          "D",
+          "B",
+          16.0
+        ],
+        [
+          "D",
+          "C",
+          9.0
+        ],
+        [
+          "D",
+          "D",
+          0
+        ]
+      ],
+      "retain": [
+        "A",
+        "C"
+      ],
+      "source": "authored"
+    },
+    {
+      "kind": "distance-transform",
+      "newick": "(A:0,(B:0,(C:2,D:4):1):3);",
+      "pairs": [
+        [
+          "A",
+          "A",
+          0
+        ],
+        [
+          "A",
+          "B",
+          3.0
+        ],
+        [
+          "A",
+          "C",
+          6.0
+        ],
+        [
+          "A",
+          "D",
+          8.0
+        ],
+        [
+          "B",
+          "A",
+          3.0
+        ],
+        [
+          "B",
+          "B",
+          0
+        ],
+        [
+          "B",
+          "C",
+          3.0
+        ],
+        [
+          "B",
+          "D",
+          5.0
+        ],
+        [
+          "C",
+          "A",
+          6.0
+        ],
+        [
+          "C",
+          "B",
+          3.0
+        ],
+        [
+          "C",
+          "C",
+          0
+        ],
+        [
+          "C",
+          "D",
+          6.0
+        ],
+        [
+          "D",
+          "A",
+          8.0
+        ],
+        [
+          "D",
+          "B",
+          5.0
+        ],
+        [
+          "D",
+          "C",
+          6.0
+        ],
+        [
+          "D",
+          "D",
+          0
+        ]
+      ],
+      "retain": [
+        "A",
+        "C"
+      ],
+      "source": "authored"
+    },
+    {
+      "kind": "distance-transform",
+      "newick": "((A:0.1,B:0.2):0.3,C:0.4);",
+      "pairs": [
+        [
+          "A",
+          "A",
+          0
+        ],
+        [
+          "A",
+          "B",
+          0.30000000000000004
+        ],
+        [
+          "A",
+          "C",
+          0.8
+        ],
+        [
+          "B",
+          "A",
+          0.30000000000000004
+        ],
+        [
+          "B",
+          "B",
+          0
+        ],
+        [
+          "B",
+          "C",
+          0.9
+        ],
+        [
+          "C",
+          "A",
+          0.8
+        ],
+        [
+          "C",
+          "B",
+          0.9
+        ],
+        [
+          "C",
+          "C",
+          0
+        ]
+      ],
+      "retain": [
+        "A",
+        "C"
+      ],
+      "source": "authored"
+    },
+    {
+      "kind": "distance-transform",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "pairs": [
+        [
+          "Austruca_annulipes",
+          "Austruca_annulipes",
+          0
+        ],
+        [
+          "Austruca_annulipes",
+          "Austruca_lactea",
+          44.45580778
+        ],
+        [
+          "Austruca_annulipes",
+          "Leptuca_pugilator",
+          70.643992456
+        ],
+        [
+          "Austruca_annulipes",
+          "Minuca_rapax",
+          70.64399245199999
+        ],
+        [
+          "Austruca_annulipes",
+          "Uca_princeps",
+          87.472434784
+        ],
+        [
+          "Austruca_annulipes",
+          "Xeruca_formosensis",
+          63.9696179
+        ],
+        [
+          "Austruca_lactea",
+          "Austruca_annulipes",
+          44.45580778
+        ],
+        [
+          "Austruca_lactea",
+          "Austruca_lactea",
+          0
+        ],
+        [
+          "Austruca_lactea",
+          "Leptuca_pugilator",
+          70.643992456
+        ],
+        [
+          "Austruca_lactea",
+          "Minuca_rapax",
+          70.64399245199999
+        ],
+        [
+          "Austruca_lactea",
+          "Uca_princeps",
+          87.472434784
+        ],
+        [
+          "Austruca_lactea",
+          "Xeruca_formosensis",
+          63.9696179
+        ],
+        [
+          "Leptuca_pugilator",
+          "Austruca_annulipes",
+          70.643992456
+        ],
+        [
+          "Leptuca_pugilator",
+          "Austruca_lactea",
+          70.643992456
+        ],
+        [
+          "Leptuca_pugilator",
+          "Leptuca_pugilator",
+          0
+        ],
+        [
+          "Leptuca_pugilator",
+          "Minuca_rapax",
+          40.143833022
+        ],
+        [
+          "Leptuca_pugilator",
+          "Uca_princeps",
+          87.47243479
+        ],
+        [
+          "Leptuca_pugilator",
+          "Xeruca_formosensis",
+          70.64399245999999
+        ],
+        [
+          "Minuca_rapax",
+          "Austruca_annulipes",
+          70.64399245199999
+        ],
+        [
+          "Minuca_rapax",
+          "Austruca_lactea",
+          70.64399245199999
+        ],
+        [
+          "Minuca_rapax",
+          "Leptuca_pugilator",
+          40.143833022
+        ],
+        [
+          "Minuca_rapax",
+          "Minuca_rapax",
+          0
+        ],
+        [
+          "Minuca_rapax",
+          "Uca_princeps",
+          87.47243478600001
+        ],
+        [
+          "Minuca_rapax",
+          "Xeruca_formosensis",
+          70.643992456
+        ],
+        [
+          "Uca_princeps",
+          "Austruca_annulipes",
+          87.472434784
+        ],
+        [
+          "Uca_princeps",
+          "Austruca_lactea",
+          87.472434784
+        ],
+        [
+          "Uca_princeps",
+          "Leptuca_pugilator",
+          87.47243479
+        ],
+        [
+          "Uca_princeps",
+          "Minuca_rapax",
+          87.47243478600001
+        ],
+        [
+          "Uca_princeps",
+          "Uca_princeps",
+          0
+        ],
+        [
+          "Uca_princeps",
+          "Xeruca_formosensis",
+          87.472434788
+        ],
+        [
+          "Xeruca_formosensis",
+          "Austruca_annulipes",
+          63.9696179
+        ],
+        [
+          "Xeruca_formosensis",
+          "Austruca_lactea",
+          63.9696179
+        ],
+        [
+          "Xeruca_formosensis",
+          "Leptuca_pugilator",
+          70.64399245999999
+        ],
+        [
+          "Xeruca_formosensis",
+          "Minuca_rapax",
+          70.643992456
+        ],
+        [
+          "Xeruca_formosensis",
+          "Uca_princeps",
+          87.472434788
+        ],
+        [
+          "Xeruca_formosensis",
+          "Xeruca_formosensis",
+          0
+        ]
+      ],
+      "retain": [
+        "Austruca_annulipes",
+        "Leptuca_pugilator",
+        "Uca_princeps"
+      ],
+      "source": "CC0 fiddler-claw real data"
+    }
+  ],
+  "independent_methods": [
+    "DendroPy exact bipartitions/RF/Fitch",
+    "Biopython path distances/prune/midpoint/Fitch known states",
+    "exhaustive internal-state assignment (not Fitch)"
+  ]
+}

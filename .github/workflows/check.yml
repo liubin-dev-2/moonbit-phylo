@@ -1,0 +1,98 @@
+name: MoonBit checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Check, test and consumers (${{ matrix.target }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [js, wasm-gc]
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.11.0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+      - name: Record checked-out source identity
+        run: |
+          set -euo pipefail
+          mkdir -p ci-evidence
+          git rev-parse HEAD > ci-evidence/commit.txt
+          git ls-files -z | xargs -0 sha256sum > ci-evidence/source.sha256
+      - name: Install reviewed MoonBit artifacts
+        run: bash .github/scripts/install-moonbit.sh
+      - name: Check format, interfaces, build and all tests
+        env:
+          TARGET: ${{ matrix.target }}
+        run: |
+          set -euo pipefail
+          moon fmt --check
+          moon info --target "$TARGET" --frozen
+          git diff --exit-code -- '*.mbti'
+          moon check --target "$TARGET" --deny-warn --frozen
+          moon build --target "$TARGET" --deny-warn --frozen
+          extension=js
+          if [ "$TARGET" = wasm-gc ]; then extension=wasm; fi
+          sha256sum "_build/$TARGET/debug/build/cmd/main/main.$extension" "_build/$TARGET/debug/build/cmd/plan_document/plan_document.$extension" "_build/$TARGET/debug/build/cmd/nj_matrix/nj_matrix.$extension" "_build/$TARGET/debug/build/phylo.mi" "_build/$TARGET/debug/build/phylo.core" "_build/$TARGET/debug/build/nj/nj.mi" "_build/$TARGET/debug/build/nj/nj.core" > "ci-evidence/compiled-$TARGET.sha256"
+          moon test --target "$TARGET" --deny-warn --frozen | tee "ci-evidence/tests-$TARGET.txt"
+      - name: Run existing public consumers
+        env:
+          TARGET: ${{ matrix.target }}
+        run: |
+          set -euo pipefail
+          moon run cmd/main --target "$TARGET" --frozen > "ci-evidence/main-$TARGET.txt"
+          moon run cmd/plan_document --target "$TARGET" --frozen > "ci-evidence/plan-$TARGET.json"
+          python .github/scripts/check-plan.py "ci-evidence/plan-$TARGET.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: checks-${{ matrix.target }}
+          path: ci-evidence/
+          if-no-files-found: error
+
+  nj-reference:
+    name: Independent NJ JSON consumers
+    needs: check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.11.0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.14'
+      - name: Record checked-out source identity
+        run: |
+          set -euo pipefail
+          mkdir -p ci-evidence
+          git rev-parse HEAD > ci-evidence/commit.txt
+          git ls-files -z | xargs -0 sha256sum > ci-evidence/source.sha256
+      - name: Install reviewed MoonBit artifacts
+        run: bash .github/scripts/install-moonbit.sh
+      - name: Install fixed offline reference packages
+        run: python -m pip install -r verification/nj-reference-requirements.txt
+      - name: Build both targets and check saved Biopython goldens
+        run: |
+          set -euo pipefail
+          moon build cmd/nj_matrix --target js --deny-warn --frozen
+          moon build cmd/nj_matrix --target wasm-gc --deny-warn --frozen
+          python -B verification/nj_reference.py --artifact-dir _build --moonrun moonrun --output ci-evidence/nj-consumer
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nj-independent-consumers
+          path: ci-evidence/
+          if-no-files-found: error

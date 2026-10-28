@@ -1,0 +1,5315 @@
+{
+  "reference": {
+    "source": "testdata/diversity-golden.json",
+    "source_sha256": "c9a1509e08c471143193d4041356faf4606e1b18d796e59b55d55320f69f9340",
+    "method": "enumerate candidate orders with exact Fraction/descendant-edge facts; separately enumerate final subsets"
+  },
+  "fixtures": [
+    {
+      "name": "base-0-limit-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-0-limit-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "D"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4026000000000000",
+          "exact_gain": "11",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 6.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4026000000000000",
+      "exact_gain": "11",
+      "exhaustive_optimum": "11",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 4
+    },
+    {
+      "name": "base-0-limit-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "D",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4026000000000000",
+          "exact_gain": "11",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 6.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4030000000000000",
+      "exact_gain": "16",
+      "exhaustive_optimum": "16",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 12
+    },
+    {
+      "name": "base-0-limit-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "D",
+        "B",
+        "C"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4026000000000000",
+          "exact_gain": "11",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 6.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4034000000000000",
+      "exact_gain": "20",
+      "exhaustive_optimum": "20",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 24
+    },
+    {
+      "name": "base-0-limit-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "D",
+        "B",
+        "C",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4026000000000000",
+          "exact_gain": "11",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 6.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4035000000000000",
+      "exact_gain": "21",
+      "exhaustive_optimum": "21",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 24
+    },
+    {
+      "name": "base-1-limit-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-1-limit-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "D"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4026000000000000",
+          "exact_gain": "11",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 6.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4026000000000000",
+      "exact_gain": "11",
+      "exhaustive_optimum": "11",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 3
+    },
+    {
+      "name": "base-1-limit-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "D",
+        "C"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4026000000000000",
+          "exact_gain": "11",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 6.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "402e000000000000",
+      "exact_gain": "15",
+      "exhaustive_optimum": "15",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 6
+    },
+    {
+      "name": "base-1-limit-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "D",
+        "C",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4026000000000000",
+          "exact_gain": "11",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 6.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "4000000000000000",
+          "exact_gain": "2",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4031000000000000",
+      "exact_gain": "17",
+      "exhaustive_optimum": "17",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 6
+    },
+    {
+      "name": "base-1-limit-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "D",
+        "C",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4026000000000000",
+          "exact_gain": "11",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 6.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "4000000000000000",
+          "exact_gain": "2",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4031000000000000",
+      "exact_gain": "17",
+      "exhaustive_optimum": "17",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 6
+    },
+    {
+      "name": "base-2-limit-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-2-limit-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "D"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4026000000000000",
+          "exact_gain": "11",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 6.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4026000000000000",
+      "exact_gain": "11",
+      "exhaustive_optimum": "11",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 3
+    },
+    {
+      "name": "base-2-limit-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "D",
+        "C"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4026000000000000",
+          "exact_gain": "11",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 6.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "402e000000000000",
+      "exact_gain": "15",
+      "exhaustive_optimum": "15",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 6
+    },
+    {
+      "name": "base-2-limit-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "D",
+        "C",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4026000000000000",
+          "exact_gain": "11",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 6.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4030000000000000",
+      "exact_gain": "16",
+      "exhaustive_optimum": "16",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 6
+    },
+    {
+      "name": "base-2-limit-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "D",
+        "C",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4026000000000000",
+          "exact_gain": "11",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 6.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4030000000000000",
+      "exact_gain": "16",
+      "exhaustive_optimum": "16",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 6
+    },
+    {
+      "name": "base-3-limit-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-3-limit-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "D"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4026000000000000",
+          "exact_gain": "11",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 6.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4026000000000000",
+      "exact_gain": "11",
+      "exhaustive_optimum": "11",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-3-limit-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "D",
+        "C"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4026000000000000",
+          "exact_gain": "11",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 6.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "402e000000000000",
+      "exact_gain": "15",
+      "exhaustive_optimum": "15",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-3-limit-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "D",
+        "C"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4026000000000000",
+          "exact_gain": "11",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 6.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "402e000000000000",
+      "exact_gain": "15",
+      "exhaustive_optimum": "15",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-3-limit-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "D",
+        "C"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4026000000000000",
+          "exact_gain": "11",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 6.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "402e000000000000",
+      "exact_gain": "15",
+      "exhaustive_optimum": "15",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-4-limit-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-4-limit-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4014000000000000",
+      "exact_gain": "5",
+      "exhaustive_optimum": "5",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 3
+    },
+    {
+      "name": "base-4-limit-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "B",
+        "D"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        },
+        {
+          "taxon": "D",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4024000000000000",
+      "exact_gain": "10",
+      "exhaustive_optimum": "10",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 6
+    },
+    {
+      "name": "base-4-limit-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "B",
+        "D",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        },
+        {
+          "taxon": "D",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4026000000000000",
+      "exact_gain": "11",
+      "exhaustive_optimum": "11",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 6
+    },
+    {
+      "name": "base-4-limit-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "B",
+        "D",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        },
+        {
+          "taxon": "D",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4026000000000000",
+      "exact_gain": "11",
+      "exhaustive_optimum": "11",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 6
+    },
+    {
+      "name": "base-5-limit-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-5-limit-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "D"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4014000000000000",
+      "exact_gain": "5",
+      "exhaustive_optimum": "5",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-5-limit-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "D",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "4000000000000000",
+          "exact_gain": "2",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "401c000000000000",
+      "exact_gain": "7",
+      "exhaustive_optimum": "7",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-5-limit-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "D",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "4000000000000000",
+          "exact_gain": "2",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "401c000000000000",
+      "exact_gain": "7",
+      "exhaustive_optimum": "7",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-5-limit-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "D",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "4000000000000000",
+          "exact_gain": "2",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "401c000000000000",
+      "exact_gain": "7",
+      "exhaustive_optimum": "7",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-6-limit-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-6-limit-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "D"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4014000000000000",
+      "exact_gain": "5",
+      "exhaustive_optimum": "5",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-6-limit-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "D",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4018000000000000",
+      "exact_gain": "6",
+      "exhaustive_optimum": "6",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-6-limit-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "D",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4018000000000000",
+      "exact_gain": "6",
+      "exhaustive_optimum": "6",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-6-limit-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "D",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4018000000000000",
+      "exact_gain": "6",
+      "exhaustive_optimum": "6",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-7-limit-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-7-limit-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "D"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4014000000000000",
+      "exact_gain": "5",
+      "exhaustive_optimum": "5",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-7-limit-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "D"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4014000000000000",
+      "exact_gain": "5",
+      "exhaustive_optimum": "5",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-7-limit-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "D"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4014000000000000",
+      "exact_gain": "5",
+      "exhaustive_optimum": "5",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-7-limit-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "D"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 5.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4014000000000000",
+      "exact_gain": "5",
+      "exhaustive_optimum": "5",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-8-limit-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-8-limit-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4014000000000000",
+      "exact_gain": "5",
+      "exhaustive_optimum": "5",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 3
+    },
+    {
+      "name": "base-8-limit-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "B",
+        "C"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4022000000000000",
+      "exact_gain": "9",
+      "exhaustive_optimum": "9",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 6
+    },
+    {
+      "name": "base-8-limit-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "B",
+        "C",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4024000000000000",
+      "exact_gain": "10",
+      "exhaustive_optimum": "10",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 6
+    },
+    {
+      "name": "base-8-limit-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "B",
+        "C",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4024000000000000",
+      "exact_gain": "10",
+      "exhaustive_optimum": "10",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 6
+    },
+    {
+      "name": "base-9-limit-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-9-limit-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "C"
+      ],
+      "steps": [
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4010000000000000",
+      "exact_gain": "4",
+      "exhaustive_optimum": "4",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-9-limit-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "C",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "4000000000000000",
+          "exact_gain": "2",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4018000000000000",
+      "exact_gain": "6",
+      "exhaustive_optimum": "6",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-9-limit-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "C",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "4000000000000000",
+          "exact_gain": "2",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4018000000000000",
+      "exact_gain": "6",
+      "exhaustive_optimum": "6",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-9-limit-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "C",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "4000000000000000",
+          "exact_gain": "2",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4018000000000000",
+      "exact_gain": "6",
+      "exhaustive_optimum": "6",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-10-limit-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-10-limit-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "C"
+      ],
+      "steps": [
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4010000000000000",
+      "exact_gain": "4",
+      "exhaustive_optimum": "4",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-10-limit-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "C",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4014000000000000",
+      "exact_gain": "5",
+      "exhaustive_optimum": "5",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-10-limit-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "C",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4014000000000000",
+      "exact_gain": "5",
+      "exhaustive_optimum": "5",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-10-limit-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "C",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4014000000000000",
+      "exact_gain": "5",
+      "exhaustive_optimum": "5",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-11-limit-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-11-limit-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "C"
+      ],
+      "steps": [
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4010000000000000",
+      "exact_gain": "4",
+      "exhaustive_optimum": "4",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-11-limit-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "C"
+      ],
+      "steps": [
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4010000000000000",
+      "exact_gain": "4",
+      "exhaustive_optimum": "4",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-11-limit-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "C"
+      ],
+      "steps": [
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4010000000000000",
+      "exact_gain": "4",
+      "exhaustive_optimum": "4",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-11-limit-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "C"
+      ],
+      "steps": [
+        {
+          "taxon": "C",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4010000000000000",
+      "exact_gain": "4",
+      "exhaustive_optimum": "4",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-12-limit-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-12-limit-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4014000000000000",
+      "exact_gain": "5",
+      "exhaustive_optimum": "5",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-12-limit-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "B",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4018000000000000",
+      "exact_gain": "6",
+      "exhaustive_optimum": "6",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-12-limit-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "B",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4018000000000000",
+      "exact_gain": "6",
+      "exhaustive_optimum": "6",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-12-limit-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "B",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4018000000000000",
+      "exact_gain": "6",
+      "exhaustive_optimum": "6",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "base-13-limit-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-13-limit-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4000000000000000",
+          "exact_gain": "2",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4000000000000000",
+      "exact_gain": "2",
+      "exhaustive_optimum": "2",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-13-limit-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4000000000000000",
+          "exact_gain": "2",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4000000000000000",
+      "exact_gain": "2",
+      "exhaustive_optimum": "2",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-13-limit-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4000000000000000",
+          "exact_gain": "2",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4000000000000000",
+      "exact_gain": "2",
+      "exhaustive_optimum": "2",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-13-limit-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4000000000000000",
+          "exact_gain": "2",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 2.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4000000000000000",
+      "exact_gain": "2",
+      "exhaustive_optimum": "2",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-14-limit-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-14-limit-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "3ff0000000000000",
+      "exact_gain": "1",
+      "exhaustive_optimum": "1",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-14-limit-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "3ff0000000000000",
+      "exact_gain": "1",
+      "exhaustive_optimum": "1",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-14-limit-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "3ff0000000000000",
+      "exact_gain": "1",
+      "exhaustive_optimum": "1",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-14-limit-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "B",
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "A",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "3ff0000000000000",
+      "exact_gain": "1",
+      "exhaustive_optimum": "1",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-15-limit-0",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-15-limit-1",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-15-limit-2",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-15-limit-3",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "base-15-limit-4",
+      "newick": "((A:1,B:2):3,(C:4,D:5):6):999;",
+      "baseline": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "topology-1-0-0",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "topology-1-0-1",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "D"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4010000000000000",
+      "exact_gain": "4",
+      "exhaustive_optimum": "4",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 4
+    },
+    {
+      "name": "topology-1-0-2",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "D",
+        "C"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4008000000000000",
+          "exact_gain": "3",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 3.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "401c000000000000",
+      "exact_gain": "7",
+      "exhaustive_optimum": "7",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 12
+    },
+    {
+      "name": "topology-1-0-3",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "D",
+        "C",
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4008000000000000",
+          "exact_gain": "3",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 3.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "4000000000000000",
+          "exact_gain": "2",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 2.0
+            },
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 0.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4022000000000000",
+      "exact_gain": "9",
+      "exhaustive_optimum": "9",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 24
+    },
+    {
+      "name": "topology-1-0-4",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "D",
+        "C",
+        "A",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4008000000000000",
+          "exact_gain": "3",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 3.0
+            }
+          ]
+        },
+        {
+          "taxon": "A",
+          "gain_bits": "4000000000000000",
+          "exact_gain": "2",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 2.0
+            },
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 0.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "0000000000000000",
+          "exact_gain": "0",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 0.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4022000000000000",
+      "exact_gain": "9",
+      "exhaustive_optimum": "9",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 24
+    },
+    {
+      "name": "topology-1-1-0",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "topology-1-1-1",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "D"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4010000000000000",
+      "exact_gain": "4",
+      "exhaustive_optimum": "4",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "topology-1-1-2",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "D",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "0000000000000000",
+          "exact_gain": "0",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 0.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4010000000000000",
+      "exact_gain": "4",
+      "exhaustive_optimum": "4",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "topology-1-1-3",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "D",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "0000000000000000",
+          "exact_gain": "0",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 0.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4010000000000000",
+      "exact_gain": "4",
+      "exhaustive_optimum": "4",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "topology-1-1-4",
+      "newick": "((A:0,B:0):2,C:3,D:4);",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "D",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 4.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "0000000000000000",
+          "exact_gain": "0",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 0.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4010000000000000",
+      "exact_gain": "4",
+      "exhaustive_optimum": "4",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "topology-2-0-0",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "topology-2-0-1",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "A"
+      ],
+      "steps": [
+        {
+          "taxon": "A",
+          "gain_bits": "402e000000000000",
+          "exact_gain": "15",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 9.0
+            },
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 2.0
+            },
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "402e000000000000",
+      "exact_gain": "15",
+      "exhaustive_optimum": "15",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 4
+    },
+    {
+      "name": "topology-2-0-2",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "A",
+        "D"
+      ],
+      "steps": [
+        {
+          "taxon": "A",
+          "gain_bits": "402e000000000000",
+          "exact_gain": "15",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 9.0
+            },
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 2.0
+            },
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        },
+        {
+          "taxon": "D",
+          "gain_bits": "402a000000000000",
+          "exact_gain": "13",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 7.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 6.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "403c000000000000",
+      "exact_gain": "28",
+      "exhaustive_optimum": "28",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 12
+    },
+    {
+      "name": "topology-2-0-3",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "A",
+        "D",
+        "C"
+      ],
+      "steps": [
+        {
+          "taxon": "A",
+          "gain_bits": "402e000000000000",
+          "exact_gain": "15",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 9.0
+            },
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 2.0
+            },
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        },
+        {
+          "taxon": "D",
+          "gain_bits": "402a000000000000",
+          "exact_gain": "13",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 7.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 6.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 5.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4040800000000000",
+      "exact_gain": "33",
+      "exhaustive_optimum": "33",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 24
+    },
+    {
+      "name": "topology-2-0-4",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "A",
+        "D",
+        "C",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "A",
+          "gain_bits": "402e000000000000",
+          "exact_gain": "15",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A",
+                "B"
+              ],
+              "length": 9.0
+            },
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 3.0
+            },
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 2.0
+            },
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1.0
+            }
+          ]
+        },
+        {
+          "taxon": "D",
+          "gain_bits": "402a000000000000",
+          "exact_gain": "13",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C",
+                "D"
+              ],
+              "length": 7.0
+            },
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 6.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "4014000000000000",
+          "exact_gain": "5",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 5.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4042800000000000",
+      "exact_gain": "37",
+      "exhaustive_optimum": "37",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 24
+    },
+    {
+      "name": "topology-2-1-0",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 0,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "topology-2-1-1",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 1,
+      "order": [
+        "D"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4018000000000000",
+          "exact_gain": "6",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 6.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4018000000000000",
+      "exact_gain": "6",
+      "exhaustive_optimum": "6",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "topology-2-1-2",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 2,
+      "order": [
+        "D",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4018000000000000",
+          "exact_gain": "6",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 6.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4024000000000000",
+      "exact_gain": "10",
+      "exhaustive_optimum": "10",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "topology-2-1-3",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 3,
+      "order": [
+        "D",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4018000000000000",
+          "exact_gain": "6",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 6.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4024000000000000",
+      "exact_gain": "10",
+      "exhaustive_optimum": "10",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "topology-2-1-4",
+      "newick": "((((A:1):2):3,B:4):9,(C:5,D:6):7):8;",
+      "baseline": [
+        "A",
+        "C"
+      ],
+      "candidates": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "limit": 4,
+      "order": [
+        "D",
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "D",
+          "gain_bits": "4018000000000000",
+          "exact_gain": "6",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "D"
+              ],
+              "length": 6.0
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "4010000000000000",
+          "exact_gain": "4",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 4.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4024000000000000",
+      "exact_gain": "10",
+      "exhaustive_optimum": "10",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "real-0",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "baseline": [],
+      "candidates": [
+        "Austruca_annulipes",
+        "Austruca_lactea",
+        "Austruca_sindensis",
+        "Gelasimus_hesperiae",
+        "Gelasimus_tetragonon",
+        "Gelasimus_vocans",
+        "Gelasimus_vomeris",
+        "Leptuca_beebei"
+      ],
+      "limit": 3,
+      "order": [
+        "Austruca_sindensis",
+        "Leptuca_beebei",
+        "Gelasimus_hesperiae"
+      ],
+      "steps": [
+        {
+          "taxon": "Austruca_sindensis",
+          "gain_bits": "4045de3c5f256e3e",
+          "exact_gain": "12310650773232763/281474976710656",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "Austruca_annulipes",
+                "Austruca_lactea",
+                "Austruca_sindensis",
+                "Gelasimus_hesperiae",
+                "Gelasimus_tetragonon",
+                "Gelasimus_vocans",
+                "Gelasimus_vomeris",
+                "Leptuca_beebei",
+                "Leptuca_crenulata",
+                "Leptuca_cumulanta",
+                "Leptuca_deichmanni",
+                "Leptuca_latimanus",
+                "Leptuca_leptodactyla",
+                "Leptuca_panacea",
+                "Leptuca_pugilator",
+                "Leptuca_saltitanta",
+                "Leptuca_speciosa",
+                "Leptuca_stenodactylus",
+                "Leptuca_terpsichores",
+                "Minuca_minax",
+                "Minuca_pugnax",
+                "Minuca_rapax",
+                "Minuca_vocator",
+                "Paraleptuca_chlorophthalmus",
+                "Paraleptuca_crassipes",
+                "Petruca_panamensis",
+                "Tubuca_arcuata",
+                "Tubuca_bellator",
+                "Tubuca_capricornis",
+                "Tubuca_coarctata",
+                "Tubuca_elegans",
+                "Tubuca_flammula",
+                "Tubuca_longidigitum",
+                "Tubuca_paradussumieri",
+                "Tubuca_polita",
+                "Tubuca_rhizophorae",
+                "Tubuca_rosea",
+                "Tubuca_signata",
+                "Xeruca_formosensis"
+              ],
+              "length": 8.414221169
+            },
+            {
+              "descendant_taxa": [
+                "Austruca_annulipes",
+                "Austruca_lactea",
+                "Austruca_sindensis",
+                "Gelasimus_hesperiae",
+                "Gelasimus_tetragonon",
+                "Gelasimus_vocans",
+                "Gelasimus_vomeris",
+                "Paraleptuca_chlorophthalmus",
+                "Paraleptuca_crassipes",
+                "Tubuca_arcuata",
+                "Tubuca_bellator",
+                "Tubuca_capricornis",
+                "Tubuca_coarctata",
+                "Tubuca_elegans",
+                "Tubuca_flammula",
+                "Tubuca_longidigitum",
+                "Tubuca_paradussumieri",
+                "Tubuca_polita",
+                "Tubuca_rhizophorae",
+                "Tubuca_rosea",
+                "Tubuca_signata",
+                "Xeruca_formosensis"
+              ],
+              "length": 3.337187277
+            },
+            {
+              "descendant_taxa": [
+                "Austruca_annulipes",
+                "Austruca_lactea",
+                "Austruca_sindensis"
+              ],
+              "length": 4.041041261
+            },
+            {
+              "descendant_taxa": [
+                "Austruca_sindensis"
+              ],
+              "length": 27.94376769
+            }
+          ]
+        },
+        {
+          "taxon": "Leptuca_beebei",
+          "gain_bits": "4041a9372c19c1fc",
+          "exact_gain": "79538064516194233/2251799813685248",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "Leptuca_beebei",
+                "Leptuca_crenulata",
+                "Leptuca_cumulanta",
+                "Leptuca_deichmanni",
+                "Leptuca_latimanus",
+                "Leptuca_leptodactyla",
+                "Leptuca_panacea",
+                "Leptuca_pugilator",
+                "Leptuca_saltitanta",
+                "Leptuca_speciosa",
+                "Leptuca_stenodactylus",
+                "Leptuca_terpsichores",
+                "Minuca_minax",
+                "Minuca_pugnax",
+                "Minuca_rapax",
+                "Minuca_vocator",
+                "Petruca_panamensis"
+              ],
+              "length": 6.733978092
+            },
+            {
+              "descendant_taxa": [
+                "Leptuca_beebei",
+                "Leptuca_crenulata",
+                "Leptuca_cumulanta",
+                "Leptuca_deichmanni",
+                "Leptuca_latimanus",
+                "Leptuca_leptodactyla",
+                "Leptuca_panacea",
+                "Leptuca_pugilator",
+                "Leptuca_saltitanta",
+                "Leptuca_speciosa",
+                "Leptuca_stenodactylus",
+                "Leptuca_terpsichores",
+                "Minuca_minax",
+                "Minuca_pugnax",
+                "Minuca_rapax",
+                "Minuca_vocator"
+              ],
+              "length": 3.382562443
+            },
+            {
+              "descendant_taxa": [
+                "Leptuca_beebei",
+                "Leptuca_crenulata",
+                "Leptuca_cumulanta",
+                "Leptuca_deichmanni",
+                "Leptuca_latimanus",
+                "Leptuca_leptodactyla",
+                "Leptuca_saltitanta",
+                "Leptuca_speciosa",
+                "Leptuca_stenodactylus",
+                "Leptuca_terpsichores"
+              ],
+              "length": 1.783129291
+            },
+            {
+              "descendant_taxa": [
+                "Leptuca_beebei",
+                "Leptuca_cumulanta",
+                "Leptuca_deichmanni",
+                "Leptuca_latimanus",
+                "Leptuca_leptodactyla",
+                "Leptuca_saltitanta",
+                "Leptuca_speciosa",
+                "Leptuca_stenodactylus",
+                "Leptuca_terpsichores"
+              ],
+              "length": 0.8915646455
+            },
+            {
+              "descendant_taxa": [
+                "Leptuca_beebei",
+                "Leptuca_cumulanta",
+                "Leptuca_deichmanni",
+                "Leptuca_leptodactyla",
+                "Leptuca_saltitanta",
+                "Leptuca_speciosa",
+                "Leptuca_stenodactylus",
+                "Leptuca_terpsichores"
+              ],
+              "length": 0.8915646455
+            },
+            {
+              "descendant_taxa": [
+                "Leptuca_beebei",
+                "Leptuca_cumulanta",
+                "Leptuca_deichmanni",
+                "Leptuca_saltitanta",
+                "Leptuca_speciosa",
+                "Leptuca_stenodactylus",
+                "Leptuca_terpsichores"
+              ],
+              "length": 3.207289201
+            },
+            {
+              "descendant_taxa": [
+                "Leptuca_beebei",
+                "Leptuca_stenodactylus",
+                "Leptuca_terpsichores"
+              ],
+              "length": 2.756050573
+            },
+            {
+              "descendant_taxa": [
+                "Leptuca_beebei",
+                "Leptuca_stenodactylus"
+              ],
+              "length": 11.58615773
+            },
+            {
+              "descendant_taxa": [
+                "Leptuca_beebei"
+              ],
+              "length": 4.089699603
+            }
+          ]
+        },
+        {
+          "taxon": "Gelasimus_hesperiae",
+          "gain_bits": "403ffc1c707d5a62",
+          "exact_gain": "18005846709155013/562949953421312",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "Gelasimus_hesperiae",
+                "Gelasimus_tetragonon",
+                "Gelasimus_vocans",
+                "Gelasimus_vomeris",
+                "Paraleptuca_chlorophthalmus",
+                "Paraleptuca_crassipes",
+                "Tubuca_arcuata",
+                "Tubuca_bellator",
+                "Tubuca_capricornis",
+                "Tubuca_coarctata",
+                "Tubuca_elegans",
+                "Tubuca_flammula",
+                "Tubuca_longidigitum",
+                "Tubuca_paradussumieri",
+                "Tubuca_polita",
+                "Tubuca_rhizophorae",
+                "Tubuca_rosea",
+                "Tubuca_signata",
+                "Xeruca_formosensis"
+              ],
+              "length": 3.84450506
+            },
+            {
+              "descendant_taxa": [
+                "Gelasimus_hesperiae",
+                "Gelasimus_tetragonon",
+                "Gelasimus_vocans",
+                "Gelasimus_vomeris",
+                "Paraleptuca_chlorophthalmus",
+                "Paraleptuca_crassipes"
+              ],
+              "length": 1.593740886
+            },
+            {
+              "descendant_taxa": [
+                "Gelasimus_hesperiae",
+                "Gelasimus_tetragonon",
+                "Gelasimus_vocans",
+                "Gelasimus_vomeris"
+              ],
+              "length": 12.66247555
+            },
+            {
+              "descendant_taxa": [
+                "Gelasimus_hesperiae",
+                "Gelasimus_vocans",
+                "Gelasimus_vomeris"
+              ],
+              "length": 11.58343073
+            },
+            {
+              "descendant_taxa": [
+                "Gelasimus_hesperiae"
+              ],
+              "length": 2.300656725
+            }
+          ]
+        }
+      ],
+      "gain_bits": "405bc2c0e1beeeb5",
+      "exact_gain": "250046657538676389/2251799813685248",
+      "exhaustive_optimum": "250046657538676389/2251799813685248",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 336
+    },
+    {
+      "name": "real-1",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "baseline": [
+        "Austruca_annulipes",
+        "Austruca_lactea",
+        "Austruca_sindensis",
+        "Gelasimus_hesperiae",
+        "Gelasimus_tetragonon",
+        "Gelasimus_vocans"
+      ],
+      "candidates": [
+        "Gelasimus_tetragonon",
+        "Gelasimus_vocans",
+        "Gelasimus_vomeris",
+        "Leptuca_beebei",
+        "Leptuca_crenulata",
+        "Leptuca_cumulanta",
+        "Leptuca_deichmanni",
+        "Leptuca_latimanus"
+      ],
+      "limit": 3,
+      "order": [
+        "Leptuca_latimanus",
+        "Leptuca_crenulata",
+        "Leptuca_cumulanta"
+      ],
+      "steps": [
+        {
+          "taxon": "Leptuca_latimanus",
+          "gain_bits": "4041a9372c29dd27",
+          "exact_gain": "318152258132330935/9007199254740992",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "Leptuca_beebei",
+                "Leptuca_crenulata",
+                "Leptuca_cumulanta",
+                "Leptuca_deichmanni",
+                "Leptuca_latimanus",
+                "Leptuca_leptodactyla",
+                "Leptuca_panacea",
+                "Leptuca_pugilator",
+                "Leptuca_saltitanta",
+                "Leptuca_speciosa",
+                "Leptuca_stenodactylus",
+                "Leptuca_terpsichores",
+                "Minuca_minax",
+                "Minuca_pugnax",
+                "Minuca_rapax",
+                "Minuca_vocator",
+                "Petruca_panamensis"
+              ],
+              "length": 6.733978092
+            },
+            {
+              "descendant_taxa": [
+                "Leptuca_beebei",
+                "Leptuca_crenulata",
+                "Leptuca_cumulanta",
+                "Leptuca_deichmanni",
+                "Leptuca_latimanus",
+                "Leptuca_leptodactyla",
+                "Leptuca_panacea",
+                "Leptuca_pugilator",
+                "Leptuca_saltitanta",
+                "Leptuca_speciosa",
+                "Leptuca_stenodactylus",
+                "Leptuca_terpsichores",
+                "Minuca_minax",
+                "Minuca_pugnax",
+                "Minuca_rapax",
+                "Minuca_vocator"
+              ],
+              "length": 3.382562443
+            },
+            {
+              "descendant_taxa": [
+                "Leptuca_beebei",
+                "Leptuca_crenulata",
+                "Leptuca_cumulanta",
+                "Leptuca_deichmanni",
+                "Leptuca_latimanus",
+                "Leptuca_leptodactyla",
+                "Leptuca_saltitanta",
+                "Leptuca_speciosa",
+                "Leptuca_stenodactylus",
+                "Leptuca_terpsichores"
+              ],
+              "length": 1.783129291
+            },
+            {
+              "descendant_taxa": [
+                "Leptuca_beebei",
+                "Leptuca_cumulanta",
+                "Leptuca_deichmanni",
+                "Leptuca_latimanus",
+                "Leptuca_leptodactyla",
+                "Leptuca_saltitanta",
+                "Leptuca_speciosa",
+                "Leptuca_stenodactylus",
+                "Leptuca_terpsichores"
+              ],
+              "length": 0.8915646455
+            },
+            {
+              "descendant_taxa": [
+                "Leptuca_latimanus"
+              ],
+              "length": 22.53076176
+            }
+          ]
+        },
+        {
+          "taxon": "Leptuca_crenulata",
+          "gain_bits": "40376c1d953c3cc7",
+          "exact_gain": "6592798777949383/281474976710656",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "Leptuca_crenulata"
+              ],
+              "length": 23.4223264
+            }
+          ]
+        },
+        {
+          "taxon": "Leptuca_cumulanta",
+          "gain_bits": "403687e000954008",
+          "exact_gain": "202939060474872049/9007199254740992",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "Leptuca_beebei",
+                "Leptuca_cumulanta",
+                "Leptuca_deichmanni",
+                "Leptuca_leptodactyla",
+                "Leptuca_saltitanta",
+                "Leptuca_speciosa",
+                "Leptuca_stenodactylus",
+                "Leptuca_terpsichores"
+              ],
+              "length": 0.8915646455
+            },
+            {
+              "descendant_taxa": [
+                "Leptuca_beebei",
+                "Leptuca_cumulanta",
+                "Leptuca_deichmanni",
+                "Leptuca_saltitanta",
+                "Leptuca_speciosa",
+                "Leptuca_stenodactylus",
+                "Leptuca_terpsichores"
+              ],
+              "length": 3.207289201
+            },
+            {
+              "descendant_taxa": [
+                "Leptuca_cumulanta",
+                "Leptuca_deichmanni",
+                "Leptuca_saltitanta",
+                "Leptuca_speciosa"
+              ],
+              "length": 4.065429957
+            },
+            {
+              "descendant_taxa": [
+                "Leptuca_cumulanta",
+                "Leptuca_deichmanni"
+              ],
+              "length": 2.48503964
+            },
+            {
+              "descendant_taxa": [
+                "Leptuca_cumulanta"
+              ],
+              "length": 11.88143831
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4054519afb894dc7",
+      "exact_gain": "91507609937697905/1125899906842624",
+      "exhaustive_optimum": "91507609937697905/1125899906842624",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 120
+    },
+    {
+      "name": "real-2",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "baseline": [
+        "Austruca_annulipes",
+        "Gelasimus_tetragonon",
+        "Leptuca_crenulata",
+        "Leptuca_leptodactyla",
+        "Leptuca_speciosa",
+        "Minuca_pugnax",
+        "Paraleptuca_crassipes",
+        "Tubuca_capricornis",
+        "Tubuca_longidigitum",
+        "Tubuca_rosea",
+        "Uca_princeps"
+      ],
+      "candidates": [
+        "Austruca_annulipes",
+        "Austruca_lactea",
+        "Austruca_sindensis",
+        "Gelasimus_hesperiae",
+        "Gelasimus_tetragonon",
+        "Gelasimus_vocans",
+        "Gelasimus_vomeris",
+        "Leptuca_beebei"
+      ],
+      "limit": 2,
+      "order": [
+        "Austruca_sindensis",
+        "Austruca_lactea"
+      ],
+      "steps": [
+        {
+          "taxon": "Austruca_sindensis",
+          "gain_bits": "403bf19ac263924c",
+          "exact_gain": "1966367839937683/70368744177664",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "Austruca_sindensis"
+              ],
+              "length": 27.94376769
+            }
+          ]
+        },
+        {
+          "taxon": "Austruca_lactea",
+          "gain_bits": "40363a57e8ca2e62",
+          "exact_gain": "3128299364882225/140737488355328",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "Austruca_lactea"
+              ],
+              "length": 22.22790389
+            }
+          ]
+        }
+      ],
+      "gain_bits": "404915f95596e057",
+      "exact_gain": "7061035044757591/140737488355328",
+      "exhaustive_optimum": "7061035044757591/140737488355328",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 30
+    },
+    {
+      "name": "real-3",
+      "newick": "((('Uca_maracoani':8.3933596000000001,'Uca_ornata':8.3933596109999993):8.3933596000000001,'Uca_princeps':16.7867192):26.94949819,(((('Austruca_annulipes':22.22790389,'Austruca_lactea':22.22790389):5.7158637969999999,'Austruca_sindensis':27.943767690000001):4.0410412610000002,(((('Gelasimus_hesperiae':2.3006567250000001,('Gelasimus_vocans':0.68296760899999998,'Gelasimus_vomeris':0.68296760899999998):1.617689116):11.58343073,'Gelasimus_tetragonon':13.884087450000001):12.66247555,('Paraleptuca_chlorophthalmus':6.195255822,'Paraleptuca_crassipes':6.195255822):20.351307179999999):1.593740886,(((((('Tubuca_arcuata':10.820394459999999,('Tubuca_coarctata':6.3345300839999998,'Tubuca_flammula':6.3345300839999998):4.4858643779999996):3.7162057719999999,('Tubuca_capricornis':4.3751328779999996,'Tubuca_paradussumieri':4.3751328779999996):10.16146736):0.957119316,(('Tubuca_bellator':9.2827631509999993,'Tubuca_signata':9.2827631509999993):3.9740672890000002,('Tubuca_elegans':12.16625316,('Tubuca_longidigitum':0.42445842379999998,'Tubuca_polita':0.42445842379999998):11.74179474):1.090577277):2.236889111):0.77970000510000004,'Tubuca_rhizophorae':16.273419560000001):0.88031774929999995,'Tubuca_rosea':17.1537373):4.6856949820000002,'Xeruca_formosensis':21.839432290000001):6.300871602):3.8445050599999999):3.337187277,(((((((('Leptuca_beebei':4.0896996029999997,'Leptuca_stenodactylus':4.0896996029999997):11.58615773,'Leptuca_terpsichores':15.67585734):2.756050573,(('Leptuca_cumulanta':11.88143831,'Leptuca_deichmanni':11.88143831):2.4850396400000001,('Leptuca_speciosa':7.1832389750000001,'Leptuca_saltitanta':7.1832389819999998):7.1832389750000001):4.0654299570000001):3.207289201,'Leptuca_leptodactyla':21.639197110000001):0.89156464550000003,'Leptuca_latimanus':22.530761760000001):0.89156464550000003,'Leptuca_crenulata':23.422326399999999):1.7831292910000001,(('Leptuca_panacea':3.833608973,'Leptuca_pugilator':3.833608973):16.238307540000001,((('Minuca_minax':5.3998767860000001,'Minuca_pugnax':5.3998767860000001):0.88437035689999999,'Minuca_rapax':6.284247143):4.1885685859999997,'Minuca_vocator':10.472815730000001):9.5991007800000006):5.1335391829999999):3.3825624429999999,'Petruca_panamensis':28.588018139999999):6.7339780920000001):8.4142211689999993):0;",
+      "baseline": [
+        "Austruca_annulipes",
+        "Austruca_lactea",
+        "Austruca_sindensis",
+        "Gelasimus_hesperiae",
+        "Gelasimus_tetragonon",
+        "Gelasimus_vocans",
+        "Gelasimus_vomeris",
+        "Leptuca_beebei",
+        "Leptuca_crenulata",
+        "Leptuca_cumulanta",
+        "Leptuca_deichmanni",
+        "Leptuca_latimanus",
+        "Leptuca_leptodactyla",
+        "Leptuca_panacea",
+        "Leptuca_pugilator",
+        "Leptuca_saltitanta",
+        "Leptuca_speciosa",
+        "Leptuca_stenodactylus",
+        "Leptuca_terpsichores",
+        "Minuca_minax",
+        "Minuca_pugnax",
+        "Minuca_rapax",
+        "Minuca_vocator",
+        "Paraleptuca_chlorophthalmus",
+        "Paraleptuca_crassipes",
+        "Petruca_panamensis",
+        "Tubuca_arcuata",
+        "Tubuca_bellator",
+        "Tubuca_capricornis",
+        "Tubuca_coarctata",
+        "Tubuca_elegans",
+        "Tubuca_flammula",
+        "Tubuca_longidigitum",
+        "Tubuca_paradussumieri",
+        "Tubuca_polita",
+        "Tubuca_rhizophorae",
+        "Tubuca_rosea",
+        "Tubuca_signata",
+        "Uca_maracoani",
+        "Uca_ornata",
+        "Uca_princeps",
+        "Xeruca_formosensis"
+      ],
+      "candidates": [
+        "Austruca_annulipes",
+        "Austruca_lactea",
+        "Austruca_sindensis",
+        "Gelasimus_hesperiae",
+        "Gelasimus_tetragonon",
+        "Gelasimus_vocans",
+        "Gelasimus_vomeris",
+        "Leptuca_beebei"
+      ],
+      "limit": 3,
+      "order": [],
+      "steps": [],
+      "gain_bits": "0000000000000000",
+      "exact_gain": "0",
+      "exhaustive_optimum": "0",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 1
+    },
+    {
+      "name": "exact-comparison",
+      "newick": "(A:10000000000000000,(B:10000000000000000):1)R;",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B"
+      ],
+      "limit": 1,
+      "order": [
+        "B"
+      ],
+      "steps": [
+        {
+          "taxon": "B",
+          "gain_bits": "4341c37937e08000",
+          "exact_gain": "10000000000000001",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 1.0
+            },
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 1e+16
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4341c37937e08000",
+      "exact_gain": "10000000000000001",
+      "exhaustive_optimum": "10000000000000001",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 2
+    },
+    {
+      "name": "aggregate-rounding",
+      "newick": "(A:10000000000000000,B:1,C:1)R;",
+      "baseline": [],
+      "candidates": [
+        "A",
+        "B",
+        "C"
+      ],
+      "limit": 3,
+      "order": [
+        "A",
+        "B",
+        "C"
+      ],
+      "steps": [
+        {
+          "taxon": "A",
+          "gain_bits": "4341c37937e08000",
+          "exact_gain": "10000000000000000",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "A"
+              ],
+              "length": 1e+16
+            }
+          ]
+        },
+        {
+          "taxon": "B",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "B"
+              ],
+              "length": 1.0
+            }
+          ]
+        },
+        {
+          "taxon": "C",
+          "gain_bits": "3ff0000000000000",
+          "exact_gain": "1",
+          "edges": [
+            {
+              "descendant_taxa": [
+                "C"
+              ],
+              "length": 1.0
+            }
+          ]
+        }
+      ],
+      "gain_bits": "4341c37937e08001",
+      "exact_gain": "10000000000000002",
+      "exhaustive_optimum": "10000000000000002",
+      "matches_bounded_optimum": true,
+      "orders_enumerated": 6
+    }
+  ]
+}
