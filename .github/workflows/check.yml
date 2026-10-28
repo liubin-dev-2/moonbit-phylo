@@ -101,6 +101,12 @@ jobs:
           python -B verification/patristic_path.py --artifact-dir _build --moonrun moonrun --output ci-evidence/patristic-path-consumer
       - name: Validate native original Newick file handoff to the path consumer
         run: python -B verification/path_file.py --artifact-dir _build --moonrun moonrun --output ci-evidence/path-file-consumer
+      - name: Build and validate original-tree RF recipients on both targets
+        run: |
+          set -euo pipefail
+          moon build cmd/rf_compare --target js --deny-warn --frozen
+          moon build cmd/rf_compare --target wasm-gc --deny-warn --frozen
+          python -B verification/rf_recipient.py --artifact-dir _build --moonrun moonrun --output ci-evidence/rf-recipient
       - uses: actions/upload-artifact@v4
         if: always()
         with:

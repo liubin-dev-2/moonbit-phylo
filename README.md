@@ -51,6 +51,25 @@ moon -C recipient run . --target wasm-gc --frozen
 
 这里假设recipient根包是使用这些API的main包；不是从未发布的注册表下载包。已用第13轮封存ZIP的干净解压副本和独立模块验证：不携带产品构建目录或第三方包缓存，标准core仍来自已安装SDK。在既有42物种树上使用新测试请求，导出/读取/重算后继续调用绝对及增量PD，核对整树、逐步贡献边和数值；没有重跑历史测试全集。这是本地源码交付审计，不代表Mooncakes发布或外部CI验收。
 
+## 两棵原始 Newick 的 RF 比较
+
+`cmd/rf_compare` 是可配置的单请求/单 JSON 响应接收方，直接调用原 `rf_distance_rooted` / `rf_distance_unrooted`，不从距离矩阵重建树。两输入仍是现有单树 Newick 文本，模式必须明确给出：
+
+```powershell
+$env:PHYLO_RF_LEFT='[&R]((A,B),(C,D));'
+$env:PHYLO_RF_RIGHT='[&R](A,(B,(C,D)));'
+$env:PHYLO_RF_MODE='rooted'
+moon run cmd/rf_compare --target js --frozen
+$env:PHYLO_RF_MODE='unrooted'
+moon run cmd/rf_compare --target wasm-gc --frozen
+```
+
+上例 rooted 报告 shared=CD、only_left=AB、only_right=BCD、distance=2；unrooted 则共享同一个 CD|AB split，distance=0。成功保留原 `RFComparisonReport` 的 `mode` / `taxa` / `shared` / `only_left` / `only_right` / `distance`，仅加 `ok:true`。模式精确为小写 `rooted` 或 `unrooted`，不从子节点数量猜根，也不把 mode 当解析器的强制 rooting 参数；rooted 必须两棵输入本就有 Rooted 语义。叶集合严格全等，不取交集、不补叶、不归一化身份；零内枝仍计作拓扑边。RF 不要求枝长齐全，但非法枝长仍由原解析器拒绝。
+
+先检查 mode，再检查 left/right 是否提供，按 left、right 顺序解析，最后比较。缺项报 `missing_mode` / `missing_left` / `missing_right`，非法模式报 `invalid_mode`；解析错误为 `tree_error`，附 `input:left/right` 与原诊断。比较错误报 `rooted_tree_required`，或 `taxa_set_mismatch` 并附 `only_left_taxa` / `only_right_taxa`。错误是 `ok:false`，进程仍正常退出，接收脚本必须先检查 `ok`。空树文本是解析错误。文本环境传输继续受宿主限制，本入口不增加文件/stdin/argv 选择器、新格式或库 API；既有 path/NJ 文件入口保持原合同。
+
+构建两个后端后，`python -B verification/rf_recipient.py --artifact-dir _build --moonrun moonrun --output rf-evidence` 会从保存的 Newick 文件向真实新进程发送请求，核对预先手工列出的完整 clade/split 报告、反向结果和明确错误，检查单响应及输入哈希。它验证新接收方的模式分派与原报告交接，不声称新 RF 算法。
+
 ## 可追溯叶间路径
 
 `tree.patristic_path(from, to)` 返回 `Result[PatristicPathReport, PhyloError]`，让调用者核查已有叶间距离经过的节点和边。报告含精确叶名 `from_taxon` / `to_taxon`、有序 `node_ids`、有序 `edge_ids` 及 `distance`；节点序列包含两端，`edge_ids[i]` 是连接相邻节点的**子节点 ID**，向上走时也沿用该边的子节点 ID。自身到自身返回一个节点、空边数组和正零距离。零枝、单子节点、多分叉均保留；节点 ID 仅属于本次树，不能跨重读、旋转或修剪直接比较。

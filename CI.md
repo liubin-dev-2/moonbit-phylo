@@ -32,6 +32,13 @@ text controls remain; Wasm-GC file mode must explicitly reject the request.
 This is a transport check, without regenerating scientific fixtures or adding
 a new parser, format or numerical algorithm.
 
+The original-tree RF recipient is separately built and executed on both targets
+by `verification/rf_recipient.py` in that required job. Literal hand-enumerated
+full clade/split reports distinguish rooted/unrooted dispatch, reverse inputs,
+zero edges and unresolved trees; structured selection/parse/root/leaf-set errors
+and exactly one JSON response are checked. The core RF algorithm and old
+scientific reference fixtures are unchanged.
+
 CI uses the project's declared compiler `0.10.12+1634b282e`, with Node.js
 24.11.0 and Python 3.14. The installer uses the versioned URLs described by the
 [official installer](https://cli.moonbitlang.com/install/unix.sh) and checks the
