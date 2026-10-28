@@ -22,6 +22,9 @@ printf '%s  %s\n' "$sdk_sha" "$stage/sdk.tar.gz" "$core_sha" "$stage/core.tar.gz
 sha256sum "$stage/sdk.tar.gz" "$stage/core.tar.gz" > ci-evidence/sdk-downloads.sha256
 tar -xzf "$stage/sdk.tar.gz" -C "$MOON_HOME"
 tar -xzf "$stage/core.tar.gz" -C "$MOON_HOME/lib"
+# The official archives store binaries as 0664; match the official installer's
+# executable-mode setup before invoking moon, moonc, moonrun or internal tcc.
+chmod +x "$MOON_HOME/bin/"* "$MOON_HOME/bin/internal/tcc"
 ln -sfn moon "$MOON_HOME/bin/moonx"
 export PATH="$MOON_HOME/bin:$PATH"
 printf '%s\n' "$MOON_HOME/bin" >> "$GITHUB_PATH"
