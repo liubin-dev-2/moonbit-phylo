@@ -1,0 +1,504 @@
+{
+  "oracle": "Preimplementation explicitly authored undirected edge facts; BFS route and Fraction(actual binary64 edge) one-round sum; no product/NJ oracle",
+  "cases": [
+    {
+      "name": "rooted",
+      "newick": "[&R](('Café':1,'Café':2)X:4,('O''Brien_😀':0,'':3)Y:8,Z:0)R:99;",
+      "edges": [
+        [
+          "X",
+          "Café",
+          1
+        ],
+        [
+          "X",
+          "Café",
+          2
+        ],
+        [
+          "R",
+          "X",
+          4
+        ],
+        [
+          "Y",
+          "O'Brien_😀",
+          0
+        ],
+        [
+          "Y",
+          "",
+          3
+        ],
+        [
+          "R",
+          "Y",
+          8
+        ],
+        [
+          "R",
+          "Z",
+          0
+        ]
+      ],
+      "queries": [
+        [
+          "Café",
+          "O'Brien_😀"
+        ],
+        [
+          "O'Brien_😀",
+          "Café"
+        ],
+        [
+          "Café",
+          "Café"
+        ],
+        [
+          "Z",
+          "O'Brien_😀"
+        ],
+        [
+          "Z",
+          "Z"
+        ]
+      ],
+      "rooting": "rooted"
+    },
+    {
+      "name": "unrooted",
+      "newick": "[&U](('Café':1,'Café':2)X:4,('O''Brien_😀':0,'':3)Y:8,Z:0)R:99;",
+      "edges": [
+        [
+          "X",
+          "Café",
+          1
+        ],
+        [
+          "X",
+          "Café",
+          2
+        ],
+        [
+          "R",
+          "X",
+          4
+        ],
+        [
+          "Y",
+          "O'Brien_😀",
+          0
+        ],
+        [
+          "Y",
+          "",
+          3
+        ],
+        [
+          "R",
+          "Y",
+          8
+        ],
+        [
+          "R",
+          "Z",
+          0
+        ]
+      ],
+      "queries": [
+        [
+          "Café",
+          "O'Brien_😀"
+        ],
+        [
+          "O'Brien_😀",
+          "Café"
+        ],
+        [
+          "Café",
+          "Café"
+        ],
+        [
+          "Z",
+          "O'Brien_😀"
+        ],
+        [
+          "Z",
+          "Z"
+        ]
+      ],
+      "rooting": "unrooted"
+    },
+    {
+      "name": "unknown",
+      "newick": "(('Café':1,'Café':2)X:4,('O''Brien_😀':0,'':3)Y:8,Z:0)R:99;",
+      "edges": [
+        [
+          "X",
+          "Café",
+          1
+        ],
+        [
+          "X",
+          "Café",
+          2
+        ],
+        [
+          "R",
+          "X",
+          4
+        ],
+        [
+          "Y",
+          "O'Brien_😀",
+          0
+        ],
+        [
+          "Y",
+          "",
+          3
+        ],
+        [
+          "R",
+          "Y",
+          8
+        ],
+        [
+          "R",
+          "Z",
+          0
+        ]
+      ],
+      "queries": [
+        [
+          "Café",
+          "O'Brien_😀"
+        ],
+        [
+          "O'Brien_😀",
+          "Café"
+        ],
+        [
+          "Café",
+          "Café"
+        ],
+        [
+          "Z",
+          "O'Brien_😀"
+        ],
+        [
+          "Z",
+          "Z"
+        ]
+      ],
+      "rooting": "unknown"
+    },
+    {
+      "name": "rotated",
+      "newick": "[&U](Z:0,('':3,'O''Brien_😀':0)Y:8,('Café':2,'Café':1)X:4)R:99;",
+      "edges": [
+        [
+          "X",
+          "Café",
+          1
+        ],
+        [
+          "X",
+          "Café",
+          2
+        ],
+        [
+          "R",
+          "X",
+          4
+        ],
+        [
+          "Y",
+          "O'Brien_😀",
+          0
+        ],
+        [
+          "Y",
+          "",
+          3
+        ],
+        [
+          "R",
+          "Y",
+          8
+        ],
+        [
+          "R",
+          "Z",
+          0
+        ]
+      ],
+      "queries": [
+        [
+          "Café",
+          "O'Brien_😀"
+        ],
+        [
+          "O'Brien_😀",
+          "Café"
+        ],
+        [
+          "Café",
+          "Café"
+        ],
+        [
+          "Z",
+          "O'Brien_😀"
+        ],
+        [
+          "Z",
+          "Z"
+        ]
+      ],
+      "rooting": "unrooted"
+    },
+    {
+      "name": "unary",
+      "newick": "[&U](((A:1)U:2,B:3)X:4,C:5)R:100;",
+      "edges": [
+        [
+          "R",
+          "X",
+          4
+        ],
+        [
+          "X",
+          "U",
+          2
+        ],
+        [
+          "U",
+          "A",
+          1
+        ],
+        [
+          "X",
+          "B",
+          3
+        ],
+        [
+          "R",
+          "C",
+          5
+        ]
+      ],
+      "queries": [
+        [
+          "A",
+          "C"
+        ],
+        [
+          "C",
+          "A"
+        ],
+        [
+          "A",
+          "B"
+        ]
+      ],
+      "rooting": "unrooted"
+    },
+    {
+      "name": "one-round",
+      "newick": "[&U]((A:9007199254740992,T:1)X:1,B:1)R:7;",
+      "edges": [
+        [
+          "X",
+          "A",
+          9007199254740992
+        ],
+        [
+          "X",
+          "T",
+          1
+        ],
+        [
+          "R",
+          "X",
+          1
+        ],
+        [
+          "R",
+          "B",
+          1
+        ]
+      ],
+      "queries": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "B",
+          "A"
+        ],
+        [
+          "T",
+          "B"
+        ]
+      ],
+      "rooting": "unrooted"
+    },
+    {
+      "name": "subnormal",
+      "newick": "[&U](A:5e-324,B:5e-324,C:0)R;",
+      "edges": [
+        [
+          "R",
+          "A",
+          5e-324
+        ],
+        [
+          "R",
+          "B",
+          5e-324
+        ],
+        [
+          "R",
+          "C",
+          0
+        ]
+      ],
+      "queries": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "B",
+          "A"
+        ],
+        [
+          "A",
+          "C"
+        ]
+      ],
+      "rooting": "unrooted"
+    },
+    {
+      "name": "unrelated-huge",
+      "newick": "[&U]((A:1,B:1)X:1e308,(C:1,D:1)Y:1e308)R:1e308;",
+      "edges": [
+        [
+          "R",
+          "X",
+          1e+308
+        ],
+        [
+          "R",
+          "Y",
+          1e+308
+        ],
+        [
+          "X",
+          "A",
+          1
+        ],
+        [
+          "X",
+          "B",
+          1
+        ],
+        [
+          "Y",
+          "C",
+          1
+        ],
+        [
+          "Y",
+          "D",
+          1
+        ]
+      ],
+      "queries": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "A",
+          "A"
+        ]
+      ],
+      "rooting": "unrooted"
+    },
+    {
+      "name": "single-leaf",
+      "newick": "[&R]'only_😀':42;",
+      "edges": [],
+      "queries": [
+        [
+          "only_😀",
+          "only_😀"
+        ]
+      ],
+      "rooting": "rooted"
+    }
+  ],
+  "errors": [
+    {
+      "name": "unknown-from",
+      "newick": "(('Café':1,'Café':2)X:4,('O''Brien_😀':0,'':3)Y:8,Z:0)R:99;",
+      "from": "not-here",
+      "to": "Z",
+      "error": "unknown_taxon",
+      "taxon": "not-here"
+    },
+    {
+      "name": "unknown-to",
+      "newick": "(('Café':1,'Café':2)X:4,('O''Brien_😀':0,'':3)Y:8,Z:0)R:99;",
+      "from": "Z",
+      "to": " Café",
+      "error": "unknown_taxon",
+      "taxon": " Café"
+    },
+    {
+      "name": "internal-is-not-taxon",
+      "newick": "(('Café':1,'Café':2)X:4,('O''Brien_😀':0,'':3)Y:8,Z:0)R:99;",
+      "from": "X",
+      "to": "Z",
+      "error": "unknown_taxon",
+      "taxon": "X"
+    },
+    {
+      "name": "missing-off-route",
+      "newick": "[&R]((A:1,B:2)X:3,C)R;",
+      "from": "A",
+      "to": "B",
+      "error": "missing_length"
+    },
+    {
+      "name": "missing-before-unknown",
+      "newick": "[&R]((A:1,B:2)X:3,C)R;",
+      "from": "absent",
+      "to": "B",
+      "error": "missing_length"
+    },
+    {
+      "name": "true-overflow",
+      "newick": "[&U]((A:1,B:1)X:1e308,(C:1,D:1)Y:1e308)R:1e308;",
+      "from": "A",
+      "to": "C",
+      "error": "numeric_overflow"
+    },
+    {
+      "name": "negative-length",
+      "newick": "[&U](A:-1,B:2)R;",
+      "from": "A",
+      "to": "B",
+      "error": "invalid_length"
+    },
+    {
+      "name": "bad-newick",
+      "newick": "(A:1,B:2",
+      "from": "A",
+      "to": "B",
+      "error": "tree_error"
+    }
+  ]
+}

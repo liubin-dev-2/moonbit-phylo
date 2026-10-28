@@ -104,6 +104,14 @@ pub(all) struct ParsimonyResult {
   missing_taxa : Array[String]
 } derive(ToJson, @debug.Debug)
 
+pub(all) struct PatristicPathReport {
+  from_taxon : String
+  to_taxon : String
+  node_ids : Array[Int]
+  edge_ids : Array[Int]
+  distance : Double
+} derive(ToJson, @debug.Debug)
+
 pub(all) enum PhyloError {
   Syntax(Int, String)
   InvalidLength(Int, String)
@@ -139,6 +147,7 @@ pub fn PhyloTree::midpoint_root(Self) -> Result[TransformResult, PhyloError]
 pub fn PhyloTree::nodes(Self) -> Array[NodeRecord]
 pub fn PhyloTree::patristic_distance(Self, String, String) -> Result[Double, PhyloError]
 pub fn PhyloTree::patristic_matrix(Self) -> Result[DistanceMatrix, PhyloError]
+pub fn PhyloTree::patristic_path(Self, String, String) -> Result[PatristicPathReport, PhyloError]
 pub fn PhyloTree::prune(Self, Array[String]) -> Result[TransformResult, PhyloError]
 pub fn PhyloTree::rf_distance_rooted(Self, Self) -> Result[RFComparisonReport, PhyloError]
 pub fn PhyloTree::rf_distance_unrooted(Self, Self) -> Result[RFComparisonReport, PhyloError]

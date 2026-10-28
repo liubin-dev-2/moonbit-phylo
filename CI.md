@@ -16,6 +16,14 @@ input hashes. Small environment controls still run on both targets; Wasm-GC
 must explicitly reject file mode. The new suite uses Python stdlib only and
 does not regenerate the existing reference or range fixtures.
 
+That job also builds and executes `cmd/patristic_path` on JS and Wasm-GC.
+`verification/patristic_path.py` checks complete ordered node/edge witnesses
+against authored undirected graphs and BFS/Fraction expectations, including
+actual export/reparse, Unicode identity, zero/subnormal/one-round sums, overflow
+and existing length-validation errors. The ordinary check jobs record the new
+consumer's compiled hash and run the new public-API native tests. No previous
+reference generator is rerun to create expected results.
+
 CI uses the project's declared compiler `0.10.12+1634b282e`, with Node.js
 24.11.0 and Python 3.14. The installer uses the versioned URLs described by the
 [official installer](https://cli.moonbitlang.com/install/unix.sh) and checks the

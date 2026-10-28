@@ -51,9 +51,27 @@ moon -C recipient run . --target wasm-gc --frozen
 
 这里假设recipient根包是使用这些API的main包；不是从未发布的注册表下载包。已用第13轮封存ZIP的干净解压副本和独立模块验证：不携带产品构建目录或第三方包缓存，标准core仍来自已安装SDK。在既有42物种树上使用新测试请求，导出/读取/重算后继续调用绝对及增量PD，核对整树、逐步贡献边和数值；没有重跑历史测试全集。这是本地源码交付审计，不代表Mooncakes发布或外部CI验收。
 
+## 可追溯叶间路径
+
+`tree.patristic_path(from, to)` 返回 `Result[PatristicPathReport, PhyloError]`，让调用者核查已有叶间距离经过的节点和边。报告含精确叶名 `from_taxon` / `to_taxon`、有序 `node_ids`、有序 `edge_ids` 及 `distance`；节点序列包含两端，`edge_ids[i]` 是连接相邻节点的**子节点 ID**，向上走时也沿用该边的子节点 ID。自身到自身返回一个节点、空边数组和正零距离。零枝、单子节点、多分叉均保留；节点 ID 仅属于本次树，不能跨重读、旋转或修剪直接比较。
+
+距离与错误直接复用 `patristic_distance`：全树非根边必须有有限非负长度，缺失长度即使不在所查询路径上也报错；精确匹配叶名，不把内部节点标签当叶、不做 Unicode 归一化。按实际 binary64 边值精确求和后一次舍入，只在请求路径结果溢出时报 `NumericOverflow`，排除根 stem。Rooted、Unrooted、Unknown 都沿用原距离语义，报告不推断生物学根、不修改树或原距离 API。
+
+```powershell
+$env:PHYLO_PATH_TREE='[&U]((A:1,B:2)X:4,(C:0,D:3)Y:8,Z:0)R:99;'
+$env:PHYLO_PATH_FROM='B'
+$env:PHYLO_PATH_TO='C'
+moon run cmd/patristic_path --target js --frozen
+moon run cmd/patristic_path --target wasm-gc --frozen
+```
+
+此例节点顺序为 B、X、R、Y、C，边的子节点依次为 B、X、Y、C，长度为 2、4、8、0，距离为 14；stem 99 不计。示例输出一个 JSON，含 `ok`、同一树的 `nodes`、既有 Rooting 序列化值（如 `"Unrooted"`）、`tree_newick` 和 `path`。先检查 `ok`；缺环境输入分别报 `missing_tree` / `missing_from` / `missing_to`，未知叶、缺失/非法长度、溢出及树解析错误有明确错误码与诊断。错误仍正常退出，不能只看进程退出码。此示例使用既有 Newick 文本环境传输，保留宿主长度限制，**没有新增路径文件或 stdin 入口**；NJ 文件模式仍仅限下节所述 Node.js。
+
+`verification/patristic_path.py` 在两个后端的真实新进程中，以独立手工边图的 BFS 路径及 Fraction 精确和验证完整有序见证、反向/自身、Unicode 身份、旋转与导出重读、零枝/次正规数、`2^53+1+1`、无关巨大分支及必要错误。构建两个后端的 `cmd/patristic_path` 后，可运行 `python -B verification/patristic_path.py --artifact-dir _build --moonrun moonrun --output path-evidence`。只新增报告与方法；既有接口和报告字段保持。
+
 ## 可选距离矩阵 → 无根 NJ 桥接
 
-调用包额外导入 `"liubin-dev/phylo/nj" @nj` 即可使用；根包不导入该包，原 `moon.mod`、根 `moon.pkg` 和根公共接口未改变。`@nj.neighbor_joining(matrix)` 接受已有 `@phylo.DistanceMatrix`，`@nj.from_json(text)` 接受下述 JSON；两者返回 `Result[NJReport, NJError]`。正式接口见 `nj/pkg.generated.mbti`。
+调用包额外导入 `"liubin-dev/phylo/nj" @nj` 即可使用；根包不导入该包，原 `moon.mod`、根 `moon.pkg` 和既有根 API 保留。`@nj.neighbor_joining(matrix)` 接受已有 `@phylo.DistanceMatrix`，`@nj.from_json(text)` 接受下述 JSON；两者返回 `Result[NJReport, NJError]`。正式接口见 `nj/pkg.generated.mbti`。
 
 ```powershell
 $env:PHYLO_NJ_MATRIX='{"taxa":["A","B","C","D"],"values":[[0,3,9,10],[3,0,10,11],[9,10,0,7],[10,11,7,0]]}'

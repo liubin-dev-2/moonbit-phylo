@@ -42,7 +42,7 @@ jobs:
           moon build --target "$TARGET" --deny-warn --frozen
           extension=js
           if [ "$TARGET" = wasm-gc ]; then extension=wasm; fi
-          sha256sum "_build/$TARGET/debug/build/cmd/main/main.$extension" "_build/$TARGET/debug/build/cmd/plan_document/plan_document.$extension" "_build/$TARGET/debug/build/cmd/nj_matrix/nj_matrix.$extension" "_build/$TARGET/debug/build/phylo.mi" "_build/$TARGET/debug/build/phylo.core" "_build/$TARGET/debug/build/nj/nj.mi" "_build/$TARGET/debug/build/nj/nj.core" > "ci-evidence/compiled-$TARGET.sha256"
+          sha256sum "_build/$TARGET/debug/build/cmd/main/main.$extension" "_build/$TARGET/debug/build/cmd/plan_document/plan_document.$extension" "_build/$TARGET/debug/build/cmd/nj_matrix/nj_matrix.$extension" "_build/$TARGET/debug/build/cmd/patristic_path/patristic_path.$extension" "_build/$TARGET/debug/build/phylo.mi" "_build/$TARGET/debug/build/phylo.core" "_build/$TARGET/debug/build/nj/nj.mi" "_build/$TARGET/debug/build/nj/nj.core" > "ci-evidence/compiled-$TARGET.sha256"
           moon test --target "$TARGET" --deny-warn --frozen | tee "ci-evidence/tests-$TARGET.txt"
       - name: Run existing public consumers
         env:
@@ -93,6 +93,12 @@ jobs:
           python -B verification/nj_range.py --artifact-dir _build --moonrun moonrun --output ci-evidence/nj-range-consumer
       - name: Validate real Node file input and independent 128-tip paths and splits
         run: python -B verification/nj_file.py --artifact-dir _build --moonrun moonrun --output ci-evidence/nj-file-consumer
+      - name: Build and validate independent ordered path consumers on both targets
+        run: |
+          set -euo pipefail
+          moon build cmd/patristic_path --target js --deny-warn --frozen
+          moon build cmd/patristic_path --target wasm-gc --deny-warn --frozen
+          python -B verification/patristic_path.py --artifact-dir _build --moonrun moonrun --output ci-evidence/patristic-path-consumer
       - uses: actions/upload-artifact@v4
         if: always()
         with:
