@@ -99,6 +99,8 @@ jobs:
           moon build cmd/patristic_path --target js --deny-warn --frozen
           moon build cmd/patristic_path --target wasm-gc --deny-warn --frozen
           python -B verification/patristic_path.py --artifact-dir _build --moonrun moonrun --output ci-evidence/patristic-path-consumer
+      - name: Validate native original Newick file handoff to the path consumer
+        run: python -B verification/path_file.py --artifact-dir _build --moonrun moonrun --output ci-evidence/path-file-consumer
       - uses: actions/upload-artifact@v4
         if: always()
         with:

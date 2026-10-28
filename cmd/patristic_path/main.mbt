@@ -25,9 +25,20 @@ fn tree_error(error : @phylo.PhyloError) -> Json {
 
 ///|
 fn consume() -> Json {
-  let newick = match @env.get_env_var("PHYLO_PATH_TREE") {
-    Some(text) => text
-    None => return input_error("missing_tree")
+  let newick = match
+    (
+      @env.get_env_var("PHYLO_PATH_TREE_FILE"),
+      @env.get_env_var("PHYLO_PATH_TREE"),
+    ) {
+    (Some(_), Some(_)) => return input_error("input_source_conflict")
+    (Some(""), None) => return input_error("empty_tree_file")
+    (Some(path), None) =>
+      match read_tree_file(path) {
+        Ok(text) => text
+        Err(error) => return error
+      }
+    (None, Some(text)) => text
+    (None, None) => return input_error("missing_tree")
   }
   let from = match @env.get_env_var("PHYLO_PATH_FROM") {
     Some(taxon) => taxon

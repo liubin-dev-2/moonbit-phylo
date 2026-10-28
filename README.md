@@ -65,9 +65,28 @@ moon run cmd/patristic_path --target js --frozen
 moon run cmd/patristic_path --target wasm-gc --frozen
 ```
 
-此例节点顺序为 B、X、R、Y、C，边的子节点依次为 B、X、Y、C，长度为 2、4、8、0，距离为 14；stem 99 不计。示例输出一个 JSON，含 `ok`、同一树的 `nodes`、既有 Rooting 序列化值（如 `"Unrooted"`）、`tree_newick` 和 `path`。先检查 `ok`；缺环境输入分别报 `missing_tree` / `missing_from` / `missing_to`，未知叶、缺失/非法长度、溢出及树解析错误有明确错误码与诊断。错误仍正常退出，不能只看进程退出码。此示例使用既有 Newick 文本环境传输，保留宿主长度限制，**没有新增路径文件或 stdin 入口**；NJ 文件模式仍仅限下节所述 Node.js。
+此例节点顺序为 B、X、R、Y、C，边的子节点依次为 B、X、Y、C，长度为 2、4、8、0，距离为 14；stem 99 不计。示例输出一个 JSON，含 `ok`、同一树的 `nodes`、既有 Rooting 序列化值（如 `"Unrooted"`）、`tree_newick` 和 `path`。先检查 `ok`；缺环境输入分别报 `missing_tree` / `missing_from` / `missing_to`，未知叶、缺失/非法长度、溢出及树解析错误有明确错误码与诊断。错误仍正常退出，不能只看进程退出码。此文本环境示例支持 JS/Wasm-GC，保留宿主长度限制；切回文本模式前清除 `PHYLO_PATH_TREE_FILE`。原始 Newick 文件模式见下，矩阵 JSON 的 NJ 文件模式另见后节；不提供 stdin。
 
 `verification/patristic_path.py` 在两个后端的真实新进程中，以独立手工边图的 BFS 路径及 Fraction 精确和验证完整有序见证、反向/自身、Unicode 身份、旋转与导出重读、零枝/次正规数、`2^53+1+1`、无关巨大分支及必要错误。构建两个后端的 `cmd/patristic_path` 后，可运行 `python -B verification/patristic_path.py --artifact-dir _build --moonrun moonrun --output path-evidence`。只新增报告与方法；既有接口和报告字段保持。
+
+### 原始 Newick 文件 → 路径报告（Node.js）
+
+JS / Node.js CommonJS 宿主可将 `PHYLO_PATH_TREE_FILE` 设为原始 UTF-8 Newick 文件路径；进程自行只读文件并严格解码，再调用同一个解析器和路径函数。完整树文本不进入环境变量或 argv，不经 NJ 重建，保留原 rooting、注释、完整标签、节点/子边 ID 及原成功 JSON。文件读取不修改输入。Wasm-GC 仍支持原文本模式，指定文件则明确报 `unsupported_file_host`。
+
+```powershell
+# 写入无 BOM 的示例；也可直接指定已有原树文件。
+[IO.File]::WriteAllText((Join-Path (Get-Location) 'study.newick'), '[&U]((A:1,B:2)X:4,(C:0,D:3)Y:8,Z:0)R:99;', [Text.UTF8Encoding]::new($false))
+Remove-Item Env:PHYLO_PATH_TREE -ErrorAction SilentlyContinue
+$env:PHYLO_PATH_TREE_FILE = (Resolve-Path -LiteralPath study.newick).Path
+$env:PHYLO_PATH_FROM = 'B'
+$env:PHYLO_PATH_TO = 'C'
+moon run cmd/patristic_path --target js --frozen
+Remove-Item Env:PHYLO_PATH_TREE_FILE
+```
+
+路径按字面读取，不 trim、不做 Unicode 归一化、不展开通配符；相对路径以进程 cwd 为准。file/text 两变量同时存在（包括空值）报 `input_source_conflict`；空路径报 `empty_tree_file`；读取失败报 `file_read_error` 并附 Node `code`；非法/截断 UTF-8 报 `invalid_utf8`。选择文件后错误直接返回，不降级到文本或默认树。来源选择/读取/解码先于端点检查；成功读到 String 后仍依次检查 from、to，再沿用原解析/领域错误映射。BOM 原样保留交给 **Newick**，不复制矩阵 JSON 的 BOM 剥离；既有解析器会拒绝这里测试的带 BOM 括号树。端点仍由环境变量传递，宿主内存、路径、权限和端点长度限制继续适用；读取是同步、全文件入内存。
+
+实测的完整合成原树为 64 个长标签、66 条手工指定边、42,163 字节：PowerShell 5.1 设置长文本环境变量失败，同机 PowerShell 7.6/Python Unicode 环境块成功；默认 PowerShell 7.6 UTF-8 文本读取会替换测试中的非法字节。文件模式补充同进程原始字节交接及明确错误，不称为 String API 缺陷或所有 Windows 统一失败。`verification/path_file.py` 在真实 Node 新进程中只传路径与端点，独立核对完整边图、child 顺序、注释/rooting/stem、正反/自身路径和距离位模式，另含必要文件/编码/解析错误及旧双后端文本对照，保存输入前后哈希。构建两个后端后运行 `python -B verification/path_file.py --artifact-dir _build --moonrun moonrun --output path-file-evidence`。这不增加科学算法、格式或持久节点身份。
 
 ## 可选距离矩阵 → 无根 NJ 桥接
 

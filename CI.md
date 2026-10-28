@@ -24,6 +24,14 @@ and existing length-validation errors. The ordinary check jobs record the new
 consumer's compiled hash and run the new public-API native tests. No previous
 reference generator is rerun to create expected results.
 
+The required job also executes `verification/path_file.py`: a fresh Node process
+reads original Newick bytes using the path-only selector, with independent full
+graph/path, comments/rooting/stem and input-hash checks. It covers literal file
+paths, strict UTF-8/BOM and parser/domain/selection errors. Existing JS/Wasm-GC
+text controls remain; Wasm-GC file mode must explicitly reject the request.
+This is a transport check, without regenerating scientific fixtures or adding
+a new parser, format or numerical algorithm.
+
 CI uses the project's declared compiler `0.10.12+1634b282e`, with Node.js
 24.11.0 and Python 3.14. The installer uses the versioned URLs described by the
 [official installer](https://cli.moonbitlang.com/install/unix.sh) and checks the
