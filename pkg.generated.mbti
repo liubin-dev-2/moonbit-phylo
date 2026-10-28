@@ -10,6 +10,14 @@ import {
 // Errors
 
 // Types and methods
+pub(all) struct AuthoredLeafRouteReport {
+  from_taxon : String
+  to_taxon : String
+  node_ids : Array[Int]
+  edge_ids : Array[Int]
+  authored_edge_count : Int
+} derive(ToJson, @debug.Debug)
+
 pub(all) struct DistanceMatrix {
   taxa : Array[String]
   values : Array[Array[Double]]
@@ -137,6 +145,7 @@ pub struct PhyloTree {
   rooting : Rooting
   comments : Array[String]
 }
+pub fn PhyloTree::authored_leaf_route(Self, String, String) -> Result[AuthoredLeafRouteReport, PhyloError]
 pub fn PhyloTree::faith_pd(Self, Array[String]) -> Result[FaithPDReport, PhyloError]
 pub fn PhyloTree::faith_pd_gain(Self, Array[String], Array[String]) -> Result[FaithPDGainReport, PhyloError]
 pub fn PhyloTree::faith_pd_greedy(Self, Array[String], Array[String], UInt) -> Result[FaithPDGreedyReport, PhyloError]

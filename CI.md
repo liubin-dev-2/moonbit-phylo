@@ -39,6 +39,14 @@ zero edges and unresolved trees; structured selection/parse/root/leaf-set errors
 and exactly one JSON response are checked. The core RF algorithm and old
 scientific reference fixtures are unchanged.
 
+`verification/authored_route_recipient.py` creates a separate public-import
+highlighter module/workspace and executes it on JS and Wasm-GC in the required
+job. Literal hand roles are mapped through original pre-query NodeRecord IDs,
+checking ordered nodes/child-edges, highlighting, missing/zero lengths, markers,
+stem/subdivision behavior, errors and new result ownership. The ordinary native
+gates retain weighted path regressions after the narrowly shared geometry;
+numeric algorithms and previous reference generators remain unchanged.
+
 CI uses the project's declared compiler `0.10.12+1634b282e`, with Node.js
 24.11.0 and Python 3.14. The installer uses the versioned URLs described by the
 [official installer](https://cli.moonbitlang.com/install/unix.sh) and checks the

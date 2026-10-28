@@ -70,6 +70,26 @@ moon run cmd/rf_compare --target wasm-gc --frozen
 
 构建两个后端后，`python -B verification/rf_recipient.py --artifact-dir _build --moonrun moonrun --output rf-evidence` 会从保存的 Newick 文件向真实新进程发送请求，核对预先手工列出的完整 clade/split 报告、反向结果和明确错误，检查单响应及输入哈希。它验证新接收方的模式分派与原报告交接，不声称新 RF 算法。
 
+## 原作者图的长度无关叶间 route
+
+`tree.authored_leaf_route(from, to)` 返回 `Result[AuthoredLeafRouteReport, PhyloError]`，供树查看/标注接收程序用同一棵树的原 `NodeRecord` ID 高亮两叶间的节点和 child-edges。它不读取、不补齐枝长；合法树缺长度或边长为零时仍保留原 route。字段为 `from_taxon`、`to_taxon`、有序 `node_ids` / `edge_ids` 和 `authored_edge_count`，**没有距离字段**。端点精确匹配叶名；内部标签不是端点，未知名按 from、再 to 返回 `UnknownTaxon`。
+
+在 `[&U](((A)U,B)X,(C,D)Y)R;` 上，A→C 节点为 A/U/X/R/Y/C，edge 的原 child 依次为 A/U/X/Y/C，即使向上走也不改用 parent ID。反向仅反转该序列；B→B 是一个原节点、空边数组。原 unary U、degree2 R/root seed 均保留，root stem 没有 parent edge。将 A 与 U 间细分加入 Q 会把这条原图 route 的边数从 5 改为 6。因此 count 只数**这一原图**的边，不能称作根/细分不变的拓扑距离、RF、归一化指标或填单位长度后的 patristic 距离。
+
+Rooted/Unrooted/Unknown 标记、长度、注释和原图不被修改；结果数组由调用方持有，ID 仅对应同一树的 `nodes()`，不跨重读/变换持久，也不是布局坐标。原解析器仍拒绝非法 Newick/长度语法。旧 `patristic_path` / distance 继续先检查全树非根长度并保留原数值、错误顺序与 JSON；缺长度时包括 self 的原 `MissingLength` 不因这个新图查询而放宽。
+
+`examples/authored_route_highlighter` 是**单独 MoonBit 模块**，只导入公开 `liubin-dev/phylo`：先保存原 nodes 快照，再把 route ID 应用到原 node/child-edge 高亮样式索引，示例不实现 viewer/布局或新文件传输。在共同父目录将本库放为 product、该示例放为 receiver，执行 `moon work init ./product ./receiver` 后可运行：
+
+```powershell
+$env:PHYLO_ROUTE_TREE='[&U](((A)U,B)X,(C,D)Y)R;'
+$env:PHYLO_ROUTE_FROM='A'
+$env:PHYLO_ROUTE_TO='C'
+moon -C receiver run . --target js --frozen
+moon -C receiver run . --target wasm-gc --frozen
+```
+
+`python -B verification/authored_route_recipient.py --moon moon --moonrun moonrun --output route-evidence` 会在新输出目录创建本地 product/receiver workspace，在真实双后端公共包消费者中，以**原节点快照映射手写 role 序列**核对精确 IDs、邻接、高亮、缺/零长度、marker/stem/显式细分、精确标签、错误和新报告 ownership。这是实际运行的公共包 highlighter 示例，不代表部署、用户签字、采用或性能证据；不重新生成旧科学参考。
+
 ## 可追溯叶间路径
 
 `tree.patristic_path(from, to)` 返回 `Result[PatristicPathReport, PhyloError]`，让调用者核查已有叶间距离经过的节点和边。报告含精确叶名 `from_taxon` / `to_taxon`、有序 `node_ids`、有序 `edge_ids` 及 `distance`；节点序列包含两端，`edge_ids[i]` 是连接相邻节点的**子节点 ID**，向上走时也沿用该边的子节点 ID。自身到自身返回一个节点、空边数组和正零距离。零枝、单子节点、多分叉均保留；节点 ID 仅属于本次树，不能跨重读、旋转或修剪直接比较。

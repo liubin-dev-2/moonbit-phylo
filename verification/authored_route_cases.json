@@ -1,0 +1,1084 @@
+{
+  "oracle": "Literal authored roles and child-edge routes from frozen hand graph plus explicitly specified variants. Original nodes snapshot maps roles to IDs; no new product generates expectations.",
+  "cases": [
+    {
+      "name": "unrooted",
+      "newick": "[&U](((A)U,B)X,(C,D)Y)R;",
+      "nodes": [
+        {
+          "role": "R",
+          "parent": null,
+          "children": [
+            "X",
+            "Y"
+          ]
+        },
+        {
+          "role": "X",
+          "parent": "R",
+          "children": [
+            "U",
+            "B"
+          ]
+        },
+        {
+          "role": "U",
+          "parent": "X",
+          "children": [
+            "A"
+          ]
+        },
+        {
+          "role": "A",
+          "parent": "U",
+          "children": []
+        },
+        {
+          "role": "B",
+          "parent": "X",
+          "children": []
+        },
+        {
+          "role": "Y",
+          "parent": "R",
+          "children": [
+            "C",
+            "D"
+          ]
+        },
+        {
+          "role": "C",
+          "parent": "Y",
+          "children": []
+        },
+        {
+          "role": "D",
+          "parent": "Y",
+          "children": []
+        }
+      ],
+      "queries": [
+        {
+          "from": "A",
+          "to": "C",
+          "nodeRoles": [
+            "A",
+            "U",
+            "X",
+            "R",
+            "Y",
+            "C"
+          ],
+          "edgeChildRoles": [
+            "A",
+            "U",
+            "X",
+            "Y",
+            "C"
+          ],
+          "authored_edge_count": 5
+        },
+        {
+          "from": "C",
+          "to": "A",
+          "nodeRoles": [
+            "C",
+            "Y",
+            "R",
+            "X",
+            "U",
+            "A"
+          ],
+          "edgeChildRoles": [
+            "C",
+            "Y",
+            "X",
+            "U",
+            "A"
+          ],
+          "authored_edge_count": 5
+        },
+        {
+          "from": "B",
+          "to": "B",
+          "nodeRoles": [
+            "B"
+          ],
+          "edgeChildRoles": [],
+          "authored_edge_count": 0
+        },
+        {
+          "from": "A",
+          "to": "B",
+          "nodeRoles": [
+            "A",
+            "U",
+            "X",
+            "B"
+          ],
+          "edgeChildRoles": [
+            "A",
+            "U",
+            "B"
+          ],
+          "authored_edge_count": 3
+        }
+      ],
+      "rooting": "Unrooted",
+      "weighted": "missing"
+    },
+    {
+      "name": "rooted",
+      "newick": "[&R](((A)U,B)X,(C,D)Y)R;",
+      "nodes": [
+        {
+          "role": "R",
+          "parent": null,
+          "children": [
+            "X",
+            "Y"
+          ]
+        },
+        {
+          "role": "X",
+          "parent": "R",
+          "children": [
+            "U",
+            "B"
+          ]
+        },
+        {
+          "role": "U",
+          "parent": "X",
+          "children": [
+            "A"
+          ]
+        },
+        {
+          "role": "A",
+          "parent": "U",
+          "children": []
+        },
+        {
+          "role": "B",
+          "parent": "X",
+          "children": []
+        },
+        {
+          "role": "Y",
+          "parent": "R",
+          "children": [
+            "C",
+            "D"
+          ]
+        },
+        {
+          "role": "C",
+          "parent": "Y",
+          "children": []
+        },
+        {
+          "role": "D",
+          "parent": "Y",
+          "children": []
+        }
+      ],
+      "queries": [
+        {
+          "from": "A",
+          "to": "C",
+          "nodeRoles": [
+            "A",
+            "U",
+            "X",
+            "R",
+            "Y",
+            "C"
+          ],
+          "edgeChildRoles": [
+            "A",
+            "U",
+            "X",
+            "Y",
+            "C"
+          ],
+          "authored_edge_count": 5
+        },
+        {
+          "from": "C",
+          "to": "A",
+          "nodeRoles": [
+            "C",
+            "Y",
+            "R",
+            "X",
+            "U",
+            "A"
+          ],
+          "edgeChildRoles": [
+            "C",
+            "Y",
+            "X",
+            "U",
+            "A"
+          ],
+          "authored_edge_count": 5
+        },
+        {
+          "from": "B",
+          "to": "B",
+          "nodeRoles": [
+            "B"
+          ],
+          "edgeChildRoles": [],
+          "authored_edge_count": 0
+        },
+        {
+          "from": "A",
+          "to": "B",
+          "nodeRoles": [
+            "A",
+            "U",
+            "X",
+            "B"
+          ],
+          "edgeChildRoles": [
+            "A",
+            "U",
+            "B"
+          ],
+          "authored_edge_count": 3
+        }
+      ],
+      "rooting": "Rooted",
+      "weighted": "missing"
+    },
+    {
+      "name": "unknown",
+      "newick": "(((A)U,B)X,(C,D)Y)R;",
+      "nodes": [
+        {
+          "role": "R",
+          "parent": null,
+          "children": [
+            "X",
+            "Y"
+          ]
+        },
+        {
+          "role": "X",
+          "parent": "R",
+          "children": [
+            "U",
+            "B"
+          ]
+        },
+        {
+          "role": "U",
+          "parent": "X",
+          "children": [
+            "A"
+          ]
+        },
+        {
+          "role": "A",
+          "parent": "U",
+          "children": []
+        },
+        {
+          "role": "B",
+          "parent": "X",
+          "children": []
+        },
+        {
+          "role": "Y",
+          "parent": "R",
+          "children": [
+            "C",
+            "D"
+          ]
+        },
+        {
+          "role": "C",
+          "parent": "Y",
+          "children": []
+        },
+        {
+          "role": "D",
+          "parent": "Y",
+          "children": []
+        }
+      ],
+      "queries": [
+        {
+          "from": "A",
+          "to": "C",
+          "nodeRoles": [
+            "A",
+            "U",
+            "X",
+            "R",
+            "Y",
+            "C"
+          ],
+          "edgeChildRoles": [
+            "A",
+            "U",
+            "X",
+            "Y",
+            "C"
+          ],
+          "authored_edge_count": 5
+        },
+        {
+          "from": "C",
+          "to": "A",
+          "nodeRoles": [
+            "C",
+            "Y",
+            "R",
+            "X",
+            "U",
+            "A"
+          ],
+          "edgeChildRoles": [
+            "C",
+            "Y",
+            "X",
+            "U",
+            "A"
+          ],
+          "authored_edge_count": 5
+        },
+        {
+          "from": "B",
+          "to": "B",
+          "nodeRoles": [
+            "B"
+          ],
+          "edgeChildRoles": [],
+          "authored_edge_count": 0
+        },
+        {
+          "from": "A",
+          "to": "B",
+          "nodeRoles": [
+            "A",
+            "U",
+            "X",
+            "B"
+          ],
+          "edgeChildRoles": [
+            "A",
+            "U",
+            "B"
+          ],
+          "authored_edge_count": 3
+        }
+      ],
+      "rooting": "Unknown",
+      "weighted": "missing"
+    },
+    {
+    "name": "stem",
+    "newick": "[&U](((A)U[u-note],B)X,(C,D)Y)R:99[r-note];[tree-note]",
+      "nodes": [
+        {
+          "role": "R",
+          "parent": null,
+          "children": [
+            "X",
+            "Y"
+          ],
+          "length": 99
+        },
+        {
+          "role": "X",
+          "parent": "R",
+          "children": [
+            "U",
+            "B"
+          ]
+        },
+        {
+          "role": "U",
+          "parent": "X",
+          "children": [
+            "A"
+          ]
+        },
+        {
+          "role": "A",
+          "parent": "U",
+          "children": []
+        },
+        {
+          "role": "B",
+          "parent": "X",
+          "children": []
+        },
+        {
+          "role": "Y",
+          "parent": "R",
+          "children": [
+            "C",
+            "D"
+          ]
+        },
+        {
+          "role": "C",
+          "parent": "Y",
+          "children": []
+        },
+        {
+          "role": "D",
+          "parent": "Y",
+          "children": []
+        }
+      ],
+      "queries": [
+        {
+          "from": "A",
+          "to": "C",
+          "nodeRoles": [
+            "A",
+            "U",
+            "X",
+            "R",
+            "Y",
+            "C"
+          ],
+          "edgeChildRoles": [
+            "A",
+            "U",
+            "X",
+            "Y",
+            "C"
+          ],
+          "authored_edge_count": 5
+        },
+        {
+          "from": "C",
+          "to": "A",
+          "nodeRoles": [
+            "C",
+            "Y",
+            "R",
+            "X",
+            "U",
+            "A"
+          ],
+          "edgeChildRoles": [
+            "C",
+            "Y",
+            "X",
+            "U",
+            "A"
+          ],
+          "authored_edge_count": 5
+        },
+        {
+          "from": "B",
+          "to": "B",
+          "nodeRoles": [
+            "B"
+          ],
+          "edgeChildRoles": [],
+          "authored_edge_count": 0
+        },
+        {
+          "from": "A",
+          "to": "B",
+          "nodeRoles": [
+            "A",
+            "U",
+            "X",
+            "B"
+          ],
+          "edgeChildRoles": [
+            "A",
+            "U",
+            "B"
+          ],
+          "authored_edge_count": 3
+        }
+      ],
+      "rooting": "Unrooted",
+      "weighted": "missing"
+    },
+    {
+      "name": "zero",
+      "newick": "[&U](((A:0)U:0,B:0)X:0,(C:0,D:0)Y:0)R:99;",
+      "nodes": [
+        {
+          "role": "R",
+          "parent": null,
+          "children": [
+            "X",
+            "Y"
+          ],
+          "length": 99
+        },
+        {
+          "role": "X",
+          "parent": "R",
+          "children": [
+            "U",
+            "B"
+          ],
+          "length": 0
+        },
+        {
+          "role": "U",
+          "parent": "X",
+          "children": [
+            "A"
+          ],
+          "length": 0
+        },
+        {
+          "role": "A",
+          "parent": "U",
+          "children": [],
+          "length": 0
+        },
+        {
+          "role": "B",
+          "parent": "X",
+          "children": [],
+          "length": 0
+        },
+        {
+          "role": "Y",
+          "parent": "R",
+          "children": [
+            "C",
+            "D"
+          ],
+          "length": 0
+        },
+        {
+          "role": "C",
+          "parent": "Y",
+          "children": [],
+          "length": 0
+        },
+        {
+          "role": "D",
+          "parent": "Y",
+          "children": [],
+          "length": 0
+        }
+      ],
+      "queries": [
+        {
+          "from": "A",
+          "to": "C",
+          "nodeRoles": [
+            "A",
+            "U",
+            "X",
+            "R",
+            "Y",
+            "C"
+          ],
+          "edgeChildRoles": [
+            "A",
+            "U",
+            "X",
+            "Y",
+            "C"
+          ],
+          "authored_edge_count": 5
+        },
+        {
+          "from": "C",
+          "to": "A",
+          "nodeRoles": [
+            "C",
+            "Y",
+            "R",
+            "X",
+            "U",
+            "A"
+          ],
+          "edgeChildRoles": [
+            "C",
+            "Y",
+            "X",
+            "U",
+            "A"
+          ],
+          "authored_edge_count": 5
+        },
+        {
+          "from": "B",
+          "to": "B",
+          "nodeRoles": [
+            "B"
+          ],
+          "edgeChildRoles": [],
+          "authored_edge_count": 0
+        },
+        {
+          "from": "A",
+          "to": "B",
+          "nodeRoles": [
+            "A",
+            "U",
+            "X",
+            "B"
+          ],
+          "edgeChildRoles": [
+            "A",
+            "U",
+            "B"
+          ],
+          "authored_edge_count": 3
+        }
+      ],
+      "rooting": "Unrooted",
+      "weighted": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "subdivided",
+      "newick": "[&U]((((A)Q)U,B)X,(C,D)Y)R;",
+      "nodes": [
+        {
+          "role": "R",
+          "parent": null,
+          "children": [
+            "X",
+            "Y"
+          ]
+        },
+        {
+          "role": "X",
+          "parent": "R",
+          "children": [
+            "U",
+            "B"
+          ]
+        },
+        {
+          "role": "U",
+          "parent": "X",
+          "children": [
+            "Q"
+          ]
+        },
+        {
+          "role": "Q",
+          "parent": "U",
+          "children": [
+            "A"
+          ]
+        },
+        {
+          "role": "A",
+          "parent": "Q",
+          "children": []
+        },
+        {
+          "role": "B",
+          "parent": "X",
+          "children": []
+        },
+        {
+          "role": "Y",
+          "parent": "R",
+          "children": [
+            "C",
+            "D"
+          ]
+        },
+        {
+          "role": "C",
+          "parent": "Y",
+          "children": []
+        },
+        {
+          "role": "D",
+          "parent": "Y",
+          "children": []
+        }
+      ],
+      "queries": [
+        {
+          "from": "A",
+          "to": "C",
+          "nodeRoles": [
+            "A",
+            "Q",
+            "U",
+            "X",
+            "R",
+            "Y",
+            "C"
+          ],
+          "edgeChildRoles": [
+            "A",
+            "Q",
+            "U",
+            "X",
+            "Y",
+            "C"
+          ],
+          "authored_edge_count": 6
+        },
+        {
+          "from": "C",
+          "to": "A",
+          "nodeRoles": [
+            "C",
+            "Y",
+            "R",
+            "X",
+            "U",
+            "Q",
+            "A"
+          ],
+          "edgeChildRoles": [
+            "C",
+            "Y",
+            "X",
+            "U",
+            "Q",
+            "A"
+          ],
+          "authored_edge_count": 6
+        },
+        {
+          "from": "B",
+          "to": "B",
+          "nodeRoles": [
+            "B"
+          ],
+          "edgeChildRoles": [],
+          "authored_edge_count": 0
+        },
+        {
+          "from": "A",
+          "to": "B",
+          "nodeRoles": [
+            "A",
+            "Q",
+            "U",
+            "X",
+            "B"
+          ],
+          "edgeChildRoles": [
+            "A",
+            "Q",
+            "U",
+            "B"
+          ],
+          "authored_edge_count": 4
+        }
+      ],
+      "rooting": "Unrooted",
+      "weighted": "missing"
+    },
+    {
+      "name": "weighted",
+      "newick": "[&U](((A:1)U:2,B:3)X:4,(C:5,D:6)Y:7)R:99;",
+      "nodes": [
+        {
+          "role": "R",
+          "parent": null,
+          "children": [
+            "X",
+            "Y"
+          ],
+          "length": 99
+        },
+        {
+          "role": "X",
+          "parent": "R",
+          "children": [
+            "U",
+            "B"
+          ],
+          "length": 4
+        },
+        {
+          "role": "U",
+          "parent": "X",
+          "children": [
+            "A"
+          ],
+          "length": 2
+        },
+        {
+          "role": "A",
+          "parent": "U",
+          "children": [],
+          "length": 1
+        },
+        {
+          "role": "B",
+          "parent": "X",
+          "children": [],
+          "length": 3
+        },
+        {
+          "role": "Y",
+          "parent": "R",
+          "children": [
+            "C",
+            "D"
+          ],
+          "length": 7
+        },
+        {
+          "role": "C",
+          "parent": "Y",
+          "children": [],
+          "length": 5
+        },
+        {
+          "role": "D",
+          "parent": "Y",
+          "children": [],
+          "length": 6
+        }
+      ],
+      "queries": [
+        {
+          "from": "A",
+          "to": "C",
+          "nodeRoles": [
+            "A",
+            "U",
+            "X",
+            "R",
+            "Y",
+            "C"
+          ],
+          "edgeChildRoles": [
+            "A",
+            "U",
+            "X",
+            "Y",
+            "C"
+          ],
+          "authored_edge_count": 5
+        },
+        {
+          "from": "C",
+          "to": "A",
+          "nodeRoles": [
+            "C",
+            "Y",
+            "R",
+            "X",
+            "U",
+            "A"
+          ],
+          "edgeChildRoles": [
+            "C",
+            "Y",
+            "X",
+            "U",
+            "A"
+          ],
+          "authored_edge_count": 5
+        },
+        {
+          "from": "B",
+          "to": "B",
+          "nodeRoles": [
+            "B"
+          ],
+          "edgeChildRoles": [],
+          "authored_edge_count": 0
+        },
+        {
+          "from": "A",
+          "to": "B",
+          "nodeRoles": [
+            "A",
+            "U",
+            "X",
+            "B"
+          ],
+          "edgeChildRoles": [
+            "A",
+            "U",
+            "B"
+          ],
+          "authored_edge_count": 3
+        }
+      ],
+      "rooting": "Unrooted",
+      "weighted": [
+        19,
+        19,
+        0,
+        6
+      ]
+    },
+    {
+      "name": "exact-labels",
+      "newick": "[&R]((('Café')U,'Café')X,'O''Brien_😀')R;",
+      "nodes": [
+        {
+          "role": "R",
+          "parent": null,
+          "children": [
+            "X",
+            "O'Brien_😀"
+          ]
+        },
+        {
+          "role": "X",
+          "parent": "R",
+          "children": [
+            "U",
+            "Café"
+          ]
+        },
+        {
+          "role": "U",
+          "parent": "X",
+          "children": [
+            "Café"
+          ]
+        },
+        {
+          "role": "Café",
+          "parent": "U",
+          "children": []
+        },
+        {
+          "role": "Café",
+          "parent": "X",
+          "children": []
+        },
+        {
+          "role": "O'Brien_😀",
+          "parent": "R",
+          "children": []
+        }
+      ],
+      "queries": [
+        {
+          "from": "Café",
+          "to": "Café",
+          "nodeRoles": [
+            "Café",
+            "U",
+            "X",
+            "Café"
+          ],
+          "edgeChildRoles": [
+            "Café",
+            "U",
+            "Café"
+          ],
+          "authored_edge_count": 3
+        },
+        {
+          "from": "Café",
+          "to": "O'Brien_😀",
+          "nodeRoles": [
+            "Café",
+            "U",
+            "X",
+            "R",
+            "O'Brien_😀"
+          ],
+          "edgeChildRoles": [
+            "Café",
+            "U",
+            "X",
+            "O'Brien_😀"
+          ],
+          "authored_edge_count": 4
+        }
+      ],
+      "rooting": "Rooted",
+      "weighted": "missing"
+    },
+    {
+      "name": "single-root",
+      "newick": "[&U]'only':99;",
+      "nodes": [
+        {
+          "role": "only",
+          "parent": null,
+          "children": [],
+          "length": 99
+        }
+      ],
+      "queries": [
+        {
+          "from": "only",
+          "to": "only",
+          "nodeRoles": [
+            "only"
+          ],
+          "edgeChildRoles": [],
+          "authored_edge_count": 0
+        }
+      ],
+      "rooting": "Unrooted",
+      "weighted": [
+        0
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "name": "from-before-to",
+      "tree": "[&U](((A)U,B)X,(C,D)Y)R;",
+      "from": "absent",
+      "to": "also absent",
+      "error": "unknown_taxon",
+      "taxon": "absent"
+    },
+    {
+      "name": "unknown-to",
+      "tree": "[&U](((A)U,B)X,(C,D)Y)R;",
+      "from": "A",
+      "to": "absent",
+      "error": "unknown_taxon",
+      "taxon": "absent"
+    },
+    {
+      "name": "internal-from",
+      "tree": "[&U](((A)U,B)X,(C,D)Y)R;",
+      "from": "U",
+      "to": "C",
+      "error": "unknown_taxon",
+      "taxon": "U"
+    },
+    {
+      "name": "internal-to",
+      "tree": "[&U](((A)U,B)X,(C,D)Y)R;",
+      "from": "A",
+      "to": "R",
+      "error": "unknown_taxon",
+      "taxon": "R"
+    },
+    {
+      "name": "parser-incomplete",
+      "tree": "(A,B",
+      "from": "A",
+      "to": "B",
+      "error": "parser_error"
+    },
+    {
+      "name": "parser-invalid-length",
+      "tree": "(A:-1,B:1);",
+      "from": "A",
+      "to": "B",
+      "error": "parser_error"
+    }
+  ]
+}
