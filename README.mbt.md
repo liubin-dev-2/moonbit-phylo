@@ -68,7 +68,9 @@ moon run cmd/nj_matrix --target wasm-gc --frozen
 
 算法先按 MoonBit 字符串 UTF-16 字典序重排双轴，再沿发布版 NJ 的行和、Q 和距离缩减公式计算。严格比较实际 binary64 Q；完全相等时取活动数组首个 `i<j`，未合并项保持顺序、新簇追加。四叶互补 Q 平局和三簇的固有平局不代表拓扑精度证明。零枝保留，既有 RF 会把零内枝当作存在的拓扑边。
 
-负计算枝长明确返回 `negative_limb`，附簇叶集、计算枝长及位模式；负零和除二前已为负的极小分子也不会被裁剪成成功树。每个 NJ 中间值必须有限，溢出报 `numeric_overflow`，**不承诺所有有限输入都能避免中间溢出**。两叶采用规范首叶 0 枝、次叶完整距离，保留最小正 binary64 的唯一路径；末三簇用三枝星形结束。输出明确无根，不选生物学祖先、不自动换根，也不自动进入 PD；直接调用既有 `faith_pd` 仍报 `RootedTreeRequired`。
+负计算枝长明确返回 `negative_limb`，附簇叶集、原输入单位的枝长及位模式；负零和除二前已为负的极小分子也不会被裁剪成成功树。先沿原 binary64 次序计算，原本成功的结果保持原路径；仅在 NJ 构建中间溢出时，从原矩阵以 `2^-8` 单位重新计算一次，导出枝长乘回 `2^8`。转换必须精确往返，非零转换输入和距离中间量须保持正规数；落入次正规数区间、除法丢成零、恢复枝长溢出或最终路径不可表示，均报 `numeric_overflow`。这项保守补强仍可能拒绝部分本可表示的树，**不承诺所有有限矩阵都能成功**，不放宽输入容差或裁枝。
+
+例如枝长为 `2/3/5/6/7/13/8 × 2^1019` 的五叶可加树，最大路径为 `31 × 2^1019`，虽行和溢出，仍能返回其精确 binary64 枝和路径；混合案例同时保留 `2^-1000` 末端枝和 `2^1023` 距离。若缩放会损失 `2^-1073` 的正距离，仍明确报范围错误。两叶采用规范首叶 0 枝、次叶完整距离，保留最小正 binary64 的唯一路径；末三簇用三枝星形结束。输出明确无根，不选生物学祖先、不自动换根，也不自动进入 PD；直接调用既有 `faith_pd` 仍报 `RootedTreeRequired`。
 
 残差定义为 `D' - D`，最大值为绝对残差最大值，RMS 在无序 `i<j` 对上按最大残差缩放计算。任意非可加矩阵通常 `D' != D`；例如四点环 `[[0,1,2,1],[1,0,1,2],[2,1,0,1],[1,2,1,0]]` 按声明的平局规则取 AB|CD，末端枝及内枝均为 0.5，最大残差 0.5、RMS 为 `sqrt(1/6)`。NJ 使用检查过的 binary64 算术，舍入可能损失极小正枝，残差会披露；既有核心距离/PD 的精确整数累计未改变。
 
@@ -83,7 +85,10 @@ moon build cmd/nj_matrix --target js --deny-warn --frozen
 moon build cmd/nj_matrix --target wasm-gc --deny-warn --frozen
 # 在隔离环境按 verification/nj-reference-requirements.txt 安装参考库后：
 python -B verification/nj_reference.py --artifact-dir _build --moonrun moonrun --output nj-validation
+python -B verification/nj_range.py --artifact-dir _build --moonrun moonrun --output nj-range-validation
 ```
+
+范围回归另以手定树及 `Fraction(实际 binary64)` 的独立预期逐位核对枝与路径，覆盖最大有限三叶星形、混合量级、缩放中间下溢、原单位负枝和真实拟合路径溢出；不会在验证时重新生成期待值。
 
 这里不提供序列对齐、替换模型、bootstrap 或真祖先/无偏保证，也没有新增性能承诺。
 

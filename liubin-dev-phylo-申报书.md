@@ -15,7 +15,7 @@ Phylo将树分析、物种选择和计划重算核验放进原生MoonBit库，�
 
 解析与求解由MoonBit完成；Node.js或moonrun执行对应后端，宿主负责文件与环境变量传递，Python仅做离线验证。距离与PD按输入Double的精确整数单位求和后一次舍入，不可表示时报数值错误。
 
-NJ适配实际发布的IvanAXu/BioSeqs 0.1.9构建子集，保留Apache-2.0许可与溯源；binary64中间溢出报错，输入容差为零、Q平局按规范顺序，根包接口/依赖不变。双后端以手算和固定Biopython核对分支、拟合距离及噪声/负枝边界。
+NJ适配实际发布的IvanAXu/BioSeqs 0.1.9构建子集，保留Apache-2.0许可与溯源；构建溢出时尝试受保护幂二重算，不安全缩放及真实输出溢出仍报错。输入容差为零、Q平局按规范顺序，根包接口/依赖不变。双后端以手算、精确分数和固定Biopython核对枝、路径及混合量级/负枝边界。
 
 项目根执行`moon run cmd/plan_document --target js`可输出计划，默认新增D、B、增益19；NJ矩阵、复核及续选用法见README。
 

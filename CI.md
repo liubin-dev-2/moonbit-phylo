@@ -4,7 +4,9 @@ The [MoonBit checks workflow](https://github.com/liubin-dev-2/moonbit-phylo/acti
 runs on ordinary Ubuntu 24.04 GitHub-hosted runners. Both `js` and `wasm-gc`
 must pass formatting, interface review, strict check, build, all native tests and
 the existing public consumers. The independent NJ job also executes both built
-consumers against the fixed Biopython goldens; an error payload is a failure.
+consumers against the fixed Biopython goldens and hand-tree/Fraction range
+expectations, including tiny mixed-scale branches and genuine output overflow.
+Every case checks its declared success/error expectation.
 
 CI uses the project's declared compiler `0.10.12+1634b282e`, with Node.js
 24.11.0 and Python 3.14. The installer uses the versioned URLs described by the

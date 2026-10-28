@@ -31,9 +31,14 @@ into the existing core. Added compatibility policy:
 
 1. Validate and copy a 2..128 exact-label matrix before canonical sorting. The
    diagonal and symmetry tolerance are exactly zero; signed zero is normalized.
-2. Check each NJ arithmetic intermediate for finite binary64 values; report a
-   numeric-range error rather than exporting NaN/Infinity. There is no promise
-   that every finite input avoids intermediate overflow.
+2. Keep the original arithmetic path first. On construction overflow only, retry
+   once from canonical input in exact power-of-two units (divide by256, restore
+   exported limbs by256). Every converted input must round-trip exactly and
+   every nonzero retry distance intermediate must be normal binary64; reject
+   unsafe gradual underflow and nonzero division becoming zero. Restored limbs
+   and existing exact core paths must remain representable. Negative diagnostics
+   use original units. This conservatively extends range without promising all
+   finite matrices, clipping branches or changing the recurrence/tie order.
 3. Replace the finite Q sentinel with an optional initial minimum. Exact computed
    Q ties choose the first pair in canonical UTF-16 lexical/active order.
 4. Reject negative limbs, including negative zero from underflow. No clipping or

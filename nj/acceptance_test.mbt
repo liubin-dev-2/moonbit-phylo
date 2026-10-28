@@ -121,16 +121,14 @@ test "three-star negative limbs tiny negatives and numeric overflow" {
     )
     is @nj.NegativeLimb(_, _),
   )
-  assert_true(
-    rejected(
-      four(
-        Array::makei(4, i => {
-          Array::makei(4, j => if i == j { 0.0 } else { 1.0e308 })
-        }),
-      ),
-    )
-    is @nj.NumericOverflow(_),
+  let huge = four(
+    Array::makei(4, i => {
+      Array::makei(4, j => if i == j { 0.0 } else { 1.0e308 })
+    }),
   )
+  let report = @nj.neighbor_joining(huge).unwrap()
+  assert_eq(report.fitted.values, huge.values)
+  assert_eq(report.max_abs_residual, 0.0)
 }
 
 ///|
