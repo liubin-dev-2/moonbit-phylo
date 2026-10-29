@@ -1,4 +1,4 @@
-# Necessary CI and evidence plan: taxon naming handoff
+# Necessary CI and evidence plan: stable ladderized export
 
 The final commit must pass the existing `.github/workflows/check.yml` jobs:
 
@@ -6,42 +6,47 @@ The final commit must pass the existing `.github/workflows/check.yml` jobs:
 - `Check, test and consumers (wasm-gc)`.
 - `Independent NJ JSON consumers`.
 
-Retain all old native/public/reference/file/route/clade/Fitch gates and their
-pinned SDK/dependencies. The new library API is additive; old source/interfaces
-and legal-input/default/error/mathematical contracts are retained. Native gates
-include three focused black-box rename groups: simultaneous whole-graph copy,
-atomic source/empty/collision validation, and exact Unicode/quoted Newick handoff.
-Do not regenerate scientific references or count a retry as another round.
+Retain all existing native/public/reference/file/route/clade/Fitch/rename gates
+and pinned SDK/dependencies. The only public addition is
+`PhyloTree::ladderize(reverse?:Bool=false)->PhyloTree`; no old interface is
+removed, no parser/error/scientific/default contract is changed. New native
+groups verify whole-node preservation/stable ordering, degenerate/deep/repeat
+behavior, and fresh private arena/child/comment/tree-comment storage. Do not
+regenerate scientific references or count retries as another meaningful round.
 
 The new necessary step is
-`Validate two-process public-package taxon rename handoff on both targets`.
-It runs `verification/taxon_rename_recipient.py` with Python stdlib only, building
-the public-import emitter and distinct receiver for JS/Wasm-GC in an explicitly
-bound product/receiver workspace. Original graphs, all expected target labels
-and ordered correspondence facts are hand-fixed before implementation; complete
-results and required API errors must be consumed in real new processes.
+`Validate public-package stable ladderized export on both targets`.
+It runs `verification/ladderize_recipient.py` with Python stdlib only and builds
+`examples/ladderize_export`, a separate public-import module in an explicitly
+bound product/receiver workspace. Before-edit literal fixtures give complete
+original graphs, every expected sibling list and every visible terminal row;
+no copy of the new counting/sorting method is the expected-value oracle.
+Eight success/six error cases per target produce28 real OS calls,16 actual
+UTF-8 Newick exports and6 local compiled artifacts. Validate every original,
+ordered and actual same-process reparse node, all row IDs/names/order, optional
+length bits, rooting and comments. Reparse IDs belong to that new parse.
 
-For each successful emitter, save `renamed_newick` as raw UTF-8 `.newick` bytes,
-read those bytes without newline normalization and feed only that tree to a new
-receiver process. Compare every node/edge relationship, label, optional length,
-comment/rooting and the exact canonical re-export. Reparse IDs belong to that
-parse. Retain original inputs, exports, stdout and stderr; record numerical
-return codes, pass/expected-error status, executable hash and byte hashes.
-The bridge performs file I/O; the MoonBit examples keep existing text transport.
+Preserve original input files, exported bytes and all stdout/stderr, with each
+numeric return code, success/expected-error status, executable and byte hashes.
+The bridge saves exports; environment text input retains host limits. No native
+file host, new persistent format, layout/renderer or external adoption claim.
+Local verification runs only the new native/consumer tests and strict
+check/info/fmt/interface gates; old scientific/reference scenarios are not rerun
+locally. Required final CI retains its full existing gates.
 
-Local evidence distinguishes original Git blob SHA-1, raw worktree SHA-256,
-copied/tested source SHA-256, actual compiled artifacts and complete raw output
-bytes. Source deliverable format is ZIP: exactly the final Git-tracked files,
-with repository-relative member paths and no enclosing directory. `moon.mod`
-is the unchanged module metadata; this package adds no scientific/input schema.
-Read back every ZIP member once against the final source manifest. Exclude
-reports, build caches, credentials, local authentication paths and private data
-from the public source package. Do not substitute the initial source ZIP.
+Distinguish original Git blob SHA-1, raw worktree SHA-256, tested/copied source,
+actual compiled bytes, process inputs/outputs and remote job/upload metadata.
+The final-head source deliverable is ZIP/DEFLATED with exactly all final tracked
+repository-relative paths, no enclosing directory, existing moon.mod metadata
+and content entries0644. Read back every member once against final source
+hashes; exclude reports/build caches/credentials/private auth paths. The initial
+source ZIP or remote metadata is not a substitute for current source bytes or
+cloud compiled payload equality.
 
-Only actual final-head job/step success is completion evidence. A saved workflow,
-manifest or local pass is not remote CI proof; metadata is not remote compiled
-binary payload equality. Preserve failed original logs and incomplete states.
-Seal README/PROPOSAL, this plan and a result identifying the final commit, CI
-URL/run ID/jobs/new step, actual exits, artifact paths/schema, completed scope,
-unsupported scope and remaining required work. Root alone accepts/counts the
-finite round; this self-authored real receiving workflow is not external adoption.
+Only exact final-head necessary jobs and new-step success complete CI evidence.
+Preserve all initial failures. Seal accurate README/PROPOSAL/this plan plus
+REPORT/RESULT listing final SHA, CI URL/run/jobs/new step, command exits, actual
+artifact paths/schema, completed/unsupported scope and remainingRequiredWork.
+Root alone ACCEPTs/counts the finite round; stop without starting R11 or
+claiming the11-round goal complete. Do not turn old-evidence preservation flags
+into proof of all history or rescan old materials to construct such proof.

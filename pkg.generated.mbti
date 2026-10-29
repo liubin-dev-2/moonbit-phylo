@@ -152,6 +152,7 @@ pub fn PhyloTree::faith_pd_greedy(Self, Array[String], Array[String], UInt) -> R
 pub fn PhyloTree::faith_pd_plan_document(Self, Array[String], Array[String], UInt) -> Result[FaithPDPlanDocument, PhyloError]
 pub fn PhyloTree::fitch_parsimony(Self, Map[String, Char]) -> Result[ParsimonyResult, PhyloError]
 pub fn PhyloTree::from_newick(String, rooted? : Bool) -> Result[Self, PhyloError]
+pub fn PhyloTree::ladderize(Self, reverse? : Bool) -> Self
 pub fn PhyloTree::midpoint_root(Self) -> Result[TransformResult, PhyloError]
 pub fn PhyloTree::nodes(Self) -> Array[NodeRecord]
 pub fn PhyloTree::patristic_distance(Self, String, String) -> Result[Double, PhyloError]

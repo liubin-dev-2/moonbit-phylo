@@ -1,0 +1,1075 @@
+{
+  "oracle": "Before-edit literal complete graphs, every expected sibling list and visible terminal row; counts are not obtained from the new method or a scientific reference generator",
+  "cases": [
+    {
+      "name": "ascending-default",
+      "newick": "[&U](((A:0)U[u]:1,B:1e308)Pair[p],((C,D,E)Wide,F:1e308)Four,Z:0,(H,G)Tie:1.5)Root[r]:99;[tree note]",
+      "nodes": [
+        {
+          "role": "Root",
+          "parent": null,
+          "children": [
+            "Pair",
+            "Four",
+            "Z",
+            "Tie"
+          ],
+          "label": "Root",
+          "length": 99,
+          "comments": [
+            "r"
+          ]
+        },
+        {
+          "role": "Pair",
+          "parent": "Root",
+          "children": [
+            "U",
+            "B"
+          ],
+          "label": "Pair",
+          "length": null,
+          "comments": [
+            "p"
+          ]
+        },
+        {
+          "role": "U",
+          "parent": "Pair",
+          "children": [
+            "A"
+          ],
+          "label": "U",
+          "length": 1,
+          "comments": [
+            "u"
+          ]
+        },
+        {
+          "role": "A",
+          "parent": "U",
+          "children": [],
+          "label": "A",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "B",
+          "parent": "Pair",
+          "children": [],
+          "label": "B",
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "Four",
+          "parent": "Root",
+          "children": [
+            "Wide",
+            "F"
+          ],
+          "label": "Four",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "Wide",
+          "parent": "Four",
+          "children": [
+            "C",
+            "D",
+            "E"
+          ],
+          "label": "Wide",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "C",
+          "parent": "Wide",
+          "children": [],
+          "label": "C",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "D",
+          "parent": "Wide",
+          "children": [],
+          "label": "D",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "E",
+          "parent": "Wide",
+          "children": [],
+          "label": "E",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "F",
+          "parent": "Four",
+          "children": [],
+          "label": "F",
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "Z",
+          "parent": "Root",
+          "children": [],
+          "label": "Z",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "Tie",
+          "parent": "Root",
+          "children": [
+            "H",
+            "G"
+          ],
+          "label": "Tie",
+          "length": 1.5,
+          "comments": []
+        },
+        {
+          "role": "H",
+          "parent": "Tie",
+          "children": [],
+          "label": "H",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "G",
+          "parent": "Tie",
+          "children": [],
+          "label": "G",
+          "length": null,
+          "comments": []
+        }
+      ],
+      "order": null,
+      "expectedChildren": {
+        "Root": [
+          "Z",
+          "Pair",
+          "Tie",
+          "Four"
+        ],
+        "Pair": [
+          "U",
+          "B"
+        ],
+        "U": [
+          "A"
+        ],
+        "A": [],
+        "B": [],
+        "Four": [
+          "F",
+          "Wide"
+        ],
+        "Wide": [
+          "C",
+          "D",
+          "E"
+        ],
+        "C": [],
+        "D": [],
+        "E": [],
+        "F": [],
+        "Z": [],
+        "Tie": [
+          "H",
+          "G"
+        ],
+        "H": [],
+        "G": []
+      },
+      "expectedTipRoles": [
+        "Z",
+        "A",
+        "B",
+        "H",
+        "G",
+        "F",
+        "C",
+        "D",
+        "E"
+      ],
+      "rooting": "Unrooted",
+      "treeComments": [
+        "tree note"
+      ]
+    },
+    {
+      "name": "descending-explicit",
+      "newick": "[&U](((A:0)U[u]:1,B:1e308)Pair[p],((C,D,E)Wide,F:1e308)Four,Z:0,(H,G)Tie:1.5)Root[r]:99;[tree note]",
+      "nodes": [
+        {
+          "role": "Root",
+          "parent": null,
+          "children": [
+            "Pair",
+            "Four",
+            "Z",
+            "Tie"
+          ],
+          "label": "Root",
+          "length": 99,
+          "comments": [
+            "r"
+          ]
+        },
+        {
+          "role": "Pair",
+          "parent": "Root",
+          "children": [
+            "U",
+            "B"
+          ],
+          "label": "Pair",
+          "length": null,
+          "comments": [
+            "p"
+          ]
+        },
+        {
+          "role": "U",
+          "parent": "Pair",
+          "children": [
+            "A"
+          ],
+          "label": "U",
+          "length": 1,
+          "comments": [
+            "u"
+          ]
+        },
+        {
+          "role": "A",
+          "parent": "U",
+          "children": [],
+          "label": "A",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "B",
+          "parent": "Pair",
+          "children": [],
+          "label": "B",
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "Four",
+          "parent": "Root",
+          "children": [
+            "Wide",
+            "F"
+          ],
+          "label": "Four",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "Wide",
+          "parent": "Four",
+          "children": [
+            "C",
+            "D",
+            "E"
+          ],
+          "label": "Wide",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "C",
+          "parent": "Wide",
+          "children": [],
+          "label": "C",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "D",
+          "parent": "Wide",
+          "children": [],
+          "label": "D",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "E",
+          "parent": "Wide",
+          "children": [],
+          "label": "E",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "F",
+          "parent": "Four",
+          "children": [],
+          "label": "F",
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "Z",
+          "parent": "Root",
+          "children": [],
+          "label": "Z",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "Tie",
+          "parent": "Root",
+          "children": [
+            "H",
+            "G"
+          ],
+          "label": "Tie",
+          "length": 1.5,
+          "comments": []
+        },
+        {
+          "role": "H",
+          "parent": "Tie",
+          "children": [],
+          "label": "H",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "G",
+          "parent": "Tie",
+          "children": [],
+          "label": "G",
+          "length": null,
+          "comments": []
+        }
+      ],
+      "order": "descending",
+      "expectedChildren": {
+        "Root": [
+          "Four",
+          "Pair",
+          "Tie",
+          "Z"
+        ],
+        "Pair": [
+          "U",
+          "B"
+        ],
+        "U": [
+          "A"
+        ],
+        "A": [],
+        "B": [],
+        "Four": [
+          "Wide",
+          "F"
+        ],
+        "Wide": [
+          "C",
+          "D",
+          "E"
+        ],
+        "C": [],
+        "D": [],
+        "E": [],
+        "F": [],
+        "Z": [],
+        "Tie": [
+          "H",
+          "G"
+        ],
+        "H": [],
+        "G": []
+      },
+      "expectedTipRoles": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "A",
+        "B",
+        "H",
+        "G",
+        "Z"
+      ],
+      "rooting": "Unrooted",
+      "treeComments": [
+        "tree note"
+      ]
+    },
+    {
+      "name": "rooted-ascending",
+      "newick": "[&R](((A:0)U[u]:1,B:1e308)Pair[p],((C,D,E)Wide,F:1e308)Four,Z:0,(H,G)Tie:1.5)Root[r]:99;[tree note]",
+      "nodes": [
+        {
+          "role": "Root",
+          "parent": null,
+          "children": [
+            "Pair",
+            "Four",
+            "Z",
+            "Tie"
+          ],
+          "label": "Root",
+          "length": 99,
+          "comments": [
+            "r"
+          ]
+        },
+        {
+          "role": "Pair",
+          "parent": "Root",
+          "children": [
+            "U",
+            "B"
+          ],
+          "label": "Pair",
+          "length": null,
+          "comments": [
+            "p"
+          ]
+        },
+        {
+          "role": "U",
+          "parent": "Pair",
+          "children": [
+            "A"
+          ],
+          "label": "U",
+          "length": 1,
+          "comments": [
+            "u"
+          ]
+        },
+        {
+          "role": "A",
+          "parent": "U",
+          "children": [],
+          "label": "A",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "B",
+          "parent": "Pair",
+          "children": [],
+          "label": "B",
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "Four",
+          "parent": "Root",
+          "children": [
+            "Wide",
+            "F"
+          ],
+          "label": "Four",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "Wide",
+          "parent": "Four",
+          "children": [
+            "C",
+            "D",
+            "E"
+          ],
+          "label": "Wide",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "C",
+          "parent": "Wide",
+          "children": [],
+          "label": "C",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "D",
+          "parent": "Wide",
+          "children": [],
+          "label": "D",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "E",
+          "parent": "Wide",
+          "children": [],
+          "label": "E",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "F",
+          "parent": "Four",
+          "children": [],
+          "label": "F",
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "Z",
+          "parent": "Root",
+          "children": [],
+          "label": "Z",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "Tie",
+          "parent": "Root",
+          "children": [
+            "H",
+            "G"
+          ],
+          "label": "Tie",
+          "length": 1.5,
+          "comments": []
+        },
+        {
+          "role": "H",
+          "parent": "Tie",
+          "children": [],
+          "label": "H",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "G",
+          "parent": "Tie",
+          "children": [],
+          "label": "G",
+          "length": null,
+          "comments": []
+        }
+      ],
+      "order": "ascending",
+      "expectedChildren": {
+        "Root": [
+          "Z",
+          "Pair",
+          "Tie",
+          "Four"
+        ],
+        "Pair": [
+          "U",
+          "B"
+        ],
+        "U": [
+          "A"
+        ],
+        "A": [],
+        "B": [],
+        "Four": [
+          "F",
+          "Wide"
+        ],
+        "Wide": [
+          "C",
+          "D",
+          "E"
+        ],
+        "C": [],
+        "D": [],
+        "E": [],
+        "F": [],
+        "Z": [],
+        "Tie": [
+          "H",
+          "G"
+        ],
+        "H": [],
+        "G": []
+      },
+      "expectedTipRoles": [
+        "Z",
+        "A",
+        "B",
+        "H",
+        "G",
+        "F",
+        "C",
+        "D",
+        "E"
+      ],
+      "rooting": "Rooted",
+      "treeComments": [
+        "tree note"
+      ]
+    },
+    {
+      "name": "unknown-descending",
+      "newick": "(((A:0)U[u]:1,B:1e308)Pair[p],((C,D,E)Wide,F:1e308)Four,Z:0,(H,G)Tie:1.5)Root[r]:99;[tree note]",
+      "nodes": [
+        {
+          "role": "Root",
+          "parent": null,
+          "children": [
+            "Pair",
+            "Four",
+            "Z",
+            "Tie"
+          ],
+          "label": "Root",
+          "length": 99,
+          "comments": [
+            "r"
+          ]
+        },
+        {
+          "role": "Pair",
+          "parent": "Root",
+          "children": [
+            "U",
+            "B"
+          ],
+          "label": "Pair",
+          "length": null,
+          "comments": [
+            "p"
+          ]
+        },
+        {
+          "role": "U",
+          "parent": "Pair",
+          "children": [
+            "A"
+          ],
+          "label": "U",
+          "length": 1,
+          "comments": [
+            "u"
+          ]
+        },
+        {
+          "role": "A",
+          "parent": "U",
+          "children": [],
+          "label": "A",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "B",
+          "parent": "Pair",
+          "children": [],
+          "label": "B",
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "Four",
+          "parent": "Root",
+          "children": [
+            "Wide",
+            "F"
+          ],
+          "label": "Four",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "Wide",
+          "parent": "Four",
+          "children": [
+            "C",
+            "D",
+            "E"
+          ],
+          "label": "Wide",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "C",
+          "parent": "Wide",
+          "children": [],
+          "label": "C",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "D",
+          "parent": "Wide",
+          "children": [],
+          "label": "D",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "E",
+          "parent": "Wide",
+          "children": [],
+          "label": "E",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "F",
+          "parent": "Four",
+          "children": [],
+          "label": "F",
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "Z",
+          "parent": "Root",
+          "children": [],
+          "label": "Z",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "Tie",
+          "parent": "Root",
+          "children": [
+            "H",
+            "G"
+          ],
+          "label": "Tie",
+          "length": 1.5,
+          "comments": []
+        },
+        {
+          "role": "H",
+          "parent": "Tie",
+          "children": [],
+          "label": "H",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "G",
+          "parent": "Tie",
+          "children": [],
+          "label": "G",
+          "length": null,
+          "comments": []
+        }
+      ],
+      "order": "descending",
+      "expectedChildren": {
+        "Root": [
+          "Four",
+          "Pair",
+          "Tie",
+          "Z"
+        ],
+        "Pair": [
+          "U",
+          "B"
+        ],
+        "U": [
+          "A"
+        ],
+        "A": [],
+        "B": [],
+        "Four": [
+          "Wide",
+          "F"
+        ],
+        "Wide": [
+          "C",
+          "D",
+          "E"
+        ],
+        "C": [],
+        "D": [],
+        "E": [],
+        "F": [],
+        "Z": [],
+        "Tie": [
+          "H",
+          "G"
+        ],
+        "H": [],
+        "G": []
+      },
+      "expectedTipRoles": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "A",
+        "B",
+        "H",
+        "G",
+        "Z"
+      ],
+      "rooting": "Unknown",
+      "treeComments": [
+        "tree note"
+      ]
+    },
+    {
+      "name": "all-ties-retain-authored-order",
+      "newick": "[&R]('Z_😀','O''Brien',A)R;",
+      "nodes": [
+        {
+          "role": "R",
+          "parent": null,
+          "children": [
+            "Z",
+            "Q",
+            "A"
+          ],
+          "label": "R",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "Z",
+          "parent": "R",
+          "children": [],
+          "label": "Z_😀",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "Q",
+          "parent": "R",
+          "children": [],
+          "label": "O'Brien",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "A",
+          "parent": "R",
+          "children": [],
+          "label": "A",
+          "length": null,
+          "comments": []
+        }
+      ],
+      "order": "descending",
+      "expectedChildren": {
+        "R": [
+          "Z",
+          "Q",
+          "A"
+        ],
+        "Z": [],
+        "Q": [],
+        "A": []
+      },
+      "expectedTipRoles": [
+        "Z",
+        "Q",
+        "A"
+      ],
+      "rooting": "Rooted",
+      "treeComments": []
+    },
+    {
+      "name": "root-leaf",
+      "newick": "[&U]'Only':99;[last]",
+      "nodes": [
+        {
+          "role": "Only",
+          "parent": null,
+          "children": [],
+          "label": "Only",
+          "length": 99,
+          "comments": []
+        }
+      ],
+      "order": "descending",
+      "expectedChildren": {
+        "Only": []
+      },
+      "expectedTipRoles": [
+        "Only"
+      ],
+      "rooting": "Unrooted",
+      "treeComments": [
+        "last"
+      ]
+    },
+    {
+      "name": "unary-chain",
+      "newick": "[&R]((A)U[u])Root;",
+      "nodes": [
+        {
+          "role": "Root",
+          "parent": null,
+          "children": [
+            "U"
+          ],
+          "label": "Root",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "U",
+          "parent": "Root",
+          "children": [
+            "A"
+          ],
+          "label": "U",
+          "length": null,
+          "comments": [
+            "u"
+          ]
+        },
+        {
+          "role": "A",
+          "parent": "U",
+          "children": [],
+          "label": "A",
+          "length": null,
+          "comments": []
+        }
+      ],
+      "order": null,
+      "expectedChildren": {
+        "Root": [
+          "U"
+        ],
+        "U": [
+          "A"
+        ],
+        "A": []
+      },
+      "expectedTipRoles": [
+        "A"
+      ],
+      "rooting": "Rooted",
+      "treeComments": []
+    },
+    {
+      "name": "unlabelled-inner",
+      "newick": "((A:0,B),C)Root;",
+      "nodes": [
+        {
+          "role": "Root",
+          "parent": null,
+          "children": [
+            "Inner",
+            "C"
+          ],
+          "label": "Root",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "Inner",
+          "parent": "Root",
+          "children": [
+            "A",
+            "B"
+          ],
+          "label": null,
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "A",
+          "parent": "Inner",
+          "children": [],
+          "label": "A",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "B",
+          "parent": "Inner",
+          "children": [],
+          "label": "B",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "C",
+          "parent": "Root",
+          "children": [],
+          "label": "C",
+          "length": null,
+          "comments": []
+        }
+      ],
+      "order": "ascending",
+      "expectedChildren": {
+        "Root": [
+          "C",
+          "Inner"
+        ],
+        "Inner": [
+          "A",
+          "B"
+        ],
+        "A": [],
+        "B": [],
+        "C": []
+      },
+      "expectedTipRoles": [
+        "C",
+        "A",
+        "B"
+      ],
+      "rooting": "Unknown",
+      "treeComments": []
+    }
+  ],
+  "errors": [
+    {
+      "name": "missing-tree",
+      "newick": null,
+      "order": null,
+      "error": "missing_tree"
+    },
+    {
+      "name": "invalid-order-before-missing",
+      "newick": null,
+      "order": "DESCENDING",
+      "error": "invalid_order"
+    },
+    {
+      "name": "empty-order",
+      "newick": "[&U](((A:0)U[u]:1,B:1e308)Pair[p],((C,D,E)Wide,F:1e308)Four,Z:0,(H,G)Tie:1.5)Root[r]:99;[tree note]",
+      "order": "",
+      "error": "invalid_order"
+    },
+    {
+      "name": "malformed-tree",
+      "newick": "(A,B)",
+      "order": "ascending",
+      "error": "parser_error",
+      "detailPrefix": "Syntax("
+    },
+    {
+      "name": "duplicate-leaf",
+      "newick": "(A,A);",
+      "order": "descending",
+      "error": "parser_error",
+      "detailPrefix": "DuplicateTaxon("
+    },
+    {
+      "name": "negative-length",
+      "newick": "(A:-1,B);",
+      "order": null,
+      "error": "parser_error",
+      "detailPrefix": "InvalidLength("
+    }
+  ]
+}

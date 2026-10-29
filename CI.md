@@ -99,3 +99,18 @@ and library hashes, installed toolchain version, test output and consumer output
 as Actions artifacts. The NJ artifact includes per-case JSON and the actual
 executable hashes. A workflow file or local test pass alone is not a claim that
 remote CI passed; inspect the linked run and required jobs for the exact commit.
+
+## Stable ladderized export gate
+
+`Validate public-package stable ladderized export on both targets` runs
+`verification/ladderize_recipient.py` using the unchanged pinned SDK/core and
+Python stdlib. Eight hand-authored complete graph/order/terminal-row cases plus
+six explicit API errors run on each backend:28 actual calls,16 exported Newick
+files and6 compiled artifact identities. Every original/ordered/reparsed node,
+all terminal rows, raw stdout/stderr and numeric exit/status are checked.
+The consumer has an explicit independent workspace, consumes only public API,
+and reparses its actual export in the same process. New native groups verify
+order/preserved attributes, degenerate/deep/repeat behavior and private-storage
+ownership. All earlier gates stay required; no scientific references are
+regenerated for this change. This gate supplies real receiving/export evidence,
+not a new renderer, format, scientific metric or external adoption claim.

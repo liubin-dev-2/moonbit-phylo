@@ -70,6 +70,25 @@ moon run cmd/rf_compare --target wasm-gc --frozen
 
 构建两个后端后，`python -B verification/rf_recipient.py --artifact-dir _build --moonrun moonrun --output rf-evidence` 会从保存的 Newick 文件向真实新进程发送请求，核对预先手工列出的完整 clade/split 报告、反向结果和明确错误，检查单响应及输入哈希。它验证新接收方的模式分派与原报告交接，不声称新 RF 算法。
 
+## 按后代叶数稳定排列并导出树
+
+`tree.ladderize()` 返回独立副本，在每个内部节点按各子树的终端叶数量升序排列；`tree.ladderize(reverse=true)` 改为降序。两种方向下，相同数量的兄弟都保留原先次序，既不按叶名排序，也不反转平局。例如 `((A,B)X,C,(E,D)Y)R;` 默认导出 C/X/Y，降序为 X/Y/C；X/Y 都有两片叶，仍保持 X 在 Y 前，Y 内仍为 E/D。
+
+这是准备终端展示顺序与 Newick 导出的操作，常见用途可对照 [Biopython 一手文档](https://biopython.org/docs/dev/api/Bio.Phylo.BaseTree.html#Bio.Phylo.BaseTree.TreeMixin.ladderize)。本库明确返回副本：仅兄弟数组的顺序可能变化，原树、每条父子关系、全部标签、缺失/零/有限枝长及 stem、节点/树注释、rooting 与根 ID 保持。无需完整枝长，不做枝长累计；支持 unary、多分叉、单根叶及三种 rooting，Unrooted/Unknown 使用原有表示根，不推断新根。副本的节点 ID 保留本次对应，导出重读后 ID 属于新解析。平局仍依赖输入顺序，因此这不是唯一的拓扑规范形式，也不承诺其他算法的顺序相关平局选择不变；没有新科学模型或指标。
+
+`examples/ladderize_export` 是只导入公共包的独立模块。把本库和示例分别放为同级 product/receiver，在共同父目录执行 `moon work init ./product ./receiver` 后：
+
+```powershell
+$env:PHYLO_LADDER_TREE='[&U]((A,B)X,C,(E,D)Y)R;'
+$env:PHYLO_LADDER_ORDER='descending'
+moon -C receiver run . --target js --frozen
+moon -C receiver run . --target wasm-gc --frozen
+```
+
+省略 ORDER 使用升序；若提供，须精确为 `ascending` 或 `descending`。每次输出一个 JSON，先检查 `ok`。成功含原/新完整节点、各自根/rooting/注释和规范 Newick，以及从实际新树遍历得出的终端行 `row/id/taxon`；同时重读实际导出字符串并返回新解析的完整节点与规范重导出。`source_newick` 是既有规范序列化，原始文件字节由调用方另存。先检查 order，再检查 tree 是否提供，再交原解析器；错误为 `invalid_order` / `missing_tree` / `parser_error`，保留解析诊断，正常进程退出。环境文本传输仍有宿主限制，保存文件由应用/验证桥负责；没有新增原生文件宿主、格式、布局坐标、绘图器或外部采用声明。
+
+在 Git checkout 运行 `python -B verification/ladderize_recipient.py --moon moon --moonrun moonrun --output ladder-evidence`（新增文件先暂存），会建立明确绑定 `MOON_WORK` 的独立公共包 workspace，实际构建并运行 JS/Wasm-GC 接收程序。实现前手写的完整图、所有兄弟顺序和终端行验证每件原/新/重读产物；8 组成功、6 组错误各运行于双后端，共 28 次进程调用和 16 件真实 UTF-8 导出。保存全 stdout/stderr、数值退出/状态、输入/源码/编译/输出哈希；独立的白盒回归验证新副本私有数组不别名原树。这是自编消费者的实际运行证据，不代表任意规模/性能、渲染效果或第三方采用。
+
 ## 同时重命名叶身份并交接 Newick
 
 `tree.rename_taxa(Map[String,String])` 返回 `Result[TaxonRenameResult, PhyloError]`：结果含独立的 `tree` 和按原名称 UTF-16 顺序排列的 `renames`。每条 `TaxonRename` 有 `from_taxon`、`to_taxon`、`source_id`、`target_id`，包括显式的 identity 请求。映射同时生效，因此 A→B、B→A 可交换；只做 A→B 则会与未改名 B 冲突。未列出的叶不变，空映射合法。
