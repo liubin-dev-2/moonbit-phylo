@@ -55,6 +55,9 @@ unary/polytomous and singleton cases, missing/zero/huge lengths, exact Unicode,
 selection/error order and fresh new-report ownership. It uses Python stdlib only,
 records actual source/compiled/output hashes and preserves every old gate. This
 self-authored receiving example does not establish third-party adoption.
+The verifier binds `MOON_WORK` to its own explicit product/receiver manifest, so
+an ancestor workspace left by an earlier recipient is neither inherited nor
+rewritten. This nested-workspace case is included in the receiving evidence.
 
 CI uses the project's declared compiler `0.10.12+1634b282e`, with Node.js
 24.11.0 and Python 3.14. The installer uses the versioned URLs described by the

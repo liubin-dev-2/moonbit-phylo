@@ -99,7 +99,12 @@ def main():
         copied.append({'path': name, 'sha256': sha(dest)})
     shutil.copytree(product / 'examples/clade_review', receiver)
     build = workspace / 'build'
-    commands = []
+    # Earlier recipients in a CI checkout may have created an ancestor workspace.
+    # Own this exact manifest instead of letting `work init` discover that one.
+    manifest = workspace / 'moon.work'
+    manifest.write_text('members = [\n  "./product",\n  "./receiver",\n]\n', encoding='utf-8', newline='\n')
+    env['MOON_WORK'] = str(manifest)
+    commands = [{'label': 'explicit-workspace-manifest', 'path': str(manifest), 'sha256': sha(manifest), 'MOON_WORK': str(manifest)}]
 
     def moon(label, arguments):
         run = subprocess.run([args.moon, *arguments], cwd=workspace, env=env, capture_output=True)
@@ -108,7 +113,6 @@ def main():
         commands.append({'label': label, 'args': arguments, 'exit_code': run.returncode})
         assert run.returncode == 0, (label, run.stderr.decode('utf-8', errors='replace'))
 
-    moon('workspace-init', ['work', 'init', './product', './receiver'])
     fixture = ROOT / 'verification/clade_cases.json'
     fixture_hash = sha(fixture)
     data = json.loads(fixture.read_text(encoding='utf-8'))

@@ -89,6 +89,8 @@ moon -C receiver run . --target wasm-gc --frozen
 
 在 Git 源码 checkout 内运行 `python -B verification/clade_recipient.py --moon moon --moonrun moonrun --output clade-evidence`，会从 Git 跟踪的当前源码创建干净 product/receiver workspace，在真实 JS/Wasm-GC 进程中逐一核对预先手写的完整 MRCA/clade/extra/终端分类、根与单叶退化情况、unary/多分叉、精确 Unicode、长度无关性、错误优先级和新报告 ownership；本地新增文件需先暂存。验证脚本保存原始 Newick/选择文件及输入前后哈希，再经既有文本输入传给示例。这个自编接收流程证明公共包能实际完成审查，不代表第三方采用或部署。该常见操作的含义可对照 [Biopython 一手文档](https://biopython.org/docs/latest/api/Bio.Phylo.BaseTree.html#Bio.Phylo.BaseTree.TreeMixin.is_monophyletic)，本库的空选择、根要求和错误顺序以此处合同为准。
 
+验证器为自己的 product/receiver 写入独立 `moon.work`，并仅在构建子进程中用 `MOON_WORK` 指定该绝对路径，避免继承同一 CI checkout 内先前消费者创建的祖先 workspace；已有祖先 manifest 保持原字节。
+
 ## 原作者图的长度无关叶间 route
 
 `tree.authored_leaf_route(from, to)` 返回 `Result[AuthoredLeafRouteReport, PhyloError]`，供树查看/标注接收程序用同一棵树的原 `NodeRecord` ID 高亮两叶间的节点和 child-edges。它不读取、不补齐枝长；合法树缺长度或边长为零时仍保留原 route。字段为 `from_taxon`、`to_taxon`、有序 `node_ids` / `edge_ids` 和 `authored_edge_count`，**没有距离字段**。端点精确匹配叶名；内部标签不是端点，未知名按 from、再 to 返回 `UnknownTaxon`。
