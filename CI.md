@@ -47,6 +47,15 @@ stem/subdivision behavior, errors and new result ownership. The ordinary native
 gates retain weighted path regressions after the narrowly shared geometry;
 numeric algorithms and previous reference generators remain unchanged.
 
+`verification/clade_recipient.py` builds a separate public-import clade review
+module in a clean copied-source workspace, then runs both targets in that same
+required job. Pre-implementation hand facts specify the MRCA, complete clade,
+intruders and all terminal classifications, including root-dependent outcomes,
+unary/polytomous and singleton cases, missing/zero/huge lengths, exact Unicode,
+selection/error order and fresh new-report ownership. It uses Python stdlib only,
+records actual source/compiled/output hashes and preserves every old gate. This
+self-authored receiving example does not establish third-party adoption.
+
 CI uses the project's declared compiler `0.10.12+1634b282e`, with Node.js
 24.11.0 and Python 3.14. The installer uses the versioned URLs described by the
 [official installer](https://cli.moonbitlang.com/install/unix.sh) and checks the

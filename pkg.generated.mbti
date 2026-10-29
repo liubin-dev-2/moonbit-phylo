@@ -161,6 +161,7 @@ pub fn PhyloTree::prune(Self, Array[String]) -> Result[TransformResult, PhyloErr
 pub fn PhyloTree::rf_distance_rooted(Self, Self) -> Result[RFComparisonReport, PhyloError]
 pub fn PhyloTree::rf_distance_unrooted(Self, Self) -> Result[RFComparisonReport, PhyloError]
 pub fn PhyloTree::root_id(Self) -> Int
+pub fn PhyloTree::rooted_clade(Self, Array[String]) -> Result[RootedCladeReport, PhyloError]
 pub fn PhyloTree::rooting(Self) -> Rooting
 pub fn PhyloTree::taxa(Self) -> Array[String]
 pub fn PhyloTree::to_newick(Self) -> String
@@ -181,6 +182,14 @@ pub(all) struct RFComparisonReport {
   only_left : Array[Array[String]]
   only_right : Array[Array[String]]
   distance : Int
+} derive(ToJson, @debug.Debug)
+
+pub(all) struct RootedCladeReport {
+  selected_taxa : Array[String]
+  mrca_id : Int
+  clade_taxa : Array[String]
+  extra_taxa : Array[String]
+  is_monophyletic : Bool
 } derive(ToJson, @debug.Debug)
 
 pub(all) enum Rooting {

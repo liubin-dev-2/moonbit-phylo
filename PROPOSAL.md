@@ -24,6 +24,7 @@ NJ适配实际发布的IvanAXu/BioSeqs 0.1.9构建子集，保留Apache-2.0许�
 项目根执行`moon run cmd/plan_document --target js`可输出计划，默认新增D、B、增益19；NJ矩阵、复核及续选用法见README。
 
 本库侧重MoonBit原生接口、显式根语义、精确累计与可核证据；不是Python绑定，不将经典RF、Fitch、PD或NJ称作新算法。
+新增的有根叶组审查将精确物种集合交接为原MRCA节点、完整后代叶、夹杂叶及clade完整性报告；例如A/C组落在ABC，其未选B解释false，而不先修剪掉B。单叶、unary和多分叉支持，枝长不参与；Unknown/Unrooted明确报错，换根可能改变结论。独立公共包`examples/clade_review`在双后端输出每片原叶的selected/intruder/outside分类，配套手写图与完整集合预期、错误顺序和ownership验收。这是一项完整可运行的组审查工作流，不宣称新的单系性算法、祖先真实性或第三方采用。
 独立公共包highlighter示例从同一原nodes快照消费authored route，在JS/Wasm-GC核对手写role/原ID与样式索引；这是运行演示，不声称真实viewer部署、用户签字、采用或布局/性能保证。旧weighted前置校验与成功JSON保持。
 
 已有双后端本地检查、构建和领域验证；在明确共同域内以Biopython1.88、DendroPy5.0.8及独立分支集合/精确分数核对结果，跨进程消费者验证保存、重算和衔接。证据支持所述本地功能，不代表任意格式或外部平台验收。

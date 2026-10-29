@@ -70,6 +70,25 @@ moon run cmd/rf_compare --target wasm-gc --frozen
 
 构建两个后端后，`python -B verification/rf_recipient.py --artifact-dir _build --moonrun moonrun --output rf-evidence` 会从保存的 Newick 文件向真实新进程发送请求，核对预先手工列出的完整 clade/split 报告、反向结果和明确错误，检查单响应及输入哈希。它验证新接收方的模式分派与原报告交接，不声称新 RF 算法。
 
+## 有根叶组的完整 clade 审查
+
+`tree.rooted_clade(selection)` 返回 `Result[RootedCladeReport, PhyloError]`，用于检查一组精确叶名是否正好构成完整有根 clade。报告含规范排序的 `selected_taxa`、原树 `mrca_id`、该最近共同祖先的全部后代叶 `clade_taxa`、其中未被选中的 `extra_taxa` 和 `is_monophyletic`。例如 `[&R]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study;`：选 A/C 得到原 ABC 节点、后代 A/B/C、夹杂叶 B，结论为 false；选 A/B 得到 AB 和 true；选 D/F 得到 DEF、夹杂叶 E。报告同时解释不完整的原因，原树不会被修剪或换根。
+
+要求明确 Rooted，Unknown/Unrooted 先报 `RootedTreeRequired`，不根据度数猜根。随后空选择报 `EmptySelection`；按输入顺序检查精确叶名，未知名报 `UnknownTaxon`、重复已知叶报 `DuplicateSelection`，内部标签不是叶身份。名称不 trim、不做 Unicode 归一化；三个名称数组均按现有 UTF-16 字典序排列且独立归调用方持有。单叶组的 MRCA 是那片叶，即使上方有 unary 节点；全叶集可能落在根下的共同祖先，取最近者。缺失、零或巨大有限枝长及 root stem 都不参与判断，原解析器仍拒绝非法输入。MRCA ID 仅对应同一棵树的 `nodes()`，不跨重读/变换持久；换根可能改变 clade 完整性，结论不代表祖先真实性、统计支持或新的距离指标。
+
+`examples/clade_review` 是独立 MoonBit 模块，只消费公共库。将本库放在 product、示例放在同级 receiver，并在共同父目录执行 `moon work init ./product ./receiver` 后，可运行：
+
+```powershell
+$env:PHYLO_CLADE_TREE='[&R]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study;'
+$env:PHYLO_CLADE_TAXA='["A","C"]'
+moon -C receiver run . --target js --frozen
+moon -C receiver run . --target wasm-gc --frozen
+```
+
+每个请求输出一个 JSON：先检查 `ok`，成功含原节点快照、原 MRCA 节点、完整报告、`complete_clade` / `incomplete_clade` 结论，以及每个原始叶的 `selected` / `intruder` / `outside` 分类。程序依次检查环境变量是否提供、解析原树、解析名称 JSON 数组，再调用查询；缺项、树解析、坏 JSON/类型或领域错误分别报 `missing_tree` / `missing_taxa`、`parser_error`、`invalid_taxa_json` / `invalid_taxa`、`clade_error`，进程正常退出。文本环境传输继续受宿主限制；没有新文件宿主、持久文档格式或 viewer。
+
+在 Git 源码 checkout 内运行 `python -B verification/clade_recipient.py --moon moon --moonrun moonrun --output clade-evidence`，会从 Git 跟踪的当前源码创建干净 product/receiver workspace，在真实 JS/Wasm-GC 进程中逐一核对预先手写的完整 MRCA/clade/extra/终端分类、根与单叶退化情况、unary/多分叉、精确 Unicode、长度无关性、错误优先级和新报告 ownership；本地新增文件需先暂存。验证脚本保存原始 Newick/选择文件及输入前后哈希，再经既有文本输入传给示例。这个自编接收流程证明公共包能实际完成审查，不代表第三方采用或部署。该常见操作的含义可对照 [Biopython 一手文档](https://biopython.org/docs/latest/api/Bio.Phylo.BaseTree.html#Bio.Phylo.BaseTree.TreeMixin.is_monophyletic)，本库的空选择、根要求和错误顺序以此处合同为准。
+
 ## 原作者图的长度无关叶间 route
 
 `tree.authored_leaf_route(from, to)` 返回 `Result[AuthoredLeafRouteReport, PhyloError]`，供树查看/标注接收程序用同一棵树的原 `NodeRecord` ID 高亮两叶间的节点和 child-edges。它不读取、不补齐枝长；合法树缺长度或边长为零时仍保留原 route。字段为 `from_taxon`、`to_taxon`、有序 `node_ids` / `edge_ids` 和 `authored_edge_count`，**没有距离字段**。端点精确匹配叶名；内部标签不是端点，未知名按 from、再 to 返回 `UnknownTaxon`。

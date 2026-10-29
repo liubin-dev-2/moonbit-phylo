@@ -109,6 +109,8 @@ jobs:
           python -B verification/rf_recipient.py --artifact-dir _build --moonrun moonrun --output ci-evidence/rf-recipient
       - name: Validate separate public-package authored-route highlighter on both targets
         run: python -B verification/authored_route_recipient.py --moon moon --moonrun moonrun --output ci-evidence/authored-route-highlighter
+      - name: Validate separate public-package rooted clade review on both targets
+        run: python -B verification/clade_recipient.py --moon moon --moonrun moonrun --output ci-evidence/clade-review
       - uses: actions/upload-artifact@v4
         if: always()
         with:

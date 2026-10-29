@@ -1,0 +1,1303 @@
+{
+  "oracle": "Literal original graph roles, MRCA and complete clade/extra leaf sets fixed before implementation; no product-derived expectations",
+  "fixtures": [
+    {
+      "name": "missing-lengths",
+      "newick": "[&R]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study[study-note]:777;",
+      "nodes": [
+        {
+          "role": "Study",
+          "label": "Study",
+          "parent": null,
+          "children": [
+            "ABC",
+            "DEF"
+          ],
+          "length": 777,
+          "comments": [
+            "study-note"
+          ]
+        },
+        {
+          "role": "ABC",
+          "label": "ABC",
+          "parent": "Study",
+          "children": [
+            "AB",
+            "C"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "AB",
+          "label": "AB",
+          "parent": "ABC",
+          "children": [
+            "U",
+            "B"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "U",
+          "label": "U",
+          "parent": "AB",
+          "children": [
+            "A"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "A",
+          "label": "A",
+          "parent": "U",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "B",
+          "label": "B",
+          "parent": "AB",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "C",
+          "label": "C",
+          "parent": "ABC",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "DEF",
+          "label": "DEF",
+          "parent": "Study",
+          "children": [
+            "D",
+            "E",
+            "F"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "D",
+          "label": "D",
+          "parent": "DEF",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "E",
+          "label": "E",
+          "parent": "DEF",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "F",
+          "label": "F",
+          "parent": "DEF",
+          "children": [],
+          "length": null,
+          "comments": []
+        }
+      ],
+      "queries": [
+        {
+          "name": "ab",
+          "taxa": [
+            "A",
+            "B"
+          ],
+          "expected": {
+            "mrcaRole": "AB",
+            "selectedTaxa": [
+              "A",
+              "B"
+            ],
+            "cladeTaxa": [
+              "A",
+              "B"
+            ],
+            "extraTaxa": [],
+            "isMonophyletic": true
+          }
+        },
+        {
+          "name": "ab-reordered",
+          "taxa": [
+            "B",
+            "A"
+          ],
+          "expected": {
+            "mrcaRole": "AB",
+            "selectedTaxa": [
+              "A",
+              "B"
+            ],
+            "cladeTaxa": [
+              "A",
+              "B"
+            ],
+            "extraTaxa": [],
+            "isMonophyletic": true
+          }
+        },
+        {
+          "name": "ac-intruder",
+          "taxa": [
+            "A",
+            "C"
+          ],
+          "expected": {
+            "mrcaRole": "ABC",
+            "selectedTaxa": [
+              "A",
+              "C"
+            ],
+            "cladeTaxa": [
+              "A",
+              "B",
+              "C"
+            ],
+            "extraTaxa": [
+              "B"
+            ],
+            "isMonophyletic": false
+          }
+        },
+        {
+          "name": "abc",
+          "taxa": [
+            "A",
+            "B",
+            "C"
+          ],
+          "expected": {
+            "mrcaRole": "ABC",
+            "selectedTaxa": [
+              "A",
+              "B",
+              "C"
+            ],
+            "cladeTaxa": [
+              "A",
+              "B",
+              "C"
+            ],
+            "extraTaxa": [],
+            "isMonophyletic": true
+          }
+        },
+        {
+          "name": "df-polytomy",
+          "taxa": [
+            "D",
+            "F"
+          ],
+          "expected": {
+            "mrcaRole": "DEF",
+            "selectedTaxa": [
+              "D",
+              "F"
+            ],
+            "cladeTaxa": [
+              "D",
+              "E",
+              "F"
+            ],
+            "extraTaxa": [
+              "E"
+            ],
+            "isMonophyletic": false
+          }
+        },
+        {
+          "name": "def-reordered",
+          "taxa": [
+            "F",
+            "E",
+            "D"
+          ],
+          "expected": {
+            "mrcaRole": "DEF",
+            "selectedTaxa": [
+              "D",
+              "E",
+              "F"
+            ],
+            "cladeTaxa": [
+              "D",
+              "E",
+              "F"
+            ],
+            "extraTaxa": [],
+            "isMonophyletic": true
+          }
+        },
+        {
+          "name": "cross-root",
+          "taxa": [
+            "A",
+            "D"
+          ],
+          "expected": {
+            "mrcaRole": "Study",
+            "selectedTaxa": [
+              "A",
+              "D"
+            ],
+            "cladeTaxa": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F"
+            ],
+            "extraTaxa": [
+              "B",
+              "C",
+              "E",
+              "F"
+            ],
+            "isMonophyletic": false
+          }
+        },
+        {
+          "name": "singleton-below-unary",
+          "taxa": [
+            "A"
+          ],
+          "expected": {
+            "mrcaRole": "A",
+            "selectedTaxa": [
+              "A"
+            ],
+            "cladeTaxa": [
+              "A"
+            ],
+            "extraTaxa": [],
+            "isMonophyletic": true
+          }
+        },
+        {
+          "name": "all",
+          "taxa": [
+            "F",
+            "B",
+            "A",
+            "E",
+            "D",
+            "C"
+          ],
+          "expected": {
+            "mrcaRole": "Study",
+            "selectedTaxa": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F"
+            ],
+            "cladeTaxa": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F"
+            ],
+            "extraTaxa": [],
+            "isMonophyletic": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "zero-lengths",
+      "newick": "[&R]((((A:0)U:0,B:0)AB:0,C:0)ABC:0,(D:0,E:0,F:0)DEF:0)Study[study-note]:777;",
+      "nodes": [
+        {
+          "role": "Study",
+          "label": "Study",
+          "parent": null,
+          "children": [
+            "ABC",
+            "DEF"
+          ],
+          "length": 777,
+          "comments": [
+            "study-note"
+          ]
+        },
+        {
+          "role": "ABC",
+          "label": "ABC",
+          "parent": "Study",
+          "children": [
+            "AB",
+            "C"
+          ],
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "AB",
+          "label": "AB",
+          "parent": "ABC",
+          "children": [
+            "U",
+            "B"
+          ],
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "U",
+          "label": "U",
+          "parent": "AB",
+          "children": [
+            "A"
+          ],
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "A",
+          "label": "A",
+          "parent": "U",
+          "children": [],
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "B",
+          "label": "B",
+          "parent": "AB",
+          "children": [],
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "C",
+          "label": "C",
+          "parent": "ABC",
+          "children": [],
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "DEF",
+          "label": "DEF",
+          "parent": "Study",
+          "children": [
+            "D",
+            "E",
+            "F"
+          ],
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "D",
+          "label": "D",
+          "parent": "DEF",
+          "children": [],
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "E",
+          "label": "E",
+          "parent": "DEF",
+          "children": [],
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "F",
+          "label": "F",
+          "parent": "DEF",
+          "children": [],
+          "length": 0,
+          "comments": []
+        }
+      ],
+      "queries": [
+        {
+          "name": "ac-intruder",
+          "taxa": [
+            "A",
+            "C"
+          ],
+          "expected": {
+            "mrcaRole": "ABC",
+            "selectedTaxa": [
+              "A",
+              "C"
+            ],
+            "cladeTaxa": [
+              "A",
+              "B",
+              "C"
+            ],
+            "extraTaxa": [
+              "B"
+            ],
+            "isMonophyletic": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "huge-lengths",
+      "newick": "[&R]((((A:1e308)U:1e308,B:1e308)AB:1e308,C:1e308)ABC:1e308,(D:1e308,E:1e308,F:1e308)DEF:1e308)Study[study-note]:777;",
+      "nodes": [
+        {
+          "role": "Study",
+          "label": "Study",
+          "parent": null,
+          "children": [
+            "ABC",
+            "DEF"
+          ],
+          "length": 777,
+          "comments": [
+            "study-note"
+          ]
+        },
+        {
+          "role": "ABC",
+          "label": "ABC",
+          "parent": "Study",
+          "children": [
+            "AB",
+            "C"
+          ],
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "AB",
+          "label": "AB",
+          "parent": "ABC",
+          "children": [
+            "U",
+            "B"
+          ],
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "U",
+          "label": "U",
+          "parent": "AB",
+          "children": [
+            "A"
+          ],
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "A",
+          "label": "A",
+          "parent": "U",
+          "children": [],
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "B",
+          "label": "B",
+          "parent": "AB",
+          "children": [],
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "C",
+          "label": "C",
+          "parent": "ABC",
+          "children": [],
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "DEF",
+          "label": "DEF",
+          "parent": "Study",
+          "children": [
+            "D",
+            "E",
+            "F"
+          ],
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "D",
+          "label": "D",
+          "parent": "DEF",
+          "children": [],
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "E",
+          "label": "E",
+          "parent": "DEF",
+          "children": [],
+          "length": 1e+308,
+          "comments": []
+        },
+        {
+          "role": "F",
+          "label": "F",
+          "parent": "DEF",
+          "children": [],
+          "length": 1e+308,
+          "comments": []
+        }
+      ],
+      "queries": [
+        {
+          "name": "df-polytomy",
+          "taxa": [
+            "D",
+            "F"
+          ],
+          "expected": {
+            "mrcaRole": "DEF",
+            "selectedTaxa": [
+              "D",
+              "F"
+            ],
+            "cladeTaxa": [
+              "D",
+              "E",
+              "F"
+            ],
+            "extraTaxa": [
+              "E"
+            ],
+            "isMonophyletic": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "rotated",
+      "newick": "[&R]((F,E,D)DEF,(C,(B,(A)U)AB)ABC)Study[study-note]:777;",
+      "nodes": [
+        {
+          "role": "Study",
+          "label": "Study",
+          "parent": null,
+          "children": [
+            "DEF",
+            "ABC"
+          ],
+          "length": 777,
+          "comments": [
+            "study-note"
+          ]
+        },
+        {
+          "role": "DEF",
+          "label": "DEF",
+          "parent": "Study",
+          "children": [
+            "F",
+            "E",
+            "D"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "F",
+          "label": "F",
+          "parent": "DEF",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "E",
+          "label": "E",
+          "parent": "DEF",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "D",
+          "label": "D",
+          "parent": "DEF",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "ABC",
+          "label": "ABC",
+          "parent": "Study",
+          "children": [
+            "C",
+            "AB"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "C",
+          "label": "C",
+          "parent": "ABC",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "AB",
+          "label": "AB",
+          "parent": "ABC",
+          "children": [
+            "B",
+            "U"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "B",
+          "label": "B",
+          "parent": "AB",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "U",
+          "label": "U",
+          "parent": "AB",
+          "children": [
+            "A"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "A",
+          "label": "A",
+          "parent": "U",
+          "children": [],
+          "length": null,
+          "comments": []
+        }
+      ],
+      "queries": [
+        {
+          "name": "ab",
+          "taxa": [
+            "A",
+            "B"
+          ],
+          "expected": {
+            "mrcaRole": "AB",
+            "selectedTaxa": [
+              "A",
+              "B"
+            ],
+            "cladeTaxa": [
+              "A",
+              "B"
+            ],
+            "extraTaxa": [],
+            "isMonophyletic": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "exact-unicode",
+      "newick": "[&R](('Café','Café')Accents,('O''Brien_😀','😀','')Other)Root;",
+      "nodes": [
+        {
+          "role": "Root",
+          "label": "Root",
+          "parent": null,
+          "children": [
+            "Accents",
+            "Other"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "Accents",
+          "label": "Accents",
+          "parent": "Root",
+          "children": [
+            "NFC",
+            "NFD"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "NFC",
+          "label": "Café",
+          "parent": "Accents",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "NFD",
+          "label": "Café",
+          "parent": "Accents",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "Other",
+          "label": "Other",
+          "parent": "Root",
+          "children": [
+            "Quoted",
+            "Emoji",
+            "PUA"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "Quoted",
+          "label": "O'Brien_😀",
+          "parent": "Other",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "Emoji",
+          "label": "😀",
+          "parent": "Other",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "PUA",
+          "label": "",
+          "parent": "Other",
+          "children": [],
+          "length": null,
+          "comments": []
+        }
+      ],
+      "queries": [
+        {
+          "name": "accents",
+          "taxa": [
+            "Café",
+            "Café"
+          ],
+          "expected": {
+            "mrcaRole": "Accents",
+            "selectedTaxa": [
+              "Café",
+              "Café"
+            ],
+            "cladeTaxa": [
+              "Café",
+              "Café"
+            ],
+            "extraTaxa": [],
+            "isMonophyletic": true
+          }
+        },
+        {
+          "name": "cross-unicode",
+          "taxa": [
+            "Café",
+            "O'Brien_😀"
+          ],
+          "expected": {
+            "mrcaRole": "Root",
+            "selectedTaxa": [
+              "Café",
+              "O'Brien_😀"
+            ],
+            "cladeTaxa": [
+              "Café",
+              "Café",
+              "O'Brien_😀",
+              "😀",
+              ""
+            ],
+            "extraTaxa": [
+              "Café",
+              "😀",
+              ""
+            ],
+            "isMonophyletic": false
+          }
+        },
+        {
+          "name": "utf16-order",
+          "taxa": [
+            "",
+            "😀"
+          ],
+          "expected": {
+            "mrcaRole": "Other",
+            "selectedTaxa": [
+              "😀",
+              ""
+            ],
+            "cladeTaxa": [
+              "O'Brien_😀",
+              "😀",
+              ""
+            ],
+            "extraTaxa": [
+              "O'Brien_😀"
+            ],
+            "isMonophyletic": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "single-root-leaf",
+      "newick": "[&R]Solo:99;",
+      "nodes": [
+        {
+          "role": "Solo",
+          "label": "Solo",
+          "parent": null,
+          "children": [],
+          "length": 99,
+          "comments": []
+        }
+      ],
+      "queries": [
+        {
+          "name": "single",
+          "taxa": [
+            "Solo"
+          ],
+          "expected": {
+            "mrcaRole": "Solo",
+            "selectedTaxa": [
+              "Solo"
+            ],
+            "cladeTaxa": [
+              "Solo"
+            ],
+            "extraTaxa": [],
+            "isMonophyletic": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "unary-root",
+      "newick": "[&R](((A)Inner)Stem)Outer:99;",
+      "nodes": [
+        {
+          "role": "Outer",
+          "label": "Outer",
+          "parent": null,
+          "children": [
+            "Stem"
+          ],
+          "length": 99,
+          "comments": []
+        },
+        {
+          "role": "Stem",
+          "label": "Stem",
+          "parent": "Outer",
+          "children": [
+            "Inner"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "Inner",
+          "label": "Inner",
+          "parent": "Stem",
+          "children": [
+            "A"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "A",
+          "label": "A",
+          "parent": "Inner",
+          "children": [],
+          "length": null,
+          "comments": []
+        }
+      ],
+      "queries": [
+        {
+          "name": "closest-singleton",
+          "taxa": [
+            "A"
+          ],
+          "expected": {
+            "mrcaRole": "A",
+            "selectedTaxa": [
+              "A"
+            ],
+            "cladeTaxa": [
+              "A"
+            ],
+            "extraTaxa": [],
+            "isMonophyletic": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "root-ab",
+      "newick": "[&R]((A,B)AB,(C,D)CD)R;",
+      "nodes": [
+        {
+          "role": "R",
+          "label": "R",
+          "parent": null,
+          "children": [
+            "AB",
+            "CD"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "AB",
+          "label": "AB",
+          "parent": "R",
+          "children": [
+            "A",
+            "B"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "A",
+          "label": "A",
+          "parent": "AB",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "B",
+          "label": "B",
+          "parent": "AB",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "CD",
+          "label": "CD",
+          "parent": "R",
+          "children": [
+            "C",
+            "D"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "C",
+          "label": "C",
+          "parent": "CD",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "D",
+          "label": "D",
+          "parent": "CD",
+          "children": [],
+          "length": null,
+          "comments": []
+        }
+      ],
+      "queries": [
+        {
+          "name": "ab",
+          "taxa": [
+            "A",
+            "B"
+          ],
+          "expected": {
+            "mrcaRole": "AB",
+            "selectedTaxa": [
+              "A",
+              "B"
+            ],
+            "cladeTaxa": [
+              "A",
+              "B"
+            ],
+            "extraTaxa": [],
+            "isMonophyletic": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "root-a",
+      "newick": "[&R](A,(B,(C,D)CD)BCD)R;",
+      "nodes": [
+        {
+          "role": "R",
+          "label": "R",
+          "parent": null,
+          "children": [
+            "A",
+            "BCD"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "A",
+          "label": "A",
+          "parent": "R",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "BCD",
+          "label": "BCD",
+          "parent": "R",
+          "children": [
+            "B",
+            "CD"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "B",
+          "label": "B",
+          "parent": "BCD",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "CD",
+          "label": "CD",
+          "parent": "BCD",
+          "children": [
+            "C",
+            "D"
+          ],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "C",
+          "label": "C",
+          "parent": "CD",
+          "children": [],
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "D",
+          "label": "D",
+          "parent": "CD",
+          "children": [],
+          "length": null,
+          "comments": []
+        }
+      ],
+      "queries": [
+        {
+          "name": "ab",
+          "taxa": [
+            "A",
+            "B"
+          ],
+          "expected": {
+            "mrcaRole": "R",
+            "selectedTaxa": [
+              "A",
+              "B"
+            ],
+            "cladeTaxa": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ],
+            "extraTaxa": [
+              "C",
+              "D"
+            ],
+            "isMonophyletic": false
+          }
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "name": "unknown-root-before-empty",
+      "newick": "((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study[study-note]:777;",
+      "taxa": [],
+      "error": "clade_error",
+      "detail": "RootedTreeRequired"
+    },
+    {
+      "name": "unrooted-before-unknown",
+      "newick": "[&U]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study[study-note]:777;",
+      "taxa": [
+        "missing"
+      ],
+      "error": "clade_error",
+      "detail": "RootedTreeRequired"
+    },
+    {
+      "name": "empty",
+      "newick": "[&R]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study[study-note]:777;",
+      "taxa": [],
+      "error": "clade_error",
+      "detail": "EmptySelection"
+    },
+    {
+      "name": "duplicate",
+      "newick": "[&R]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study[study-note]:777;",
+      "taxa": [
+        "A",
+        "A"
+      ],
+      "error": "clade_error",
+      "detail": "DuplicateSelection(\"A\")"
+    },
+    {
+      "name": "unknown-before-later-duplicate",
+      "newick": "[&R]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study[study-note]:777;",
+      "taxa": [
+        "missing",
+        "A",
+        "A"
+      ],
+      "error": "clade_error",
+      "detail": "UnknownTaxon(\"missing\")"
+    },
+    {
+      "name": "duplicate-before-later-unknown",
+      "newick": "[&R]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study[study-note]:777;",
+      "taxa": [
+        "A",
+        "A",
+        "missing"
+      ],
+      "error": "clade_error",
+      "detail": "DuplicateSelection(\"A\")"
+    },
+    {
+      "name": "internal-label",
+      "newick": "[&R]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study[study-note]:777;",
+      "taxa": [
+        "AB"
+      ],
+      "error": "clade_error",
+      "detail": "UnknownTaxon(\"AB\")"
+    },
+    {
+      "name": "exact-case",
+      "newick": "[&R]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study[study-note]:777;",
+      "taxa": [
+        "a"
+      ],
+      "error": "clade_error",
+      "detail": "UnknownTaxon(\"a\")"
+    },
+    {
+      "name": "parser-negative",
+      "newick": "[&R](A:-1,B);",
+      "taxa": [
+        "A"
+      ],
+      "error": "parser_error",
+      "detailPrefix": "InvalidLength("
+    },
+    {
+      "name": "parser-incomplete",
+      "newick": "[&R](A,B)",
+      "taxa": [
+        "A"
+      ],
+      "error": "parser_error",
+      "detailPrefix": "Syntax("
+    },
+    {
+      "name": "bad-json",
+      "newick": "[&R]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study[study-note]:777;",
+      "taxa": null,
+      "error": "invalid_taxa_json",
+      "taxaJSON": "["
+    },
+    {
+      "name": "non-array",
+      "newick": "[&R]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study[study-note]:777;",
+      "taxa": null,
+      "error": "invalid_taxa",
+      "taxaJSON": "{}"
+    },
+    {
+      "name": "non-string",
+      "newick": "[&R]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study[study-note]:777;",
+      "taxa": null,
+      "error": "invalid_taxa",
+      "taxaJSON": "[\"A\",1]"
+    },
+    {
+      "name": "missing-tree",
+      "newick": null,
+      "taxa": [
+        "A"
+      ],
+      "error": "missing_tree",
+      "detail": "PHYLO_CLADE_TREE"
+    },
+    {
+      "name": "missing-taxa",
+      "newick": "[&R]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study[study-note]:777;",
+      "taxa": null,
+      "error": "missing_taxa",
+      "omitTaxa": true,
+      "detail": "PHYLO_CLADE_TAXA"
+    }
+  ]
+}
