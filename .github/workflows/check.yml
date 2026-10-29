@@ -111,6 +111,8 @@ jobs:
         run: python -B verification/authored_route_recipient.py --moon moon --moonrun moonrun --output ci-evidence/authored-route-highlighter
       - name: Validate separate public-package rooted clade review on both targets
         run: python -B verification/clade_recipient.py --moon moon --moonrun moonrun --output ci-evidence/clade-review
+      - name: Validate separate public-package Fitch character review on both targets
+        run: python -B verification/fitch_character_recipient.py --moon moon --moonrun moonrun --output ci-evidence/fitch-character-review
       - uses: actions/upload-artifact@v4
         if: always()
         with:

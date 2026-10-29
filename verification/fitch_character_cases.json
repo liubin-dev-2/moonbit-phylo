@@ -1,0 +1,837 @@
+{
+  "oracle": "Before-edit literal complete node candidates/assignment/change facts plus independent exhaustive state-label minimum checks; no product-generated expectations",
+  "charJSONEncoding": {
+    "plain_char": "0",
+    "some_char": [
+      "0"
+    ],
+    "none_char": null,
+    "emoji": [
+      "🌱"
+    ],
+    "surrogate": {
+      "parsed": false
+    }
+  },
+  "cases": [
+    {
+      "name": "eight-tip-review",
+      "newick": "[&R](((A,B)AB[ab-note]:0,(C,D)CD)L,((E,F)EF,(G,H)GH)R)Study[study-note]:999;",
+      "traits": {
+        "A": "0",
+        "B": "0",
+        "C": "1",
+        "D": "1",
+        "E": "0",
+        "F": "1",
+        "G": "?",
+        "H": "?"
+      },
+      "nodes": [
+        {
+          "role": "Study",
+          "parent": null,
+          "children": [
+            "L",
+            "R"
+          ],
+          "label": "Study",
+          "length": 999,
+          "comments": [
+            "study-note"
+          ],
+          "candidates": [
+            "0",
+            "1"
+          ],
+          "assignment": "0"
+        },
+        {
+          "role": "L",
+          "parent": "Study",
+          "children": [
+            "AB",
+            "CD"
+          ],
+          "label": "L",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "0",
+            "1"
+          ],
+          "assignment": "0"
+        },
+        {
+          "role": "AB",
+          "parent": "L",
+          "children": [
+            "A",
+            "B"
+          ],
+          "label": "AB",
+          "length": 0,
+          "comments": [
+            "ab-note"
+          ],
+          "candidates": [
+            "0"
+          ],
+          "assignment": "0"
+        },
+        {
+          "role": "A",
+          "parent": "AB",
+          "children": [],
+          "label": "A",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "0"
+          ],
+          "assignment": "0"
+        },
+        {
+          "role": "B",
+          "parent": "AB",
+          "children": [],
+          "label": "B",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "0"
+          ],
+          "assignment": "0"
+        },
+        {
+          "role": "CD",
+          "parent": "L",
+          "children": [
+            "C",
+            "D"
+          ],
+          "label": "CD",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "1"
+          ],
+          "assignment": "1"
+        },
+        {
+          "role": "C",
+          "parent": "CD",
+          "children": [],
+          "label": "C",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "1"
+          ],
+          "assignment": "1"
+        },
+        {
+          "role": "D",
+          "parent": "CD",
+          "children": [],
+          "label": "D",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "1"
+          ],
+          "assignment": "1"
+        },
+        {
+          "role": "R",
+          "parent": "Study",
+          "children": [
+            "EF",
+            "GH"
+          ],
+          "label": "R",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "0",
+            "1"
+          ],
+          "assignment": "0"
+        },
+        {
+          "role": "EF",
+          "parent": "R",
+          "children": [
+            "E",
+            "F"
+          ],
+          "label": "EF",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "0",
+            "1"
+          ],
+          "assignment": "0"
+        },
+        {
+          "role": "E",
+          "parent": "EF",
+          "children": [],
+          "label": "E",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "0"
+          ],
+          "assignment": "0"
+        },
+        {
+          "role": "F",
+          "parent": "EF",
+          "children": [],
+          "label": "F",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "1"
+          ],
+          "assignment": "1"
+        },
+        {
+          "role": "GH",
+          "parent": "R",
+          "children": [
+            "G",
+            "H"
+          ],
+          "label": "GH",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "0",
+            "1"
+          ],
+          "assignment": "0"
+        },
+        {
+          "role": "G",
+          "parent": "GH",
+          "children": [],
+          "label": "G",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "0",
+            "1"
+          ],
+          "assignment": "0"
+        },
+        {
+          "role": "H",
+          "parent": "GH",
+          "children": [],
+          "label": "H",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "0",
+            "1"
+          ],
+          "assignment": "0"
+        }
+      ],
+      "score": 2,
+      "changedChildRoles": [
+        "CD",
+        "F"
+      ],
+      "missingTaxa": [
+        "G",
+        "H"
+      ]
+    },
+    {
+      "name": "all-unobserved",
+      "newick": "[&R]((A,B)AB,(C,D)CD)Study:1e308;",
+      "traits": {
+        "A": "?",
+        "B": "?",
+        "C": "?",
+        "D": "?"
+      },
+      "nodes": [
+        {
+          "role": "Study",
+          "parent": null,
+          "children": [
+            "AB",
+            "CD"
+          ],
+          "label": "Study",
+          "length": 1e+308,
+          "comments": [],
+          "candidates": [],
+          "assignment": null
+        },
+        {
+          "role": "AB",
+          "parent": "Study",
+          "children": [
+            "A",
+            "B"
+          ],
+          "label": "AB",
+          "length": null,
+          "comments": [],
+          "candidates": [],
+          "assignment": null
+        },
+        {
+          "role": "A",
+          "parent": "AB",
+          "children": [],
+          "label": "A",
+          "length": null,
+          "comments": [],
+          "candidates": [],
+          "assignment": null
+        },
+        {
+          "role": "B",
+          "parent": "AB",
+          "children": [],
+          "label": "B",
+          "length": null,
+          "comments": [],
+          "candidates": [],
+          "assignment": null
+        },
+        {
+          "role": "CD",
+          "parent": "Study",
+          "children": [
+            "C",
+            "D"
+          ],
+          "label": "CD",
+          "length": null,
+          "comments": [],
+          "candidates": [],
+          "assignment": null
+        },
+        {
+          "role": "C",
+          "parent": "CD",
+          "children": [],
+          "label": "C",
+          "length": null,
+          "comments": [],
+          "candidates": [],
+          "assignment": null
+        },
+        {
+          "role": "D",
+          "parent": "CD",
+          "children": [],
+          "label": "D",
+          "length": null,
+          "comments": [],
+          "candidates": [],
+          "assignment": null
+        }
+      ],
+      "score": 0,
+      "changedChildRoles": [],
+      "missingTaxa": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "name": "three-unordered-states",
+      "newick": "[&R]((A,B)AB,C)Root;",
+      "traits": {
+        "A": "A",
+        "B": "B",
+        "C": "C"
+      },
+      "nodes": [
+        {
+          "role": "Root",
+          "parent": null,
+          "children": [
+            "AB",
+            "C"
+          ],
+          "label": "Root",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "A",
+            "B",
+            "C"
+          ],
+          "assignment": "A"
+        },
+        {
+          "role": "AB",
+          "parent": "Root",
+          "children": [
+            "A",
+            "B"
+          ],
+          "label": "AB",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "A",
+            "B"
+          ],
+          "assignment": "A"
+        },
+        {
+          "role": "A",
+          "parent": "AB",
+          "children": [],
+          "label": "A",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "A"
+          ],
+          "assignment": "A"
+        },
+        {
+          "role": "B",
+          "parent": "AB",
+          "children": [],
+          "label": "B",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "B"
+          ],
+          "assignment": "B"
+        },
+        {
+          "role": "C",
+          "parent": "Root",
+          "children": [],
+          "label": "C",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "C"
+          ],
+          "assignment": "C"
+        }
+      ],
+      "score": 2,
+      "changedChildRoles": [
+        "B",
+        "C"
+      ],
+      "missingTaxa": []
+    },
+    {
+      "name": "unicode-character-and-identities",
+      "newick": "[&R]('Café'[nfc-note]:0,'Café':1e308)'O''Brien_😀':0;",
+      "traits": {
+        "Café": "",
+        "Café": "🌱"
+      },
+      "nodes": [
+        {
+          "role": "Root",
+          "parent": null,
+          "children": [
+            "NFC",
+            "NFD"
+          ],
+          "label": "O'Brien_😀",
+          "length": 0,
+          "comments": [],
+          "candidates": [
+            "",
+            "🌱"
+          ],
+          "assignment": ""
+        },
+        {
+          "role": "NFC",
+          "parent": "Root",
+          "children": [],
+          "label": "Café",
+          "length": 0,
+          "comments": [
+            "nfc-note"
+          ],
+          "candidates": [
+            ""
+          ],
+          "assignment": ""
+        },
+        {
+          "role": "NFD",
+          "parent": "Root",
+          "children": [],
+          "label": "Café",
+          "length": 1e+308,
+          "comments": [],
+          "candidates": [
+            "🌱"
+          ],
+          "assignment": "🌱"
+        }
+      ],
+      "score": 1,
+      "changedChildRoles": [
+        "NFD"
+      ],
+      "missingTaxa": []
+    },
+    {
+      "name": "single-blank-state",
+      "newick": "[&R]'only_tip':123;",
+      "traits": {
+        "only_tip": " "
+      },
+      "nodes": [
+        {
+          "role": "Only",
+          "parent": null,
+          "children": [],
+          "label": "only_tip",
+          "length": 123,
+          "comments": [],
+          "candidates": [
+            " "
+          ],
+          "assignment": " "
+        }
+      ],
+      "score": 0,
+      "changedChildRoles": [],
+      "missingTaxa": []
+    },
+    {
+      "name": "missing-observation-not-missing-key",
+      "newick": "[&R](A,B)A;",
+      "traits": {
+        "A": "?",
+        "B": "1"
+      },
+      "nodes": [
+        {
+          "role": "Root",
+          "parent": null,
+          "children": [
+            "A",
+            "B"
+          ],
+          "label": "A",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "1"
+          ],
+          "assignment": "1"
+        },
+        {
+          "role": "A",
+          "parent": "Root",
+          "children": [],
+          "label": "A",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "1"
+          ],
+          "assignment": "1"
+        },
+        {
+          "role": "B",
+          "parent": "Root",
+          "children": [],
+          "label": "B",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "1"
+          ],
+          "assignment": "1"
+        }
+      ],
+      "score": 0,
+      "changedChildRoles": [],
+      "missingTaxa": [
+        "A"
+      ]
+    },
+    {
+      "name": "literal-n-is-an-observed-state",
+      "newick": "[&R](A,B)Root;",
+      "traits": {
+        "A": "N",
+        "B": "?"
+      },
+      "nodes": [
+        {
+          "role": "Root",
+          "parent": null,
+          "children": [
+            "A",
+            "B"
+          ],
+          "label": "Root",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "N"
+          ],
+          "assignment": "N"
+        },
+        {
+          "role": "A",
+          "parent": "Root",
+          "children": [],
+          "label": "A",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "N"
+          ],
+          "assignment": "N"
+        },
+        {
+          "role": "B",
+          "parent": "Root",
+          "children": [],
+          "label": "B",
+          "length": null,
+          "comments": [],
+          "candidates": [
+            "N"
+          ],
+          "assignment": "N"
+        }
+      ],
+      "score": 0,
+      "changedChildRoles": [],
+      "missingTaxa": [
+        "B"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "name": "missing-tree",
+      "newick": null,
+      "traits": {
+        "A": "0",
+        "B": "1"
+      },
+      "error": "missing_tree"
+    },
+    {
+      "name": "missing-traits",
+      "newick": "[&R](A,B)Root;",
+      "traits": null,
+      "error": "missing_traits",
+      "omitTraits": true
+    },
+    {
+      "name": "bad-newick",
+      "newick": "[&R](A,B)",
+      "traits": {
+        "A": "0",
+        "B": "1"
+      },
+      "error": "parser_error",
+      "detailPrefix": "Syntax("
+    },
+    {
+      "name": "negative-length",
+      "newick": "[&R](A:-1,B);",
+      "traits": {
+        "A": "0",
+        "B": "1"
+      },
+      "error": "parser_error",
+      "detailPrefix": "InvalidLength("
+    },
+    {
+      "name": "bad-json",
+      "newick": "[&R](A,B)Root;",
+      "traits": null,
+      "error": "invalid_traits_json",
+      "traitsJSON": "["
+    },
+    {
+      "name": "array-not-map",
+      "newick": "[&R](A,B)Root;",
+      "traits": null,
+      "error": "invalid_traits",
+      "traitsJSON": "[\"0\",\"1\"]"
+    },
+    {
+      "name": "number-state",
+      "newick": "[&R](A,B)Root;",
+      "traits": null,
+      "error": "invalid_state",
+      "traitsJSON": "{\"A\":0,\"B\":\"1\"}",
+      "taxon": "A"
+    },
+    {
+      "name": "empty-state",
+      "newick": "[&R](A,B)Root;",
+      "traits": {
+        "A": "",
+        "B": "1"
+      },
+      "error": "invalid_state",
+      "taxon": "A"
+    },
+    {
+      "name": "two-states",
+      "newick": "[&R](A,B)Root;",
+      "traits": {
+        "A": "01",
+        "B": "1"
+      },
+      "error": "invalid_state",
+      "taxon": "A"
+    },
+    {
+      "name": "combining-two-codepoints",
+      "newick": "[&R](A,B)Root;",
+      "traits": {
+        "A": "é",
+        "B": "1"
+      },
+      "error": "invalid_state",
+      "taxon": "A"
+    },
+    {
+      "name": "unknown-root",
+      "newick": "(A,B)Root;",
+      "traits": {
+        "A": "0",
+        "B": "1"
+      },
+      "error": "rooted_tree_required"
+    },
+    {
+      "name": "unrooted-before-mismatch",
+      "newick": "[&U](A,B)Root;",
+      "traits": {},
+      "error": "rooted_tree_required"
+    },
+    {
+      "name": "missing-extra",
+      "newick": "[&R](A,B)Root;",
+      "traits": {
+        "B": "0",
+        "Z": "1"
+      },
+      "error": "trait_mismatch",
+      "missingTaxa": [
+        "A"
+      ],
+      "extraTaxa": [
+        "Z"
+      ]
+    },
+    {
+      "name": "case-sensitive-keys",
+      "newick": "[&R](A,B)Root;",
+      "traits": {
+        "a": "0",
+        "B": "1"
+      },
+      "error": "trait_mismatch",
+      "missingTaxa": [
+        "A"
+      ],
+      "extraTaxa": [
+        "a"
+      ]
+    },
+    {
+      "name": "unsupported-dash",
+      "newick": "[&R](A,B)Root;",
+      "traits": {
+        "A": "-",
+        "B": "1"
+      },
+      "error": "unsupported_trait",
+      "taxon": "A"
+    },
+    {
+      "name": "unary",
+      "newick": "[&R]((A)U,B)Root;",
+      "traits": {
+        "A": "0",
+        "B": "1"
+      },
+      "error": "unary_not_supported",
+      "nodeLabel": "U",
+      "childCount": 1
+    },
+    {
+      "name": "polytomy",
+      "newick": "[&R](A,B,C)Root;",
+      "traits": {
+        "A": "0",
+        "B": "1",
+        "C": "0"
+      },
+      "error": "polytomy_not_supported",
+      "nodeLabel": "Root",
+      "childCount": 3
+    },
+    {
+      "name": "unsupported-before-unary",
+      "newick": "[&R]((A)U,B)Root;",
+      "traits": {
+        "A": "-",
+        "B": "1"
+      },
+      "error": "unsupported_trait",
+      "taxon": "A"
+    },
+    {
+      "name": "mismatch-before-unsupported",
+      "newick": "[&R](A,B)Root;",
+      "traits": {
+        "B": "0",
+        "Z": "-"
+      },
+      "error": "trait_mismatch",
+      "missingTaxa": [
+        "A"
+      ],
+      "extraTaxa": [
+        "Z"
+      ]
+    },
+    {
+      "name": "bad-state-order",
+      "newick": "[&R](A,B)Root;",
+      "traits": null,
+      "error": "invalid_state",
+      "traitsJSON": "{\"B\":\"\",\"A\":0}",
+      "taxon": "A"
+    },
+    {
+      "name": "unpaired-surrogate",
+      "newick": "[&R](A,B)Root;",
+      "traits": null,
+      "error": "invalid_traits_json",
+      "traitsJSON": "{\"A\":\"\\ud800\",\"B\":\"1\"}"
+    }
+  ]
+}

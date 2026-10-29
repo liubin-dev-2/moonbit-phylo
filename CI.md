@@ -59,6 +59,15 @@ The verifier binds `MOON_WORK` to its own explicit product/receiver manifest, so
 an ancestor workspace left by an earlier recipient is neither inherited nor
 rewritten. This nested-workspace case is included in the receiving evidence.
 
+The required independent job also runs `verification/fitch_character_recipient.py`
+against a separate public-import configurable character review module on both
+targets. Before-edit literal full node/state/change tables and a separate
+exhaustive state-labelling minimum validate the exact old ParsimonyResult plus
+every readable node and changed-edge annotation, Unicode/missing observations,
+structured errors and unchanged input/source hashes. The new receiving module
+uses the existing unordered single-character Fitch API; no library algorithm,
+public interface, old fixture, model or dependency changes. All old gates stay.
+
 CI uses the project's declared compiler `0.10.12+1634b282e`, with Node.js
 24.11.0 and Python 3.14. The installer uses the versioned URLs described by the
 [official installer](https://cli.moonbitlang.com/install/unix.sh) and checks the

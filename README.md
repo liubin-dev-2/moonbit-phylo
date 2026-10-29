@@ -70,6 +70,29 @@ moon run cmd/rf_compare --target wasm-gc --frozen
 
 构建两个后端后，`python -B verification/rf_recipient.py --artifact-dir _build --moonrun moonrun --output rf-evidence` 会从保存的 Newick 文件向真实新进程发送请求，核对预先手工列出的完整 clade/split 报告、反向结果和明确错误，检查单响应及输入哈希。它验证新接收方的模式分派与原报告交接，不声称新 RF 算法。
 
+## 单个离散性状的 Fitch 重建审查
+
+`examples/fitch_character_review` 是独立公共包接收方：输入原始有根 Newick 和用户的精确叶名→单字符观测映射，交付完整原 `ParsimonyResult`、每个原节点的观测/候选/重建状态，以及每条变化边的原 parent/child ID 和两端状态。它直接调用已有 `fitch_parsimony`，不改变算法，也不先删除缺失观测的叶。既有 `cmd/main` 的硬编码演示继续保留。
+
+将本库和该示例分别放在同级 product/receiver，在共同父目录初始化 `moon work init ./product ./receiver` 后运行：
+
+```powershell
+$env:PHYLO_FITCH_TREE='[&R](((A,B)AB[ab-note]:0,(C,D)CD)L,((E,F)EF,(G,H)GH)R)Study:999;'
+$env:PHYLO_FITCH_TRAITS='{"A":"0","B":"0","C":"1","D":"1","E":"0","F":"1","G":"?","H":"?"}'
+moon -C receiver run . --target js --frozen
+moon -C receiver run . --target wasm-gc --frozen
+```
+
+此例 score=2，变化为 L→CD、EF→F；G/H 是缺失**观测**，仍保留为原叶并得到本次确定性重建的状态0。报告的候选集合和一种最优重建不代表概率、祖先真实性或每个节点在全部全树最优解中的状态范围。全为 `?` 时 score=0、候选集合为空、重建为 null；不补造状态。`?` 是唯一缺失观测记号，缺少键仍是物种集合错误；`-` 沿用原不支持错误，`N` 和空格等其他字符是字面离散状态，不按 DNA 模糊码解释。
+
+`PHYLO_FITCH_TRAITS` 使用 core 解析器的普通 JSON 对象语义，值必须是能原样往返的单个 Unicode Char。`🌱` 虽占两个 UTF-16 code unit，仍是一个合法状态；空字符串、多个字符或 `e`＋组合重音这类两 codepoint 状态会报 `invalid_state`，不 trim、不归一化或替换。输入键按现有 UTF-16 名称顺序检查；候选状态次序保留既有 Char 排序，不另用字符串排序改写。
+
+响应只有一个 JSON，先检查 `ok`。成功的 `parsimony` 完整保留原 JSON：`assignment` 中 Some(Char) 是单元素数组、None 是 null；`node_annotations` 的可读列则使用状态字符串/null，内部节点的 `observed` 为 null，缺失观测叶仍为 `?`。`changes` 使用同一原树的节点 ID，ID 不跨重读或变换持久。枝长、stem、注释、原树和输入映射不被修改，Fitch 不做枝长累计。
+
+接收顺序是检查 tree/traits 变量是否提供、解析原树、解析对象/单字符值，再调用旧领域函数。缺项、原树解析、坏 JSON/对象/状态分别报 `missing_tree` / `missing_traits`、`parser_error`、`invalid_traits_json` / `invalid_traits` / `invalid_state`（附 taxon）。领域错误保持原优先级：根→叶键集合→不支持状态→树结构；响应为 `rooted_tree_required`、`trait_mismatch`（完整 missing/extra 列表）、`unsupported_trait`、`unary_not_supported` 或 `polytomy_not_supported`，保留原诊断和原节点快照，结构错误附原 node_id/child_count。错误正常退出，不能只看退出码。仍要求原有 Rooted 满二叉树或单根叶；不提供多列序列、权重/Sankoff、文件宿主或新持久格式，文本环境仍受宿主限制。
+
+在 Git checkout 内运行 `python -B verification/fitch_character_recipient.py --moon moon --moonrun moonrun --output fitch-evidence`，会从当前跟踪源码创建独立 product/receiver，绑定自身 `MOON_WORK`，在真实双后端进程中消费保存的 Newick/性状输入。本地新文件先暂存。手写的全节点候选/重建表和变化边预期在实现前冻结，另以独立穷举状态赋值核对最小变化数；验证完整原报告、全部节点/边交接、Unicode/缺失/错误、源及输入哈希。该自编工作流的实际运行不代表第三方采用；经典 unordered Fitch 的背景见 [DendroPy 一手文档](https://jeetsukumaran.github.io/DendroPy/library/parsimony.html)。
+
 ## 有根叶组的完整 clade 审查
 
 `tree.rooted_clade(selection)` 返回 `Result[RootedCladeReport, PhyloError]`，用于检查一组精确叶名是否正好构成完整有根 clade。报告含规范排序的 `selected_taxa`、原树 `mrca_id`、该最近共同祖先的全部后代叶 `clade_taxa`、其中未被选中的 `extra_taxa` 和 `is_monophyletic`。例如 `[&R]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study;`：选 A/C 得到原 ABC 节点、后代 A/B/C、夹杂叶 B，结论为 false；选 A/B 得到 AB 和 true；选 D/F 得到 DEF、夹杂叶 E。报告同时解释不完整的原因，原树不会被修剪或换根。
