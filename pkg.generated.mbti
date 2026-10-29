@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "liubin-dev/phylo"
+package "liubin-dev-2/phylo"
 
 import {
   "moonbitlang/core/debug",

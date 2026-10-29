@@ -9,7 +9,7 @@
 //   "moonbitlang/x@0.4.6",
 // }
 
-name = "liubin-dev/phylo"
+name = "liubin-dev-2/phylo"
 
 version = "0.1.0"
 

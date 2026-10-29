@@ -110,7 +110,7 @@ def main():
         artifact = build / target / 'debug/build/example/authored-route-highlighter' / ('authored-route-highlighter.' + extension)
         assert artifact.is_file(), artifact
         runner = shutil.which('node') if target == 'js' else args.moonrun
-        for relative in ['example/authored-route-highlighter/authored-route-highlighter.' + extension, 'liubin-dev/phylo/phylo.mi', 'liubin-dev/phylo/phylo.core']:
+        for relative in ['example/authored-route-highlighter/authored-route-highlighter.' + extension, 'liubin-dev-2/phylo/phylo.mi', 'liubin-dev-2/phylo/phylo.core']:
             path = build / target / 'debug/build' / relative
             assert path.is_file(), path
             compiled.append({'target': target, 'artifact': relative, 'path': str(path), 'sha256': sha(path), 'bytes': path.stat().st_size})
@@ -134,7 +134,7 @@ def main():
             if 'taxon' in case:
                 assert value['taxon'] == case['taxon']
     assert sha(fixture) == fixture_hash and all(sha(Path(path)) == expected for path, expected in immutable.items())
-    result = {'status': 'passed', 'publicModule': 'example/authored-route-highlighter', 'libraryDependency': 'liubin-dev/phylo@0.1.0 via local workspace',
+    result = {'status': 'passed', 'publicModule': 'example/authored-route-highlighter', 'libraryDependency': 'liubin-dev-2/phylo@0.1.0 via local workspace',
               'privateImports': False, 'oracle': data['oracle'], 'fixtureSHA256': fixture_hash, 'copiedSource': copied, 'commands': commands,
               'compiled': compiled, 'runs': runs, 'count': len(runs), 'independentChecks': checks, 'inputSHA256': immutable,
               'adoptionBoundary': 'Runnable public-package highlighting example only; no deployed viewer, signature, adoption or performance evidence'}

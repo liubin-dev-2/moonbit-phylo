@@ -2,7 +2,9 @@
 
 源码仓库：[liubin-dev-2/moonbit-phylo](https://github.com/liubin-dev-2/moonbit-phylo)。双后端 CI 与工具链说明见 [CI.md](CI.md)，实际运行见 [Actions](https://github.com/liubin-dev-2/moonbit-phylo/actions/workflows/check.yml)。
 
-原生 MoonBit 的 Newick 树分析库，模块 `liubin-dev/phylo`。提供可审计的 rooted/unrooted Robinson–Foulds 比较、二叉 Fitch 简约性、叶间距离、中点换根、保留叶修剪、有根 Faith PD、物种集合新增覆盖和逐步贪心选取报告。可选 `liubin-dev/phylo/nj` 包把用户距离矩阵接成明确无根的 NJ 树，继续使用既有距离、RF 和导出接口。运行时仅依赖 MoonBit core；Python 只用于独立验证。
+原生 MoonBit 的 Newick 树分析库，模块 `liubin-dev-2/phylo`。提供可审计的 rooted/unrooted Robinson–Foulds 比较、二叉 Fitch 简约性、叶间距离、中点换根、保留叶修剪、有根 Faith PD、物种集合新增覆盖和逐步贪心选取报告。可选 `liubin-dev-2/phylo/nj` 包把用户距离矩阵接成明确无根的 NJ 树，继续使用既有距离、RF 和导出接口。运行时仅依赖 MoonBit core；Python 只用于独立验证。
+
+当前维护与申报账号：[liubin-dev-2](https://github.com/liubin-dev-2)。模块为 `liubin-dev-2/phylo`，版本 `0.1.0`；可选 NJ 包为 `liubin-dev-2/phylo/nj`。原模块导入 `liubin-dev/phylo` 请改为新命名空间及其对应子包。当前账号归属不改写原版权、Git 作者历史或第三方许可；来源与许可见 [SOURCES.md](SOURCES.md)、[LICENSE](LICENSE) 和 [nj/UPSTREAM.md](nj/UPSTREAM.md)。
 
 ## 运行
 
@@ -27,7 +29,7 @@ moon run cmd/selection_projection --target js
 moon run cmd/selection_projection --target wasm-gc
 ```
 
-本地验证工具链：moon 0.1.20260904，moonc v0.10.12+1634b282e。尚未发布到 Mooncakes；不提供虚构安装命令。`cmd/main` 是独立包的真实公共 API 消费者，打印完整 RF/Fitch/距离报告和换根/修剪结果。正式接口见 `pkg.generated.mbti`。
+本地验证工具链：moon 0.1.20260904，moonc v0.10.12+1634b282e。使用下述源码 workspace 运行，未向 Mooncakes 发布。`cmd/main` 是独立包的真实公共 API 消费者，打印完整 RF/Fitch/距离报告和换根/修剪结果。正式接口见 `pkg.generated.mbti`。
 
 ### 另一个本地模块如何使用源码包
 
@@ -35,11 +37,11 @@ moon run cmd/selection_projection --target wasm-gc
 
 ```text
 import {
-  "liubin-dev/phylo@0.1.0",
+  "liubin-dev-2/phylo@0.1.0",
 }
 ```
 
-在`recipient/moon.pkg`导入`"liubin-dev/phylo" @phylo`后，可直接使用下方公开API。于共同父目录执行：
+在`recipient/moon.pkg`导入`"liubin-dev-2/phylo" @phylo`后，可直接使用下方公开API。于共同父目录执行：
 
 ```powershell
 moon work init ./moonbit-phylo ./recipient
@@ -49,7 +51,7 @@ moon -C recipient run . --target js --frozen
 moon -C recipient run . --target wasm-gc --frozen
 ```
 
-这里假设recipient根包是使用这些API的main包；不是从未发布的注册表下载包。已用第13轮封存ZIP的干净解压副本和独立模块验证：不携带产品构建目录或第三方包缓存，标准core仍来自已安装SDK。在既有42物种树上使用新测试请求，导出/读取/重算后继续调用绝对及增量PD，核对整树、逐步贡献边和数值；没有重跑历史测试全集。这是本地源码交付审计，不代表Mooncakes发布或外部CI验收。
+这里假设 recipient 根包是使用公开 API 的 main 包。源码包与独立 recipient 可在共同父目录通过本地 workspace 构建；产品构建目录和第三方包缓存无需随源码分发，标准 core 由固定 SDK 提供。各公共消费者的完整输入、报告与产物验证命令见下文和 CI.md；本地源码交付不等于 Mooncakes 包发布或外部平台验收。
 
 ## 两棵原始 Newick 的 RF 比较
 
@@ -72,7 +74,7 @@ moon run cmd/rf_compare --target wasm-gc --frozen
 
 ## 按指定叶集合交付裁剪树与原边来源
 
-`examples/prune_export` 是独立公共包消费者：接收自己的原始 Newick 和保留叶名数组，调用原有 `prune` 一次，交付完整新树、规范 Newick 和原 `TransformWitness`。它还用 witness 把每条新树非根边关联到原树节点/child-edge ID；原树与请求保留，压缩或移除的节点仍能从原快照核对。既有 `cmd/main` / `cmd/selection_projection` 的固定输入演示保留，库算法与公开接口保持原字节。
+`examples/prune_export` 是独立公共包消费者：接收自己的原始 Newick 和保留叶名数组，调用原有 `prune` 一次，交付完整新树、规范 Newick 和原 `TransformWitness`。它还用 witness 把每条新树非根边关联到原树节点/child-edge ID；原树与请求保留，压缩或移除的节点仍能从原快照核对。既有 `cmd/main` / `cmd/selection_projection` 的固定输入演示保留，示例使用既有裁剪算法与报告结构。
 
 把本库和示例分别放为同级 product/receiver，在共同父目录执行 `moon work init ./product ./receiver` 后：
 
@@ -195,7 +197,7 @@ moon -C receiver run . --target wasm-gc --frozen
 
 Rooted/Unrooted/Unknown 标记、长度、注释和原图不被修改；结果数组由调用方持有，ID 仅对应同一树的 `nodes()`，不跨重读/变换持久，也不是布局坐标。原解析器仍拒绝非法 Newick/长度语法。旧 `patristic_path` / distance 继续先检查全树非根长度并保留原数值、错误顺序与 JSON；缺长度时包括 self 的原 `MissingLength` 不因这个新图查询而放宽。
 
-`examples/authored_route_highlighter` 是**单独 MoonBit 模块**，只导入公开 `liubin-dev/phylo`：先保存原 nodes 快照，再把 route ID 应用到原 node/child-edge 高亮样式索引，示例不实现 viewer/布局或新文件传输。在共同父目录将本库放为 product、该示例放为 receiver，执行 `moon work init ./product ./receiver` 后可运行：
+`examples/authored_route_highlighter` 是**单独 MoonBit 模块**，只导入公开 `liubin-dev-2/phylo`：先保存原 nodes 快照，再把 route ID 应用到原 node/child-edge 高亮样式索引，示例不实现 viewer/布局或新文件传输。在共同父目录将本库放为 product、该示例放为 receiver，执行 `moon work init ./product ./receiver` 后可运行：
 
 ```powershell
 $env:PHYLO_ROUTE_TREE='[&U](((A)U,B)X,(C,D)Y)R;'
@@ -246,7 +248,7 @@ Remove-Item Env:PHYLO_PATH_TREE_FILE
 
 ## 可选距离矩阵 → 无根 NJ 桥接
 
-调用包额外导入 `"liubin-dev/phylo/nj" @nj` 即可使用；根包不导入该包，原 `moon.mod`、根 `moon.pkg` 和既有根 API 保留。`@nj.neighbor_joining(matrix)` 接受已有 `@phylo.DistanceMatrix`，`@nj.from_json(text)` 接受下述 JSON；两者返回 `Result[NJReport, NJError]`。正式接口见 `nj/pkg.generated.mbti`。
+调用包额外导入 `"liubin-dev-2/phylo/nj" @nj` 即可使用；根包不导入该包，原 `moon.mod`、根 `moon.pkg` 和既有根 API 保留。`@nj.neighbor_joining(matrix)` 接受已有 `@phylo.DistanceMatrix`，`@nj.from_json(text)` 接受下述 JSON；两者返回 `Result[NJReport, NJError]`。正式接口见 `nj/pkg.generated.mbti`。
 
 ```powershell
 $env:PHYLO_NJ_MATRIX='{"taxa":["A","B","C","D"],"values":[[0,3,9,10],[3,0,10,11],[9,10,0,7],[10,11,7,0]]}'
@@ -305,7 +307,7 @@ python -B verification/nj_range.py --artifact-dir _build --moonrun moonrun --out
 
 ## 公共 API 示例
 
-在调用包的 moon.pkg 中导入 `"liubin-dev/phylo" @phylo`。本地示例已经完成此配置。
+在调用包的 moon.pkg 中导入 `"liubin-dev-2/phylo" @phylo`。本地示例已经完成此配置。
 
 ```moonbit nocheck
 ///|
@@ -345,7 +347,7 @@ let increment = a.faith_pd_gain(["A"], ["C", "D"]).unwrap() // gain = 15
 let plan = a.faith_pd_greedy(["A"], ["B", "C", "D"], 2U).unwrap()
 ```
 
-示例使用 unwrap 简化展示；生产调用应匹配 `Ok(value)` / `Err(PhyloError)`。所有主入口返回 Result，常见错误包括 Syntax（Char偏移）、DuplicateTaxon、RootedTreeRequired、PolytomyNotSupported、UnaryNotSupported、TaxaSetMismatch、TraitMismatch、MissingLength 与 NumericOverflow。
+示例使用 unwrap 简化展示；生产调用应匹配 `Ok(value)` / `Err(PhyloError)`。解析、领域分析与可失败变换入口返回 Result；`ladderize` 直接返回独立的 PhyloTree。常见错误包括 Syntax（Char偏移）、DuplicateTaxon、RootedTreeRequired、PolytomyNotSupported、UnaryNotSupported、TaxaSetMismatch、TraitMismatch、MissingLength 与 NumericOverflow。
 
 ## Newick 与 rooting 合同
 
@@ -533,7 +535,7 @@ Remove-Item Env:PHYLO_PLAN_CHAIN
 
 顶层`ok=true`表示各段和衔接有效；`cumulative.ok=true`时report给出可表示的累计增量。若各段增量有限、累计值却溢出，顶层仍为true，`cumulative.ok=false`并给出NumericOverflow，不能把一条有效链说成无效，也不输出Infinity。段解析/重算失败则顶层`ok=false,error=stage_failed`，含从0开始的整数stage_index与原cause；衔接失败为chain_mismatch及字段名。缺少输入为missing_chain，空数组/外层类型错误为invalid_field(chain)。进程退出及宿主传输限制沿用原约定。
 
-新入口不改旧计划schema、单份review、create/resume、库API或选择算法。它验证的是这些文件之间的连续性与可重算结果，不证明作者身份，也不替用户对替代方案排名。
+该入口不改旧计划schema、单份review、create/resume、库API或选择算法。它验证的是这些文件之间的连续性与可重算结果，不证明作者身份，也不替用户对替代方案排名。
 
 链复核保留研究根的具体含义：`[&R]Solo:999;`中Solo本身是根，没有非根贡献边，选中它的增量为0；`[&R](Solo:999)Study:123;`有一条999长的祖先路径，根stem123仍排除。新增的零长分支也会列入贡献边，因此“gain=0”“没有新增物种”和“没有新增边”不能互相替代。这些是既有合同的退化图审查结果，未增加算法或API。
 
@@ -597,7 +599,7 @@ edge_paths按新节点ID给出该节点对应的原树路径顶点，父节点�
 
 中点换根要求完整长度。按字典序叶对选第一条最长路径并返回diameter_endpoints/diameter；中点在顶点上就复用顶点，可能形成多叉根，绝不为Fitch强行补枝。全零直径保持原拓扑并标Rooted；并列最长路径按固定叶顺序解决。旧一元根的非taxon悬枝会删除，变换后的stem不混入叶间距离。被压缩节点的标签/注释不强行移到别的节点，原树及None映射仍可审计。
 
-## 复杂度与本期边界
+## 复杂度与支持范围
 
 库的解析、序列化、遍历和变换不递归访问树。已用万叶、深度9999梳形树验证读写，未据此声称全部算法均适合万叶全矩阵。
 
@@ -609,7 +611,7 @@ Faith PD用集合标记合并根路径，已标记的祖先不重复访问；忽
 
 贪心实现直接扫描候选根路径。设C为可选候选数、K=min(limit,C)、B为基线大小，保守时间O(K*C*N+N log N+(B+C)log(B+C))，另计哈希/大整数成本；工作数组O(N+B+C)，证据输出O(N+K)。它不是文献中经过专门优化的近线性实现，未作大树选取吞吐量声明。
 
-NEXUS读取、类型化NHX、PhyloXML、Sankoff/权重、序列建树均明确后续；当前不是原多格式蓝图全部完成。外部数据转为Newick的Python脚本只是验证适配器。
+当前输入为单棵 Newick 或明确的 NJ 距离矩阵，不支持 NEXUS 导入、类型化 NHX、PhyloXML、Sankoff/权重或序列建树。外部数据转为 Newick 的 Python 脚本仅用于验证适配。
 
 ## 验证与许可
 
@@ -619,7 +621,7 @@ NEXUS读取、类型化NHX、PhyloXML、Sankoff/权重、序列建树均明确�
 
 源码 Apache-2.0（LICENSE）；研究树数据 CC0（testdata/LICENSE-CC0），数据不改标Apache。来源、固定身份、数据转换及许可分离见 SOURCES.md。源码已发布于本仓库；尚未发布Mooncakes，也不代表组委会验收。
 
-## deep-repair-05 correctness fixes
+## 序列化与变换边界
 
 不透明树注释统一序列化到终止分号之后；读取端将分号后注释识别为树级原文。因此内部出现的 `[&R]` / `[&U]` 不会在读写往返后冒充前导 rooting 指令，Unknown 保持 Unknown；前导明确指令仍照常生效。
 
@@ -629,26 +631,26 @@ NEXUS读取、类型化NHX、PhyloXML、Sankoff/权重、序列建树均明确�
 
 对于最小正 binary64 直径，除2可能舍入成0，无法表示精确的等长两半。此时换根显式插入零长边，保持端点叶身份、全部叶间长度及映射；witness如实给出可表示的 offset，不虚构更高精度。
 
-本轮新增7项定向回归/有界审查，覆盖4个实测缺陷、两种4叶二叉形状的全部0/1/?观测（穷举赋值独立校验）、quartet完整RF报告及零/次正规/普通/巨大长度组合。既有外部真值与真实数据来源保留，未重新下载或生成旧参考全集。
+定向回归覆盖序列化与变换边界、两种4叶二叉形状的全部0/1/?观测（穷举赋值独立校验）、quartet完整RF报告及零/次正规/普通/巨大长度组合。既有外部真值与真实数据来源保留，未重新下载或生成旧参考全集。
 
-## deep-repair-06 correctness fixes
+## 缺失长度与十进制符号
 
 压缩保留路径时，只有整条路径的长度都已知，才报告其数值和是否溢出。缺失片段无论位于路径哪一端，都传播为None；不会先因其它片段溢出而拒绝这棵合法的不完整长度树。完整保留边真正溢出时仍返回NumericOverflow，临时非有限中间值不会暴露到返回树。
 
 非负长度校验同时检查原十进制尾数的符号：`-1e-400`即使舍入为`-0.0`也拒绝；精确零（如`-0e-400`）仍接受，正数的既有binary64下溢舍入政策不变。增量读取在指数跨chunk时采用相同规则。
 
-本轮新增回归包含上述公开API反例及缺失/零/普通/巨大三段压缩路径的全部组合，期望由缺失值传播规则、独立图路径witness检查和Python Decimal的精确符号分类确立。没有重新下载研究树或重生成既有参考全集。
+相应回归包含上述公开API反例及缺失/零/普通/巨大三段压缩路径的全部组合，期望由缺失值传播规则、独立图路径witness检查和Python Decimal的精确符号分类确立。没有重新下载研究树或重生成既有参考全集。
 
-## deep-repair-07 numerical fixes
+## 精确累计与一次舍入
 
 距离与压缩路径的内部累加以2^-1074为整数单位，保留输入Double的精确值，完整路径用最近偶数规则舍入一次。修复逐段舍入把本应有限的总长变为Infinity、以及加法顺序造成距离矩阵不对称的问题；完整保留边或要求的叶间路径最终舍入为Infinity时仍报NumericOverflow，缺失传播与根stem规则继续适用。
 
-公开边长和返回类型仍是Double；不恢复十进制解析前的无限精度，也不承诺换根切边或多条压缩边再次组合后具备超出binary64的表示能力。新增core/bigint仅用于内部精确累加，未引入第三方运行时依赖。
+公开边长和返回类型仍是Double；不恢复十进制解析前的无限精度，也不承诺换根切边或多条压缩边再次组合后具备超出binary64的表示能力。core/bigint仅用于内部精确累加，未引入第三方运行时依赖。
 
-两项公开API反例、30组Python Fraction独立舍入向量和6141个有限binary64边界往返检查覆盖有限上界、真溢出、次正规数、最近偶数和不同加法顺序。参考生成器及精确分数回执保存在本轮报告；沿用既有研究树与外部参考数据。
+两项公开API反例、30组Python Fraction独立舍入向量和6141个有限binary64边界往返检查覆盖有限上界、真溢出、次正规数、最近偶数和不同加法顺序。相应独立预期与回归用例随源码提供，研究树及外部参考数据的来源见 SOURCES.md。
 
-## deep-repair-08 midpoint fix and diversity extension
+## 中点定位与演化覆盖
 
 中点位置使用选定路径的精确长度与双倍整数坐标比较，避免从已舍入的半直径逐边减法时漏掉小边。中点确在原顶点时复用该顶点，保留其标签和映射；落在边内时才把offset舍入为Double，包括半个最小次正规单位的最近偶数规则。公开diameter仍为Double，切边后的表示精度边界不变。新增公开API反例、11组对称路径和32组Fraction半长预期验证这一行为。
 
-本轮新增的Faith PD功能是已建立的生态学度量，不宣称算法发明或MoonBit生态首创。生态检索发现BioSeqs已有树分析功能；本库侧重明确合同、贡献边报告和JS/Wasm-GC原生运行。当前扩展不增加树格式，也不修改已有API和合法输入范围。
+Faith PD 是已建立的生态学度量，不宣称算法发明或MoonBit生态首创。生态检索发现BioSeqs已有树分析功能；本库侧重明确合同、贡献边报告和JS/Wasm-GC原生运行。输入范围与接口合同以上述说明为准。

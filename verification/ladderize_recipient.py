@@ -135,7 +135,7 @@ def main():
         extension = 'js' if target == 'js' else 'wasm'
         relative = 'example/ladderize-export/ladderize-export.' + extension
         base = build / target / 'debug/build'
-        for name in [relative, 'liubin-dev/phylo/phylo.mi', 'liubin-dev/phylo/phylo.core']:
+        for name in [relative, 'liubin-dev-2/phylo/phylo.mi', 'liubin-dev-2/phylo/phylo.core']:
             path = base / name
             assert path.is_file(), path
             compiled.append(dict(target=target, artifact=name, path=str(path), bytes=path.stat().st_size, sha256=sha(path)))
@@ -179,7 +179,7 @@ def main():
                 row['status'] = 'passed_expected_success'
             save('calls-progress.json', runs)
     assert sha(fixture) == fixture_hash and all(sha(Path(path)) == expected for path, expected in immutable.items())
-    result = dict(status='passed', publicModule='example/ladderize-export', dependency='Only public liubin-dev/phylo@0.1.0 via local workspace', privateImports=False,
+    result = dict(status='passed', publicModule='example/ladderize-export', dependency='Only public liubin-dev-2/phylo@0.1.0 via local workspace', privateImports=False,
                   oracle=data['oracle'], fixtureSHA256=fixture_hash, copiedSource=copied, commands=commands, compiled=compiled, runs=runs, count=len(runs),
                   independentChecks=checks, expectedErrors=expected_errors, exports=exported_files, originalInputSHA256=immutable,
                   adoptionBoundary='Self-authored real ordered export consumer; same-process actual Newick reparse, no external adoption/new native file host/layout/renderer claim')

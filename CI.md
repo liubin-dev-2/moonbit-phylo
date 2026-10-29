@@ -129,3 +129,17 @@ numeric exits/statuses. No native mirror tests or old scientific/reference
 scenarios are run locally; required CI keeps all old gates. Root public APIs,
 algorithms, parser, fixtures and dependencies stay byte-identical. This is a
 configurable artifact workflow, not a new pruning algorithm or reparse claim.
+
+## Current module ownership and consumer paths
+
+The module and all owned subpackages use `liubin-dev-2/phylo`; the repository
+and current maintenance/submission account are `liubin-dev-2`. All six local
+`example/*` modules depend on `liubin-dev-2/phylo@0.1.0` and keep their local
+example identities. Their public consumer verifiers read actual compiled
+`liubin-dev-2/phylo/phylo.mi` and `phylo.core` paths in workspace builds. Root
+single-module build paths and Node-only file bridges keep their existing shape.
+Required workflow retains all three jobs and every existing test/consumer step,
+covering both backend imports, Node NJ/path input and complete public reports.
+Generated interfaces are regenerated with the fixed SDK; only owned qualified
+package paths change, with signatures and scientific behavior retained. Original
+licenses/upstream/data attribution and Git author history stay unchanged.

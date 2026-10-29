@@ -157,7 +157,7 @@ def main():
         emitter_rel = 'example/taxon-rename-handoff/taxon-rename-handoff.' + extension
         receiver_rel = 'example/taxon-rename-handoff/receive/receive.' + extension
         base = build / target / 'debug/build'
-        for relative in [emitter_rel, receiver_rel, 'liubin-dev/phylo/phylo.mi', 'liubin-dev/phylo/phylo.core']:
+        for relative in [emitter_rel, receiver_rel, 'liubin-dev-2/phylo/phylo.mi', 'liubin-dev-2/phylo/phylo.core']:
             path = base / relative
             assert path.is_file(), path
             compiled.append({'target': target, 'artifact': relative, 'path': str(path), 'bytes': path.stat().st_size, 'sha256': sha(path)})
@@ -208,7 +208,7 @@ def main():
             value, row = call(case, 'receive', paths[case['name']][0]); check_error(value, case)
             row['status'] = 'passed_expected_api_error'; expected_errors.append({'target': target, 'stage': 'receive', 'case': case['name'], 'error': case['error']})
     assert sha(fixture) == fixture_hash and all(sha(Path(path)) == expected for path, expected in immutable.items())
-    result = {'status': 'passed', 'publicModule': 'example/taxon-rename-handoff', 'dependency': 'Only public liubin-dev/phylo@0.1.0 via local workspace',
+    result = {'status': 'passed', 'publicModule': 'example/taxon-rename-handoff', 'dependency': 'Only public liubin-dev-2/phylo@0.1.0 via local workspace',
               'privateImports': False, 'oracle': data['oracle'], 'fixtureSHA256': fixture_hash, 'copiedSource': copied, 'commands': commands,
               'compiled': compiled, 'runs': runs, 'count': len(runs), 'independentChecks': checks, 'expectedErrors': expected_errors, 'handoffs': handoffs,
               'originalInputSHA256': immutable, 'adoptionBoundary': 'Self-authored real two-process raw Newick handoff, no external adoption or native file-host claim'}

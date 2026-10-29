@@ -1,5 +1,5 @@
 import {
-  "liubin-dev/phylo",
+  "liubin-dev-2/phylo",
 }
 
 pkgtype(kind: "executable")

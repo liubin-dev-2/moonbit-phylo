@@ -147,7 +147,7 @@ def main():
         relative_main = 'example/clade-review/clade-review.' + extension
         artifact = build / target / 'debug/build' / relative_main
         runner = shutil.which('node') if target == 'js' else args.moonrun
-        for relative in [relative_main, 'liubin-dev/phylo/phylo.mi', 'liubin-dev/phylo/phylo.core']:
+        for relative in [relative_main, 'liubin-dev-2/phylo/phylo.mi', 'liubin-dev-2/phylo/phylo.core']:
             path = build / target / 'debug/build' / relative
             assert path.is_file(), path
             compiled.append({'target': target, 'artifact': relative, 'path': str(path), 'sha256': sha(path), 'bytes': path.stat().st_size})
@@ -182,7 +182,7 @@ def main():
                 assert value['detail'].startswith(case['detailPrefix']), (case['name'], value)
     assert sha(fixture) == fixture_hash
     assert all(sha(Path(path)) == expected for path, expected in immutable.items())
-    result = {'status': 'passed', 'publicModule': 'example/clade-review', 'libraryDependency': 'liubin-dev/phylo@0.1.0 via local workspace',
+    result = {'status': 'passed', 'publicModule': 'example/clade-review', 'libraryDependency': 'liubin-dev-2/phylo@0.1.0 via local workspace',
               'privateImports': False, 'oracle': data['oracle'], 'fixtureSHA256': fixture_hash, 'copiedSource': copied,
               'commands': commands, 'compiled': compiled, 'runs': runs, 'count': len(runs), 'independentChecks': checks,
               'inputSHA256': immutable, 'adoptionBoundary': 'Self-authored runnable public-package clade review only; no third-party adoption or deployed viewer evidence'}

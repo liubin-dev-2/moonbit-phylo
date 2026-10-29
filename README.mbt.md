@@ -2,7 +2,9 @@
 
 源码仓库：[liubin-dev-2/moonbit-phylo](https://github.com/liubin-dev-2/moonbit-phylo)。双后端 CI 与工具链说明见 [CI.md](CI.md)，实际运行见 [Actions](https://github.com/liubin-dev-2/moonbit-phylo/actions/workflows/check.yml)。
 
-原生 MoonBit 的 Newick 树分析库，模块 `liubin-dev/phylo`。提供可审计的 rooted/unrooted Robinson–Foulds 比较、二叉 Fitch 简约性、叶间距离、中点换根、保留叶修剪、有根 Faith PD、物种集合新增覆盖和逐步贪心选取报告。可选 `liubin-dev/phylo/nj` 包把用户距离矩阵接成明确无根的 NJ 树，继续使用既有距离、RF 和导出接口。运行时仅依赖 MoonBit core；Python 只用于独立验证。
+原生 MoonBit 的 Newick 树分析库，模块 `liubin-dev-2/phylo`。提供可审计的 rooted/unrooted Robinson–Foulds 比较、二叉 Fitch 简约性、叶间距离、中点换根、保留叶修剪、有根 Faith PD、物种集合新增覆盖和逐步贪心选取报告。可选 `liubin-dev-2/phylo/nj` 包把用户距离矩阵接成明确无根的 NJ 树，继续使用既有距离、RF 和导出接口。运行时仅依赖 MoonBit core；Python 只用于独立验证。
+
+当前维护与申报账号：[liubin-dev-2](https://github.com/liubin-dev-2)。模块为 `liubin-dev-2/phylo`，版本 `0.1.0`；可选 NJ 包为 `liubin-dev-2/phylo/nj`。原模块导入 `liubin-dev/phylo` 请改为新命名空间及其对应子包。当前账号归属不改写原版权、Git 作者历史或第三方许可；来源与许可见 [SOURCES.md](SOURCES.md)、[LICENSE](LICENSE) 和 [nj/UPSTREAM.md](nj/UPSTREAM.md)。
 
 ## 运行
 
@@ -27,7 +29,7 @@ moon run cmd/selection_projection --target js
 moon run cmd/selection_projection --target wasm-gc
 ```
 
-本地验证工具链：moon 0.1.20260904，moonc v0.10.12+1634b282e。尚未发布到 Mooncakes；不提供虚构安装命令。`cmd/main` 是独立包的真实公共 API 消费者，打印完整 RF/Fitch/距离报告和换根/修剪结果。正式接口见 `pkg.generated.mbti`。
+本地验证工具链：moon 0.1.20260904，moonc v0.10.12+1634b282e。使用下述源码 workspace 运行，未向 Mooncakes 发布。`cmd/main` 是独立包的真实公共 API 消费者，打印完整 RF/Fitch/距离报告和换根/修剪结果。正式接口见 `pkg.generated.mbti`。
 
 ### 另一个本地模块如何使用源码包
 
@@ -35,11 +37,11 @@ moon run cmd/selection_projection --target wasm-gc
 
 ```text
 import {
-  "liubin-dev/phylo@0.1.0",
+  "liubin-dev-2/phylo@0.1.0",
 }
 ```
 
-在`recipient/moon.pkg`导入`"liubin-dev/phylo" @phylo`后，可直接使用下方公开API。于共同父目录执行：
+在`recipient/moon.pkg`导入`"liubin-dev-2/phylo" @phylo`后，可直接使用下方公开API。于共同父目录执行：
 
 ```powershell
 moon work init ./moonbit-phylo ./recipient
@@ -49,11 +51,204 @@ moon -C recipient run . --target js --frozen
 moon -C recipient run . --target wasm-gc --frozen
 ```
 
-这里假设recipient根包是使用这些API的main包；不是从未发布的注册表下载包。已用第13轮封存ZIP的干净解压副本和独立模块验证：不携带产品构建目录或第三方包缓存，标准core仍来自已安装SDK。在既有42物种树上使用新测试请求，导出/读取/重算后继续调用绝对及增量PD，核对整树、逐步贡献边和数值；没有重跑历史测试全集。这是本地源码交付审计，不代表Mooncakes发布或外部CI验收。
+这里假设 recipient 根包是使用公开 API 的 main 包。源码包与独立 recipient 可在共同父目录通过本地 workspace 构建；产品构建目录和第三方包缓存无需随源码分发，标准 core 由固定 SDK 提供。各公共消费者的完整输入、报告与产物验证命令见下文和 CI.md；本地源码交付不等于 Mooncakes 包发布或外部平台验收。
+
+## 两棵原始 Newick 的 RF 比较
+
+`cmd/rf_compare` 是可配置的单请求/单 JSON 响应接收方，直接调用原 `rf_distance_rooted` / `rf_distance_unrooted`，不从距离矩阵重建树。两输入仍是现有单树 Newick 文本，模式必须明确给出：
+
+```powershell
+$env:PHYLO_RF_LEFT='[&R]((A,B),(C,D));'
+$env:PHYLO_RF_RIGHT='[&R](A,(B,(C,D)));'
+$env:PHYLO_RF_MODE='rooted'
+moon run cmd/rf_compare --target js --frozen
+$env:PHYLO_RF_MODE='unrooted'
+moon run cmd/rf_compare --target wasm-gc --frozen
+```
+
+上例 rooted 报告 shared=CD、only_left=AB、only_right=BCD、distance=2；unrooted 则共享同一个 CD|AB split，distance=0。成功保留原 `RFComparisonReport` 的 `mode` / `taxa` / `shared` / `only_left` / `only_right` / `distance`，仅加 `ok:true`。模式精确为小写 `rooted` 或 `unrooted`，不从子节点数量猜根，也不把 mode 当解析器的强制 rooting 参数；rooted 必须两棵输入本就有 Rooted 语义。叶集合严格全等，不取交集、不补叶、不归一化身份；零内枝仍计作拓扑边。RF 不要求枝长齐全，但非法枝长仍由原解析器拒绝。
+
+先检查 mode，再检查 left/right 是否提供，按 left、right 顺序解析，最后比较。缺项报 `missing_mode` / `missing_left` / `missing_right`，非法模式报 `invalid_mode`；解析错误为 `tree_error`，附 `input:left/right` 与原诊断。比较错误报 `rooted_tree_required`，或 `taxa_set_mismatch` 并附 `only_left_taxa` / `only_right_taxa`。错误是 `ok:false`，进程仍正常退出，接收脚本必须先检查 `ok`。空树文本是解析错误。文本环境传输继续受宿主限制，本入口不增加文件/stdin/argv 选择器、新格式或库 API；既有 path/NJ 文件入口保持原合同。
+
+构建两个后端后，`python -B verification/rf_recipient.py --artifact-dir _build --moonrun moonrun --output rf-evidence` 会从保存的 Newick 文件向真实新进程发送请求，核对预先手工列出的完整 clade/split 报告、反向结果和明确错误，检查单响应及输入哈希。它验证新接收方的模式分派与原报告交接，不声称新 RF 算法。
+
+## 按指定叶集合交付裁剪树与原边来源
+
+`examples/prune_export` 是独立公共包消费者：接收自己的原始 Newick 和保留叶名数组，调用原有 `prune` 一次，交付完整新树、规范 Newick 和原 `TransformWitness`。它还用 witness 把每条新树非根边关联到原树节点/child-edge ID；原树与请求保留，压缩或移除的节点仍能从原快照核对。既有 `cmd/main` / `cmd/selection_projection` 的固定输入演示保留，示例使用既有裁剪算法与报告结构。
+
+把本库和示例分别放为同级 product/receiver，在共同父目录执行 `moon work init ./product ./receiver` 后：
+
+```powershell
+$env:PHYLO_PRUNE_TREE='[&R]((((Aspen:2)U[u-note]:3,Birch:4)AB[ab-note]:5,Cedar:6)ABC[abc-note]:7,(Dogwood:8,Elm:9)DE[de-note]:10,Fir:11)Study[study-note]:99;[tree audit]'
+$env:PHYLO_PRUNE_RETAIN='["Elm","Aspen","Cedar"]'
+$report = moon -C receiver run . --target js --frozen | ConvertFrom-Json
+if (-not $report.ok) { throw $report.detail }
+[IO.File]::WriteAllText((Join-Path (Get-Location) 'selected.newick'), $report.pruned_newick, [Text.UTF8Encoding]::new($false))
+moon -C receiver run . --target wasm-gc --frozen
+```
+
+例中 Aspen 新边对应原 AB/U/Aspen 三条边，长度10；Elm 新边对应原 DE/Elm，长度19。`edge_lineage` 按新 child ID 排列，给出 `target_parent_id` / `target_child_id`、包含原 parent 端点的 `source_node_ids`，以及原 child ID 标识的 `source_edge_ids`。它们引用响应中各自的完整 `original_nodes` / `pruned_nodes`，不把旧 ID 直接当新 ID。原 witness JSON 完整保留：其 `old_to_new` 数组中 Some(ID) 为 `[ID]`，None 为 null；可选结构字段仍沿用原序列化。`root_history` 及对应的 `root_history_nodes` 单列新根压缩历史，**不是新树的入边**。例如只保留 Aspen/Birch 时新根为 AB，历史是 Study/ABC/AB；不能把这段当成新根上的枝长。
+
+请求数组保持输入顺序和精确名称，不 trim、不归一化、去重或取交集；输出子树沿用原作者子节点次序，`retained_taxa` 沿用原排序。成功含原/新完整节点、各自根/rooting/树注释/规范文本、完整 witness 与所有 lineage；`source_newick` 是规范序列化，原始输入字节另存。先检查 tree/retain 是否提供，再解析树、解析普通 core JSON 数组/字符串形状，最后调用原 `prune`。每次只有一个 JSON，错误为 `missing_tree` / `missing_retain`、`parser_error`、`invalid_retain_json` / `invalid_retain` 或 `prune_error`（原完整诊断）；领域失败附原图、原请求和 `source_unchanged`。API 错误正常退出，必须先检查 `ok`。
+
+这项交接保留旧变换边界：新根可以改变、祖先 stem 可以丢弃；压缩节点的标签/注释不转移，未知长度继续传播，Double 压缩不能替代精度敏感的原树规划，也不保持原研究根的 PD 语义。一般修剪背景可见 [Biopython 一手文档](https://biopython.org/docs/dev/api/Bio.Phylo.BaseTree.html#Bio.Phylo.BaseTree.TreeMixin.prune)，具体行为以本库既有变换合同为准。没有新增模型、指标、格式、根推断、原生文件/流宿主或外部采用声明；环境文本仍受宿主限制，文件保存由应用/验证桥完成，ID 不跨重读持久。
+
+在 Git checkout 运行 `python -B verification/prune_export_recipient.py --moon moon --moonrun moonrun --output prune-evidence`（新增文件先暂存），会绑定独立 workspace，真实构建与运行双后端公共包消费者。实现前冻结的7组完整成功产物和11组请求错误，共36次真实调用，核对全部原/新节点、每个映射/路径/根历史/lineage及14件实际导出文件的完整手写预期字节。保留所有原输入、stdout/stderr、数值退出/状态和源码/编译/产物身份；没有运行旧科学场景或参考生成器，也不把导出字节核对称为再次解析或第三方采用。
+
+## 按后代叶数稳定排列并导出树
+
+`tree.ladderize()` 返回独立副本，在每个内部节点按各子树的终端叶数量升序排列；`tree.ladderize(reverse=true)` 改为降序。两种方向下，相同数量的兄弟都保留原先次序，既不按叶名排序，也不反转平局。例如 `((A,B)X,C,(E,D)Y)R;` 默认导出 C/X/Y，降序为 X/Y/C；X/Y 都有两片叶，仍保持 X 在 Y 前，Y 内仍为 E/D。
+
+这是准备终端展示顺序与 Newick 导出的操作，常见用途可对照 [Biopython 一手文档](https://biopython.org/docs/dev/api/Bio.Phylo.BaseTree.html#Bio.Phylo.BaseTree.TreeMixin.ladderize)。本库明确返回副本：仅兄弟数组的顺序可能变化，原树、每条父子关系、全部标签、缺失/零/有限枝长及 stem、节点/树注释、rooting 与根 ID 保持。无需完整枝长，不做枝长累计；支持 unary、多分叉、单根叶及三种 rooting，Unrooted/Unknown 使用原有表示根，不推断新根。副本的节点 ID 保留本次对应，导出重读后 ID 属于新解析。平局仍依赖输入顺序，因此这不是唯一的拓扑规范形式，也不承诺其他算法的顺序相关平局选择不变；没有新科学模型或指标。
+
+`examples/ladderize_export` 是只导入公共包的独立模块。把本库和示例分别放为同级 product/receiver，在共同父目录执行 `moon work init ./product ./receiver` 后：
+
+```powershell
+$env:PHYLO_LADDER_TREE='[&U]((A,B)X,C,(E,D)Y)R;'
+$env:PHYLO_LADDER_ORDER='descending'
+moon -C receiver run . --target js --frozen
+moon -C receiver run . --target wasm-gc --frozen
+```
+
+省略 ORDER 使用升序；若提供，须精确为 `ascending` 或 `descending`。每次输出一个 JSON，先检查 `ok`。成功含原/新完整节点、各自根/rooting/注释和规范 Newick，以及从实际新树遍历得出的终端行 `row/id/taxon`；同时重读实际导出字符串并返回新解析的完整节点与规范重导出。`source_newick` 是既有规范序列化，原始文件字节由调用方另存。先检查 order，再检查 tree 是否提供，再交原解析器；错误为 `invalid_order` / `missing_tree` / `parser_error`，保留解析诊断，正常进程退出。环境文本传输仍有宿主限制，保存文件由应用/验证桥负责；没有新增原生文件宿主、格式、布局坐标、绘图器或外部采用声明。
+
+在 Git checkout 运行 `python -B verification/ladderize_recipient.py --moon moon --moonrun moonrun --output ladder-evidence`（新增文件先暂存），会建立明确绑定 `MOON_WORK` 的独立公共包 workspace，实际构建并运行 JS/Wasm-GC 接收程序。实现前手写的完整图、所有兄弟顺序和终端行验证每件原/新/重读产物；8 组成功、6 组错误各运行于双后端，共 28 次进程调用和 16 件真实 UTF-8 导出。保存全 stdout/stderr、数值退出/状态、输入/源码/编译/输出哈希；独立的白盒回归验证新副本私有数组不别名原树。这是自编消费者的实际运行证据，不代表任意规模/性能、渲染效果或第三方采用。
+
+## 同时重命名叶身份并交接 Newick
+
+`tree.rename_taxa(Map[String,String])` 返回 `Result[TaxonRenameResult, PhyloError]`：结果含独立的 `tree` 和按原名称 UTF-16 顺序排列的 `renames`。每条 `TaxonRename` 有 `from_taxon`、`to_taxon`、`source_id`、`target_id`，包括显式的 identity 请求。映射同时生效，因此 A→B、B→A 可交换；只做 A→B 则会与未改名 B 冲突。未列出的叶不变，空映射合法。
+
+这项操作用于把研究树叶名对接为调用方明确给定的目录 ID。它保留父子结构、子节点次序、rooting、所有缺失/零/普通枝长与 stem、内部标签和原节点/树注释，仅改变指定叶身份；不会对注释或内部标签做文本替换。返回图完整复制并保留本次操作的数值节点 ID，报告明确关联原树和结果树；此对应不扩展为跨导出重读或其他变换的持久 ID。叶身份改变后，不应把原名称下的生物学解释或比较结果视为自动相同。没有根推断、科学运算或新模型。
+
+先按源键顺序检查全部精确叶名，未知/仅内部标签报原 `UnknownTaxon`；再检查空目标，报 `AnonymousTaxon` 并附原叶 ID；最后检查全部最终叶名，冲突报 `DuplicateTaxon`。整个失败不改变原树。目标不 trim、不归一化，非空空白名合法，NFC/NFD 保持不同；目标与某个内部标签相等允许。输入映射和新报告数组互相独立，调用者修改映射或清空报告不影响原树/结果树。
+
+`examples/taxon_rename_handoff` 是公共包发出端，`receive` 是独立可执行接收端。将本库与示例分别作为同级 product/receiver、在共同父目录配置 `moon work init ./product ./receiver` 后可运行：
+
+```powershell
+$env:PHYLO_RENAME_TREE='[&R]((A:0,B:1.5)X,C)Root:99;[tree A]'
+$env:PHYLO_RENAME_MAP='{"A":"Catalog_A","B":"Catalog_B"}'
+moon -C receiver run . --target js --frozen
+```
+
+一个成功 JSON 交付原/新完整节点、两棵树的根/rooting/注释、改名对应行及 `renamed_newick`。`source_newick` 和新树字符串都是既有规范序列化，原始输入文件字节另行记录；所有标签仍由原 Newick 引号规则处理，字面下划线、空格、单引号、分号/括号等不被替换或截短。把 `renamed_newick` 原样保存为 UTF-8 后，由另一个进程只接收该树文本：
+
+```powershell
+# 在应用中读取已保存的新树；接收进程不需要原树或改名映射。
+$env:PHYLO_RENAMED_TREE=[IO.File]::ReadAllText((Resolve-Path -LiteralPath renamed.newick).Path, [Text.UTF8Encoding]::new($false, $true))
+moon -C receiver run receive --target js --frozen
+moon -C receiver run receive --target wasm-gc --frozen
+```
+
+接收端返回其独立解析的全部节点、taxa、rooting、注释和规范 Newick，不沿用发出端节点 ID。两个入口仍用既有文本环境传输，受宿主长度/字符限制，没有新增原生文件或流宿主；保存/读取文件由应用或验证桥完成。改名对象是 core JSON 的普通对象语义，不是新持久格式。
+
+先检查 `ok`，API 错误正常退出。发出端区分 `missing_tree` / `missing_renames`、原 `parser_error`、`invalid_renames_json` / `invalid_renames` / `invalid_target`（附 taxon），以及领域 `unknown_source` / `empty_target`（原 node_id）/ `duplicate_taxon`，保留原诊断和原图。接收端对缺文本或坏 Newick 明确报错。旧库、解析器、已有 enum 和默认行为保持。
+
+在 Git checkout 运行 `python -B verification/taxon_rename_recipient.py --moon moon --moonrun moonrun --output rename-evidence`（本地新文件先暂存），会实际构建两个独立可执行文件及双后端库，按实现前冻结的整图、全部目标名称及对应行验证。它将真实发出端产物保存为原始 UTF-8 Newick 文件，再只读该文件启动新接收进程，按原字节严格解码，核对整图和规范重导出；没有通过读取原映射来替代消费产物。所有进程的数值退出、成功/预期错误状态、完整 stdout/stderr 和交接文件字节哈希均记录。这个自编真实交接不代表外部采用，也不承诺任意性能/输入规模。
+
+## 单个离散性状的 Fitch 重建审查
+
+`examples/fitch_character_review` 是独立公共包接收方：输入原始有根 Newick 和用户的精确叶名→单字符观测映射，交付完整原 `ParsimonyResult`、每个原节点的观测/候选/重建状态，以及每条变化边的原 parent/child ID 和两端状态。它直接调用已有 `fitch_parsimony`，不改变算法，也不先删除缺失观测的叶。既有 `cmd/main` 的硬编码演示继续保留。
+
+将本库和该示例分别放在同级 product/receiver，在共同父目录初始化 `moon work init ./product ./receiver` 后运行：
+
+```powershell
+$env:PHYLO_FITCH_TREE='[&R](((A,B)AB[ab-note]:0,(C,D)CD)L,((E,F)EF,(G,H)GH)R)Study:999;'
+$env:PHYLO_FITCH_TRAITS='{"A":"0","B":"0","C":"1","D":"1","E":"0","F":"1","G":"?","H":"?"}'
+moon -C receiver run . --target js --frozen
+moon -C receiver run . --target wasm-gc --frozen
+```
+
+此例 score=2，变化为 L→CD、EF→F；G/H 是缺失**观测**，仍保留为原叶并得到本次确定性重建的状态0。报告的候选集合和一种最优重建不代表概率、祖先真实性或每个节点在全部全树最优解中的状态范围。全为 `?` 时 score=0、候选集合为空、重建为 null；不补造状态。`?` 是唯一缺失观测记号，缺少键仍是物种集合错误；`-` 沿用原不支持错误，`N` 和空格等其他字符是字面离散状态，不按 DNA 模糊码解释。
+
+`PHYLO_FITCH_TRAITS` 使用 core 解析器的普通 JSON 对象语义，值必须是能原样往返的单个 Unicode Char。`🌱` 虽占两个 UTF-16 code unit，仍是一个合法状态；空字符串、多个字符或 `e`＋组合重音这类两 codepoint 状态会报 `invalid_state`，不 trim、不归一化或替换。输入键按现有 UTF-16 名称顺序检查；候选状态次序保留既有 Char 排序，不另用字符串排序改写。
+
+响应只有一个 JSON，先检查 `ok`。成功的 `parsimony` 完整保留原 JSON：`assignment` 中 Some(Char) 是单元素数组、None 是 null；`node_annotations` 的可读列则使用状态字符串/null，内部节点的 `observed` 为 null，缺失观测叶仍为 `?`。`changes` 使用同一原树的节点 ID，ID 不跨重读或变换持久。枝长、stem、注释、原树和输入映射不被修改，Fitch 不做枝长累计。
+
+接收顺序是检查 tree/traits 变量是否提供、解析原树、解析对象/单字符值，再调用旧领域函数。缺项、原树解析、坏 JSON/对象/状态分别报 `missing_tree` / `missing_traits`、`parser_error`、`invalid_traits_json` / `invalid_traits` / `invalid_state`（附 taxon）。领域错误保持原优先级：根→叶键集合→不支持状态→树结构；响应为 `rooted_tree_required`、`trait_mismatch`（完整 missing/extra 列表）、`unsupported_trait`、`unary_not_supported` 或 `polytomy_not_supported`，保留原诊断和原节点快照，结构错误附原 node_id/child_count。错误正常退出，不能只看退出码。仍要求原有 Rooted 满二叉树或单根叶；不提供多列序列、权重/Sankoff、文件宿主或新持久格式，文本环境仍受宿主限制。
+
+在 Git checkout 内运行 `python -B verification/fitch_character_recipient.py --moon moon --moonrun moonrun --output fitch-evidence`，会从当前跟踪源码创建独立 product/receiver，绑定自身 `MOON_WORK`，在真实双后端进程中消费保存的 Newick/性状输入。本地新文件先暂存。手写的全节点候选/重建表和变化边预期在实现前冻结，另以独立穷举状态赋值核对最小变化数；验证完整原报告、全部节点/边交接、Unicode/缺失/错误、源及输入哈希。该自编工作流的实际运行不代表第三方采用；经典 unordered Fitch 的背景见 [DendroPy 一手文档](https://jeetsukumaran.github.io/DendroPy/library/parsimony.html)。
+
+## 有根叶组的完整 clade 审查
+
+`tree.rooted_clade(selection)` 返回 `Result[RootedCladeReport, PhyloError]`，用于检查一组精确叶名是否正好构成完整有根 clade。报告含规范排序的 `selected_taxa`、原树 `mrca_id`、该最近共同祖先的全部后代叶 `clade_taxa`、其中未被选中的 `extra_taxa` 和 `is_monophyletic`。例如 `[&R]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study;`：选 A/C 得到原 ABC 节点、后代 A/B/C、夹杂叶 B，结论为 false；选 A/B 得到 AB 和 true；选 D/F 得到 DEF、夹杂叶 E。报告同时解释不完整的原因，原树不会被修剪或换根。
+
+要求明确 Rooted，Unknown/Unrooted 先报 `RootedTreeRequired`，不根据度数猜根。随后空选择报 `EmptySelection`；按输入顺序检查精确叶名，未知名报 `UnknownTaxon`、重复已知叶报 `DuplicateSelection`，内部标签不是叶身份。名称不 trim、不做 Unicode 归一化；三个名称数组均按现有 UTF-16 字典序排列且独立归调用方持有。单叶组的 MRCA 是那片叶，即使上方有 unary 节点；全叶集可能落在根下的共同祖先，取最近者。缺失、零或巨大有限枝长及 root stem 都不参与判断，原解析器仍拒绝非法输入。MRCA ID 仅对应同一棵树的 `nodes()`，不跨重读/变换持久；换根可能改变 clade 完整性，结论不代表祖先真实性、统计支持或新的距离指标。
+
+`examples/clade_review` 是独立 MoonBit 模块，只消费公共库。将本库放在 product、示例放在同级 receiver，并在共同父目录执行 `moon work init ./product ./receiver` 后，可运行：
+
+```powershell
+$env:PHYLO_CLADE_TREE='[&R]((((A)U,B)AB,C)ABC,(D,E,F)DEF)Study;'
+$env:PHYLO_CLADE_TAXA='["A","C"]'
+moon -C receiver run . --target js --frozen
+moon -C receiver run . --target wasm-gc --frozen
+```
+
+每个请求输出一个 JSON：先检查 `ok`，成功含原节点快照、原 MRCA 节点、完整报告、`complete_clade` / `incomplete_clade` 结论，以及每个原始叶的 `selected` / `intruder` / `outside` 分类。程序依次检查环境变量是否提供、解析原树、解析名称 JSON 数组，再调用查询；缺项、树解析、坏 JSON/类型或领域错误分别报 `missing_tree` / `missing_taxa`、`parser_error`、`invalid_taxa_json` / `invalid_taxa`、`clade_error`，进程正常退出。文本环境传输继续受宿主限制；没有新文件宿主、持久文档格式或 viewer。
+
+在 Git 源码 checkout 内运行 `python -B verification/clade_recipient.py --moon moon --moonrun moonrun --output clade-evidence`，会从 Git 跟踪的当前源码创建干净 product/receiver workspace，在真实 JS/Wasm-GC 进程中逐一核对预先手写的完整 MRCA/clade/extra/终端分类、根与单叶退化情况、unary/多分叉、精确 Unicode、长度无关性、错误优先级和新报告 ownership；本地新增文件需先暂存。验证脚本保存原始 Newick/选择文件及输入前后哈希，再经既有文本输入传给示例。这个自编接收流程证明公共包能实际完成审查，不代表第三方采用或部署。该常见操作的含义可对照 [Biopython 一手文档](https://biopython.org/docs/latest/api/Bio.Phylo.BaseTree.html#Bio.Phylo.BaseTree.TreeMixin.is_monophyletic)，本库的空选择、根要求和错误顺序以此处合同为准。
+
+验证器为自己的 product/receiver 写入独立 `moon.work`，并仅在构建子进程中用 `MOON_WORK` 指定该绝对路径，避免继承同一 CI checkout 内先前消费者创建的祖先 workspace；已有祖先 manifest 保持原字节。
+
+## 原作者图的长度无关叶间 route
+
+`tree.authored_leaf_route(from, to)` 返回 `Result[AuthoredLeafRouteReport, PhyloError]`，供树查看/标注接收程序用同一棵树的原 `NodeRecord` ID 高亮两叶间的节点和 child-edges。它不读取、不补齐枝长；合法树缺长度或边长为零时仍保留原 route。字段为 `from_taxon`、`to_taxon`、有序 `node_ids` / `edge_ids` 和 `authored_edge_count`，**没有距离字段**。端点精确匹配叶名；内部标签不是端点，未知名按 from、再 to 返回 `UnknownTaxon`。
+
+在 `[&U](((A)U,B)X,(C,D)Y)R;` 上，A→C 节点为 A/U/X/R/Y/C，edge 的原 child 依次为 A/U/X/Y/C，即使向上走也不改用 parent ID。反向仅反转该序列；B→B 是一个原节点、空边数组。原 unary U、degree2 R/root seed 均保留，root stem 没有 parent edge。将 A 与 U 间细分加入 Q 会把这条原图 route 的边数从 5 改为 6。因此 count 只数**这一原图**的边，不能称作根/细分不变的拓扑距离、RF、归一化指标或填单位长度后的 patristic 距离。
+
+Rooted/Unrooted/Unknown 标记、长度、注释和原图不被修改；结果数组由调用方持有，ID 仅对应同一树的 `nodes()`，不跨重读/变换持久，也不是布局坐标。原解析器仍拒绝非法 Newick/长度语法。旧 `patristic_path` / distance 继续先检查全树非根长度并保留原数值、错误顺序与 JSON；缺长度时包括 self 的原 `MissingLength` 不因这个新图查询而放宽。
+
+`examples/authored_route_highlighter` 是**单独 MoonBit 模块**，只导入公开 `liubin-dev-2/phylo`：先保存原 nodes 快照，再把 route ID 应用到原 node/child-edge 高亮样式索引，示例不实现 viewer/布局或新文件传输。在共同父目录将本库放为 product、该示例放为 receiver，执行 `moon work init ./product ./receiver` 后可运行：
+
+```powershell
+$env:PHYLO_ROUTE_TREE='[&U](((A)U,B)X,(C,D)Y)R;'
+$env:PHYLO_ROUTE_FROM='A'
+$env:PHYLO_ROUTE_TO='C'
+moon -C receiver run . --target js --frozen
+moon -C receiver run . --target wasm-gc --frozen
+```
+
+`python -B verification/authored_route_recipient.py --moon moon --moonrun moonrun --output route-evidence` 会在新输出目录创建本地 product/receiver workspace，在真实双后端公共包消费者中，以**原节点快照映射手写 role 序列**核对精确 IDs、邻接、高亮、缺/零长度、marker/stem/显式细分、精确标签、错误和新报告 ownership。这是实际运行的公共包 highlighter 示例，不代表部署、用户签字、采用或性能证据；不重新生成旧科学参考。
+
+## 可追溯叶间路径
+
+`tree.patristic_path(from, to)` 返回 `Result[PatristicPathReport, PhyloError]`，让调用者核查已有叶间距离经过的节点和边。报告含精确叶名 `from_taxon` / `to_taxon`、有序 `node_ids`、有序 `edge_ids` 及 `distance`；节点序列包含两端，`edge_ids[i]` 是连接相邻节点的**子节点 ID**，向上走时也沿用该边的子节点 ID。自身到自身返回一个节点、空边数组和正零距离。零枝、单子节点、多分叉均保留；节点 ID 仅属于本次树，不能跨重读、旋转或修剪直接比较。
+
+距离与错误直接复用 `patristic_distance`：全树非根边必须有有限非负长度，缺失长度即使不在所查询路径上也报错；精确匹配叶名，不把内部节点标签当叶、不做 Unicode 归一化。按实际 binary64 边值精确求和后一次舍入，只在请求路径结果溢出时报 `NumericOverflow`，排除根 stem。Rooted、Unrooted、Unknown 都沿用原距离语义，报告不推断生物学根、不修改树或原距离 API。
+
+```powershell
+$env:PHYLO_PATH_TREE='[&U]((A:1,B:2)X:4,(C:0,D:3)Y:8,Z:0)R:99;'
+$env:PHYLO_PATH_FROM='B'
+$env:PHYLO_PATH_TO='C'
+moon run cmd/patristic_path --target js --frozen
+moon run cmd/patristic_path --target wasm-gc --frozen
+```
+
+此例节点顺序为 B、X、R、Y、C，边的子节点依次为 B、X、Y、C，长度为 2、4、8、0，距离为 14；stem 99 不计。示例输出一个 JSON，含 `ok`、同一树的 `nodes`、既有 Rooting 序列化值（如 `"Unrooted"`）、`tree_newick` 和 `path`。先检查 `ok`；缺环境输入分别报 `missing_tree` / `missing_from` / `missing_to`，未知叶、缺失/非法长度、溢出及树解析错误有明确错误码与诊断。错误仍正常退出，不能只看进程退出码。此文本环境示例支持 JS/Wasm-GC，保留宿主长度限制；切回文本模式前清除 `PHYLO_PATH_TREE_FILE`。原始 Newick 文件模式见下，矩阵 JSON 的 NJ 文件模式另见后节；不提供 stdin。
+
+`verification/patristic_path.py` 在两个后端的真实新进程中，以独立手工边图的 BFS 路径及 Fraction 精确和验证完整有序见证、反向/自身、Unicode 身份、旋转与导出重读、零枝/次正规数、`2^53+1+1`、无关巨大分支及必要错误。构建两个后端的 `cmd/patristic_path` 后，可运行 `python -B verification/patristic_path.py --artifact-dir _build --moonrun moonrun --output path-evidence`。只新增报告与方法；既有接口和报告字段保持。
+
+### 原始 Newick 文件 → 路径报告（Node.js）
+
+JS / Node.js CommonJS 宿主可将 `PHYLO_PATH_TREE_FILE` 设为原始 UTF-8 Newick 文件路径；进程自行只读文件并严格解码，再调用同一个解析器和路径函数。完整树文本不进入环境变量或 argv，不经 NJ 重建，保留原 rooting、注释、完整标签、节点/子边 ID 及原成功 JSON。文件读取不修改输入。Wasm-GC 仍支持原文本模式，指定文件则明确报 `unsupported_file_host`。
+
+```powershell
+# 写入无 BOM 的示例；也可直接指定已有原树文件。
+[IO.File]::WriteAllText((Join-Path (Get-Location) 'study.newick'), '[&U]((A:1,B:2)X:4,(C:0,D:3)Y:8,Z:0)R:99;', [Text.UTF8Encoding]::new($false))
+Remove-Item Env:PHYLO_PATH_TREE -ErrorAction SilentlyContinue
+$env:PHYLO_PATH_TREE_FILE = (Resolve-Path -LiteralPath study.newick).Path
+$env:PHYLO_PATH_FROM = 'B'
+$env:PHYLO_PATH_TO = 'C'
+moon run cmd/patristic_path --target js --frozen
+Remove-Item Env:PHYLO_PATH_TREE_FILE
+```
+
+路径按字面读取，不 trim、不做 Unicode 归一化、不展开通配符；相对路径以进程 cwd 为准。file/text 两变量同时存在（包括空值）报 `input_source_conflict`；空路径报 `empty_tree_file`；读取失败报 `file_read_error` 并附 Node `code`；非法/截断 UTF-8 报 `invalid_utf8`。选择文件后错误直接返回，不降级到文本或默认树。来源选择/读取/解码先于端点检查；成功读到 String 后仍依次检查 from、to，再沿用原解析/领域错误映射。BOM 原样保留交给 **Newick**，不复制矩阵 JSON 的 BOM 剥离；既有解析器会拒绝这里测试的带 BOM 括号树。端点仍由环境变量传递，宿主内存、路径、权限和端点长度限制继续适用；读取是同步、全文件入内存。
+
+实测的完整合成原树为 64 个长标签、66 条手工指定边、42,163 字节：PowerShell 5.1 设置长文本环境变量失败，同机 PowerShell 7.6/Python Unicode 环境块成功；默认 PowerShell 7.6 UTF-8 文本读取会替换测试中的非法字节。文件模式补充同进程原始字节交接及明确错误，不称为 String API 缺陷或所有 Windows 统一失败。`verification/path_file.py` 在真实 Node 新进程中只传路径与端点，独立核对完整边图、child 顺序、注释/rooting/stem、正反/自身路径和距离位模式，另含必要文件/编码/解析错误及旧双后端文本对照，保存输入前后哈希。构建两个后端后运行 `python -B verification/path_file.py --artifact-dir _build --moonrun moonrun --output path-file-evidence`。这不增加科学算法、格式或持久节点身份。
 
 ## 可选距离矩阵 → 无根 NJ 桥接
 
-调用包额外导入 `"liubin-dev/phylo/nj" @nj` 即可使用；根包不导入该包，原 `moon.mod`、根 `moon.pkg` 和根公共接口未改变。`@nj.neighbor_joining(matrix)` 接受已有 `@phylo.DistanceMatrix`，`@nj.from_json(text)` 接受下述 JSON；两者返回 `Result[NJReport, NJError]`。正式接口见 `nj/pkg.generated.mbti`。
+调用包额外导入 `"liubin-dev-2/phylo/nj" @nj` 即可使用；根包不导入该包，原 `moon.mod`、根 `moon.pkg` 和既有根 API 保留。`@nj.neighbor_joining(matrix)` 接受已有 `@phylo.DistanceMatrix`，`@nj.from_json(text)` 接受下述 JSON；两者返回 `Result[NJReport, NJError]`。正式接口见 `nj/pkg.generated.mbti`。
 
 ```powershell
 $env:PHYLO_NJ_MATRIX='{"taxa":["A","B","C","D"],"values":[[0,3,9,10],[3,0,10,11],[9,10,0,7],[10,11,7,0]]}'
@@ -62,7 +257,25 @@ moon run cmd/nj_matrix --target js --frozen
 moon run cmd/nj_matrix --target wasm-gc --frozen
 ```
 
-`PHYLO_NJ_REFERENCE` 可省略；提供时调用已有无根 RF 比较。程序输出一个 JSON：必须先检查 `ok`，成功才有 `[&U]` Newick、现有节点记录、规范排序的 `input` / `fitted` 矩阵、`residuals`、`max_abs_residual` / `rms_residual` 及可选 `comparison`。上例 split 为 AB|CD，四条末端枝长为 1/2/3/4、内枝长 5，所有拟合距离与输入相同，RF 和残差均为零。节点 ID 仅属于本次树。宿主环境变量的长度限制仍适用；较大矩阵可直接调用类型化 API。
+`PHYLO_NJ_REFERENCE` 可省略；提供时调用已有无根 RF 比较。程序输出一个 JSON：必须先检查 `ok`，成功才有 `[&U]` Newick、现有节点记录、规范排序的 `input` / `fitted` 矩阵、`residuals`、`max_abs_residual` / `rms_residual` 及可选 `comparison`。上例 split 为 AB|CD，四条末端枝长为 1/2/3/4、内枝长 5，所有拟合距离与输入相同，RF 和残差均为零。节点 ID 仅属于本次树。宿主环境变量的长度限制仍适用；较大矩阵可用下述文件模式，或直接调用 String / 类型化 API。
+
+### Node.js 文件输入
+
+`cmd/nj_matrix` 的 **JS / Node.js 宿主**还支持 `PHYLO_NJ_MATRIX_FILE`：变量只存路径，整个 UTF-8 JSON 文件由 Node 内置文件接口读取，再交给同一个 `@nj.from_json`。JSON 内容不经过环境变量或命令行参数，没有新矩阵格式、标签截短或维数降级。保留现有环境变量双后端示例；文件模式不支持 Wasm-GC，指定文件时明确返回 `unsupported_file_host`。
+
+```powershell
+# 先保存示例矩阵；也可以指定已有的 UTF-8 JSON 文件。
+'{"taxa":["A","B","C","D"],"values":[[0,3,9,10],[3,0,10,11],[9,10,0,7],[10,11,7,0]]}' |
+  Set-Content -LiteralPath matrix.json -Encoding utf8
+Remove-Item Env:PHYLO_NJ_MATRIX -ErrorAction SilentlyContinue
+$env:PHYLO_NJ_MATRIX_FILE = (Resolve-Path -LiteralPath matrix.json).Path
+moon run cmd/nj_matrix --target js --frozen
+Remove-Item Env:PHYLO_NJ_MATRIX_FILE
+```
+
+路径按字面值读取，不去空白、不展开通配符；相对路径相对于进程工作目录。文件只读，严格拒绝非法 UTF-8 为 `invalid_utf8`，保留至多一个起始 BOM 的既有 JSON 规则。路径为空报 `empty_matrix_file`，文件不存在或无法读取报 `file_read_error` 并附 Node `code`；两种矩阵来源同时存在（即使值为空）报 `input_source_conflict`。坏 JSON、字段类型及矩阵错误仍沿用原 `NJError`。与旧入口一致，错误也是一个 `ok:false` JSON，进程正常退出，消费者必须检查 `ok`。可选 `PHYLO_NJ_REFERENCE` 的原有行为和环境大小限制继续适用。
+
+这是宿主运输能力补充：128 物种手工树的 68,194 字节 JSON 在 Windows PowerShell 5.1 设置长环境变量失败；同机 PowerShell 7.6 和 Python 直接传 Unicode 环境块成功，故不声称所有 Windows 路径均失败。文件模式通过真实 Node 新进程读取同样的完整输入，独立核对 253 条枝、125 个内 split 和 16,384 个有序路径，以及 Unicode 标签、小矩阵、非法 UTF-8、JSON 类型与文件错误；输入文件前后 SHA-256 相同。可复核运行 `python -B verification/nj_file.py --artifact-dir _build --moonrun moonrun --output file-evidence`（先构建 JS 与 Wasm-GC）。读取是同步、全文件入内存，仍受宿主内存/路径/权限和现有 2..128 / NJ 数值规则约束，不提供流式或 stdin 接口。
 
 输入 JSON 恰有 `taxa`、`values` 两个键。物种数为 2..128；名称非空且按解码后精确字符串唯一，不去空白、不做 Unicode 归一化，`Café` 与 `Café` 是不同身份。矩阵必须方形、轴长匹配、有限、非负、对角严格为零、严格对称，容差为 **0**；正负零均接受并规范为正零。错误索引指向原输入顺序。类型化输入的 NaN/Infinity 被拒绝；非法 JSON 数字报解析或有限性错误，不修补输入。不要求三角不等式或可加性。
 
@@ -94,7 +307,7 @@ python -B verification/nj_range.py --artifact-dir _build --moonrun moonrun --out
 
 ## 公共 API 示例
 
-在调用包的 moon.pkg 中导入 `"liubin-dev/phylo" @phylo`。本地示例已经完成此配置。
+在调用包的 moon.pkg 中导入 `"liubin-dev-2/phylo" @phylo`。本地示例已经完成此配置。
 
 ```moonbit nocheck
 ///|
@@ -134,7 +347,7 @@ let increment = a.faith_pd_gain(["A"], ["C", "D"]).unwrap() // gain = 15
 let plan = a.faith_pd_greedy(["A"], ["B", "C", "D"], 2U).unwrap()
 ```
 
-示例使用 unwrap 简化展示；生产调用应匹配 `Ok(value)` / `Err(PhyloError)`。所有主入口返回 Result，常见错误包括 Syntax（Char偏移）、DuplicateTaxon、RootedTreeRequired、PolytomyNotSupported、UnaryNotSupported、TaxaSetMismatch、TraitMismatch、MissingLength 与 NumericOverflow。
+示例使用 unwrap 简化展示；生产调用应匹配 `Ok(value)` / `Err(PhyloError)`。解析、领域分析与可失败变换入口返回 Result；`ladderize` 直接返回独立的 PhyloTree。常见错误包括 Syntax（Char偏移）、DuplicateTaxon、RootedTreeRequired、PolytomyNotSupported、UnaryNotSupported、TaxaSetMismatch、TraitMismatch、MissingLength 与 NumericOverflow。
 
 ## Newick 与 rooting 合同
 
@@ -322,7 +535,7 @@ Remove-Item Env:PHYLO_PLAN_CHAIN
 
 顶层`ok=true`表示各段和衔接有效；`cumulative.ok=true`时report给出可表示的累计增量。若各段增量有限、累计值却溢出，顶层仍为true，`cumulative.ok=false`并给出NumericOverflow，不能把一条有效链说成无效，也不输出Infinity。段解析/重算失败则顶层`ok=false,error=stage_failed`，含从0开始的整数stage_index与原cause；衔接失败为chain_mismatch及字段名。缺少输入为missing_chain，空数组/外层类型错误为invalid_field(chain)。进程退出及宿主传输限制沿用原约定。
 
-新入口不改旧计划schema、单份review、create/resume、库API或选择算法。它验证的是这些文件之间的连续性与可重算结果，不证明作者身份，也不替用户对替代方案排名。
+该入口不改旧计划schema、单份review、create/resume、库API或选择算法。它验证的是这些文件之间的连续性与可重算结果，不证明作者身份，也不替用户对替代方案排名。
 
 链复核保留研究根的具体含义：`[&R]Solo:999;`中Solo本身是根，没有非根贡献边，选中它的增量为0；`[&R](Solo:999)Study:123;`有一条999长的祖先路径，根stem123仍排除。新增的零长分支也会列入贡献边，因此“gain=0”“没有新增物种”和“没有新增边”不能互相替代。这些是既有合同的退化图审查结果，未增加算法或API。
 
@@ -386,7 +599,7 @@ edge_paths按新节点ID给出该节点对应的原树路径顶点，父节点�
 
 中点换根要求完整长度。按字典序叶对选第一条最长路径并返回diameter_endpoints/diameter；中点在顶点上就复用顶点，可能形成多叉根，绝不为Fitch强行补枝。全零直径保持原拓扑并标Rooted；并列最长路径按固定叶顺序解决。旧一元根的非taxon悬枝会删除，变换后的stem不混入叶间距离。被压缩节点的标签/注释不强行移到别的节点，原树及None映射仍可审计。
 
-## 复杂度与本期边界
+## 复杂度与支持范围
 
 库的解析、序列化、遍历和变换不递归访问树。已用万叶、深度9999梳形树验证读写，未据此声称全部算法均适合万叶全矩阵。
 
@@ -398,7 +611,7 @@ Faith PD用集合标记合并根路径，已标记的祖先不重复访问；忽
 
 贪心实现直接扫描候选根路径。设C为可选候选数、K=min(limit,C)、B为基线大小，保守时间O(K*C*N+N log N+(B+C)log(B+C))，另计哈希/大整数成本；工作数组O(N+B+C)，证据输出O(N+K)。它不是文献中经过专门优化的近线性实现，未作大树选取吞吐量声明。
 
-NEXUS读取、类型化NHX、PhyloXML、Sankoff/权重、序列建树均明确后续；当前不是原多格式蓝图全部完成。外部数据转为Newick的Python脚本只是验证适配器。
+当前输入为单棵 Newick 或明确的 NJ 距离矩阵，不支持 NEXUS 导入、类型化 NHX、PhyloXML、Sankoff/权重或序列建树。外部数据转为 Newick 的 Python 脚本仅用于验证适配。
 
 ## 验证与许可
 
@@ -408,7 +621,7 @@ NEXUS读取、类型化NHX、PhyloXML、Sankoff/权重、序列建树均明确�
 
 源码 Apache-2.0（LICENSE）；研究树数据 CC0（testdata/LICENSE-CC0），数据不改标Apache。来源、固定身份、数据转换及许可分离见 SOURCES.md。源码已发布于本仓库；尚未发布Mooncakes，也不代表组委会验收。
 
-## deep-repair-05 correctness fixes
+## 序列化与变换边界
 
 不透明树注释统一序列化到终止分号之后；读取端将分号后注释识别为树级原文。因此内部出现的 `[&R]` / `[&U]` 不会在读写往返后冒充前导 rooting 指令，Unknown 保持 Unknown；前导明确指令仍照常生效。
 
@@ -418,26 +631,26 @@ NEXUS读取、类型化NHX、PhyloXML、Sankoff/权重、序列建树均明确�
 
 对于最小正 binary64 直径，除2可能舍入成0，无法表示精确的等长两半。此时换根显式插入零长边，保持端点叶身份、全部叶间长度及映射；witness如实给出可表示的 offset，不虚构更高精度。
 
-本轮新增7项定向回归/有界审查，覆盖4个实测缺陷、两种4叶二叉形状的全部0/1/?观测（穷举赋值独立校验）、quartet完整RF报告及零/次正规/普通/巨大长度组合。既有外部真值与真实数据来源保留，未重新下载或生成旧参考全集。
+定向回归覆盖序列化与变换边界、两种4叶二叉形状的全部0/1/?观测（穷举赋值独立校验）、quartet完整RF报告及零/次正规/普通/巨大长度组合。既有外部真值与真实数据来源保留，未重新下载或生成旧参考全集。
 
-## deep-repair-06 correctness fixes
+## 缺失长度与十进制符号
 
 压缩保留路径时，只有整条路径的长度都已知，才报告其数值和是否溢出。缺失片段无论位于路径哪一端，都传播为None；不会先因其它片段溢出而拒绝这棵合法的不完整长度树。完整保留边真正溢出时仍返回NumericOverflow，临时非有限中间值不会暴露到返回树。
 
 非负长度校验同时检查原十进制尾数的符号：`-1e-400`即使舍入为`-0.0`也拒绝；精确零（如`-0e-400`）仍接受，正数的既有binary64下溢舍入政策不变。增量读取在指数跨chunk时采用相同规则。
 
-本轮新增回归包含上述公开API反例及缺失/零/普通/巨大三段压缩路径的全部组合，期望由缺失值传播规则、独立图路径witness检查和Python Decimal的精确符号分类确立。没有重新下载研究树或重生成既有参考全集。
+相应回归包含上述公开API反例及缺失/零/普通/巨大三段压缩路径的全部组合，期望由缺失值传播规则、独立图路径witness检查和Python Decimal的精确符号分类确立。没有重新下载研究树或重生成既有参考全集。
 
-## deep-repair-07 numerical fixes
+## 精确累计与一次舍入
 
 距离与压缩路径的内部累加以2^-1074为整数单位，保留输入Double的精确值，完整路径用最近偶数规则舍入一次。修复逐段舍入把本应有限的总长变为Infinity、以及加法顺序造成距离矩阵不对称的问题；完整保留边或要求的叶间路径最终舍入为Infinity时仍报NumericOverflow，缺失传播与根stem规则继续适用。
 
-公开边长和返回类型仍是Double；不恢复十进制解析前的无限精度，也不承诺换根切边或多条压缩边再次组合后具备超出binary64的表示能力。新增core/bigint仅用于内部精确累加，未引入第三方运行时依赖。
+公开边长和返回类型仍是Double；不恢复十进制解析前的无限精度，也不承诺换根切边或多条压缩边再次组合后具备超出binary64的表示能力。core/bigint仅用于内部精确累加，未引入第三方运行时依赖。
 
-两项公开API反例、30组Python Fraction独立舍入向量和6141个有限binary64边界往返检查覆盖有限上界、真溢出、次正规数、最近偶数和不同加法顺序。参考生成器及精确分数回执保存在本轮报告；沿用既有研究树与外部参考数据。
+两项公开API反例、30组Python Fraction独立舍入向量和6141个有限binary64边界往返检查覆盖有限上界、真溢出、次正规数、最近偶数和不同加法顺序。相应独立预期与回归用例随源码提供，研究树及外部参考数据的来源见 SOURCES.md。
 
-## deep-repair-08 midpoint fix and diversity extension
+## 中点定位与演化覆盖
 
 中点位置使用选定路径的精确长度与双倍整数坐标比较，避免从已舍入的半直径逐边减法时漏掉小边。中点确在原顶点时复用该顶点，保留其标签和映射；落在边内时才把offset舍入为Double，包括半个最小次正规单位的最近偶数规则。公开diameter仍为Double，切边后的表示精度边界不变。新增公开API反例、11组对称路径和32组Fraction半长预期验证这一行为。
 
-本轮新增的Faith PD功能是已建立的生态学度量，不宣称算法发明或MoonBit生态首创。生态检索发现BioSeqs已有树分析功能；本库侧重明确合同、贡献边报告和JS/Wasm-GC原生运行。当前扩展不增加树格式，也不修改已有API和合法输入范围。
+Faith PD 是已建立的生态学度量，不宣称算法发明或MoonBit生态首创。生态检索发现BioSeqs已有树分析功能；本库侧重明确合同、贡献边报告和JS/Wasm-GC原生运行。输入范围与接口合同以上述说明为准。

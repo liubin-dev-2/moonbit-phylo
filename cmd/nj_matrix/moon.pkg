@@ -1,6 +1,6 @@
 import {
-  "liubin-dev/phylo",
-  "liubin-dev/phylo/nj",
+  "liubin-dev-2/phylo",
+  "liubin-dev-2/phylo/nj",
   "moonbitlang/core/env",
   "moonbitlang/core/json",
 }

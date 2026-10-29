@@ -1,4 +1,4 @@
 import {
-  "liubin-dev/phylo",
+  "liubin-dev-2/phylo",
   "moonbitlang/core/json",
 }
