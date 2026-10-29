@@ -70,6 +70,29 @@ moon run cmd/rf_compare --target wasm-gc --frozen
 
 构建两个后端后，`python -B verification/rf_recipient.py --artifact-dir _build --moonrun moonrun --output rf-evidence` 会从保存的 Newick 文件向真实新进程发送请求，核对预先手工列出的完整 clade/split 报告、反向结果和明确错误，检查单响应及输入哈希。它验证新接收方的模式分派与原报告交接，不声称新 RF 算法。
 
+## 按指定叶集合交付裁剪树与原边来源
+
+`examples/prune_export` 是独立公共包消费者：接收自己的原始 Newick 和保留叶名数组，调用原有 `prune` 一次，交付完整新树、规范 Newick 和原 `TransformWitness`。它还用 witness 把每条新树非根边关联到原树节点/child-edge ID；原树与请求保留，压缩或移除的节点仍能从原快照核对。既有 `cmd/main` / `cmd/selection_projection` 的固定输入演示保留，库算法与公开接口保持原字节。
+
+把本库和示例分别放为同级 product/receiver，在共同父目录执行 `moon work init ./product ./receiver` 后：
+
+```powershell
+$env:PHYLO_PRUNE_TREE='[&R]((((Aspen:2)U[u-note]:3,Birch:4)AB[ab-note]:5,Cedar:6)ABC[abc-note]:7,(Dogwood:8,Elm:9)DE[de-note]:10,Fir:11)Study[study-note]:99;[tree audit]'
+$env:PHYLO_PRUNE_RETAIN='["Elm","Aspen","Cedar"]'
+$report = moon -C receiver run . --target js --frozen | ConvertFrom-Json
+if (-not $report.ok) { throw $report.detail }
+[IO.File]::WriteAllText((Join-Path (Get-Location) 'selected.newick'), $report.pruned_newick, [Text.UTF8Encoding]::new($false))
+moon -C receiver run . --target wasm-gc --frozen
+```
+
+例中 Aspen 新边对应原 AB/U/Aspen 三条边，长度10；Elm 新边对应原 DE/Elm，长度19。`edge_lineage` 按新 child ID 排列，给出 `target_parent_id` / `target_child_id`、包含原 parent 端点的 `source_node_ids`，以及原 child ID 标识的 `source_edge_ids`。它们引用响应中各自的完整 `original_nodes` / `pruned_nodes`，不把旧 ID 直接当新 ID。原 witness JSON 完整保留：其 `old_to_new` 数组中 Some(ID) 为 `[ID]`，None 为 null；可选结构字段仍沿用原序列化。`root_history` 及对应的 `root_history_nodes` 单列新根压缩历史，**不是新树的入边**。例如只保留 Aspen/Birch 时新根为 AB，历史是 Study/ABC/AB；不能把这段当成新根上的枝长。
+
+请求数组保持输入顺序和精确名称，不 trim、不归一化、去重或取交集；输出子树沿用原作者子节点次序，`retained_taxa` 沿用原排序。成功含原/新完整节点、各自根/rooting/树注释/规范文本、完整 witness 与所有 lineage；`source_newick` 是规范序列化，原始输入字节另存。先检查 tree/retain 是否提供，再解析树、解析普通 core JSON 数组/字符串形状，最后调用原 `prune`。每次只有一个 JSON，错误为 `missing_tree` / `missing_retain`、`parser_error`、`invalid_retain_json` / `invalid_retain` 或 `prune_error`（原完整诊断）；领域失败附原图、原请求和 `source_unchanged`。API 错误正常退出，必须先检查 `ok`。
+
+这项交接保留旧变换边界：新根可以改变、祖先 stem 可以丢弃；压缩节点的标签/注释不转移，未知长度继续传播，Double 压缩不能替代精度敏感的原树规划，也不保持原研究根的 PD 语义。一般修剪背景可见 [Biopython 一手文档](https://biopython.org/docs/dev/api/Bio.Phylo.BaseTree.html#Bio.Phylo.BaseTree.TreeMixin.prune)，具体行为以本库既有变换合同为准。没有新增模型、指标、格式、根推断、原生文件/流宿主或外部采用声明；环境文本仍受宿主限制，文件保存由应用/验证桥完成，ID 不跨重读持久。
+
+在 Git checkout 运行 `python -B verification/prune_export_recipient.py --moon moon --moonrun moonrun --output prune-evidence`（新增文件先暂存），会绑定独立 workspace，真实构建与运行双后端公共包消费者。实现前冻结的7组完整成功产物和11组请求错误，共36次真实调用，核对全部原/新节点、每个映射/路径/根历史/lineage及14件实际导出文件的完整手写预期字节。保留所有原输入、stdout/stderr、数值退出/状态和源码/编译/产物身份；没有运行旧科学场景或参考生成器，也不把导出字节核对称为再次解析或第三方采用。
+
 ## 按后代叶数稳定排列并导出树
 
 `tree.ladderize()` 返回独立副本，在每个内部节点按各子树的终端叶数量升序排列；`tree.ladderize(reverse=true)` 改为降序。两种方向下，相同数量的兄弟都保留原先次序，既不按叶名排序，也不反转平局。例如 `((A,B)X,C,(E,D)Y)R;` 默认导出 C/X/Y，降序为 X/Y/C；X/Y 都有两片叶，仍保持 X 在 Y 前，Y 内仍为 E/D。

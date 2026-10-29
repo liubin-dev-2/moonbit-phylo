@@ -114,3 +114,18 @@ order/preserved attributes, degenerate/deep/repeat behavior and private-storage
 ownership. All earlier gates stay required; no scientific references are
 regenerated for this change. This gate supplies real receiving/export evidence,
 not a new renderer, format, scientific metric or external adoption claim.
+
+## Configurable selected-tree artifact and lineage gate
+
+`Validate public-package selected-tree export and source lineage on both targets`
+runs `verification/prune_export_recipient.py` with Python stdlib. The separate
+public-only application calls unchanged prune once per request, exposes the
+whole original witness and source/new trees, and distinguishes nonroot edge
+lineage from root compression history. Seven complete literal success fixtures
+and eleven request/error fixtures per target give36 real calls,14 actual
+Newick exports and6 compiled identities. Check every graph/mapping/path/lineage/
+root-history row and every exported byte; preserve full stdout/stderr and
+numeric exits/statuses. No native mirror tests or old scientific/reference
+scenarios are run locally; required CI keeps all old gates. Root public APIs,
+algorithms, parser, fixtures and dependencies stay byte-identical. This is a
+configurable artifact workflow, not a new pruning algorithm or reparse claim.

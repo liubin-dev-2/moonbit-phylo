@@ -1,0 +1,1301 @@
+{
+  "oracle": "Before-edit literal complete source/projected graphs, every source mapping/root history/edge path and canonical Newick; no product-generated expectations or copied pruning algorithm",
+  "cases": [
+    {
+      "name": "cross-clade-artifact",
+      "newick": "[&R]((((Aspen:2)U[u-note]:3,Birch:4)AB[ab-note]:5,Cedar:6)ABC[abc-note]:7,(Dogwood:8,Elm:9)DE[de-note]:10,Fir:11)Study[study-note]:99;[tree audit]",
+      "nodes": [
+        {
+          "role": "Study",
+          "parent": null,
+          "children": [
+            "ABC",
+            "DE",
+            "Fir"
+          ],
+          "label": "Study",
+          "length": 99,
+          "comments": [
+            "study-note"
+          ]
+        },
+        {
+          "role": "ABC",
+          "parent": "Study",
+          "children": [
+            "AB",
+            "Cedar"
+          ],
+          "label": "ABC",
+          "length": 7,
+          "comments": [
+            "abc-note"
+          ]
+        },
+        {
+          "role": "AB",
+          "parent": "ABC",
+          "children": [
+            "U",
+            "Birch"
+          ],
+          "label": "AB",
+          "length": 5,
+          "comments": [
+            "ab-note"
+          ]
+        },
+        {
+          "role": "U",
+          "parent": "AB",
+          "children": [
+            "Aspen"
+          ],
+          "label": "U",
+          "length": 3,
+          "comments": [
+            "u-note"
+          ]
+        },
+        {
+          "role": "Aspen",
+          "parent": "U",
+          "children": [],
+          "label": "Aspen",
+          "length": 2,
+          "comments": []
+        },
+        {
+          "role": "Birch",
+          "parent": "AB",
+          "children": [],
+          "label": "Birch",
+          "length": 4,
+          "comments": []
+        },
+        {
+          "role": "Cedar",
+          "parent": "ABC",
+          "children": [],
+          "label": "Cedar",
+          "length": 6,
+          "comments": []
+        },
+        {
+          "role": "DE",
+          "parent": "Study",
+          "children": [
+            "Dogwood",
+            "Elm"
+          ],
+          "label": "DE",
+          "length": 10,
+          "comments": [
+            "de-note"
+          ]
+        },
+        {
+          "role": "Dogwood",
+          "parent": "DE",
+          "children": [],
+          "label": "Dogwood",
+          "length": 8,
+          "comments": []
+        },
+        {
+          "role": "Elm",
+          "parent": "DE",
+          "children": [],
+          "label": "Elm",
+          "length": 9,
+          "comments": []
+        },
+        {
+          "role": "Fir",
+          "parent": "Study",
+          "children": [],
+          "label": "Fir",
+          "length": 11,
+          "comments": []
+        }
+      ],
+      "retain": [
+        "Elm",
+        "Aspen",
+        "Cedar"
+      ],
+      "expectedNodes": [
+        {
+          "role": "Study",
+          "parent": null,
+          "children": [
+            "ABC",
+            "Elm"
+          ],
+          "label": "Study",
+          "length": 99,
+          "comments": [
+            "study-note"
+          ]
+        },
+        {
+          "role": "ABC",
+          "parent": "Study",
+          "children": [
+            "Aspen",
+            "Cedar"
+          ],
+          "label": "ABC",
+          "length": 7,
+          "comments": [
+            "abc-note"
+          ]
+        },
+        {
+          "role": "Aspen",
+          "parent": "ABC",
+          "children": [],
+          "label": "Aspen",
+          "length": 10,
+          "comments": []
+        },
+        {
+          "role": "Cedar",
+          "parent": "ABC",
+          "children": [],
+          "label": "Cedar",
+          "length": 6,
+          "comments": []
+        },
+        {
+          "role": "Elm",
+          "parent": "Study",
+          "children": [],
+          "label": "Elm",
+          "length": 19,
+          "comments": []
+        }
+      ],
+      "expectedMapping": {
+        "Study": "Study",
+        "ABC": "ABC",
+        "AB": null,
+        "U": null,
+        "Aspen": "Aspen",
+        "Birch": null,
+        "Cedar": "Cedar",
+        "DE": null,
+        "Dogwood": null,
+        "Elm": "Elm",
+        "Fir": null
+      },
+      "expectedPaths": {
+        "Study": [
+          "Study"
+        ],
+        "ABC": [
+          "ABC"
+        ],
+        "Aspen": [
+          "AB",
+          "U",
+          "Aspen"
+        ],
+        "Cedar": [
+          "Cedar"
+        ],
+        "Elm": [
+          "DE",
+          "Elm"
+        ]
+      },
+      "expectedNewick": "[&R](('Aspen':10,'Cedar':6)'ABC':7[abc-note],'Elm':19)'Study':99[study-note];[tree audit]",
+      "rooting": "Rooted",
+      "treeComments": [
+        "tree audit"
+      ]
+    },
+    {
+      "name": "retained-clade-root",
+      "newick": "[&R]((((Aspen:2)U[u-note]:3,Birch:4)AB[ab-note]:5,Cedar:6)ABC[abc-note]:7,(Dogwood:8,Elm:9)DE[de-note]:10,Fir:11)Study[study-note]:99;[tree audit]",
+      "nodes": [
+        {
+          "role": "Study",
+          "parent": null,
+          "children": [
+            "ABC",
+            "DE",
+            "Fir"
+          ],
+          "label": "Study",
+          "length": 99,
+          "comments": [
+            "study-note"
+          ]
+        },
+        {
+          "role": "ABC",
+          "parent": "Study",
+          "children": [
+            "AB",
+            "Cedar"
+          ],
+          "label": "ABC",
+          "length": 7,
+          "comments": [
+            "abc-note"
+          ]
+        },
+        {
+          "role": "AB",
+          "parent": "ABC",
+          "children": [
+            "U",
+            "Birch"
+          ],
+          "label": "AB",
+          "length": 5,
+          "comments": [
+            "ab-note"
+          ]
+        },
+        {
+          "role": "U",
+          "parent": "AB",
+          "children": [
+            "Aspen"
+          ],
+          "label": "U",
+          "length": 3,
+          "comments": [
+            "u-note"
+          ]
+        },
+        {
+          "role": "Aspen",
+          "parent": "U",
+          "children": [],
+          "label": "Aspen",
+          "length": 2,
+          "comments": []
+        },
+        {
+          "role": "Birch",
+          "parent": "AB",
+          "children": [],
+          "label": "Birch",
+          "length": 4,
+          "comments": []
+        },
+        {
+          "role": "Cedar",
+          "parent": "ABC",
+          "children": [],
+          "label": "Cedar",
+          "length": 6,
+          "comments": []
+        },
+        {
+          "role": "DE",
+          "parent": "Study",
+          "children": [
+            "Dogwood",
+            "Elm"
+          ],
+          "label": "DE",
+          "length": 10,
+          "comments": [
+            "de-note"
+          ]
+        },
+        {
+          "role": "Dogwood",
+          "parent": "DE",
+          "children": [],
+          "label": "Dogwood",
+          "length": 8,
+          "comments": []
+        },
+        {
+          "role": "Elm",
+          "parent": "DE",
+          "children": [],
+          "label": "Elm",
+          "length": 9,
+          "comments": []
+        },
+        {
+          "role": "Fir",
+          "parent": "Study",
+          "children": [],
+          "label": "Fir",
+          "length": 11,
+          "comments": []
+        }
+      ],
+      "retain": [
+        "Birch",
+        "Aspen"
+      ],
+      "expectedNodes": [
+        {
+          "role": "AB",
+          "parent": null,
+          "children": [
+            "Aspen",
+            "Birch"
+          ],
+          "label": "AB",
+          "length": null,
+          "comments": [
+            "ab-note"
+          ]
+        },
+        {
+          "role": "Aspen",
+          "parent": "AB",
+          "children": [],
+          "label": "Aspen",
+          "length": 5,
+          "comments": []
+        },
+        {
+          "role": "Birch",
+          "parent": "AB",
+          "children": [],
+          "label": "Birch",
+          "length": 4,
+          "comments": []
+        }
+      ],
+      "expectedMapping": {
+        "Study": null,
+        "ABC": null,
+        "AB": "AB",
+        "U": null,
+        "Aspen": "Aspen",
+        "Birch": "Birch",
+        "Cedar": null,
+        "DE": null,
+        "Dogwood": null,
+        "Elm": null,
+        "Fir": null
+      },
+      "expectedPaths": {
+        "AB": [
+          "Study",
+          "ABC",
+          "AB"
+        ],
+        "Aspen": [
+          "U",
+          "Aspen"
+        ],
+        "Birch": [
+          "Birch"
+        ]
+      },
+      "expectedNewick": "[&R]('Aspen':5,'Birch':4)'AB'[ab-note];[tree audit]",
+      "rooting": "Rooted",
+      "treeComments": [
+        "tree audit"
+      ]
+    },
+    {
+      "name": "single-selected-tip",
+      "newick": "[&R]((((Aspen:2)U[u-note]:3,Birch:4)AB[ab-note]:5,Cedar:6)ABC[abc-note]:7,(Dogwood:8,Elm:9)DE[de-note]:10,Fir:11)Study[study-note]:99;[tree audit]",
+      "nodes": [
+        {
+          "role": "Study",
+          "parent": null,
+          "children": [
+            "ABC",
+            "DE",
+            "Fir"
+          ],
+          "label": "Study",
+          "length": 99,
+          "comments": [
+            "study-note"
+          ]
+        },
+        {
+          "role": "ABC",
+          "parent": "Study",
+          "children": [
+            "AB",
+            "Cedar"
+          ],
+          "label": "ABC",
+          "length": 7,
+          "comments": [
+            "abc-note"
+          ]
+        },
+        {
+          "role": "AB",
+          "parent": "ABC",
+          "children": [
+            "U",
+            "Birch"
+          ],
+          "label": "AB",
+          "length": 5,
+          "comments": [
+            "ab-note"
+          ]
+        },
+        {
+          "role": "U",
+          "parent": "AB",
+          "children": [
+            "Aspen"
+          ],
+          "label": "U",
+          "length": 3,
+          "comments": [
+            "u-note"
+          ]
+        },
+        {
+          "role": "Aspen",
+          "parent": "U",
+          "children": [],
+          "label": "Aspen",
+          "length": 2,
+          "comments": []
+        },
+        {
+          "role": "Birch",
+          "parent": "AB",
+          "children": [],
+          "label": "Birch",
+          "length": 4,
+          "comments": []
+        },
+        {
+          "role": "Cedar",
+          "parent": "ABC",
+          "children": [],
+          "label": "Cedar",
+          "length": 6,
+          "comments": []
+        },
+        {
+          "role": "DE",
+          "parent": "Study",
+          "children": [
+            "Dogwood",
+            "Elm"
+          ],
+          "label": "DE",
+          "length": 10,
+          "comments": [
+            "de-note"
+          ]
+        },
+        {
+          "role": "Dogwood",
+          "parent": "DE",
+          "children": [],
+          "label": "Dogwood",
+          "length": 8,
+          "comments": []
+        },
+        {
+          "role": "Elm",
+          "parent": "DE",
+          "children": [],
+          "label": "Elm",
+          "length": 9,
+          "comments": []
+        },
+        {
+          "role": "Fir",
+          "parent": "Study",
+          "children": [],
+          "label": "Fir",
+          "length": 11,
+          "comments": []
+        }
+      ],
+      "retain": [
+        "Elm"
+      ],
+      "expectedNodes": [
+        {
+          "role": "Elm",
+          "parent": null,
+          "children": [],
+          "label": "Elm",
+          "length": null,
+          "comments": []
+        }
+      ],
+      "expectedMapping": {
+        "Study": null,
+        "ABC": null,
+        "AB": null,
+        "U": null,
+        "Aspen": null,
+        "Birch": null,
+        "Cedar": null,
+        "DE": null,
+        "Dogwood": null,
+        "Elm": "Elm",
+        "Fir": null
+      },
+      "expectedPaths": {
+        "Elm": [
+          "Study",
+          "DE",
+          "Elm"
+        ]
+      },
+      "expectedNewick": "[&R]'Elm';[tree audit]",
+      "rooting": "Rooted",
+      "treeComments": [
+        "tree audit"
+      ]
+    },
+    {
+      "name": "all-leaves-request-order",
+      "newick": "[&R]((((Aspen:2)U[u-note]:3,Birch:4)AB[ab-note]:5,Cedar:6)ABC[abc-note]:7,(Dogwood:8,Elm:9)DE[de-note]:10,Fir:11)Study[study-note]:99;[tree audit]",
+      "nodes": [
+        {
+          "role": "Study",
+          "parent": null,
+          "children": [
+            "ABC",
+            "DE",
+            "Fir"
+          ],
+          "label": "Study",
+          "length": 99,
+          "comments": [
+            "study-note"
+          ]
+        },
+        {
+          "role": "ABC",
+          "parent": "Study",
+          "children": [
+            "AB",
+            "Cedar"
+          ],
+          "label": "ABC",
+          "length": 7,
+          "comments": [
+            "abc-note"
+          ]
+        },
+        {
+          "role": "AB",
+          "parent": "ABC",
+          "children": [
+            "U",
+            "Birch"
+          ],
+          "label": "AB",
+          "length": 5,
+          "comments": [
+            "ab-note"
+          ]
+        },
+        {
+          "role": "U",
+          "parent": "AB",
+          "children": [
+            "Aspen"
+          ],
+          "label": "U",
+          "length": 3,
+          "comments": [
+            "u-note"
+          ]
+        },
+        {
+          "role": "Aspen",
+          "parent": "U",
+          "children": [],
+          "label": "Aspen",
+          "length": 2,
+          "comments": []
+        },
+        {
+          "role": "Birch",
+          "parent": "AB",
+          "children": [],
+          "label": "Birch",
+          "length": 4,
+          "comments": []
+        },
+        {
+          "role": "Cedar",
+          "parent": "ABC",
+          "children": [],
+          "label": "Cedar",
+          "length": 6,
+          "comments": []
+        },
+        {
+          "role": "DE",
+          "parent": "Study",
+          "children": [
+            "Dogwood",
+            "Elm"
+          ],
+          "label": "DE",
+          "length": 10,
+          "comments": [
+            "de-note"
+          ]
+        },
+        {
+          "role": "Dogwood",
+          "parent": "DE",
+          "children": [],
+          "label": "Dogwood",
+          "length": 8,
+          "comments": []
+        },
+        {
+          "role": "Elm",
+          "parent": "DE",
+          "children": [],
+          "label": "Elm",
+          "length": 9,
+          "comments": []
+        },
+        {
+          "role": "Fir",
+          "parent": "Study",
+          "children": [],
+          "label": "Fir",
+          "length": 11,
+          "comments": []
+        }
+      ],
+      "retain": [
+        "Fir",
+        "Elm",
+        "Dogwood",
+        "Cedar",
+        "Birch",
+        "Aspen"
+      ],
+      "expectedNodes": [
+        {
+          "role": "Study",
+          "parent": null,
+          "children": [
+            "ABC",
+            "DE",
+            "Fir"
+          ],
+          "label": "Study",
+          "length": 99,
+          "comments": [
+            "study-note"
+          ]
+        },
+        {
+          "role": "ABC",
+          "parent": "Study",
+          "children": [
+            "AB",
+            "Cedar"
+          ],
+          "label": "ABC",
+          "length": 7,
+          "comments": [
+            "abc-note"
+          ]
+        },
+        {
+          "role": "AB",
+          "parent": "ABC",
+          "children": [
+            "Aspen",
+            "Birch"
+          ],
+          "label": "AB",
+          "length": 5,
+          "comments": [
+            "ab-note"
+          ]
+        },
+        {
+          "role": "Aspen",
+          "parent": "AB",
+          "children": [],
+          "label": "Aspen",
+          "length": 5,
+          "comments": []
+        },
+        {
+          "role": "Birch",
+          "parent": "AB",
+          "children": [],
+          "label": "Birch",
+          "length": 4,
+          "comments": []
+        },
+        {
+          "role": "Cedar",
+          "parent": "ABC",
+          "children": [],
+          "label": "Cedar",
+          "length": 6,
+          "comments": []
+        },
+        {
+          "role": "DE",
+          "parent": "Study",
+          "children": [
+            "Dogwood",
+            "Elm"
+          ],
+          "label": "DE",
+          "length": 10,
+          "comments": [
+            "de-note"
+          ]
+        },
+        {
+          "role": "Dogwood",
+          "parent": "DE",
+          "children": [],
+          "label": "Dogwood",
+          "length": 8,
+          "comments": []
+        },
+        {
+          "role": "Elm",
+          "parent": "DE",
+          "children": [],
+          "label": "Elm",
+          "length": 9,
+          "comments": []
+        },
+        {
+          "role": "Fir",
+          "parent": "Study",
+          "children": [],
+          "label": "Fir",
+          "length": 11,
+          "comments": []
+        }
+      ],
+      "expectedMapping": {
+        "Study": "Study",
+        "ABC": "ABC",
+        "AB": "AB",
+        "U": null,
+        "Aspen": "Aspen",
+        "Birch": "Birch",
+        "Cedar": "Cedar",
+        "DE": "DE",
+        "Dogwood": "Dogwood",
+        "Elm": "Elm",
+        "Fir": "Fir"
+      },
+      "expectedPaths": {
+        "Study": [
+          "Study"
+        ],
+        "ABC": [
+          "ABC"
+        ],
+        "AB": [
+          "AB"
+        ],
+        "Aspen": [
+          "U",
+          "Aspen"
+        ],
+        "Birch": [
+          "Birch"
+        ],
+        "Cedar": [
+          "Cedar"
+        ],
+        "DE": [
+          "DE"
+        ],
+        "Dogwood": [
+          "Dogwood"
+        ],
+        "Elm": [
+          "Elm"
+        ],
+        "Fir": [
+          "Fir"
+        ]
+      },
+      "expectedNewick": "[&R]((('Aspen':5,'Birch':4)'AB':5[ab-note],'Cedar':6)'ABC':7[abc-note],('Dogwood':8,'Elm':9)'DE':10[de-note],'Fir':11)'Study':99[study-note];[tree audit]",
+      "rooting": "Rooted",
+      "treeComments": [
+        "tree audit"
+      ]
+    },
+    {
+      "name": "missing-length-unknown-root",
+      "newick": "((((Aspen:2)U[u-note],Birch:4)AB[ab-note]:5,Cedar:6)ABC[abc-note]:7,(Dogwood:8,Elm:9)DE[de-note]:10,Fir:11)Study[study-note]:99;[tree audit]",
+      "nodes": [
+        {
+          "role": "Study",
+          "parent": null,
+          "children": [
+            "ABC",
+            "DE",
+            "Fir"
+          ],
+          "label": "Study",
+          "length": 99,
+          "comments": [
+            "study-note"
+          ]
+        },
+        {
+          "role": "ABC",
+          "parent": "Study",
+          "children": [
+            "AB",
+            "Cedar"
+          ],
+          "label": "ABC",
+          "length": 7,
+          "comments": [
+            "abc-note"
+          ]
+        },
+        {
+          "role": "AB",
+          "parent": "ABC",
+          "children": [
+            "U",
+            "Birch"
+          ],
+          "label": "AB",
+          "length": 5,
+          "comments": [
+            "ab-note"
+          ]
+        },
+        {
+          "role": "U",
+          "parent": "AB",
+          "children": [
+            "Aspen"
+          ],
+          "label": "U",
+          "length": null,
+          "comments": [
+            "u-note"
+          ]
+        },
+        {
+          "role": "Aspen",
+          "parent": "U",
+          "children": [],
+          "label": "Aspen",
+          "length": 2,
+          "comments": []
+        },
+        {
+          "role": "Birch",
+          "parent": "AB",
+          "children": [],
+          "label": "Birch",
+          "length": 4,
+          "comments": []
+        },
+        {
+          "role": "Cedar",
+          "parent": "ABC",
+          "children": [],
+          "label": "Cedar",
+          "length": 6,
+          "comments": []
+        },
+        {
+          "role": "DE",
+          "parent": "Study",
+          "children": [
+            "Dogwood",
+            "Elm"
+          ],
+          "label": "DE",
+          "length": 10,
+          "comments": [
+            "de-note"
+          ]
+        },
+        {
+          "role": "Dogwood",
+          "parent": "DE",
+          "children": [],
+          "label": "Dogwood",
+          "length": 8,
+          "comments": []
+        },
+        {
+          "role": "Elm",
+          "parent": "DE",
+          "children": [],
+          "label": "Elm",
+          "length": 9,
+          "comments": []
+        },
+        {
+          "role": "Fir",
+          "parent": "Study",
+          "children": [],
+          "label": "Fir",
+          "length": 11,
+          "comments": []
+        }
+      ],
+      "retain": [
+        "Aspen",
+        "Cedar",
+        "Elm"
+      ],
+      "expectedNodes": [
+        {
+          "role": "Study",
+          "parent": null,
+          "children": [
+            "ABC",
+            "Elm"
+          ],
+          "label": "Study",
+          "length": 99,
+          "comments": [
+            "study-note"
+          ]
+        },
+        {
+          "role": "ABC",
+          "parent": "Study",
+          "children": [
+            "Aspen",
+            "Cedar"
+          ],
+          "label": "ABC",
+          "length": 7,
+          "comments": [
+            "abc-note"
+          ]
+        },
+        {
+          "role": "Aspen",
+          "parent": "ABC",
+          "children": [],
+          "label": "Aspen",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "Cedar",
+          "parent": "ABC",
+          "children": [],
+          "label": "Cedar",
+          "length": 6,
+          "comments": []
+        },
+        {
+          "role": "Elm",
+          "parent": "Study",
+          "children": [],
+          "label": "Elm",
+          "length": 19,
+          "comments": []
+        }
+      ],
+      "expectedMapping": {
+        "Study": "Study",
+        "ABC": "ABC",
+        "AB": null,
+        "U": null,
+        "Aspen": "Aspen",
+        "Birch": null,
+        "Cedar": "Cedar",
+        "DE": null,
+        "Dogwood": null,
+        "Elm": "Elm",
+        "Fir": null
+      },
+      "expectedPaths": {
+        "Study": [
+          "Study"
+        ],
+        "ABC": [
+          "ABC"
+        ],
+        "Aspen": [
+          "AB",
+          "U",
+          "Aspen"
+        ],
+        "Cedar": [
+          "Cedar"
+        ],
+        "Elm": [
+          "DE",
+          "Elm"
+        ]
+      },
+      "expectedNewick": "(('Aspen','Cedar':6)'ABC':7[abc-note],'Elm':19)'Study':99[study-note];[tree audit]",
+      "rooting": "Unknown",
+      "treeComments": [
+        "tree audit"
+      ]
+    },
+    {
+      "name": "unrooted-exact-selection",
+      "newick": "[&U](Z:0,' A_B ':1,'O''Brien_😀':2,D:3)S[s]:4;[tree]",
+      "nodes": [
+        {
+          "role": "S",
+          "parent": null,
+          "children": [
+            "Z",
+            "Space",
+            "Quote",
+            "D"
+          ],
+          "label": "S",
+          "length": 4,
+          "comments": [
+            "s"
+          ]
+        },
+        {
+          "role": "Z",
+          "parent": "S",
+          "children": [],
+          "label": "Z",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "Space",
+          "parent": "S",
+          "children": [],
+          "label": " A_B ",
+          "length": 1,
+          "comments": []
+        },
+        {
+          "role": "Quote",
+          "parent": "S",
+          "children": [],
+          "label": "O'Brien_😀",
+          "length": 2,
+          "comments": []
+        },
+        {
+          "role": "D",
+          "parent": "S",
+          "children": [],
+          "label": "D",
+          "length": 3,
+          "comments": []
+        }
+      ],
+      "retain": [
+        "O'Brien_😀",
+        "Z"
+      ],
+      "expectedNodes": [
+        {
+          "role": "S",
+          "parent": null,
+          "children": [
+            "Z",
+            "Quote"
+          ],
+          "label": "S",
+          "length": 4,
+          "comments": [
+            "s"
+          ]
+        },
+        {
+          "role": "Z",
+          "parent": "S",
+          "children": [],
+          "label": "Z",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "Quote",
+          "parent": "S",
+          "children": [],
+          "label": "O'Brien_😀",
+          "length": 2,
+          "comments": []
+        }
+      ],
+      "expectedMapping": {
+        "S": "S",
+        "Z": "Z",
+        "Space": null,
+        "Quote": "Quote",
+        "D": null
+      },
+      "expectedPaths": {
+        "S": [
+          "S"
+        ],
+        "Z": [
+          "Z"
+        ],
+        "Quote": [
+          "Quote"
+        ]
+      },
+      "expectedNewick": "[&U]('Z':0,'O''Brien_😀':2)'S':4[s];[tree]",
+      "rooting": "Unrooted",
+      "treeComments": [
+        "tree"
+      ]
+    },
+    {
+      "name": "authored-root-is-leaf",
+      "newick": "Only:42;[treeleaf]",
+      "nodes": [
+        {
+          "role": "Only",
+          "parent": null,
+          "children": [],
+          "label": "Only",
+          "length": 42,
+          "comments": []
+        }
+      ],
+      "retain": [
+        "Only"
+      ],
+      "expectedNodes": [
+        {
+          "role": "Only",
+          "parent": null,
+          "children": [],
+          "label": "Only",
+          "length": 42,
+          "comments": []
+        }
+      ],
+      "expectedMapping": {
+        "Only": "Only"
+      },
+      "expectedPaths": {
+        "Only": [
+          "Only"
+        ]
+      },
+      "expectedNewick": "'Only':42;[treeleaf]",
+      "rooting": "Unknown",
+      "treeComments": [
+        "treeleaf"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "name": "missing-tree",
+      "newick": null,
+      "retain": [
+        "Aspen"
+      ],
+      "error": "missing_tree"
+    },
+    {
+      "name": "missing-retain-before-parse",
+      "newick": "(A,B)",
+      "retain": null,
+      "error": "missing_retain",
+      "omitRetain": true
+    },
+    {
+      "name": "invalid-json",
+      "newick": "[&R]((((Aspen:2)U[u-note]:3,Birch:4)AB[ab-note]:5,Cedar:6)ABC[abc-note]:7,(Dogwood:8,Elm:9)DE[de-note]:10,Fir:11)Study[study-note]:99;[tree audit]",
+      "retain": null,
+      "error": "invalid_retain_json",
+      "retainJSON": "["
+    },
+    {
+      "name": "object-not-array",
+      "newick": "[&R]((((Aspen:2)U[u-note]:3,Birch:4)AB[ab-note]:5,Cedar:6)ABC[abc-note]:7,(Dogwood:8,Elm:9)DE[de-note]:10,Fir:11)Study[study-note]:99;[tree audit]",
+      "retain": null,
+      "error": "invalid_retain",
+      "retainJSON": "{}"
+    },
+    {
+      "name": "nonstring-item",
+      "newick": "[&R]((((Aspen:2)U[u-note]:3,Birch:4)AB[ab-note]:5,Cedar:6)ABC[abc-note]:7,(Dogwood:8,Elm:9)DE[de-note]:10,Fir:11)Study[study-note]:99;[tree audit]",
+      "retain": null,
+      "error": "invalid_retain",
+      "retainJSON": "[\"Aspen\",7]"
+    },
+    {
+      "name": "empty-selection",
+      "newick": "[&R]((((Aspen:2)U[u-note]:3,Birch:4)AB[ab-note]:5,Cedar:6)ABC[abc-note]:7,(Dogwood:8,Elm:9)DE[de-note]:10,Fir:11)Study[study-note]:99;[tree audit]",
+      "retain": [],
+      "error": "prune_error",
+      "detailPrefix": "EmptySelection"
+    },
+    {
+      "name": "unknown-taxon",
+      "newick": "[&R]((((Aspen:2)U[u-note]:3,Birch:4)AB[ab-note]:5,Cedar:6)ABC[abc-note]:7,(Dogwood:8,Elm:9)DE[de-note]:10,Fir:11)Study[study-note]:99;[tree audit]",
+      "retain": [
+        "missing"
+      ],
+      "error": "prune_error",
+      "detailPrefix": "UnknownTaxon(\"missing\")"
+    },
+    {
+      "name": "internal-only-name",
+      "newick": "[&R]((((Aspen:2)U[u-note]:3,Birch:4)AB[ab-note]:5,Cedar:6)ABC[abc-note]:7,(Dogwood:8,Elm:9)DE[de-note]:10,Fir:11)Study[study-note]:99;[tree audit]",
+      "retain": [
+        "AB"
+      ],
+      "error": "prune_error",
+      "detailPrefix": "UnknownTaxon(\"AB\")"
+    },
+    {
+      "name": "duplicate-before-unknown",
+      "newick": "[&R]((((Aspen:2)U[u-note]:3,Birch:4)AB[ab-note]:5,Cedar:6)ABC[abc-note]:7,(Dogwood:8,Elm:9)DE[de-note]:10,Fir:11)Study[study-note]:99;[tree audit]",
+      "retain": [
+        "Aspen",
+        "Aspen",
+        "missing"
+      ],
+      "error": "prune_error",
+      "detailPrefix": "DuplicateSelection(\"Aspen\")"
+    },
+    {
+      "name": "unknown-before-duplicate",
+      "newick": "[&R]((((Aspen:2)U[u-note]:3,Birch:4)AB[ab-note]:5,Cedar:6)ABC[abc-note]:7,(Dogwood:8,Elm:9)DE[de-note]:10,Fir:11)Study[study-note]:99;[tree audit]",
+      "retain": [
+        "missing",
+        "Aspen",
+        "Aspen"
+      ],
+      "error": "prune_error",
+      "detailPrefix": "UnknownTaxon(\"missing\")"
+    },
+    {
+      "name": "parser-before-bad-json",
+      "newick": "(A,B)",
+      "retain": null,
+      "error": "parser_error",
+      "retainJSON": "[",
+      "detailPrefix": "Syntax("
+    }
+  ]
+}
