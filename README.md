@@ -70,6 +70,37 @@ moon run cmd/rf_compare --target wasm-gc --frozen
 
 构建两个后端后，`python -B verification/rf_recipient.py --artifact-dir _build --moonrun moonrun --output rf-evidence` 会从保存的 Newick 文件向真实新进程发送请求，核对预先手工列出的完整 clade/split 报告、反向结果和明确错误，检查单响应及输入哈希。它验证新接收方的模式分派与原报告交接，不声称新 RF 算法。
 
+## 同时重命名叶身份并交接 Newick
+
+`tree.rename_taxa(Map[String,String])` 返回 `Result[TaxonRenameResult, PhyloError]`：结果含独立的 `tree` 和按原名称 UTF-16 顺序排列的 `renames`。每条 `TaxonRename` 有 `from_taxon`、`to_taxon`、`source_id`、`target_id`，包括显式的 identity 请求。映射同时生效，因此 A→B、B→A 可交换；只做 A→B 则会与未改名 B 冲突。未列出的叶不变，空映射合法。
+
+这项操作用于把研究树叶名对接为调用方明确给定的目录 ID。它保留父子结构、子节点次序、rooting、所有缺失/零/普通枝长与 stem、内部标签和原节点/树注释，仅改变指定叶身份；不会对注释或内部标签做文本替换。返回图完整复制并保留本次操作的数值节点 ID，报告明确关联原树和结果树；此对应不扩展为跨导出重读或其他变换的持久 ID。叶身份改变后，不应把原名称下的生物学解释或比较结果视为自动相同。没有根推断、科学运算或新模型。
+
+先按源键顺序检查全部精确叶名，未知/仅内部标签报原 `UnknownTaxon`；再检查空目标，报 `AnonymousTaxon` 并附原叶 ID；最后检查全部最终叶名，冲突报 `DuplicateTaxon`。整个失败不改变原树。目标不 trim、不归一化，非空空白名合法，NFC/NFD 保持不同；目标与某个内部标签相等允许。输入映射和新报告数组互相独立，调用者修改映射或清空报告不影响原树/结果树。
+
+`examples/taxon_rename_handoff` 是公共包发出端，`receive` 是独立可执行接收端。将本库与示例分别作为同级 product/receiver、在共同父目录配置 `moon work init ./product ./receiver` 后可运行：
+
+```powershell
+$env:PHYLO_RENAME_TREE='[&R]((A:0,B:1.5)X,C)Root:99;[tree A]'
+$env:PHYLO_RENAME_MAP='{"A":"Catalog_A","B":"Catalog_B"}'
+moon -C receiver run . --target js --frozen
+```
+
+一个成功 JSON 交付原/新完整节点、两棵树的根/rooting/注释、改名对应行及 `renamed_newick`。`source_newick` 和新树字符串都是既有规范序列化，原始输入文件字节另行记录；所有标签仍由原 Newick 引号规则处理，字面下划线、空格、单引号、分号/括号等不被替换或截短。把 `renamed_newick` 原样保存为 UTF-8 后，由另一个进程只接收该树文本：
+
+```powershell
+# 在应用中读取已保存的新树；接收进程不需要原树或改名映射。
+$env:PHYLO_RENAMED_TREE=[IO.File]::ReadAllText((Resolve-Path -LiteralPath renamed.newick).Path, [Text.UTF8Encoding]::new($false, $true))
+moon -C receiver run receive --target js --frozen
+moon -C receiver run receive --target wasm-gc --frozen
+```
+
+接收端返回其独立解析的全部节点、taxa、rooting、注释和规范 Newick，不沿用发出端节点 ID。两个入口仍用既有文本环境传输，受宿主长度/字符限制，没有新增原生文件或流宿主；保存/读取文件由应用或验证桥完成。改名对象是 core JSON 的普通对象语义，不是新持久格式。
+
+先检查 `ok`，API 错误正常退出。发出端区分 `missing_tree` / `missing_renames`、原 `parser_error`、`invalid_renames_json` / `invalid_renames` / `invalid_target`（附 taxon），以及领域 `unknown_source` / `empty_target`（原 node_id）/ `duplicate_taxon`，保留原诊断和原图。接收端对缺文本或坏 Newick 明确报错。旧库、解析器、已有 enum 和默认行为保持。
+
+在 Git checkout 运行 `python -B verification/taxon_rename_recipient.py --moon moon --moonrun moonrun --output rename-evidence`（本地新文件先暂存），会实际构建两个独立可执行文件及双后端库，按实现前冻结的整图、全部目标名称及对应行验证。它将真实发出端产物保存为原始 UTF-8 Newick 文件，再只读该文件启动新接收进程，按原字节严格解码，核对整图和规范重导出；没有通过读取原映射来替代消费产物。所有进程的数值退出、成功/预期错误状态、完整 stdout/stderr 和交接文件字节哈希均记录。这个自编真实交接不代表外部采用，也不承诺任意性能/输入规模。
+
 ## 单个离散性状的 Fitch 重建审查
 
 `examples/fitch_character_review` 是独立公共包接收方：输入原始有根 Newick 和用户的精确叶名→单字符观测映射，交付完整原 `ParsimonyResult`、每个原节点的观测/候选/重建状态，以及每条变化边的原 parent/child ID 和两端状态。它直接调用已有 `fitch_parsimony`，不改变算法，也不先删除缺失观测的叶。既有 `cmd/main` 的硬编码演示继续保留。

@@ -113,6 +113,8 @@ jobs:
         run: python -B verification/clade_recipient.py --moon moon --moonrun moonrun --output ci-evidence/clade-review
       - name: Validate separate public-package Fitch character review on both targets
         run: python -B verification/fitch_character_recipient.py --moon moon --moonrun moonrun --output ci-evidence/fitch-character-review
+      - name: Validate two-process public-package taxon rename handoff on both targets
+        run: python -B verification/taxon_rename_recipient.py --moon moon --moonrun moonrun --output ci-evidence/taxon-rename-handoff
       - uses: actions/upload-artifact@v4
         if: always()
         with:

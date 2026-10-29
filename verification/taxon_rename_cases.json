@@ -1,0 +1,883 @@
+{
+  "oracle": "Before-edit literal original graphs, complete renamed labels and ordered source-to-target rename facts; independent two-process raw Newick handoff",
+  "cases": [
+    {
+      "name": "catalog-handoff",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "nodes": [
+        {
+          "role": "Root",
+          "parent": null,
+          "children": [
+            "X",
+            "Y"
+          ],
+          "label": "Root",
+          "length": 99,
+          "comments": [
+            "root A"
+          ]
+        },
+        {
+          "role": "X",
+          "parent": "Root",
+          "children": [
+            "U",
+            "B"
+          ],
+          "label": "X",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "U",
+          "parent": "X",
+          "children": [
+            "A"
+          ],
+          "label": "U",
+          "length": null,
+          "comments": [
+            "old A; keep"
+          ]
+        },
+        {
+          "role": "A",
+          "parent": "U",
+          "children": [],
+          "label": "A",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "B",
+          "parent": "X",
+          "children": [],
+          "label": "B",
+          "length": 1.5,
+          "comments": []
+        },
+        {
+          "role": "Y",
+          "parent": "Root",
+          "children": [
+            "C",
+            "D"
+          ],
+          "label": "Y",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "C",
+          "parent": "Y",
+          "children": [],
+          "label": "C",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "D",
+          "parent": "Y",
+          "children": [],
+          "label": "D",
+          "length": 0,
+          "comments": []
+        }
+      ],
+      "mapping": {
+        "A": "Catalog_A",
+        "B": "B [region]; O'Brien_😀",
+        "C": " C "
+      },
+      "expectedLabels": {
+        "Root": "Root",
+        "X": "X",
+        "U": "U",
+        "A": "Catalog_A",
+        "B": "B [region]; O'Brien_😀",
+        "Y": "Y",
+        "C": " C ",
+        "D": "D"
+      },
+      "expectedRenames": [
+        {
+          "role": "A",
+          "from_taxon": "A",
+          "to_taxon": "Catalog_A"
+        },
+        {
+          "role": "B",
+          "from_taxon": "B",
+          "to_taxon": "B [region]; O'Brien_😀"
+        },
+        {
+          "role": "C",
+          "from_taxon": "C",
+          "to_taxon": " C "
+        }
+      ],
+      "rooting": "Rooted",
+      "treeComments": [
+        "tree A"
+      ]
+    },
+    {
+      "name": "simultaneous-swap",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "nodes": [
+        {
+          "role": "Root",
+          "parent": null,
+          "children": [
+            "X",
+            "Y"
+          ],
+          "label": "Root",
+          "length": 99,
+          "comments": [
+            "root A"
+          ]
+        },
+        {
+          "role": "X",
+          "parent": "Root",
+          "children": [
+            "U",
+            "B"
+          ],
+          "label": "X",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "U",
+          "parent": "X",
+          "children": [
+            "A"
+          ],
+          "label": "U",
+          "length": null,
+          "comments": [
+            "old A; keep"
+          ]
+        },
+        {
+          "role": "A",
+          "parent": "U",
+          "children": [],
+          "label": "A",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "B",
+          "parent": "X",
+          "children": [],
+          "label": "B",
+          "length": 1.5,
+          "comments": []
+        },
+        {
+          "role": "Y",
+          "parent": "Root",
+          "children": [
+            "C",
+            "D"
+          ],
+          "label": "Y",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "C",
+          "parent": "Y",
+          "children": [],
+          "label": "C",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "D",
+          "parent": "Y",
+          "children": [],
+          "label": "D",
+          "length": 0,
+          "comments": []
+        }
+      ],
+      "mapping": {
+        "A": "B",
+        "B": "A",
+        "C": "C"
+      },
+      "expectedLabels": {
+        "Root": "Root",
+        "X": "X",
+        "U": "U",
+        "A": "B",
+        "B": "A",
+        "Y": "Y",
+        "C": "C",
+        "D": "D"
+      },
+      "expectedRenames": [
+        {
+          "role": "A",
+          "from_taxon": "A",
+          "to_taxon": "B"
+        },
+        {
+          "role": "B",
+          "from_taxon": "B",
+          "to_taxon": "A"
+        },
+        {
+          "role": "C",
+          "from_taxon": "C",
+          "to_taxon": "C"
+        }
+      ],
+      "rooting": "Rooted",
+      "treeComments": [
+        "tree A"
+      ]
+    },
+    {
+      "name": "empty-map-unrooted",
+      "newick": "[&U](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "nodes": [
+        {
+          "role": "Root",
+          "parent": null,
+          "children": [
+            "X",
+            "Y"
+          ],
+          "label": "Root",
+          "length": 99,
+          "comments": [
+            "root A"
+          ]
+        },
+        {
+          "role": "X",
+          "parent": "Root",
+          "children": [
+            "U",
+            "B"
+          ],
+          "label": "X",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "U",
+          "parent": "X",
+          "children": [
+            "A"
+          ],
+          "label": "U",
+          "length": null,
+          "comments": [
+            "old A; keep"
+          ]
+        },
+        {
+          "role": "A",
+          "parent": "U",
+          "children": [],
+          "label": "A",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "B",
+          "parent": "X",
+          "children": [],
+          "label": "B",
+          "length": 1.5,
+          "comments": []
+        },
+        {
+          "role": "Y",
+          "parent": "Root",
+          "children": [
+            "C",
+            "D"
+          ],
+          "label": "Y",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "C",
+          "parent": "Y",
+          "children": [],
+          "label": "C",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "D",
+          "parent": "Y",
+          "children": [],
+          "label": "D",
+          "length": 0,
+          "comments": []
+        }
+      ],
+      "mapping": {},
+      "expectedLabels": {
+        "Root": "Root",
+        "X": "X",
+        "U": "U",
+        "A": "A",
+        "B": "B",
+        "Y": "Y",
+        "C": "C",
+        "D": "D"
+      },
+      "expectedRenames": [],
+      "rooting": "Unrooted",
+      "treeComments": [
+        "tree A"
+      ]
+    },
+    {
+      "name": "unicode-targets-unknown-root",
+      "newick": "(((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "nodes": [
+        {
+          "role": "Root",
+          "parent": null,
+          "children": [
+            "X",
+            "Y"
+          ],
+          "label": "Root",
+          "length": 99,
+          "comments": [
+            "root A"
+          ]
+        },
+        {
+          "role": "X",
+          "parent": "Root",
+          "children": [
+            "U",
+            "B"
+          ],
+          "label": "X",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "U",
+          "parent": "X",
+          "children": [
+            "A"
+          ],
+          "label": "U",
+          "length": null,
+          "comments": [
+            "old A; keep"
+          ]
+        },
+        {
+          "role": "A",
+          "parent": "U",
+          "children": [],
+          "label": "A",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "B",
+          "parent": "X",
+          "children": [],
+          "label": "B",
+          "length": 1.5,
+          "comments": []
+        },
+        {
+          "role": "Y",
+          "parent": "Root",
+          "children": [
+            "C",
+            "D"
+          ],
+          "label": "Y",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "C",
+          "parent": "Y",
+          "children": [],
+          "label": "C",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "D",
+          "parent": "Y",
+          "children": [],
+          "label": "D",
+          "length": 0,
+          "comments": []
+        }
+      ],
+      "mapping": {
+        "A": "Café",
+        "B": "Café",
+        "C": "😀",
+        "D": ""
+      },
+      "expectedLabels": {
+        "Root": "Root",
+        "X": "X",
+        "U": "U",
+        "A": "Café",
+        "B": "Café",
+        "Y": "Y",
+        "C": "😀",
+        "D": ""
+      },
+      "expectedRenames": [
+        {
+          "role": "A",
+          "from_taxon": "A",
+          "to_taxon": "Café"
+        },
+        {
+          "role": "B",
+          "from_taxon": "B",
+          "to_taxon": "Café"
+        },
+        {
+          "role": "C",
+          "from_taxon": "C",
+          "to_taxon": "😀"
+        },
+        {
+          "role": "D",
+          "from_taxon": "D",
+          "to_taxon": ""
+        }
+      ],
+      "rooting": "Unknown",
+      "treeComments": [
+        "tree A"
+      ]
+    },
+    {
+      "name": "single-root-blank",
+      "newick": "[&U]'A_B':99;[tree A]",
+      "nodes": [
+        {
+          "role": "Only",
+          "parent": null,
+          "children": [],
+          "label": "A_B",
+          "length": 99,
+          "comments": []
+        }
+      ],
+      "mapping": {
+        "A_B": " "
+      },
+      "expectedLabels": {
+        "Only": " "
+      },
+      "expectedRenames": [
+        {
+          "role": "Only",
+          "from_taxon": "A_B",
+          "to_taxon": " "
+        }
+      ],
+      "rooting": "Unrooted",
+      "treeComments": [
+        "tree A"
+      ]
+    },
+    {
+      "name": "internal-label-allowed-target",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "nodes": [
+        {
+          "role": "Root",
+          "parent": null,
+          "children": [
+            "X",
+            "Y"
+          ],
+          "label": "Root",
+          "length": 99,
+          "comments": [
+            "root A"
+          ]
+        },
+        {
+          "role": "X",
+          "parent": "Root",
+          "children": [
+            "U",
+            "B"
+          ],
+          "label": "X",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "U",
+          "parent": "X",
+          "children": [
+            "A"
+          ],
+          "label": "U",
+          "length": null,
+          "comments": [
+            "old A; keep"
+          ]
+        },
+        {
+          "role": "A",
+          "parent": "U",
+          "children": [],
+          "label": "A",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "B",
+          "parent": "X",
+          "children": [],
+          "label": "B",
+          "length": 1.5,
+          "comments": []
+        },
+        {
+          "role": "Y",
+          "parent": "Root",
+          "children": [
+            "C",
+            "D"
+          ],
+          "label": "Y",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "C",
+          "parent": "Y",
+          "children": [],
+          "label": "C",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "D",
+          "parent": "Y",
+          "children": [],
+          "label": "D",
+          "length": 0,
+          "comments": []
+        }
+      ],
+      "mapping": {
+        "A": "X"
+      },
+      "expectedLabels": {
+        "Root": "Root",
+        "X": "X",
+        "U": "U",
+        "A": "X",
+        "B": "B",
+        "Y": "Y",
+        "C": "C",
+        "D": "D"
+      },
+      "expectedRenames": [
+        {
+          "role": "A",
+          "from_taxon": "A",
+          "to_taxon": "X"
+        }
+      ],
+      "rooting": "Rooted",
+      "treeComments": [
+        "tree A"
+      ]
+    },
+    {
+      "name": "unicode-source-swap",
+      "newick": "[&R]('Café':0,'Café','😀':2,'')R;",
+      "nodes": [
+        {
+          "role": "R",
+          "parent": null,
+          "children": [
+            "NFC",
+            "NFD",
+            "Emoji",
+            "PUA"
+          ],
+          "label": "R",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "NFC",
+          "parent": "R",
+          "children": [],
+          "label": "Café",
+          "length": 0,
+          "comments": []
+        },
+        {
+          "role": "NFD",
+          "parent": "R",
+          "children": [],
+          "label": "Café",
+          "length": null,
+          "comments": []
+        },
+        {
+          "role": "Emoji",
+          "parent": "R",
+          "children": [],
+          "label": "😀",
+          "length": 2,
+          "comments": []
+        },
+        {
+          "role": "PUA",
+          "parent": "R",
+          "children": [],
+          "label": "",
+          "length": null,
+          "comments": []
+        }
+      ],
+      "mapping": {
+        "Café": "Café",
+        "Café": "Café",
+        "😀": "Moss;[x]",
+        "": "Moss_(x)"
+      },
+      "expectedLabels": {
+        "R": "R",
+        "NFC": "Café",
+        "NFD": "Café",
+        "Emoji": "Moss;[x]",
+        "PUA": "Moss_(x)"
+      },
+      "expectedRenames": [
+        {
+          "role": "NFD",
+          "from_taxon": "Café",
+          "to_taxon": "Café"
+        },
+        {
+          "role": "NFC",
+          "from_taxon": "Café",
+          "to_taxon": "Café"
+        },
+        {
+          "role": "Emoji",
+          "from_taxon": "😀",
+          "to_taxon": "Moss;[x]"
+        },
+        {
+          "role": "PUA",
+          "from_taxon": "",
+          "to_taxon": "Moss_(x)"
+        }
+      ],
+      "rooting": "Rooted",
+      "treeComments": []
+    }
+  ],
+  "errors": [
+    {
+      "name": "unknown-source",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "mapping": {
+        "missing": "Z"
+      },
+      "error": "unknown_source",
+      "taxon": "missing"
+    },
+    {
+      "name": "internal-source",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "mapping": {
+        "U": "Z"
+      },
+      "error": "unknown_source",
+      "taxon": "U"
+    },
+    {
+      "name": "case-source",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "mapping": {
+        "a": "Z"
+      },
+      "error": "unknown_source",
+      "taxon": "a"
+    },
+    {
+      "name": "empty-target",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "mapping": {
+        "A": ""
+      },
+      "error": "empty_target",
+      "sourceLabel": "A"
+    },
+    {
+      "name": "collision-unmapped",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "mapping": {
+        "A": "B"
+      },
+      "error": "duplicate_taxon",
+      "taxon": "B"
+    },
+    {
+      "name": "collision-two-targets",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "mapping": {
+        "A": "Z",
+        "B": "Z"
+      },
+      "error": "duplicate_taxon",
+      "taxon": "Z"
+    },
+    {
+      "name": "unknown-before-empty",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "mapping": {
+        "A": "",
+        "missing": "Z"
+      },
+      "error": "unknown_source",
+      "taxon": "missing"
+    },
+    {
+      "name": "empty-before-collision",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "mapping": {
+        "A": "B",
+        "C": ""
+      },
+      "error": "empty_target",
+      "sourceLabel": "C"
+    },
+    {
+      "name": "unknown-sorted",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "mapping": {
+        "zz": "X",
+        "aa": "Y"
+      },
+      "error": "unknown_source",
+      "taxon": "aa"
+    },
+    {
+      "name": "empty-sorted",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "mapping": {
+        "B": "",
+        "A": ""
+      },
+      "error": "empty_target",
+      "sourceLabel": "A"
+    },
+    {
+      "name": "missing-tree",
+      "newick": null,
+      "mapping": {},
+      "error": "missing_tree"
+    },
+    {
+      "name": "missing-map",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "mapping": null,
+      "error": "missing_renames",
+      "omitMap": true
+    },
+    {
+      "name": "bad-json",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "mapping": null,
+      "error": "invalid_renames_json",
+      "mapJSON": "["
+    },
+    {
+      "name": "array-not-map",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "mapping": null,
+      "error": "invalid_renames",
+      "mapJSON": "[]"
+    },
+    {
+      "name": "non-string-target",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "mapping": null,
+      "error": "invalid_target",
+      "mapJSON": "{\"A\":7}",
+      "taxon": "A"
+    },
+    {
+      "name": "unpaired-target",
+      "newick": "[&R](((A:0)U[old A; keep],B:1.5)X,(C,D:0)Y)Root[root A]:99;[tree A]",
+      "mapping": null,
+      "error": "invalid_renames_json",
+      "mapJSON": "{\"A\":\"\\ud800\"}"
+    },
+    {
+      "name": "bad-tree",
+      "newick": "[&R](A,B)",
+      "mapping": {},
+      "error": "parser_error",
+      "detailPrefix": "Syntax("
+    },
+    {
+      "name": "negative-tree",
+      "newick": "[&R](A:-1,B);",
+      "mapping": {},
+      "error": "parser_error",
+      "detailPrefix": "InvalidLength("
+    },
+    {
+      "name": "duplicate-original",
+      "newick": "(A,A);",
+      "mapping": {},
+      "error": "parser_error",
+      "detailPrefix": "DuplicateTaxon("
+    },
+    {
+      "name": "anonymous-original",
+      "newick": "'':1;",
+      "mapping": {},
+      "error": "parser_error",
+      "detailPrefix": "AnonymousTaxon("
+    }
+  ],
+  "receiveErrors": [
+    {
+      "name": "receive-missing",
+      "newick": null,
+      "error": "missing_tree"
+    },
+    {
+      "name": "receive-bad",
+      "newick": "[&R](A,B)",
+      "error": "parser_error",
+      "detailPrefix": "Syntax("
+    }
+  ]
+}

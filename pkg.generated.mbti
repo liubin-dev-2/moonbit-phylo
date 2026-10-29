@@ -158,6 +158,7 @@ pub fn PhyloTree::patristic_distance(Self, String, String) -> Result[Double, Phy
 pub fn PhyloTree::patristic_matrix(Self) -> Result[DistanceMatrix, PhyloError]
 pub fn PhyloTree::patristic_path(Self, String, String) -> Result[PatristicPathReport, PhyloError]
 pub fn PhyloTree::prune(Self, Array[String]) -> Result[TransformResult, PhyloError]
+pub fn PhyloTree::rename_taxa(Self, Map[String, String]) -> Result[TaxonRenameResult, PhyloError]
 pub fn PhyloTree::rf_distance_rooted(Self, Self) -> Result[RFComparisonReport, PhyloError]
 pub fn PhyloTree::rf_distance_unrooted(Self, Self) -> Result[RFComparisonReport, PhyloError]
 pub fn PhyloTree::root_id(Self) -> Int
@@ -197,6 +198,18 @@ pub(all) enum Rooting {
   Unrooted
   Unknown
 } derive(Eq, ToJson, @debug.Debug)
+
+pub(all) struct TaxonRename {
+  from_taxon : String
+  to_taxon : String
+  source_id : Int
+  target_id : Int
+} derive(ToJson, @debug.Debug)
+
+pub(all) struct TaxonRenameResult {
+  tree : PhyloTree
+  renames : Array[TaxonRename]
+}
 
 pub(all) struct TransformResult {
   tree : PhyloTree

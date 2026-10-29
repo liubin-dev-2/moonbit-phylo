@@ -68,6 +68,16 @@ structured errors and unchanged input/source hashes. The new receiving module
 uses the existing unordered single-character Fitch API; no library algorithm,
 public interface, old fixture, model or dependency changes. All old gates stay.
 
+The same required job runs `verification/taxon_rename_recipient.py`. A separate
+public module performs simultaneous transactional leaf renames and writes its
+actual canonical Newick to a saved UTF-8 file. A distinct executable/process
+receives only that exported tree and validates complete hand-fixed graphs,
+names/metadata and correspondence rows on JS/Wasm-GC. Per-process numerical
+exit/status and full stdout/stderr bytes plus exported-file identities are
+recorded. Three focused new native rename groups run in ordinary native gates;
+old algorithms, error enums, tests/fixtures and every prior gate stay unchanged.
+The bounded gate plan and artifact path schema are described in [CI-PLAN.md](CI-PLAN.md).
+
 CI uses the project's declared compiler `0.10.12+1634b282e`, with Node.js
 24.11.0 and Python 3.14. The installer uses the versioned URLs described by the
 [official installer](https://cli.moonbitlang.com/install/unix.sh) and checks the

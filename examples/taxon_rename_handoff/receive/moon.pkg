@@ -1,0 +1,6 @@
+import {
+  "liubin-dev/phylo",
+  "moonbitlang/core/env",
+}
+
+pkgtype(kind: "executable")
